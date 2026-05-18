@@ -6,11 +6,15 @@ import (
 )
 
 type FetchProblemsUseCase struct {
-	ProblemRepo ports.ProblemRepository
+	ProblemRepo  ports.ProblemRepository
+	TestCaseRepo ports.TestCaseRepository
 }
 
-func NewFetchProblemsUseCase(repo ports.ProblemRepository) *FetchProblemsUseCase {
-	return &FetchProblemsUseCase{ProblemRepo: repo}
+func NewFetchProblemsUseCase(pr ports.ProblemRepository, tr ports.TestCaseRepository) *FetchProblemsUseCase {
+	return &FetchProblemsUseCase{
+		ProblemRepo:  pr,
+		TestCaseRepo: tr,
+	}
 }
 
 func (uc *FetchProblemsUseCase) Execute() ([]domain.Problem, error) {
@@ -18,5 +22,15 @@ func (uc *FetchProblemsUseCase) Execute() ([]domain.Problem, error) {
 }
 
 func (uc *FetchProblemsUseCase) ExecuteById(id string) (*domain.Problem, error) {
-	return uc.ProblemRepo.FindById(id)
+	problem, err := uc.ProblemRepo.FindById(id)
+	if err != nil || problem == nil {
+		return problem, err
+	}
+	
+	testCases, err := uc.TestCaseRepo.FindByProblemId(id)
+	if err == nil {
+		problem.TestCases = testCases
+	}
+	
+	return problem, nil
 }

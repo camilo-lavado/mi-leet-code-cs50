@@ -36,7 +36,7 @@ func main() {
 	}
 
 	// 5. Inicializar Casos de Uso
-	fetchProblemsUC := usecases.NewFetchProblemsUseCase(problemRepo)
+	fetchProblemsUC := usecases.NewFetchProblemsUseCase(problemRepo, testCaseRepo)
 	submitCodeUC := usecases.NewSubmitCodeUseCase(problemRepo, testCaseRepo, submissionRepo, executor)
 
 	// 6. Inicializar Handlers y Router

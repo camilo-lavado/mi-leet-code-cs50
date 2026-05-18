@@ -33,12 +33,12 @@ func NewSubmitCodeUseCase(
 }
 
 type SubmissionResultDTO struct {
-	SubmissionID string
-	Status       string
-	Passed       int
-	Total        int
-	TimeMs       int
-	MemoryKb     int
+	SubmissionID string `json:"submissionId"`
+	Status       string `json:"status"`
+	Passed       int    `json:"passed"`
+	Total        int    `json:"total"`
+	TimeMs       int    `json:"timeMs"`
+	MemoryKb     int    `json:"memoryKb"`
 }
 
 func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code string) (*SubmissionResultDTO, error) {

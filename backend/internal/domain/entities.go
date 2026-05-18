@@ -6,9 +6,10 @@ type Problem struct {
 	ID          string `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	Difficulty  string `json:"difficulty"`
-	Language    string `json:"language"`
-	Week        int    `json:"week"`
+	Difficulty  string     `json:"difficulty"`
+	Language    string     `json:"language"`
+	Week        int        `json:"week"`
+	TestCases   []TestCase `json:"test_cases,omitempty"`
 }
 
 type TestCase struct {
