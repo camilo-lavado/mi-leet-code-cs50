@@ -25,11 +25,11 @@ export function ProblemPage() {
     }
   }, [problem]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <div className="h-full flex items-center justify-center"><Spinner /></div>;
   if (error || !problem) {
     return (
-      <div className="max-w-6xl mx-auto px-4 py-8 text-center text-red-600 dark:text-red-400">
-        Problem not found
+      <div className="h-full flex items-center justify-center text-red-400">
+        Problema no encontrado
       </div>
     );
   }
@@ -44,36 +44,33 @@ export function ProblemPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="mb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{problem.title}</h1>
-          <DifficultyBadge difficulty={problem.difficulty} />
+    <div className="h-full flex flex-col md:flex-row p-2 gap-2 bg-local-bg">
+      {/* Panel Izquierdo: Descripción */}
+      <div className="w-full md:w-[40%] flex flex-col gap-4 p-6 glass-panel overflow-y-auto">
+        <div className="flex items-center justify-between border-b border-local-border pb-4 mb-2">
+          <div>
+            <h1 className="text-3xl font-bold text-white mb-2">{problem.title}</h1>
+            <DifficultyBadge difficulty={problem.difficulty} />
+          </div>
         </div>
-        <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
+        <div className="prose prose-invert prose-p:text-local-text max-w-none whitespace-pre-wrap">
           {problem.description}
-        </p>
-        {problem.test_cases.length > 0 && (
-          <div className="mt-4">
-            <h2 className="text-sm font-semibold text-gray-500 uppercase mb-2">
-              Test Cases (visible)
+        </div>
+        
+        {problem.test_cases && problem.test_cases.length > 0 && (
+          <div className="mt-8 border-t border-local-border pt-6">
+            <h2 className="text-sm font-semibold text-local-muted uppercase tracking-wider mb-4">
+              Casos de Prueba Visibles
             </h2>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {problem.test_cases
                 .filter((tc) => !tc.is_hidden)
-                .map((tc) => (
-                  <div
-                    key={tc.id}
-                    className="p-2 bg-gray-100 rounded text-sm font-mono dark:bg-gray-800 dark:text-gray-200"
-                  >
-                    {tc.input_data ? (
-                      <>
-                        <span className="text-gray-500 dark:text-gray-400">Input: </span>
-                        {tc.input_data}
-                      </>
-                    ) : (
-                      <span className="text-gray-500 dark:text-gray-400">No input</span>
-                    )}
+                .map((tc, index) => (
+                  <div key={tc.id} className="bg-black/30 rounded-lg border border-local-border p-4">
+                    <div className="text-xs text-local-muted mb-2 font-semibold">Caso {index + 1}</div>
+                    <div className="font-mono text-sm text-green-400 bg-black/50 p-3 rounded">
+                      {tc.input_data ? tc.input_data : <span className="italic text-gray-600">Sin input</span>}
+                    </div>
                   </div>
                 ))}
             </div>
@@ -81,20 +78,38 @@ export function ProblemPage() {
         )}
       </div>
 
-      <div className="flex items-center justify-between mb-3">
-        <LanguageSelector value={language} onChange={setLanguage} />
-        <SubmitButton onClick={handleSubmit} isLoading={submitMutation.isPending} />
-      </div>
-
-      <CodeEditor code={code} language={language} onChange={(v) => setCode(v ?? '')} />
-
-      {submitMutation.error && (
-        <div className="mt-4 p-4 rounded-lg border border-red-300 bg-red-50 text-red-700 dark:bg-red-900/20 dark:border-red-700 dark:text-red-300">
-          {submitMutation.error.message}
+      {/* Panel Derecho: Editor y Consola */}
+      <div className="w-full md:w-[60%] flex flex-col gap-2">
+        {/* Editor */}
+        <div className="flex-1 glass-panel flex flex-col overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-local-border bg-black/20">
+            <LanguageSelector value={language} onChange={setLanguage} />
+            <SubmitButton onClick={handleSubmit} isLoading={submitMutation.isPending} />
+          </div>
+          <div className="flex-1 overflow-hidden relative">
+            <CodeEditor code={code} language={language} onChange={(v) => setCode(v ?? '')} />
+          </div>
         </div>
-      )}
 
-      {result && <SubmissionResults result={result} />}
+        {/* Consola / Resultados */}
+        <div className="h-[30%] min-h-[250px] glass-panel p-4 overflow-y-auto flex flex-col">
+          <h3 className="text-sm font-semibold text-local-muted uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-local-accent"></span> Consola de Ejecución
+          </h3>
+          
+          <div className="flex-1 bg-black/40 rounded-lg border border-local-border p-4">
+            {submitMutation.error ? (
+              <div className="text-red-400 font-mono text-sm">{submitMutation.error.message}</div>
+            ) : result ? (
+              <SubmissionResults result={result} />
+            ) : (
+              <div className="h-full flex items-center justify-center text-local-muted italic text-sm">
+                Envía tu código para ver los resultados de la evaluación.
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

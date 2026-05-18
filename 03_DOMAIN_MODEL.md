@@ -3,12 +3,16 @@
 ### 1. Relational Schema
 
 ```sql
+-- AGREGAR en próxima migración:
+-- ALTER TABLE problems ADD COLUMN week INTEGER NOT NULL DEFAULT 1;
+
 CREATE TABLE problems (
     id TEXT PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     difficulty TEXT NOT NULL,
-    language TEXT NOT NULL
+    language TEXT NOT NULL,
+    week INTEGER NOT NULL DEFAULT 1
 );
 
 CREATE TABLE test_cases (

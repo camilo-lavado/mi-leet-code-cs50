@@ -152,3 +152,31 @@ mi-leet-code/
 | SQLite sin ORM | La simplicidad del dominio no justifica la complejidad de un ORM. SQL puro es más claro. |
 | Monaco Editor en frontend | Es el editor de VS Code. Los estudiantes ya están familiarizados con él visualmente. |
 | Contenido en archivos `.md` | Permite editar el contenido del curso fácilmente sin tocar la base de datos. |
+
+---
+
+### 7. Subtareas pendientes de arquitectura
+
+#### Validación de arquitectura hexagonal
+- [ ] Auditar `internal/domain/` — verificar que no importa paquetes de infraestructura
+- [ ] Auditar `internal/application/` — verificar que los use cases solo dependen de puertos (interfaces)
+- [ ] Mover cualquier lógica de negocio que esté en handlers HTTP al application layer
+
+#### Testing
+- [ ] Test unitario de `SubmitCodeUseCase` con mock de `CodeExecutor`
+- [ ] Test de integración end-to-end: handler HTTP → use case → executor real (Docker)
+- [ ] Test del frontend con MSW (Mock Service Worker) simulando la API
+
+#### Escalabilidad pendiente
+- [ ] Evaluar concurrencia: ¿qué pasa si se submiten 5 problemas simultáneos?
+- [ ] Implementar cola de ejecución si Docker se satura (máx N contenedores simultáneos)
+- [ ] Calcular tiempo de arranque en frío de cada imagen Docker y documentarlo
+
+#### Nuevos adaptadores (fuera del MVP pero diseñados)
+- [ ] ContentLoader: servicio que lee archivos `.md` del directorio `content/` y los sirve como contenido de semana
+- [ ] Exportador de progreso: permite exportar el tracker a JSON para respaldo
+
+#### Deuda técnica
+- [ ] Agregar `week` y `memory_kb` al schema de BD (ver 03_DOMAIN_MODEL.md)
+- [ ] Documentar cómo agregar un nuevo lenguaje al executor (guía paso a paso)
+- [ ] Logging estructurado en backend (reemplazar `fmt.Println` por `log/slog`)

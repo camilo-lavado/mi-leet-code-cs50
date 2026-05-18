@@ -85,3 +85,31 @@ LocalCode es una plataforma self-hosted diseñada para hacer accesible el curso 
 - [ ] Al menos 30 problemas cargados con test cases validados.
 - [ ] El motor de ejecución corre código C y Python correctamente.
 - [ ] El autor completa al menos las primeras 3 semanas usando la plataforma.
+
+---
+
+### 7. Subtareas pendientes para el MVP
+
+#### Plataforma (frontend + backend)
+- [ ] Agregar filtro por semana y dificultad en `GET /api/v1/problems`
+- [ ] Implementar endpoint `GET /api/v1/progress` para tracker de progreso
+- [ ] Implementar endpoint `GET /api/v1/submissions?problem_id=X` para historial
+- [ ] Vista Dashboard con sidebar de semanas navegables
+- [ ] Vista de contenido de semana (lectura + complemento + glosario)
+- [ ] Indicadores visuales de progreso por problema (`Sin intentar` / `Resuelto`)
+- [ ] Botón "Ejecutar" (run-only, sin evaluar) separado de "Enviar"
+
+#### Contenido (ver 06_CONTENT_STRATEGY.md para detalle)
+- [ ] Semana 1 completa: 3 problemas (Mario, Cash, Credit) + contenido teórico
+- [ ] Semana 2 completa: 4 problemas (Scrabble, Readability, Caesar, Substitution)
+- [ ] Semana 3 completa: 3 problemas (Plurality, Runoff, Tideman)
+
+#### Motor de ejecución
+- [ ] Validar que el executor funciona con los 10 problemas de semanas 1-3
+- [ ] Agregar soporte para SQL (necesario para Semana 7)
+- [ ] Agregar soporte para JavaScript (necesario para Semana 8)
+
+#### Validación
+- [ ] Prueba end-to-end: abrir frontend → seleccionar problema → escribir código → evaluar
+- [ ] Prueba con código malicioso (fork bomb, file system access) — debe ser rechazado por Docker
+- [ ] Prueba de usabilidad: una persona sin inglés completa la Semana 1 sin ayuda externa

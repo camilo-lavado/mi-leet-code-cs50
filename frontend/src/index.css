@@ -1,1 +1,47 @@
 @import "tailwindcss";
+
+@theme {
+  --color-local-bg: #0f0f1a;
+  --color-local-panel: #1a1a2e;
+  --color-local-primary: #7c3aed;
+  --color-local-primary-hover: #6d28d9;
+  --color-local-accent: #10b981;
+  --color-local-text: #e2e8f0;
+  --color-local-muted: #94a3b8;
+  --color-local-border: rgba(255, 255, 255, 0.1);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-local-bg text-local-text font-sans antialiased overflow-hidden;
+  }
+  
+  /* Custom scrollbar for a premium feel */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-local-border rounded-full hover:bg-white/20 transition-colors;
+  }
+}
+
+.glass-panel {
+  @apply bg-local-panel/80 backdrop-blur-md border border-local-border rounded-xl shadow-xl;
+}
+
+.glass-header {
+  @apply bg-local-bg/90 backdrop-blur-lg border-b border-local-border;
+}
+
+.btn-primary {
+  @apply bg-local-primary hover:bg-local-primary-hover text-white font-medium px-4 py-2 rounded-lg transition-all active:scale-95 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.5)];
+}
+
+.btn-secondary {
+  @apply bg-white/5 hover:bg-white/10 text-white font-medium px-4 py-2 border border-local-border rounded-lg transition-all active:scale-95;
+}

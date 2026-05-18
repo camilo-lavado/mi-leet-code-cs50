@@ -3,9 +3,9 @@ import { Header } from './Header';
 
 export function Layout() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="h-screen w-screen flex flex-col bg-local-bg text-local-text overflow-hidden">
       <Header />
-      <main>
+      <main className="flex-1 overflow-hidden relative">
         <Outlet />
       </main>
     </div>

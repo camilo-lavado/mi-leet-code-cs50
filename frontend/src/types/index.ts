@@ -24,12 +24,10 @@ export interface SubmissionRequest {
 }
 
 export interface SubmissionResult {
-  submission_id: string;
-  status: 'Accepted' | 'Wrong Answer' | 'Error';
-  passed_tests: number;
-  total_tests: number;
-  metrics: {
-    time_ms: number;
-    memory_kb: number;
-  };
+  submissionId: string;
+  status: string;
+  passed: number;
+  total: number;
+  timeMs: number;
+  memoryKb: number;
 }

@@ -13,9 +13,10 @@ const languageMap: Record<string, string> = {
 
 export function CodeEditor({ code, language, onChange }: CodeEditorProps) {
   return (
-    <div className="border border-gray-300 rounded-lg overflow-hidden dark:border-gray-600">
+    <div className="absolute inset-0 w-full h-full">
       <Editor
-        height="400px"
+        height="100%"
+        width="100%"
         language={languageMap[language] || language}
         value={code}
         onChange={onChange}
@@ -23,8 +24,11 @@ export function CodeEditor({ code, language, onChange }: CodeEditorProps) {
         options={{
           minimap: { enabled: false },
           fontSize: 14,
+          fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
           lineNumbers: 'on',
           scrollBeyondLastLine: false,
+          padding: { top: 16 },
+          roundedSelection: false,
         }}
       />
     </div>
