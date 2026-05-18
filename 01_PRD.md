@@ -1,0 +1,87 @@
+# Product Requirements Document (PRD)
+## Proyecto: LocalCode — CS50 en Español (MVP)
+
+### 1. Visión
+
+LocalCode es una plataforma self-hosted diseñada para hacer accesible el curso completo **Harvard CS50 2026** a hispanohablantes. El objetivo es que una persona sin conocimiento de inglés pueda completar íntegramente el curso, leer el contenido, escribir código, ejecutarlo y validarlo — todo en español.
+
+> **Hipótesis de éxito:** Si el autor de la plataforma logra completar el CS50 usándola exclusivamente, el producto habrá demostrado su valor.
+
+---
+
+### 2. Usuarios Objetivo
+
+- Hispanohablantes con deseos de aprender programación desde cero.
+- Estudiantes que intentaron el CS50 original pero encontraron la barrera del inglés.
+- Ambiente: uso local/personal, sin necesidad de conexión a internet (salvo instalación inicial).
+
+---
+
+### 3. Funcionalidades Core (MVP)
+
+#### 3.1 Contenido del Curso
+- Semanas 0–10 + módulo de Ciberseguridad del CS50 2026.
+- Cada semana contiene:
+  - **Transcripción** de la clase traducida al español.
+  - **Material complementario propio** que refuerza conceptos con ejemplos adicionales.
+  - **Problem Sets** oficiales del CS50 adaptados al español.
+
+#### 3.2 Catálogo de Problemas
+- Lista navegable de problemas, filtrable por semana y dificultad.
+- Dificultad etiquetada como: **Fácil / Media / Difícil**.
+- Cada problema incluye: descripción en español, ejemplos de entrada/salida, pistas opcionales.
+
+#### 3.3 Editor de Código Interactivo
+- Editor Monaco embebido (mismo motor que VS Code).
+- Soporte de lenguajes: C, Python, SQL, JavaScript.
+- Syntax highlighting y autocompletado básico.
+
+#### 3.4 Motor de Ejecución
+- Ejecución segura en contenedores Docker efímeros.
+- Límites de seguridad: sin red, 128MB RAM, timeout de 5 segundos.
+- Captura de stdout, stderr y código de salida.
+
+#### 3.5 Sistema de Evaluación
+- Validación automática del output contra casos de prueba predefinidos.
+- Respuesta: `Aceptado` / `Fallido` con detalle por caso de prueba.
+- Métricas mostradas: tiempo de ejecución (ms) y memoria usada (KB).
+
+#### 3.6 Seguimiento de Progreso
+- Estado por problema: `Sin intentar` / `En progreso` / `Resuelto`.
+- Vista de progreso por semana (X de Y problemas completados).
+- Historial de submissions con fecha y resultado.
+
+---
+
+### 4. Fuera del Alcance (MVP)
+
+- Autenticación de usuarios (ambiente mono-usuario local).
+- Deployment en la nube.
+- Funciones sociales (rankings, foros, comentarios).
+- Corrección por IA / sugerencias de código.
+
+---
+
+### 5. Flujo Principal del Usuario
+
+```
+1. Usuario abre la plataforma en su navegador (localhost).
+2. Selecciona una semana del curso desde el sidebar.
+3. Lee el contenido de la semana (teoría en español).
+4. Selecciona un problema de esa semana.
+5. Lee la descripción del problema y los casos de prueba.
+6. Escribe su solución en el editor Monaco.
+7. Hace clic en "Ejecutar Código" → Ve output en tiempo real.
+8. Hace clic en "Enviar Solución" → Sistema evalúa contra todos los test cases.
+9. Recibe resultado: Aceptado ✅ o Fallido ❌ con detalle.
+10. Problema marcado como resuelto en el tracker de progreso.
+```
+
+---
+
+### 6. Criterios de Éxito del MVP
+
+- [ ] Las 12 semanas del CS50 tienen contenido en español disponible.
+- [ ] Al menos 30 problemas cargados con test cases validados.
+- [ ] El motor de ejecución corre código C y Python correctamente.
+- [ ] El autor completa al menos las primeras 3 semanas usando la plataforma.

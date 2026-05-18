@@ -1,0 +1,130 @@
+# Roadmap de Desarrollo
+## Proyecto: LocalCode — CS50 en Español
+
+---
+
+## Fase 1 — MVP Core (Backend + Motor de Ejecución)
+
+**Objetivo:** Que un problema de C pueda ejecutarse y evaluarse.
+
+### Tareas
+
+#### Backend (GoLang)
+- [ ] Inicializar proyecto Go con estructura hexagonal
+- [ ] Implementar entidades del dominio: `Problem`, `TestCase`, `Submission`, `ExecutionResult`
+- [ ] Implementar `ProblemRepository` con SQLite
+- [ ] Implementar `SubmissionRepository` con SQLite
+- [ ] Implementar `DockerExecutor` (CodeExecutor port)
+- [ ] Implementar `SubmitCodeUseCase`
+- [ ] Implementar `FetchProblemsUseCase`
+- [ ] Exponer endpoints REST:
+  - `GET /api/v1/problems`
+  - `GET /api/v1/problems/:id`
+  - `POST /api/v1/submissions`
+- [ ] Crear script de migración SQLite
+- [ ] Crear seed con primeros 3 problemas de la Semana 1
+
+#### Docker Executor
+- [ ] Configurar imagen para C (`gcc:latest`)
+- [ ] Configurar imagen para Python (`python:3.11-alpine`)
+- [ ] Implementar límites de seguridad (NetworkMode: none, Memory: 128MB, Timeout: 5s)
+- [ ] Tests de integración del executor
+
+**Entregable:** `curl POST /api/v1/submissions` con código C retorna `Aceptado` o `Fallido`.
+
+---
+
+## Fase 2 — Frontend MVP
+
+**Objetivo:** Interfaz funcional en español con editor y evaluador.
+
+### Tareas
+
+#### Setup
+- [ ] Inicializar proyecto React + Vite + TypeScript
+- [ ] Instalar y configurar `@monaco-editor/react`
+- [ ] Configurar cliente HTTP (fetch nativo o axios)
+- [ ] Configurar React Router
+
+#### Vistas
+- [ ] **Dashboard** — Sidebar con semanas, vista de progreso global
+- [ ] **Vista de Semana** — Contenido de la semana + lista de problemas
+- [ ] **Vista de Problema** — 3 paneles: descripción / editor / resultados
+- [ ] **Tracker de Progreso** — Estado por problema y por semana
+
+#### UX
+- [ ] Tema oscuro con paleta violeta/índigo
+- [ ] Indicadores de dificultad: Fácil / Media / Difícil
+- [ ] Estados visuales: Sin intentar / En progreso / Resuelto
+- [ ] Feedback en tiempo real al ejecutar/enviar
+
+**Entregable:** Plataforma funcional end-to-end con Semana 1 completa.
+
+---
+
+## Fase 3 — Contenido Semanas 0–5 (C)
+
+**Objetivo:** Cubrir la mitad del curso con contenido y problemas.
+
+### Tareas por semana
+
+- [ ] Semana 0 — Scratch (contenido teórico, sin executor)
+- [ ] Semana 1 — C: Mario, Cash, Credit
+- [ ] Semana 2 — Arreglos: Scrabble, Readability, Caesar
+- [ ] Semana 3 — Algoritmos: Plurality, Runoff
+- [ ] Semana 4 — Memoria: Volume, Filter
+- [ ] Semana 5 — Estructuras de Datos: Speller
+
+Para cada semana:
+- [ ] Transcripción de la clase (traducida al español)
+- [ ] Material complementario
+- [ ] Glosario de términos
+- [ ] Problemas con descripción y test cases
+
+**Entregable:** 6 semanas completas, ~18 problemas funcionales.
+
+---
+
+## Fase 4 — Contenido Semanas 6–10 + Ciberseguridad
+
+**Objetivo:** Completar el curso.
+
+### Tareas
+
+- [ ] Soporte de lenguaje SQL en el executor
+- [ ] Soporte de lenguaje JavaScript en el executor
+- [ ] Semana 6 — Python
+- [ ] Semana 7 — SQL
+- [ ] Semana 8 — HTML, CSS, JavaScript (evaluación adaptada)
+- [ ] Semana 9 — Flask (evaluación adaptada)
+- [ ] Semana 10 — Emoji/Unicode (teórico)
+- [ ] Módulo Ciberseguridad (teórico + ejercicios conceptuales)
+
+**Entregable:** Plataforma con el CS50 completo en español.
+
+---
+
+## Fase 5 — Pulido y Validación
+
+**Objetivo:** Verificar que la plataforma funciona como herramienta de aprendizaje real.
+
+### Tareas
+
+- [ ] El autor completa las 12 semanas usando la plataforma
+- [ ] Ajustes de contenido basados en la experiencia de uso
+- [ ] Optimización de performance del executor
+- [ ] Revisión de todos los textos en español (claridad, tono)
+- [ ] Documentación de instalación para que otros puedan usarla
+
+---
+
+## Hitos Clave
+
+| Hito | Descripción | Estado |
+|------|-------------|--------|
+| M1 | Arquitectura y documentación definidas | ✅ Completo |
+| M2 | Backend + Docker executor funcional | 🔲 Pendiente |
+| M3 | Frontend MVP con Semana 1 funcional | 🔲 Pendiente |
+| M4 | Semanas 0–5 con contenido completo | 🔲 Pendiente |
+| M5 | Semanas 6–10 + Ciberseguridad | 🔲 Pendiente |
+| M6 | Autor completa el CS50 en la plataforma | 🔲 Pendiente |
