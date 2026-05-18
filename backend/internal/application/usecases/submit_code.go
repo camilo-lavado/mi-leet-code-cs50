@@ -2,6 +2,8 @@ package usecases
 
 import (
 	"errors"
+	"log"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -76,7 +78,15 @@ func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code str
 			break
 		}
 
-		if res.Stdout != tc.ExpectedOutput {
+		// Normalizar saltos de línea y espacios finales para evitar falsos negativos
+		actualOutput := strings.TrimSpace(strings.ReplaceAll(res.Stdout, "\r\n", "\n"))
+		
+		// Reemplazar saltos de línea literales (\n) del JSON/SQL a saltos reales
+		expectedNormalized := strings.ReplaceAll(tc.ExpectedOutput, "\\n", "\n")
+		expectedOutput := strings.TrimSpace(strings.ReplaceAll(expectedNormalized, "\r\n", "\n"))
+
+		if actualOutput != expectedOutput {
+			log.Printf("Test Case %s Failed.\nExpected:\n%q\nActual:\n%q\n", tc.ID, expectedOutput, actualOutput)
 			overallStatus = "Failed (Wrong Answer)"
 			break
 		}
