@@ -60,7 +60,7 @@
 
 ## Estado actual
 
-🟡 **En planificación** — Diseño y arquitectura definidos, construcción iniciando.
+🟢 **MVP Core implementado** — Backend (Go + SQLite + Docker Executor) y Frontend (React + Monaco Editor + Tailwind) funcionales. Próximo paso: contenido del curso en español.
 
 ---
 

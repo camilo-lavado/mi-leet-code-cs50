@@ -10,25 +10,25 @@
 ### Tareas
 
 #### Backend (GoLang)
-- [ ] Inicializar proyecto Go con estructura hexagonal
-- [ ] Implementar entidades del dominio: `Problem`, `TestCase`, `Submission`, `ExecutionResult`
-- [ ] Implementar `ProblemRepository` con SQLite
-- [ ] Implementar `SubmissionRepository` con SQLite
-- [ ] Implementar `DockerExecutor` (CodeExecutor port)
-- [ ] Implementar `SubmitCodeUseCase`
-- [ ] Implementar `FetchProblemsUseCase`
-- [ ] Exponer endpoints REST:
+- [x] Inicializar proyecto Go con estructura hexagonal
+- [x] Implementar entidades del dominio: `Problem`, `TestCase`, `Submission`, `ExecutionResult`
+- [x] Implementar `ProblemRepository` con SQLite
+- [x] Implementar `SubmissionRepository` con SQLite
+- [x] Implementar `DockerExecutor` (CodeExecutor port)
+- [x] Implementar `SubmitCodeUseCase`
+- [x] Implementar `FetchProblemsUseCase`
+- [x] Exponer endpoints REST:
   - `GET /api/v1/problems`
   - `GET /api/v1/problems/:id`
   - `POST /api/v1/submissions`
-- [ ] Crear script de migración SQLite
-- [ ] Crear seed con primeros 3 problemas de la Semana 1
+- [x] Crear script de migración SQLite
+- [x] Crear seed con primeros 3 problemas de la Semana 1
 
 #### Docker Executor
-- [ ] Configurar imagen para C (`gcc:latest`)
-- [ ] Configurar imagen para Python (`python:3.11-alpine`)
-- [ ] Implementar límites de seguridad (NetworkMode: none, Memory: 128MB, Timeout: 5s)
-- [ ] Tests de integración del executor
+- [x] Configurar imagen para C (`gcc:latest`)
+- [x] Configurar imagen para Python (`python:3.11-alpine`)
+- [x] Implementar límites de seguridad (NetworkMode: none, Memory: 128MB, Timeout: 5s)
+- [x] Tests de integración del executor
 
 **Entregable:** `curl POST /api/v1/submissions` con código C retorna `Aceptado` o `Fallido`.
 
@@ -41,22 +41,23 @@
 ### Tareas
 
 #### Setup
-- [ ] Inicializar proyecto React + Vite + TypeScript
-- [ ] Instalar y configurar `@monaco-editor/react`
-- [ ] Configurar cliente HTTP (fetch nativo o axios)
-- [ ] Configurar React Router
+- [x] Inicializar proyecto React + Vite + TypeScript
+- [x] Instalar y configurar `@monaco-editor/react`
+- [x] Configurar cliente HTTP (fetch nativo)
+- [x] Configurar React Router + TanStack Query
 
 #### Vistas
+- [x] **Catálogo de Problemas** — Lista navegable con filtro por dificultad
+- [x] **Vista de Problema** — Descripción, editor Monaco, selector de lenguaje, resultados
 - [ ] **Dashboard** — Sidebar con semanas, vista de progreso global
 - [ ] **Vista de Semana** — Contenido de la semana + lista de problemas
-- [ ] **Vista de Problema** — 3 paneles: descripción / editor / resultados
 - [ ] **Tracker de Progreso** — Estado por problema y por semana
 
 #### UX
-- [ ] Tema oscuro con paleta violeta/índigo
-- [ ] Indicadores de dificultad: Fácil / Media / Difícil
+- [x] Tema oscuro/claro con Tailwind CSS
+- [x] Indicadores de dificultad: Fácil / Media / Difícil
+- [x] Feedback visual al ejecutar/enviar (loading, success, error)
 - [ ] Estados visuales: Sin intentar / En progreso / Resuelto
-- [ ] Feedback en tiempo real al ejecutar/enviar
 
 **Entregable:** Plataforma funcional end-to-end con Semana 1 completa.
 
@@ -123,8 +124,8 @@ Para cada semana:
 | Hito | Descripción | Estado |
 |------|-------------|--------|
 | M1 | Arquitectura y documentación definidas | ✅ Completo |
-| M2 | Backend + Docker executor funcional | 🔲 Pendiente |
-| M3 | Frontend MVP con Semana 1 funcional | 🔲 Pendiente |
+| M2 | Backend + Docker executor funcional | ✅ Completo |
+| M3 | Frontend MVP con Semana 1 funcional | ✅ Completo |
 | M4 | Semanas 0–5 con contenido completo | 🔲 Pendiente |
 | M5 | Semanas 6–10 + Ciberseguridad | 🔲 Pendiente |
 | M6 | Autor completa el CS50 en la plataforma | 🔲 Pendiente |

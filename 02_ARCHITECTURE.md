@@ -72,16 +72,30 @@ mi-leet-code/
 │   │   └── seed.sql
 │   └── go.mod
 │
-├── frontend/                   # React + Vite
+├── frontend/                   # React + Vite + TypeScript
 │   ├── src/
+│   │   ├── api/              # Cliente HTTP y funciones API
+│   │   │   ├── client.ts
+│   │   │   ├── problems.ts
+│   │   │   └── submissions.ts
+│   │   ├── hooks/            # TanStack Query hooks
+│   │   │   ├── useProblems.ts
+│   │   │   └── useSubmission.ts
+│   │   ├── types/            # Interfaces TypeScript
+│   │   │   └── index.ts
 │   │   ├── components/
+│   │   │   ├── layout/       # Header, Layout
+│   │   │   ├── problems/     # ProblemCard, ProblemList, DifficultyBadge
+│   │   │   ├── editor/       # CodeEditor (Monaco), LanguageSelector
+│   │   │   ├── submission/   # SubmitButton, SubmissionResults
+│   │   │   └── ui/           # Spinner
 │   │   ├── pages/
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── Semana.tsx
-│   │   │   └── Problema.tsx
-│   │   ├── services/           # Llamadas a la API
+│   │   │   ├── CatalogPage.tsx
+│   │   │   ├── ProblemPage.tsx
+│   │   │   └── NotFoundPage.tsx
+│   │   ├── App.tsx           # Router + QueryClientProvider
 │   │   └── main.tsx
-│   └── vite.config.ts
+│   └── vite.config.ts        # Tailwind plugin + proxy /api
 │
 ├── content/                    # Contenido del curso en español
 │   ├── semana-0/
