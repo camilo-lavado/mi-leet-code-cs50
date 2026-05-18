@@ -13,6 +13,10 @@ Aunque el editor, la consola y el evaluador funcionan de maravilla de extremo a 
 - [ ] **Tracker de Progreso Visual:** Implementar iconos y barras de estado (Sin intentar ⚪, En progreso 🟡, Resuelto 🟢) basados en las Submissions guardadas en la base de datos de SQLite.
 - [ ] **Módulo de Teoría:** Crear un visor de Markdown en React (usando `react-markdown` o similar) para renderizar las clases magistrales y teoría transcrita y traducida.
 
+#### Características Pedagógicas Básicas
+- [ ] **Módulo de Active Recall (Flashcards):** En la vista de cada semana, antes de pasar al código, incluir pequeños quizes de validación (por ejemplo, "¿Qué hace `malloc`?"). Esto fuerza al cerebro a recordar y anclar el conocimiento teórico.
+- [ ] **Diario de la Técnica Feynman:** Agregar un paso obligatorio o altamente recomendado en la interfaz del problema donde el estudiante deba **explicar** en texto plano la solución que está a punto de programar (como si se la explicara a alguien más). Esto debe guardarse en la DB asociado a su envío de código para que pueda revisar cómo pensó el problema.
+
 ### 2. Inicio de la Fase 3 (Contenido Semanas 0–5 en C)
 Esta fase transforma la herramienta técnica en una verdadera plataforma educativa. Todo el contenido debe ser extraído de Harvard, traducido al español, y cargado a la plataforma.
 
