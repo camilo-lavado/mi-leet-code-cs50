@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS problems (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    difficulty TEXT NOT NULL,
+    language TEXT NOT NULL,
+    week INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS test_cases (
+    id TEXT PRIMARY KEY,
+    problem_id TEXT NOT NULL,
+    input_data TEXT,
+    expected_output TEXT NOT NULL,
+    is_hidden INTEGER DEFAULT 0,
+    FOREIGN KEY (problem_id) REFERENCES problems(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS submissions (
+    id TEXT PRIMARY KEY,
+    problem_id TEXT NOT NULL,
+    code TEXT NOT NULL,
+    status TEXT NOT NULL,
+    execution_time_ms INTEGER,
+    memory_kb INTEGER,
+    submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (problem_id) REFERENCES problems(id) ON DELETE CASCADE
+);
