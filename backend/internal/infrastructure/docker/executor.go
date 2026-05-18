@@ -52,7 +52,7 @@ func (e *DockerExecutor) Execute(snippet domain.CodeSnippet, testCase domain.Tes
 	}
 
 	// 1. Pull image if not exists (non-blocking in background normally, but here we do it to be safe)
-	_, err := e.cli.ImageInspectWithRaw(ctx, img)
+	_, _, err := e.cli.ImageInspectWithRaw(ctx, img)
 	if err != nil {
 		log.Printf("Pulling image %s...", img)
 		reader, pullErr := e.cli.ImagePull(ctx, img, image.PullOptions{})
