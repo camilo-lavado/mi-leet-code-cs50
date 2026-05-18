@@ -53,11 +53,13 @@
 - [ ] **Vista de Semana** — Contenido de la semana + lista de problemas
 - [ ] **Tracker de Progreso** — Estado por problema y por semana
 
-#### UX
-- [x] Tema oscuro/claro con Tailwind CSS
+#### UX & Pedagogía (Active Recall & Feynman)
+- [x] Tema oscuro/claro con Tailwind CSS (Glassmorphism UI Premium)
 - [x] Indicadores de dificultad: Fácil / Media / Difícil
 - [x] Feedback visual al ejecutar/enviar (loading, success, error)
 - [ ] Estados visuales: Sin intentar / En progreso / Resuelto
+- [ ] **Módulo Active Recall**: Tarjetas de repaso (Flashcards) integradas en la vista de la semana antes de desbloquear los problemas.
+- [ ] **Módulo Técnica Feynman**: Campo de texto tipo "Diario de aprendizaje" donde el alumno debe explicar su solución paso a paso antes de que el botón "Ejecutar" permita enviar una solución oficial.
 
 **Entregable:** Plataforma funcional end-to-end con Semana 1 completa.
 
@@ -112,16 +114,37 @@
 
 **Objetivo:** Completar el curso.
 
-### Tareas
+### Subtareas detalladas
 
-- [ ] Soporte de lenguaje SQL en el executor
-- [ ] Soporte de lenguaje JavaScript en el executor
-- [ ] Semana 6 — Python
-- [ ] Semana 7 — SQL
-- [ ] Semana 8 — HTML, CSS, JavaScript (evaluación adaptada)
-- [ ] Semana 9 — Flask (evaluación adaptada)
-- [ ] Semana 10 — Emoji/Unicode (teórico)
-- [ ] Módulo Ciberseguridad (teórico + ejercicios conceptuales)
+#### Expansión del executor (prerrequisito)
+- [ ] Agregar soporte SQL (`sqlite:alpine`) al `DockerExecutor`
+- [ ] Agregar soporte JavaScript (`node:alpine`) al `DockerExecutor`
+- [ ] Agregar selector de lenguaje SQL y JS en el frontend (Monaco ya los soporta)
+
+#### Semana 6 — Python
+- [ ] `lectura.md` + `complemento.md` (Python vs C) + `glosario.md`
+- [ ] 4 problemas: Mario, Cash, Readability (versiones Python) + DNA
+
+#### Semana 7 — SQL
+- [ ] `lectura.md` + `complemento.md` (cómo piensa una BD) + `glosario.md`
+- [ ] 3 problemas: Songs, Movies, Fiftyville (con evaluación SQL)
+
+#### Semana 8 — HTML, CSS, JavaScript
+- [ ] `lectura.md` + `complemento.md` (el navegador como runtime) + `glosario.md`
+- [ ] 2 problemas: Trivia (quiz JS), Homepage (evaluación manual)
+
+#### Semana 9 — Flask
+- [ ] `lectura.md` + `complemento.md` (flujo HTTP completo) + `glosario.md`
+- [ ] 2 problemas: Birthdays (CRUD), Finance (simulador bolsa)
+- [ ] ⚠️ Evaluación adaptada: no se puede ejecutar Flask en Docker de forma trivial
+
+#### Semana 10 — Emoji/Unicode
+- [ ] `lectura.md` + `complemento.md` + `glosario.md`
+- [ ] Sin problemas de código (contenido teórico)
+
+#### Ciberseguridad
+- [ ] `lectura.md` + `complemento.md` (amenazas reales en español)
+- [ ] Ejercicios conceptuales (no requieren executor)
 
 **Entregable:** Plataforma con el CS50 completo en español.
 
@@ -131,13 +154,32 @@
 
 **Objetivo:** Verificar que la plataforma funciona como herramienta de aprendizaje real.
 
-### Tareas
+### Subtareas detalladas
 
-- [ ] El autor completa las 12 semanas usando la plataforma
-- [ ] Ajustes de contenido basados en la experiencia de uso
-- [ ] Optimización de performance del executor
-- [ ] Revisión de todos los textos en español (claridad, tono)
-- [ ] Documentación de instalación para que otros puedan usarla
+#### Validación funcional
+- [ ] Ejecutar y verificar los ~30 problemas uno por uno con la solución correcta
+- [ ] Verificar que cada problema rechaza soluciones incorrectas comunes
+- [ ] Probar la plataforma sin conexión a internet (offline mode)
+
+#### Experiencia de aprendizaje
+- [ ] El autor completa las 12 semanas del CS50 usando exclusivamente la plataforma
+- [ ] Tomar notas de fricciones: ¿algo confuso?, ¿falta contexto?, ¿error en test case?
+- [ ] Ajustar contenido donde la experiencia de aprendizaje fue débil
+
+#### Performance
+- [ ] Optimizar tiempo de arranque de contenedores (pre-pull imágenes, cache)
+- [ ] Benchmark: ≤2s para ejecutar y evaluar un problema típico de C
+- [ ] Revisar queries SQLite con `EXPLAIN QUERY PLAN` para queries frecuentes
+
+#### Calidad de contenido
+- [ ] Revisión completa de ortografía y gramática en español
+- [ ] Verificar consistencia de tono (tuteo) en todo el contenido
+- [ ] Validar que glosarios cubren todos los términos técnicos usados
+
+#### Documentación para terceros
+- [ ] Escribir `INSTALL.md`: requisitos (Docker, Go, Node), pasos de instalación
+- [ ] Escribir `CONTRIBUTING.md`: cómo agregar un problema nuevo, un lenguaje nuevo
+- [ ] Agregar `docker-compose.yml` para levantar todo con un comando
 
 ---
 

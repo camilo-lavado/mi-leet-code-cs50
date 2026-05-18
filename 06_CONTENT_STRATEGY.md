@@ -1,12 +1,14 @@
 # Estrategia de Contenido
 ## Proyecto: LocalCode — CS50 en Español
 
-### 1. Filosofía
+### 1. Filosofía Pedagógica
 
-El contenido de LocalCode no es solo una traducción literal. Es una **adaptación pedagógica** para hispanohablantes, que combina:
+El contenido de LocalCode no es solo una traducción literal. Es una **adaptación pedagógica interactiva** para hispanohablantes, que combina:
 
 1. **Transcripción del CS50 original** — La clase de David Malan traducida al español, preservando la secuencia lógica y los ejemplos.
 2. **Material complementario propio** — Explicaciones adicionales, analogías en contexto latinoamericano, y ejercicios extra para reforzar conceptos difíciles.
+3. **Active Recall (Recordación Activa)** — En lugar de solo leer, el usuario debe responder pequeños quizes intermedios ("Flashcards") antes de avanzar al código. Esto fuerza al cerebro a recuperar la información en lugar de solo reconocerla.
+4. **Técnica de Feynman** — Antes de enviar la solución de un problema complejo, la plataforma pedirá al usuario que explique con sus propias palabras (en texto) cómo funciona su algoritmo. Explicarlo de manera sencilla expone los huecos en el conocimiento.
 
 ---
 
