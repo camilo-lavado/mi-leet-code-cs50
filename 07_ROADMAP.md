@@ -60,6 +60,8 @@
 - [ ] Estados visuales: Sin intentar / En progreso / Resuelto
 - [ ] **Módulo Active Recall**: Tarjetas de repaso (Flashcards) integradas en la vista de la semana antes de desbloquear los problemas.
 - [ ] **Módulo Técnica Feynman**: Campo de texto tipo "Diario de aprendizaje" donde el alumno debe explicar su solución paso a paso antes de que el botón "Ejecutar" permita enviar una solución oficial.
+- [ ] **Pistas Socráticas**: Botón progresivo de pistas que da sugerencias reflexivas sin dar la respuesta.
+- [ ] **Gamificación y Rachas**: UI para insignias por semana completada y rachas de días seguidos estudiando.
 
 **Entregable:** Plataforma funcional end-to-end con Semana 1 completa.
 

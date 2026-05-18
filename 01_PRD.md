@@ -51,14 +51,22 @@ LocalCode es una plataforma self-hosted diseñada para hacer accesible el curso 
 - Vista de progreso por semana (X de Y problemas completados).
 - Historial de submissions con fecha y resultado.
 
+#### 3.7 Inclusividad y Accesibilidad Pedagógica
+- **Onboarding Interactivo (Semana 0.5):** Un tutorial guiado dentro del propio editor para que el usuario pierda el miedo a la interfaz, aprendiendo a compilar y ejecutar un "Hello World" trivial antes del curso real.
+- **Sistema de Pistas Socráticas:** Botones de pistas progresivas por cada problema, que no dan la respuesta, sino que guían al estudiante con preguntas (ej: *"¿Te has asegurado de que el bucle no empiece en 0 si buscas contar desde 1?"*).
+- **Guías de Debugging Integradas:** Tooltips o una guía permanente sobre cómo leer errores comunes del compilador de C o de Python (ej: *"Segmentation fault (core dumped)"*).
+- **Gamificación Básica (Motivación):** 
+  - Rachas de estudio (Study Streaks) para fomentar constancia.
+  - Pequeñas insignias (Badges) visuales al completar semanas enteras.
+
 ---
 
 ### 4. Fuera del Alcance (MVP)
 
-- Autenticación de usuarios (ambiente mono-usuario local).
-- Deployment en la nube.
-- Funciones sociales (rankings, foros, comentarios).
-- Corrección por IA / sugerencias de código.
+- Autenticación de usuarios multiplataforma (sigue siendo ambiente mono-usuario local).
+- Deployment en la nube pública.
+- Foros de discusión o features sociales.
+- Inteligencia Artificial Generativa para dar respuestas (nos enfocamos en el aprendizaje Socrático estático).
 
 ---
 

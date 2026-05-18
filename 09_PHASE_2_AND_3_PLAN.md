@@ -16,6 +16,8 @@ Aunque el editor, la consola y el evaluador funcionan de maravilla de extremo a 
 #### Características Pedagógicas Básicas
 - [ ] **Módulo de Active Recall (Flashcards):** En la vista de cada semana, antes de pasar al código, incluir pequeños quizes de validación (por ejemplo, "¿Qué hace `malloc`?"). Esto fuerza al cerebro a recordar y anclar el conocimiento teórico.
 - [ ] **Diario de la Técnica Feynman:** Agregar un paso obligatorio o altamente recomendado en la interfaz del problema donde el estudiante deba **explicar** en texto plano la solución que está a punto de programar (como si se la explicara a alguien más). Esto debe guardarse en la DB asociado a su envío de código para que pueda revisar cómo pensó el problema.
+- [ ] **Sistema de Pistas Socráticas:** Cada problema tendrá un array de `hints` en la DB. El botón de pista no da la respuesta, hace una pregunta (ej: *"Si vas a sumar letras, ¿qué valor ASCII tiene la 'A'?"*).
+- [ ] **Gamificación:** Diseñar e implementar "Rachas" (Streaks) diarias basadas en logins/envíos, y medallas por completar cada semana para fomentar la disciplina.
 
 ### 2. Inicio de la Fase 3 (Contenido Semanas 0–5 en C)
 Esta fase transforma la herramienta técnica en una verdadera plataforma educativa. Todo el contenido debe ser extraído de Harvard, traducido al español, y cargado a la plataforma.
@@ -24,6 +26,9 @@ Esta fase transforma la herramienta técnica en una verdadera plataforma educati
 - [ ] **Semana 0 — Scratch:** 
   - Subir transcripción de la clase sobre pensamiento computacional.
   - Como Scratch no se puede evaluar por código, agregar preguntas interactivas de opción múltiple (requiere ajustar la base de datos).
+- [ ] **Semana 0.5 — Onboarding a LocalCode (Nuevo):**
+  - Tutorial interactivo guiado para escribir tu primer "Hello World".
+  - Introducir la "Guía de Debugging": Enseñar explícitamente cómo leer la consola roja (Syntax Error, Segmentation Fault).
 - [ ] **Semana 1 — C (Básicos):**
   - Ya tenemos `Mario`.
   - Agregar `Cash` (Cálculo de monedas).

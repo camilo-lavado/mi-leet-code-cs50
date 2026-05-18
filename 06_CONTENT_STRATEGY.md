@@ -36,6 +36,11 @@ Cada semana sigue esta estructura:
 - **Problemas:** Crear un proyecto en Scratch (evaluación manual).
 - **Complemento:** ¿Qué es un algoritmo? Ejemplos de la vida cotidiana.
 
+#### Semana 0.5 — Onboarding a LocalCode (NUEVO)
+- **Conceptos:** Interfaz de usuario, editor de texto, botón Ejecutar vs Enviar, lectura de resultados.
+- **Problemas:** `Hello World` (Imprimir texto en pantalla).
+- **Complemento:** "Guía Definitiva de Debugging" — Cómo perder el miedo al texto rojo en la consola y entender qué significa un "Segmentation fault" o un "Syntax error".
+
 #### Semana 1 — C: Fundamentos
 - **Conceptos:** Compilación, tipos de datos, operadores, printf/scanf, condicionales, bucles.
 - **Problemas:** Mario (pirámide), Cash (cambio de monedas), Credit (validación Luhn).
