@@ -104,3 +104,75 @@ Cada semana sigue esta estructura:
 - [ ] Cada problema tiene mínimo 3 casos de prueba (al menos 1 oculto).
 - [ ] El material complementario agrega valor real, no repite la transcripción.
 - [ ] Un lector sin inglés puede completar la semana sin consultar fuentes externas.
+
+---
+
+### 6. Subtareas de producción de contenido
+
+#### Semana 0 — Scratch (sin executor, solo lectura)
+- [ ] Escribir `content/semana-0/lectura.md`
+- [ ] Escribir `content/semana-0/complemento.md`
+- [ ] Escribir `content/semana-0/glosario.md`
+
+#### Semana 1 — C: Fundamentos
+- [ ] Escribir `content/semana-1/lectura.md` (transcripción CS50 traducida)
+- [ ] Escribir `content/semana-1/complemento.md` (cómo funciona un compilador)
+- [ ] Escribir `content/semana-1/glosario.md`
+- [ ] Escribir `content/semana-1/problemas/mario.md` + 3 test cases en BD
+- [ ] Escribir `content/semana-1/problemas/cash.md` + 3 test cases en BD
+- [ ] Escribir `content/semana-1/problemas/credit.md` + 3 test cases en BD
+
+#### Semana 2 — Arreglos
+- [ ] Escribir `content/semana-2/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-2/problemas/scrabble.md` + test cases
+- [ ] `content/semana-2/problemas/readability.md` + test cases
+- [ ] `content/semana-2/problemas/caesar.md` + test cases
+
+#### Semana 3 — Algoritmos
+- [ ] Escribir `content/semana-3/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-3/problemas/plurality.md` + test cases
+- [ ] `content/semana-3/problemas/runoff.md` + test cases
+
+#### Semana 4 — Memoria
+- [ ] Escribir `content/semana-4/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-4/problemas/volume.md` + test cases
+- [ ] `content/semana-4/problemas/filter.md` + test cases
+
+#### Semana 5 — Estructuras de Datos
+- [ ] Escribir `content/semana-5/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-5/problemas/speller.md` + test cases
+
+#### Semana 6 — Python
+- [ ] Escribir `content/semana-6/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-6/problemas/mario.md` (versión Python) + test cases
+- [ ] `content/semana-6/problemas/cash.md` (versión Python) + test cases
+- [ ] `content/semana-6/problemas/readability.md` (versión Python) + test cases
+- [ ] `content/semana-6/problemas/dna.md` + test cases
+
+#### Semana 7 — SQL
+- [ ] Escribir `content/semana-7/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-7/problemas/songs.md` + test cases SQL
+- [ ] `content/semana-7/problemas/movies.md` + test cases SQL
+- [ ] `content/semana-7/problemas/fiftyville.md` + test cases SQL
+- [ ] ⚠️ Requiere soporte SQL en el executor (ver 04_EXECUTION_ENGINE.md)
+
+#### Semana 8 — HTML, CSS, JavaScript
+- [ ] Escribir `content/semana-8/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-8/problemas/trivia.md` (evaluación manual o JS)
+- [ ] `content/semana-8/problemas/homepage.md` (evaluación manual)
+- [ ] ⚠️ Requiere soporte JavaScript en el executor
+
+#### Semana 9 — Flask
+- [ ] Escribir `content/semana-9/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] `content/semana-9/problemas/birthdays.md` (evaluación adaptada)
+- [ ] `content/semana-9/problemas/finance.md` (evaluación adaptada)
+
+#### Semana 10 + Ciberseguridad
+- [ ] Escribir `content/semana-10/lectura.md` + `complemento.md` + `glosario.md`
+- [ ] Escribir `content/ciberseguridad/lectura.md` + `complemento.md`
+
+#### Calidad
+- [ ] Revisar que cada problema tiene ≥3 test cases (≥1 oculto)
+- [ ] Revisar ortografía y gramática de todo el contenido en español
+- [ ] Validar que todos los test cases pasan con la solución correcta
+- [ ] Validar que todos los test cases fallan con soluciones incorrectas comunes

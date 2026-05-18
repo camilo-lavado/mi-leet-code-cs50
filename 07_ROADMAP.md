@@ -67,20 +67,42 @@
 
 **Objetivo:** Cubrir la mitad del curso con contenido y problemas.
 
-### Tareas por semana
+### Subtareas detalladas
 
-- [ ] Semana 0 — Scratch (contenido teórico, sin executor)
-- [ ] Semana 1 — C: Mario, Cash, Credit
-- [ ] Semana 2 — Arreglos: Scrabble, Readability, Caesar
-- [ ] Semana 3 — Algoritmos: Plurality, Runoff
-- [ ] Semana 4 — Memoria: Volume, Filter
-- [ ] Semana 5 — Estructuras de Datos: Speller
+#### Infraestructura de contenido
+- [ ] Crear directorio `content/` con subdirectorios `semana-0/` a `semana-5/`
+- [ ] Implementar `ContentLoader` en backend que lea archivos `.md` y los sirva via API
+- [ ] Agregar endpoint `GET /api/v1/content/:week` que retorne `{ lectura, complemento, glosario }`
+- [ ] Actualizar frontend con vista de semana que renderice markdown
 
-Para cada semana:
-- [ ] Transcripción de la clase (traducida al español)
-- [ ] Material complementario
-- [ ] Glosario de términos
-- [ ] Problemas con descripción y test cases
+#### Semana 0 — Scratch (contenido teórico, sin executor)
+- [ ] `lectura.md` — Transcripción traducida de la clase de Scratch
+- [ ] `complemento.md` — ¿Qué es un algoritmo? Ejemplos cotidianos
+- [ ] `glosario.md` — Términos: algoritmo, función, variable, evento, bucle
+
+#### Semana 1 — C: Fundamentos
+- [ ] `lectura.md` — Clase de C traducida (compilación, tipos, printf, condicionales)
+- [ ] `complemento.md` — Cómo funciona un compilador
+- [ ] `glosario.md`
+- [ ] `problemas/mario.md` + seed SQL con 3+ test cases
+- [ ] `problemas/cash.md` + seed SQL con 3+ test cases
+- [ ] `problemas/credit.md` + seed SQL con 3+ test cases
+
+#### Semana 2 — Arreglos
+- [ ] `lectura.md` + `complemento.md` + `glosario.md`
+- [ ] 4 problemas con test cases: Scrabble, Readability, Caesar, Substitution
+
+#### Semana 3 — Algoritmos
+- [ ] `lectura.md` + `complemento.md` (visualización Big-O) + `glosario.md`
+- [ ] 3 problemas: Plurality, Runoff, Tideman
+
+#### Semana 4 — Memoria
+- [ ] `lectura.md` + `complemento.md` (heap vs stack) + `glosario.md`
+- [ ] 2 problemas: Volume, Filter
+
+#### Semana 5 — Estructuras de Datos
+- [ ] `lectura.md` + `complemento.md` (trade-offs de estructuras) + `glosario.md`
+- [ ] 1 problema: Speller
 
 **Entregable:** 6 semanas completas, ~18 problemas funcionales.
 

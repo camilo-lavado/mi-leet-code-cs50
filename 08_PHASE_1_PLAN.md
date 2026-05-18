@@ -1,12 +1,13 @@
 # Plan de Implementación: Fase 1 — MVP Core (Backend + Motor de Ejecución)
 ## Proyecto: LocalCode — CS50 en Español
 
-Este documento detalla paso a paso la implementación de la Fase 1, centrada en construir el backend en Go y el motor de ejecución en Docker.
+**Estado:** ✅ COMPLETADA
+**Objetivo:** Desarrollar el core del backend en Go y el motor de ejecución aislado usando Docker.
 
 ### 1. Inicialización del Proyecto
-- [ ] Crear directorio `backend`.
-- [ ] Inicializar módulo Go: `go mod init localcode`.
-- [ ] Instalar dependencias base:
+- [x] Crear directorio `backend`.
+- [x] Inicializar módulo Go: `go mod init localcode`.
+- [x] Instalar dependencias base:
   - Framework web: `github.com/gin-gonic/gin`
   - Base de datos: `github.com/mattn/go-sqlite3`
   - Docker SDK: `github.com/docker/docker/client`
