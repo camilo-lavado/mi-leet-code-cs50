@@ -2,6 +2,7 @@ package http
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"localcode/internal/application/usecases"
@@ -12,6 +13,7 @@ type Handlers struct {
 	SubmitCodeUC       *usecases.SubmitCodeUseCase
 	FetchSubmissionsUC *usecases.FetchSubmissionsUseCase
 	FetchHintsUC       *usecases.FetchHintsUseCase
+	FetchFlashcardsUC  *usecases.FetchFlashcardsUseCase
 }
 
 func NewHandlers(
@@ -19,12 +21,14 @@ func NewHandlers(
 	sc *usecases.SubmitCodeUseCase,
 	fs *usecases.FetchSubmissionsUseCase,
 	fh *usecases.FetchHintsUseCase,
+	ff *usecases.FetchFlashcardsUseCase,
 ) *Handlers {
 	return &Handlers{
 		FetchProblemsUC:    fp,
 		SubmitCodeUC:       sc,
 		FetchSubmissionsUC: fs,
 		FetchHintsUC:       fh,
+		FetchFlashcardsUC:  ff,
 	}
 }
 
@@ -98,4 +102,23 @@ func (h *Handlers) GetHints(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": hints})
+}
+
+func (h *Handlers) GetFlashcards(c *gin.Context) {
+	weekStr := c.Param("week")
+	week, err := strconv.Atoi(weekStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid week number"})
+		return
+	}
+	cards, err := h.FetchFlashcardsUC.Execute(week)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	if len(cards) == 0 {
+		c.JSON(http.StatusOK, gin.H{"data": []string{}})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": cards})
 }

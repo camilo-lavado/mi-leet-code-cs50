@@ -29,6 +29,7 @@ func main() {
 	testCaseRepo := sqlite.NewSQLiteTestCaseRepository(db)
 	submissionRepo := sqlite.NewSQLiteSubmissionRepository(db)
 	hintRepo := sqlite.NewSQLiteHintRepository(db)
+	flashcardRepo := sqlite.NewSQLiteFlashcardRepository(db)
 
 	// 4. Inicializar executor
 	executor, err := docker.NewDockerExecutor()
@@ -41,9 +42,10 @@ func main() {
 	submitCodeUC := usecases.NewSubmitCodeUseCase(problemRepo, testCaseRepo, submissionRepo, executor)
 	fetchSubmissionsUC := usecases.NewFetchSubmissionsUseCase(submissionRepo)
 	fetchHintsUC := usecases.NewFetchHintsUseCase(hintRepo)
+	fetchFlashcardsUC := usecases.NewFetchFlashcardsUseCase(flashcardRepo)
 
 	// 6. Inicializar Handlers y Router
-	handlers := httpAdapter.NewHandlers(fetchProblemsUC, submitCodeUC, fetchSubmissionsUC, fetchHintsUC)
+	handlers := httpAdapter.NewHandlers(fetchProblemsUC, submitCodeUC, fetchSubmissionsUC, fetchHintsUC, fetchFlashcardsUC)
 	router := httpAdapter.SetupRouter(handlers)
 
 	// 7. Iniciar Servidor

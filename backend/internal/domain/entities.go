@@ -19,6 +19,14 @@ type Hint struct {
 	Question   string `json:"question"`
 }
 
+type Flashcard struct {
+	ID         string `json:"id"`
+	Week       int    `json:"week"`
+	Question   string `json:"question"`
+	Answer     string `json:"answer"`
+	OrderIndex int    `json:"order_index"`
+}
+
 type TestCase struct {
 	ID             string `json:"id"`
 	ProblemID      string `json:"problem_id"`

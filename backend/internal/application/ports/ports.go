@@ -17,6 +17,10 @@ type HintRepository interface {
 	FindByProblemId(problemId string) ([]domain.Hint, error)
 }
 
+type FlashcardRepository interface {
+	FindByWeek(week int) ([]domain.Flashcard, error)
+}
+
 type SubmissionRepository interface {
 	Save(submission *domain.Submission) error
 	FindAll() ([]domain.Submission, error)

@@ -34,3 +34,11 @@ CREATE TABLE IF NOT EXISTS hints (
     question TEXT NOT NULL,
     FOREIGN KEY (problem_id) REFERENCES problems(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS flashcards (
+    id TEXT PRIMARY KEY,
+    week INTEGER NOT NULL,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL,
+    order_index INTEGER NOT NULL DEFAULT 0
+);

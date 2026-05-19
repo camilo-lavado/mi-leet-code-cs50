@@ -68,11 +68,12 @@ export function ProblemPage() {
             {/* Hint Button */}
             <button
               id="hint-trigger-btn"
+              type="button"
               onClick={() => setShowHints(true)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold
+              className="flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold relative z-10
                          bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400
                          border border-yellow-500/30 hover:border-yellow-500/60
-                         transition-all group"
+                         transition-all group cursor-pointer"
               title="Ver pistas socráticas"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:animate-bounce">
