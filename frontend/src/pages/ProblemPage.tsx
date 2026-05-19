@@ -9,6 +9,7 @@ import { SubmissionResults } from '@/components/submission/SubmissionResults';
 import { Spinner } from '@/components/ui/Spinner';
 import { DifficultyBadge } from '@/components/problems/DifficultyBadge';
 import type { SubmissionResult } from '@/types';
+import { MarkdownViewer } from '@/components/ui/MarkdownViewer';
 
 export function ProblemPage() {
   const { id } = useParams<{ id: string }>();
@@ -53,8 +54,8 @@ export function ProblemPage() {
             <DifficultyBadge difficulty={problem.difficulty} />
           </div>
         </div>
-        <div className="prose prose-invert prose-p:text-local-text max-w-none whitespace-pre-wrap">
-          {problem.description}
+        <div className="mt-2">
+          <MarkdownViewer content={problem.description} />
         </div>
         
         {problem.test_cases && problem.test_cases.length > 0 && (
@@ -82,7 +83,17 @@ export function ProblemPage() {
       <div className="w-full md:w-[60%] flex flex-col gap-2">
         {/* Editor */}
         <div className="flex-1 glass-panel flex flex-col overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-local-border bg-black/20">
+          <div className="px-4 py-3 border-b border-local-border bg-black/30">
+            <h3 className="text-sm font-semibold text-local-muted flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
+              Técnica Feynman: ¿Cómo lo vas a resolver?
+            </h3>
+            <textarea
+              className="w-full bg-black/40 border border-local-border rounded-lg p-2 text-sm text-local-text placeholder-local-muted focus:outline-none focus:border-local-primary resize-none h-16"
+              placeholder="Explica tu lógica aquí antes de escribir código. Ejemplo: Primero voy a iterar sobre el arreglo..."
+            />
+          </div>
+          <div className="flex items-center justify-between px-4 py-2 border-b border-local-border bg-black/20">
             <LanguageSelector value={language} onChange={setLanguage} />
             <SubmitButton onClick={handleSubmit} isLoading={submitMutation.isPending} />
           </div>

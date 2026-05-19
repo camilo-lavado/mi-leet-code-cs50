@@ -52,16 +52,26 @@ export function ProblemList({ problems, submissions = [], isLoading, error }: Pr
     <div className="space-y-12">
       {sortedWeeks.map(week => (
         <section key={week} className="space-y-6">
-          <div className="flex items-center gap-4 border-b border-local-border pb-4">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-local-primary/20 text-local-primary text-sm">
-                {week}
+          <div className="flex items-center justify-between border-b border-local-border pb-4">
+            <div className="flex items-center gap-4">
+              <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-local-primary/20 text-local-primary text-sm">
+                  {week}
+                </span>
+                Semana {week}
+              </h2>
+              <span className="text-sm text-local-muted bg-white/5 px-3 py-1 rounded-full">
+                {groupedProblems[week].length} {groupedProblems[week].length === 1 ? 'Reto' : 'Retos'}
               </span>
-              Semana {week}
-            </h2>
-            <span className="text-sm text-local-muted bg-white/5 px-3 py-1 rounded-full">
-              {groupedProblems[week].length} {groupedProblems[week].length === 1 ? 'Reto' : 'Retos'}
-            </span>
+            </div>
+            
+            <button 
+              className="text-sm bg-local-accent/10 text-local-accent hover:bg-local-accent/20 px-3 py-1.5 rounded-lg flex items-center gap-2 transition-all font-medium border border-local-accent/20"
+              title="Módulo de Active Recall (Flashcards)"
+            >
+              <svg xmlns="http://www.w3.org/http/www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Repaso Rápido
+            </button>
           </div>
           
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
