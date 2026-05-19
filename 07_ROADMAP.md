@@ -57,10 +57,10 @@
 - [x] Tema oscuro/claro con Tailwind CSS (Glassmorphism UI Premium)
 - [x] Indicadores de dificultad: Fácil / Media / Difícil
 - [x] Feedback visual al ejecutar/enviar (loading, success, error)
-- [ ] Estados visuales: Sin intentar / En progreso / Resuelto
-- [ ] **Módulo Active Recall**: Tarjetas de repaso (Flashcards) integradas en la vista de la semana antes de desbloquear los problemas.
-- [ ] **Módulo Técnica Feynman**: Campo de texto tipo "Diario de aprendizaje" donde el alumno debe explicar su solución paso a paso antes de que el botón "Ejecutar" permita enviar una solución oficial.
-- [ ] **Pistas Socráticas**: Botón progresivo de pistas que da sugerencias reflexivas sin dar la respuesta.
+- [x] Estados visuales: Sin intentar / En progreso / Resuelto
+- [x] **Módulo Active Recall**: Tarjetas de repaso (Flashcards) integradas en la vista de la semana antes de desbloquear los problemas.
+- [x] **Módulo Técnica Feynman**: Campo de texto tipo "Diario de aprendizaje" donde el alumno debe explicar su solución paso a paso antes de que el botón "Ejecutar" permita enviar una solución oficial.
+- [x] **Pistas Socráticas**: Botón progresivo de pistas que da sugerencias reflexivas sin dar la respuesta.
 - [ ] **Gamificación y Rachas**: UI para insignias por semana completada y rachas de días seguidos estudiando.
 
 **Entregable:** Plataforma funcional end-to-end con Semana 1 completa.

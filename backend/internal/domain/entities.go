@@ -57,3 +57,16 @@ type ExecutionResult struct {
 	TimeMs   int
 	MemoryKb int
 }
+
+type Badge struct {
+	Week      int    `json:"week"`
+	Title     string `json:"title"`
+	Completed bool   `json:"completed"`
+}
+
+type UserStats struct {
+	Streak              int     `json:"streak"`
+	TotalSubmissions    int     `json:"total_submissions"`
+	AcceptedSubmissions int     `json:"accepted_submissions"`
+	Badges              []Badge `json:"badges"`
+}

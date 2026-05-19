@@ -17,6 +17,7 @@ func SetupRouter(handlers *Handlers) *gin.Engine {
 		api.POST("/submissions", handlers.SubmitCode)
 		api.GET("/submissions", handlers.GetSubmissions)
 		api.GET("/weeks/:week/flashcards", handlers.GetFlashcards)
+		api.GET("/stats", handlers.GetStats)
 	}
 
 	return r

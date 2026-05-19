@@ -9,14 +9,14 @@
 ### 1. Finalización de la Fase 2 (Frontend MVP)
 Aunque el editor, la consola y el evaluador funcionan de maravilla de extremo a extremo, faltan algunas características clave para el aprendizaje guiado.
 
-- [ ] **Estructura por Semanas:** Crear una vista de "Semanas" que liste la teoría y los problemas agrupados (actualmente todos los problemas aparecen en un solo catálogo plano).
-- [ ] **Tracker de Progreso Visual:** Implementar iconos y barras de estado (Sin intentar ⚪, En progreso 🟡, Resuelto 🟢) basados en las Submissions guardadas en la base de datos de SQLite.
-- [ ] **Módulo de Teoría:** Crear un visor de Markdown en React (usando `react-markdown` o similar) para renderizar las clases magistrales y teoría transcrita y traducida.
+- [x] **Estructura por Semanas:** Crear una vista de "Semanas" que liste la teoría y los problemas agrupados (actualmente todos los problemas aparecen en un solo catálogo plano).
+- [x] **Tracker de Progreso Visual:** Implementar iconos y barras de estado (Sin intentar ⚪, En progreso 🟡, Resuelto 🟢) basados en las Submissions guardadas en la base de datos de SQLite.
+- [x] **Módulo de Teoría:** Crear un visor de Markdown en React (usando `react-markdown` o similar) para renderizar las clases magistrales y teoría transcrita y traducida.
 
 #### Características Pedagógicas Básicas
-- [ ] **Módulo de Active Recall (Flashcards):** En la vista de cada semana, antes de pasar al código, incluir pequeños quizes de validación (por ejemplo, "¿Qué hace `malloc`?"). Esto fuerza al cerebro a recordar y anclar el conocimiento teórico.
-- [ ] **Diario de la Técnica Feynman:** Agregar un paso obligatorio o altamente recomendado en la interfaz del problema donde el estudiante deba **explicar** en texto plano la solución que está a punto de programar (como si se la explicara a alguien más). Esto debe guardarse en la DB asociado a su envío de código para que pueda revisar cómo pensó el problema.
-- [ ] **Sistema de Pistas Socráticas:** Cada problema tendrá un array de `hints` en la DB. El botón de pista no da la respuesta, hace una pregunta (ej: *"Si vas a sumar letras, ¿qué valor ASCII tiene la 'A'?"*).
+- [x] **Módulo de Active Recall (Flashcards):** En la vista de cada semana, antes de pasar al código, incluir pequeños quizes de validación (por ejemplo, "¿Qué hace `malloc`?"). Esto fuerza al cerebro a recordar y anclar el conocimiento teórico.
+- [x] **Diario de la Técnica Feynman:** Agregar un paso obligatorio o altamente recomendado en la interfaz del problema donde el estudiante deba **explicar** en texto plano la solución que está a punto de programar (como si se la explicara a alguien más). Esto debe guardarse en la DB asociado a su envío de código para que pueda revisar cómo pensó el problema.
+- [x] **Sistema de Pistas Socráticas:** Cada problema tendrá un array de `hints` en la DB. El botón de pista no da la respuesta, hace una pregunta (ej: *"Si vas a sumar letras, ¿qué valor ASCII tiene la 'A'?"*).
 - [ ] **Gamificación:** Diseñar e implementar "Rachas" (Streaks) diarias basadas en logins/envíos, y medallas por completar cada semana para fomentar la disciplina.
 
 ### 2. Inicio de la Fase 3 (Contenido Semanas 0–5 en C)
@@ -48,8 +48,8 @@ Esta fase transforma la herramienta técnica en una verdadera plataforma educati
   - Problema Final de C: `Speller` (Corrector ortográfico cargando un diccionario en memoria).
 
 ### 3. Ajustes de Infraestructura (Requeridos para Fase 3)
-- [ ] **Manejo de Archivos Extra en Docker:** Problemas como `Filter` o `Speller` requieren proveer al estudiante de archivos auxiliares (`.bmp`, diccionarios `.txt`). Se debe ajustar el `DockerExecutor` para copiar no solo `code.c` e `input.txt`, sino todo un directorio de "assets" del problema al contenedor.
-- [ ] **Evaluación de Múltiples Archivos:** Algunos problemas requieren compilar varios archivos `.c` e importar cabeceras `.h` provistas por CS50 (`cs50.h`).
+- [x] **Manejo de Archivos Extra en Docker:** Problemas como `Filter` o `Speller` requieren proveer al estudiante de archivos auxiliares (`.bmp`, diccionarios `.txt`). Se debe ajustar el `DockerExecutor` para copiar no solo `code.c` e `input.txt`, sino todo un directorio de "assets" del problema al contenedor.
+- [x] **Evaluación de Múltiples Archivos:** Algunos problemas requieren compilar varios archivos `.c` e importar cabeceras `.h` provistas por CS50 (`cs50.h`).
 
 ---
 **Nota para la IA y el Usuario:** La próxima sesión debe comenzar abordando el punto 1 (Finalización de Fase 2) o diseñando la inyección de la librería `cs50.h` en Docker para los problemas oficiales.

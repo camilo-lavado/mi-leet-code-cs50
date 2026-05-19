@@ -1,6 +1,7 @@
 import { useProblems } from '@/hooks/useProblems';
 import { useSubmissions } from '@/hooks/useSubmissions';
 import { ProblemList } from '@/components/problems/ProblemList';
+import { GamificationStats } from '@/components/dashboard/GamificationStats';
 
 export function CatalogPage() {
   const { data: problemsData, isLoading: problemsLoading, error: problemsError } = useProblems();
@@ -25,6 +26,8 @@ export function CatalogPage() {
             Domina la programación resolviendo los retos oficiales de CS50. Desde C hasta Python, todo evaluado en tiempo real de forma segura.
           </p>
         </div>
+
+        <GamificationStats />
         
         <ProblemList problems={problems} submissions={submissions} isLoading={isLoading} error={error as Error | null} />
       </div>

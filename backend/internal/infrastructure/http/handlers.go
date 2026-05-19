@@ -14,6 +14,7 @@ type Handlers struct {
 	FetchSubmissionsUC *usecases.FetchSubmissionsUseCase
 	FetchHintsUC       *usecases.FetchHintsUseCase
 	FetchFlashcardsUC  *usecases.FetchFlashcardsUseCase
+	GetStatsUC         *usecases.GetStatsUseCase
 }
 
 func NewHandlers(
@@ -22,6 +23,7 @@ func NewHandlers(
 	fs *usecases.FetchSubmissionsUseCase,
 	fh *usecases.FetchHintsUseCase,
 	ff *usecases.FetchFlashcardsUseCase,
+	gs *usecases.GetStatsUseCase,
 ) *Handlers {
 	return &Handlers{
 		FetchProblemsUC:    fp,
@@ -29,6 +31,7 @@ func NewHandlers(
 		FetchSubmissionsUC: fs,
 		FetchHintsUC:       fh,
 		FetchFlashcardsUC:  ff,
+		GetStatsUC:         gs,
 	}
 }
 
@@ -121,4 +124,13 @@ func (h *Handlers) GetFlashcards(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": cards})
+}
+
+func (h *Handlers) GetStats(c *gin.Context) {
+	stats, err := h.GetStatsUC.Execute()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": stats})
 }
