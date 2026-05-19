@@ -49,9 +49,9 @@
 #### Vistas
 - [x] **Catálogo de Problemas** — Lista navegable con filtro por dificultad
 - [x] **Vista de Problema** — Descripción, editor Monaco, selector de lenguaje, resultados
-- [ ] **Dashboard** — Sidebar con semanas, vista de progreso global
-- [ ] **Vista de Semana** — Contenido de la semana + lista de problemas
-- [ ] **Tracker de Progreso** — Estado por problema y por semana
+- [x] **Dashboard** — Sidebar con semanas, vista de progreso global (Integrado en catálogo)
+- [x] **Vista de Semana** — Contenido de la semana + lista de problemas
+- [x] **Tracker de Progreso** — Estado por problema y por semana
 
 #### UX & Pedagogía (Active Recall & Feynman)
 - [x] Tema oscuro/claro con Tailwind CSS (Glassmorphism UI Premium)
@@ -61,7 +61,7 @@
 - [x] **Módulo Active Recall**: Tarjetas de repaso (Flashcards) integradas en la vista de la semana antes de desbloquear los problemas.
 - [x] **Módulo Técnica Feynman**: Campo de texto tipo "Diario de aprendizaje" donde el alumno debe explicar su solución paso a paso antes de que el botón "Ejecutar" permita enviar una solución oficial.
 - [x] **Pistas Socráticas**: Botón progresivo de pistas que da sugerencias reflexivas sin dar la respuesta.
-- [ ] **Gamificación y Rachas**: UI para insignias por semana completada y rachas de días seguidos estudiando.
+- [x] **Gamificación y Rachas**: UI para insignias por semana completada y rachas de días seguidos estudiando.
 
 **Entregable:** Plataforma funcional end-to-end con Semana 1 completa.
 
@@ -74,10 +74,10 @@
 ### Subtareas detalladas
 
 #### Infraestructura de contenido
-- [ ] Crear directorio `content/` con subdirectorios `semana-0/` a `semana-5/`
-- [ ] Implementar `ContentLoader` en backend que lea archivos `.md` y los sirva via API
-- [ ] Agregar endpoint `GET /api/v1/content/:week` que retorne `{ lectura, complemento, glosario }`
-- [ ] Actualizar frontend con vista de semana que renderice markdown
+- [x] Crear directorio `content/` con subdirectorios `semana-0/` a `semana-5/`
+- [x] Implementar `ContentLoader` en backend que lea archivos `.md` y los sirva via API
+- [x] Agregar endpoint `GET /api/v1/content/:week` que retorne `{ lectura, complemento, glosario }`
+- [x] Actualizar frontend con vista de semana que renderice markdown
 
 #### Semana 0 — Scratch (contenido teórico, sin executor)
 - [ ] `lectura.md` — Transcripción traducida de la clase de Scratch
@@ -85,11 +85,11 @@
 - [ ] `glosario.md` — Términos: algoritmo, función, variable, evento, bucle
 
 #### Semana 1 — C: Fundamentos
-- [ ] `lectura.md` — Clase de C traducida (compilación, tipos, printf, condicionales)
-- [ ] `complemento.md` — Cómo funciona un compilador
-- [ ] `glosario.md`
-- [ ] `problemas/mario.md` + seed SQL con 3+ test cases
-- [ ] `problemas/cash.md` + seed SQL con 3+ test cases
+- [x] `lectura.md` — Clase de C traducida (compilación, tipos, printf, condicionales)
+- [x] `complemento.md` — Cómo funciona un compilador
+- [x] `glosario.md`
+- [x] `problemas/mario.md` + seed SQL con 3+ test cases
+- [x] `problemas/cash.md` + seed SQL con 3+ test cases
 - [ ] `problemas/credit.md` + seed SQL con 3+ test cases
 
 #### Semana 2 — Arreglos

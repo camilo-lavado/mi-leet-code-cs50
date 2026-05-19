@@ -1,7 +1,7 @@
 # Plan de Acción: Cierre de Fase 2 e Inicio de Fase 3
 ## Proyecto: LocalCode — CS50 en Español
 
-**Estado:** Planificado
+**Estado:** 🟡 En Progreso (Fase 3: Carga de Contenido y Medallas)
 **Objetivo Actual:** Finalizar el frontend (Dashboard, Progreso) y comenzar la inyección masiva de contenido de las Semanas 0 a 5.
 
 ---
@@ -17,7 +17,7 @@ Aunque el editor, la consola y el evaluador funcionan de maravilla de extremo a 
 - [x] **Módulo de Active Recall (Flashcards):** En la vista de cada semana, antes de pasar al código, incluir pequeños quizes de validación (por ejemplo, "¿Qué hace `malloc`?"). Esto fuerza al cerebro a recordar y anclar el conocimiento teórico.
 - [x] **Diario de la Técnica Feynman:** Agregar un paso obligatorio o altamente recomendado en la interfaz del problema donde el estudiante deba **explicar** en texto plano la solución que está a punto de programar (como si se la explicara a alguien más). Esto debe guardarse en la DB asociado a su envío de código para que pueda revisar cómo pensó el problema.
 - [x] **Sistema de Pistas Socráticas:** Cada problema tendrá un array de `hints` en la DB. El botón de pista no da la respuesta, hace una pregunta (ej: *"Si vas a sumar letras, ¿qué valor ASCII tiene la 'A'?"*).
-- [ ] **Gamificación:** Diseñar e implementar "Rachas" (Streaks) diarias basadas en logins/envíos, y medallas por completar cada semana para fomentar la disciplina.
+- [x] **Gamificación:** Diseñar e implementar "Rachas" (Streaks) diarias basadas en logins/envíos, y medallas por completar cada semana para fomentar la disciplina.
 
 ### 2. Inicio de la Fase 3 (Contenido Semanas 0–5 en C)
 Esta fase transforma la herramienta técnica en una verdadera plataforma educativa. Todo el contenido debe ser extraído de Harvard, traducido al español, y cargado a la plataforma.
@@ -30,9 +30,9 @@ Esta fase transforma la herramienta técnica en una verdadera plataforma educati
   - Tutorial interactivo guiado para escribir tu primer "Hello World".
   - Introducir la "Guía de Debugging": Enseñar explícitamente cómo leer la consola roja (Syntax Error, Segmentation Fault).
 - [ ] **Semana 1 — C (Básicos):**
-  - Ya tenemos `Mario`.
-  - Agregar `Cash` (Cálculo de monedas).
-  - Agregar `Credit` (Validación de tarjetas de crédito con Algoritmo de Luhn).
+  - [x] Ya tenemos `Mario`.
+  - [x] Agregar `Cash` (Cálculo de monedas).
+  - [ ] Agregar `Credit` (Validación de tarjetas de crédito con Algoritmo de Luhn).
 - [ ] **Semana 2 — Arreglos y Cadenas:**
   - `Scrabble` (Calcular el valor de una palabra).
   - `Readability` (Índice de Coleman-Liau).
