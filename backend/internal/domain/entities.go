@@ -12,6 +12,13 @@ type Problem struct {
 	TestCases   []TestCase `json:"test_cases,omitempty"`
 }
 
+type Hint struct {
+	ID         string `json:"id"`
+	ProblemID  string `json:"problem_id"`
+	OrderIndex int    `json:"order_index"`
+	Question   string `json:"question"`
+}
+
 type TestCase struct {
 	ID             string `json:"id"`
 	ProblemID      string `json:"problem_id"`

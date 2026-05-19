@@ -13,6 +13,10 @@ type TestCaseRepository interface {
 	FindByProblemId(problemId string) ([]domain.TestCase, error)
 }
 
+type HintRepository interface {
+	FindByProblemId(problemId string) ([]domain.Hint, error)
+}
+
 type SubmissionRepository interface {
 	Save(submission *domain.Submission) error
 	FindAll() ([]domain.Submission, error)

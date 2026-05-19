@@ -6,6 +6,8 @@ import (
 	"context"
 	"io"
 	"log"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -30,6 +32,35 @@ func NewDockerExecutor() (*DockerExecutor, error) {
 	}, nil
 }
 
+func addFilesToTar(tw *tar.Writer, dirPath string) error {
+	entries, err := os.ReadDir(dirPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+
+	for _, entry := range entries {
+		if entry.IsDir() {
+			continue
+		}
+		filePath := filepath.Join(dirPath, entry.Name())
+		data, err := os.ReadFile(filePath)
+		if err != nil {
+			return err
+		}
+		hdr := &tar.Header{Name: entry.Name(), Mode: 0644, Size: int64(len(data))}
+		if err := tw.WriteHeader(hdr); err != nil {
+			return err
+		}
+		if _, err := tw.Write(data); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func (e *DockerExecutor) Execute(snippet domain.CodeSnippet, testCase domain.TestCase) domain.ExecutionResult {
 	ctx := context.Background()
 	var img string
@@ -39,7 +70,7 @@ func (e *DockerExecutor) Execute(snippet domain.CodeSnippet, testCase domain.Tes
 	if strings.ToLower(snippet.Language) == "c" {
 		img = "gcc:latest"
 		filename = "code.c"
-		cmd = []string{"sh", "-c", "gcc -O3 code.c -o solution && ./solution < input.txt"}
+		cmd = []string{"sh", "-c", "gcc -O3 *.c -o solution && ./solution < input.txt"}
 	} else if strings.ToLower(snippet.Language) == "python" {
 		img = "python:3.11-alpine"
 		filename = "code.py"
@@ -97,6 +128,13 @@ func (e *DockerExecutor) Execute(snippet domain.CodeSnippet, testCase domain.Tes
 	hdrIn := &tar.Header{Name: "input.txt", Mode: 0600, Size: int64(len(testCase.InputData))}
 	tw.WriteHeader(hdrIn)
 	tw.Write([]byte(testCase.InputData))
+
+	// Add common assets (like cs50.h, cs50.c)
+	addFilesToTar(tw, "assets/common")
+
+	// Add problem-specific assets (like .bmp files or dicts)
+	addFilesToTar(tw, filepath.Join("assets", "problems", testCase.ProblemID))
+
 	tw.Close()
 
 	err = e.cli.CopyToContainer(ctx, containerID, "/workspace", &tarBuf, container.CopyToContainerOptions{})

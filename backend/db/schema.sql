@@ -26,3 +26,11 @@ CREATE TABLE IF NOT EXISTS submissions (
     submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (problem_id) REFERENCES problems(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS hints (
+    id TEXT PRIMARY KEY,
+    problem_id TEXT NOT NULL,
+    order_index INTEGER NOT NULL,
+    question TEXT NOT NULL,
+    FOREIGN KEY (problem_id) REFERENCES problems(id) ON DELETE CASCADE
+);

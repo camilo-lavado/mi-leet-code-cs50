@@ -11,13 +11,20 @@ type Handlers struct {
 	FetchProblemsUC    *usecases.FetchProblemsUseCase
 	SubmitCodeUC       *usecases.SubmitCodeUseCase
 	FetchSubmissionsUC *usecases.FetchSubmissionsUseCase
+	FetchHintsUC       *usecases.FetchHintsUseCase
 }
 
-func NewHandlers(fp *usecases.FetchProblemsUseCase, sc *usecases.SubmitCodeUseCase, fs *usecases.FetchSubmissionsUseCase) *Handlers {
+func NewHandlers(
+	fp *usecases.FetchProblemsUseCase,
+	sc *usecases.SubmitCodeUseCase,
+	fs *usecases.FetchSubmissionsUseCase,
+	fh *usecases.FetchHintsUseCase,
+) *Handlers {
 	return &Handlers{
 		FetchProblemsUC:    fp,
 		SubmitCodeUC:       sc,
 		FetchSubmissionsUC: fs,
+		FetchHintsUC:       fh,
 	}
 }
 
@@ -77,4 +84,18 @@ func (h *Handlers) GetSubmissions(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": submissions})
+}
+
+func (h *Handlers) GetHints(c *gin.Context) {
+	problemId := c.Param("id")
+	hints, err := h.FetchHintsUC.Execute(problemId)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	if len(hints) == 0 {
+		c.JSON(http.StatusOK, gin.H{"data": []string{}})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": hints})
 }

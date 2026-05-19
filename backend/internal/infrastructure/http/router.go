@@ -13,6 +13,7 @@ func SetupRouter(handlers *Handlers) *gin.Engine {
 	{
 		api.GET("/problems", handlers.GetProblems)
 		api.GET("/problems/:id", handlers.GetProblem)
+		api.GET("/problems/:id/hints", handlers.GetHints)
 		api.POST("/submissions", handlers.SubmitCode)
 		api.GET("/submissions", handlers.GetSubmissions)
 	}
