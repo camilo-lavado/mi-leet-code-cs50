@@ -8,3 +8,7 @@ export function submitCode(body: SubmissionRequest): Promise<SubmissionResult> {
 export function fetchSubmissions(): Promise<{ data: any[] }> {
   return api.get('/submissions');
 }
+
+export function fetchHints(problemId: string): Promise<{ data: any[] }> {
+  return api.get(`/problems/${problemId}/hints`);
+}

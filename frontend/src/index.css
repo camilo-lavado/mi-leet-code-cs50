@@ -46,3 +46,13 @@
 .btn-secondary {
   @apply bg-white/5 hover:bg-white/10 text-white font-medium px-4 py-2 border border-local-border rounded-lg transition-all active:scale-95;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)     scale(1); }
+}
