@@ -15,6 +15,7 @@ type Handlers struct {
 	FetchHintsUC       *usecases.FetchHintsUseCase
 	FetchFlashcardsUC  *usecases.FetchFlashcardsUseCase
 	GetStatsUC         *usecases.GetStatsUseCase
+	FetchContentUC     *usecases.FetchContentUseCase
 }
 
 func NewHandlers(
@@ -24,6 +25,7 @@ func NewHandlers(
 	fh *usecases.FetchHintsUseCase,
 	ff *usecases.FetchFlashcardsUseCase,
 	gs *usecases.GetStatsUseCase,
+	fc *usecases.FetchContentUseCase,
 ) *Handlers {
 	return &Handlers{
 		FetchProblemsUC:    fp,
@@ -32,6 +34,7 @@ func NewHandlers(
 		FetchHintsUC:       fh,
 		FetchFlashcardsUC:  ff,
 		GetStatsUC:         gs,
+		FetchContentUC:     fc,
 	}
 }
 
@@ -133,4 +136,21 @@ func (h *Handlers) GetStats(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": stats})
+}
+
+func (h *Handlers) GetContent(c *gin.Context) {
+	weekStr := c.Param("week")
+	week, err := strconv.Atoi(weekStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid week parameter"})
+		return
+	}
+
+	content, err := h.FetchContentUC.Execute(week)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": content})
 }

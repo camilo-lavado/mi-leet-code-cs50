@@ -44,9 +44,10 @@ func main() {
 	fetchHintsUC := usecases.NewFetchHintsUseCase(hintRepo)
 	fetchFlashcardsUC := usecases.NewFetchFlashcardsUseCase(flashcardRepo)
 	getStatsUC := usecases.NewGetStatsUseCase(problemRepo, submissionRepo)
+	fetchContentUC := usecases.NewFetchContentUseCase("content")
 
 	// 6. Inicializar Handlers y Router
-	handlers := httpAdapter.NewHandlers(fetchProblemsUC, submitCodeUC, fetchSubmissionsUC, fetchHintsUC, fetchFlashcardsUC, getStatsUC)
+	handlers := httpAdapter.NewHandlers(fetchProblemsUC, submitCodeUC, fetchSubmissionsUC, fetchHintsUC, fetchFlashcardsUC, getStatsUC, fetchContentUC)
 	router := httpAdapter.SetupRouter(handlers)
 
 	// 7. Iniciar Servidor

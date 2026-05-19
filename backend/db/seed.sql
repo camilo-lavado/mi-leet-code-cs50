@@ -41,3 +41,39 @@ INSERT INTO flashcards (id, week, question, answer, order_index) VALUES
 ('fc-1-7', 1, '¿Qué es `scanf` y cuándo se usa?', '`scanf` lee datos desde la entrada estándar (stdin). Usa especificadores de formato igual que `printf`. Ejemplo: `scanf("%d", &n);` lee un entero y lo guarda en `n`. El `&` es crucial: le indica a `scanf` la **dirección de memoria** donde guardar el valor.', 7),
 ('fc-1-8', 1, '¿Qué significa `#include <stdio.h>` al inicio de un programa C?', 'Le indica al compilador que incluya la **librería estándar de entrada/salida**. Esta librería define funciones como `printf`, `scanf`, `puts`, etc. Sin este include, el compilador no reconocería esas funciones.', 8)
 ON CONFLICT(id) DO NOTHING;
+
+-- Cash Problem Seed
+INSERT INTO problems (id, title, description, difficulty, language, week) VALUES
+('p-cash-c', 'Cash', '## El reto de Cash
+
+Implementa un programa que calcule el número mínimo de monedas necesarias para dar un cambio especificado por el usuario (en centavos).
+
+Las monedas disponibles son:
+- **Quarters** (25¢)
+- **Dimes** (10¢)
+- **Nickels** (5¢)
+- **Pennies** (1¢)
+
+### Ejemplo de ejecución:
+Si el usuario introduce `41` centavos, el cambio mínimo es 4 monedas (1 de 25¢, 1 de 10¢, 1 de 5¢, y 1 de 1¢).
+
+### Requisitos:
+- Solicitar al usuario un número entero no negativo de centavos.
+- Si el usuario introduce un número negativo, volver a solicitar.
+- Imprimir únicamente el número total de monedas necesarias seguido de un salto de línea.', 'Fácil', 'c', 1)
+ON CONFLICT(id) DO NOTHING;
+
+INSERT INTO test_cases (id, problem_id, input_data, expected_output, is_hidden) VALUES
+('tc-cash-1', 'p-cash-c', '41\n', '4\n', 0),
+('tc-cash-2', 'p-cash-c', '160\n', '7\n', 0),
+('tc-cash-3', 'p-cash-c', '4\n', '4\n', 0),
+('tc-cash-4', 'p-cash-c', '0\n', '0\n', 0),
+('tc-cash-5', 'p-cash-c', '-10\n15\n', '2\n', 1)
+ON CONFLICT(id) DO NOTHING;
+
+INSERT INTO hints (id, problem_id, order_index, question) VALUES
+('h-cash-1', 'p-cash-c', 1, 'Para resolver Cash, necesitas saber qué monedas tienes disponibles. ¿Cuáles son sus valores?'),
+('h-cash-2', 'p-cash-c', 2, 'Siempre queremos usar la moneda más grande posible primero (un enfoque Greedy o voraz). Si el cambio es mayor o igual a 25 centavos, ¿cuántas monedas de 25 puedes usar?'),
+('h-cash-3', 'p-cash-c', 3, 'Puedes restar 25 al total de forma repetida (con un bucle) o usar el operador `/` para obtener la división entera y `%` para el residuo.'),
+('h-cash-4', 'p-cash-c', 4, 'Una vez que termines con las de 25, haz el mismo proceso con las de 10, luego 5 y finalmente 1 centavo. Al final, suma todas las monedas usadas y muéstralas.')
+ON CONFLICT(id) DO NOTHING;
