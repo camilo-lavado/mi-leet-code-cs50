@@ -58,6 +58,12 @@ type ExecutionResult struct {
 	MemoryKb int
 }
 
+type Progress struct {
+	ProblemID     string     `json:"problem_id"`
+	Status        string     `json:"status"`
+	LastAttemptAt *time.Time `json:"last_attempt_at,omitempty"`
+}
+
 type Badge struct {
 	Week      int    `json:"week"`
 	Title     string `json:"title"`

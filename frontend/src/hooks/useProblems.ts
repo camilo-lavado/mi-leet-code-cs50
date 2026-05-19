@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchProblems, fetchProblem } from '@/api/problems';
 
-export function useProblems() {
+export function useProblems(week?: number, difficulty?: string) {
   return useQuery({
-    queryKey: ['problems'],
-    queryFn: fetchProblems,
+    queryKey: ['problems', { week, difficulty }],
+    queryFn: () => fetchProblems(week, difficulty),
   });
 }
 

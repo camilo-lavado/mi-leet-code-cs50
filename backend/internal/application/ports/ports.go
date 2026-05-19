@@ -7,6 +7,7 @@ import (
 type ProblemRepository interface {
 	FindAll() ([]domain.Problem, error)
 	FindById(id string) (*domain.Problem, error)
+	FindFiltered(week *int, difficulty *string) ([]domain.Problem, error)
 }
 
 type TestCaseRepository interface {
@@ -24,6 +25,12 @@ type FlashcardRepository interface {
 type SubmissionRepository interface {
 	Save(submission *domain.Submission) error
 	FindAll() ([]domain.Submission, error)
+	FindByProblemId(problemId string) ([]domain.Submission, error)
+}
+
+type ProgressRepository interface {
+	Upsert(progress *domain.Progress) error
+	FindAll() ([]domain.Progress, error)
 }
 
 type CodeExecutor interface {

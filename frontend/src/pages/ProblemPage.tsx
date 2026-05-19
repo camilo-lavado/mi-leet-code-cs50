@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProblem } from '@/hooks/useProblems';
 import { useSubmitCode } from '@/hooks/useSubmission';
+import { useSubmissions } from '@/hooks/useSubmissions';
 import { useHints } from '@/hooks/useHints';
 import { CodeEditor } from '@/components/editor/CodeEditor';
 import { LanguageSelector } from '@/components/editor/LanguageSelector';
-import { SubmitButton } from '@/components/submission/SubmitButton';
 import { SubmissionResults } from '@/components/submission/SubmissionResults';
 import { Spinner } from '@/components/ui/Spinner';
 import { DifficultyBadge } from '@/components/problems/DifficultyBadge';
@@ -17,6 +17,7 @@ export function ProblemPage() {
   const { id } = useParams<{ id: string }>();
   const { data: problem, isLoading, error } = useProblem(id!);
   const submitMutation = useSubmitCode();
+  const { data: submissionsData } = useSubmissions(id);
   const { hints, isLoading: hintsLoading } = useHints(id!);
 
   const [code, setCode] = useState('');
@@ -39,11 +40,11 @@ export function ProblemPage() {
     );
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (mode: 'run' | 'submit') => {
     if (!id) return;
     setResult(null);
     submitMutation.mutate(
-      { problem_id: id, language, code },
+      { problem_id: id, language, code, mode },
       { onSuccess: (data) => setResult(data) },
     );
   };
@@ -130,7 +131,44 @@ export function ProblemPage() {
             </div>
             <div className="flex items-center justify-between px-4 py-2 border-b border-local-border bg-black/20">
               <LanguageSelector value={language} onChange={setLanguage} />
-              <SubmitButton onClick={handleSubmit} isLoading={submitMutation.isPending} />
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleSubmit('run')}
+                  disabled={submitMutation.isPending}
+                  className="px-4 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-1.5 transition-all
+                             bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400
+                             border border-emerald-500/30 hover:border-emerald-500/60
+                             disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  {submitMutation.isPending ? (
+                    <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  ) : (
+                    <span>▶</span>
+                  )}
+                  Run Code
+                </button>
+                <button
+                  onClick={() => handleSubmit('submit')}
+                  disabled={submitMutation.isPending}
+                  className="px-4 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-1.5 transition-all
+                             bg-local-accent/10 hover:bg-local-accent/20 text-local-accent
+                             border border-local-accent/30 hover:border-local-accent/60
+                             disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  {submitMutation.isPending ? (
+                    <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  ) : (
+                    <span>📤</span>
+                  )}
+                  Submit
+                </button>
+              </div>
             </div>
             <div className="flex-1 overflow-hidden relative">
               <CodeEditor code={code} language={language} onChange={(v) => setCode(v ?? '')} />
@@ -154,6 +192,40 @@ export function ProblemPage() {
                 </div>
               )}
             </div>
+
+            {/* Submission History */}
+            {submissionsData?.data && submissionsData.data.length > 0 && (
+              <details className="mt-4">
+                <summary className="text-sm font-semibold text-local-muted uppercase tracking-wider cursor-pointer hover:text-local-text transition-colors">
+                  Historial de Envíos ({submissionsData.data.length})
+                </summary>
+                <div className="mt-3 space-y-2 max-h-[200px] overflow-y-auto">
+                  {submissionsData.data.map((sub: any, idx: number) => (
+                    <div
+                      key={sub.id ?? idx}
+                      className="bg-black/30 rounded-lg border border-white/5 px-4 py-2 flex items-center justify-between text-sm"
+                    >
+                      <span className="text-local-muted font-mono text-xs">
+                        {sub.created_at ? new Date(sub.created_at).toLocaleString() : '-'}
+                      </span>
+                      <span
+                        className={`font-semibold ${
+                          sub.status === 'Accepted' ? 'text-green-400' : 'text-red-400'
+                        }`}
+                      >
+                        {sub.status}
+                      </span>
+                      <span className="text-local-muted text-xs">
+                        {sub.time_ms !== undefined ? `${sub.time_ms} ms` : '-'}
+                      </span>
+                      <span className="text-local-muted text-xs">
+                        {sub.memory_kb !== undefined ? `${sub.memory_kb} KB` : '-'}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
           </div>
         </div>
       </div>

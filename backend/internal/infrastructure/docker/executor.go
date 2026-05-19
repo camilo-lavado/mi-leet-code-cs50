@@ -5,7 +5,7 @@ import (
 	"bytes"
 	"context"
 	"io"
-	"log"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
@@ -20,6 +20,11 @@ import (
 
 type DockerExecutor struct {
 	cli *client.Client
+}
+
+func (e *DockerExecutor) Ping() error {
+	_, err := e.cli.Ping(context.Background())
+	return err
 }
 
 func NewDockerExecutor() (*DockerExecutor, error) {
@@ -85,7 +90,7 @@ func (e *DockerExecutor) Execute(snippet domain.CodeSnippet, testCase domain.Tes
 	// 1. Pull image if not exists (non-blocking in background normally, but here we do it to be safe)
 	_, _, err := e.cli.ImageInspectWithRaw(ctx, img)
 	if err != nil {
-		log.Printf("Pulling image %s...", img)
+		slog.Info("Pulling image", "image", img)
 		reader, pullErr := e.cli.ImagePull(ctx, img, image.PullOptions{})
 		if pullErr == nil {
 			io.Copy(io.Discard, reader)
@@ -108,7 +113,7 @@ func (e *DockerExecutor) Execute(snippet domain.CodeSnippet, testCase domain.Tes
 	}, nil, nil, "")
 	
 	if err != nil {
-		log.Printf("Error creating container: %v", err)
+		slog.Info("Error creating container", "error", err)
 		return domain.ExecutionResult{Stderr: err.Error(), ExitCode: -1}
 	}
 

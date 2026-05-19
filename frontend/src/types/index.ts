@@ -22,6 +22,7 @@ export interface SubmissionRequest {
   problem_id: string;
   language: string;
   code: string;
+  mode?: string;
 }
 
 export interface SubmissionResult {

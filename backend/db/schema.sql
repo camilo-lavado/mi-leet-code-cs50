@@ -42,3 +42,10 @@ CREATE TABLE IF NOT EXISTS flashcards (
     answer TEXT NOT NULL,
     order_index INTEGER NOT NULL DEFAULT 0
 );
+
+CREATE TABLE IF NOT EXISTS progress (
+    problem_id TEXT PRIMARY KEY,
+    status TEXT NOT NULL DEFAULT 'not_attempted',
+    last_attempt_at DATETIME,
+    FOREIGN KEY (problem_id) REFERENCES problems(id) ON DELETE CASCADE
+);

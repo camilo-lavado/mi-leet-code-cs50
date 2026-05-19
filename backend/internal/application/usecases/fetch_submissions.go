@@ -15,6 +15,9 @@ func NewFetchSubmissionsUseCase(sr ports.SubmissionRepository) *FetchSubmissions
 	}
 }
 
-func (uc *FetchSubmissionsUseCase) Execute() ([]domain.Submission, error) {
+func (uc *FetchSubmissionsUseCase) Execute(problemID string) ([]domain.Submission, error) {
+	if problemID != "" {
+		return uc.SubmissionRepo.FindByProblemId(problemID)
+	}
 	return uc.SubmissionRepo.FindAll()
 }

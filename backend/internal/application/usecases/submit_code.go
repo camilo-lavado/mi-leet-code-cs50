@@ -2,7 +2,7 @@ package usecases
 
 import (
 	"errors"
-	"log"
+	"log/slog"
 	"strings"
 	"time"
 
@@ -16,6 +16,7 @@ type SubmitCodeUseCase struct {
 	TestCaseRepo   ports.TestCaseRepository
 	SubmissionRepo ports.SubmissionRepository
 	Executor       ports.CodeExecutor
+	ProgressRepo   ports.ProgressRepository
 }
 
 func NewSubmitCodeUseCase(
@@ -23,12 +24,14 @@ func NewSubmitCodeUseCase(
 	tr ports.TestCaseRepository,
 	sr ports.SubmissionRepository,
 	ex ports.CodeExecutor,
+	pgr ports.ProgressRepository,
 ) *SubmitCodeUseCase {
 	return &SubmitCodeUseCase{
 		ProblemRepo:    pr,
 		TestCaseRepo:   tr,
 		SubmissionRepo: sr,
 		Executor:       ex,
+		ProgressRepo:   pgr,
 	}
 }
 
@@ -41,7 +44,7 @@ type SubmissionResultDTO struct {
 	MemoryKb     int    `json:"memoryKb"`
 }
 
-func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code string) (*SubmissionResultDTO, error) {
+func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code string, mode string) (*SubmissionResultDTO, error) {
 	problem, err := uc.ProblemRepo.FindById(problemId)
 	if err != nil {
 		return nil, err
@@ -61,11 +64,19 @@ func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code str
 	}
 
 	passedCount := 0
+	totalCount := 0
 	overallStatus := "Accepted"
 	totalTimeMs := 0
 	maxMemoryKb := 0
 
+	isRun := mode == "run"
+
 	for _, tc := range testCases {
+		if isRun && tc.IsHidden {
+			continue
+		}
+		totalCount++
+
 		res := uc.Executor.Execute(snippet, tc)
 		
 		totalTimeMs += res.TimeMs
@@ -78,15 +89,13 @@ func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code str
 			break
 		}
 
-		// Normalizar saltos de línea y espacios finales para evitar falsos negativos
 		actualOutput := strings.TrimSpace(strings.ReplaceAll(res.Stdout, "\r\n", "\n"))
 		
-		// Reemplazar saltos de línea literales (\n) del JSON/SQL a saltos reales
 		expectedNormalized := strings.ReplaceAll(tc.ExpectedOutput, "\\n", "\n")
 		expectedOutput := strings.TrimSpace(strings.ReplaceAll(expectedNormalized, "\r\n", "\n"))
 
 		if actualOutput != expectedOutput {
-			log.Printf("Test Case %s Failed.\nExpected:\n%q\nActual:\n%q\n", tc.ID, expectedOutput, actualOutput)
+			slog.Info("Test case failed", "testCaseId", tc.ID, "expected", expectedOutput, "actual", actualOutput)
 			overallStatus = "Failed (Wrong Answer)"
 			break
 		}
@@ -94,26 +103,48 @@ func (uc *SubmitCodeUseCase) Execute(problemId string, language string, code str
 		passedCount++
 	}
 
-	sub := &domain.Submission{
-		ID:              uuid.New().String(),
-		ProblemID:       problemId,
-		Code:            code,
-		Status:          overallStatus,
-		ExecutionTimeMs: totalTimeMs,
-		MemoryKb:        maxMemoryKb,
-		SubmittedAt:     time.Now(),
-	}
+	allPassed := overallStatus == "Accepted"
 
-	err = uc.SubmissionRepo.Save(sub)
-	if err != nil {
-		return nil, err
+	if !isRun {
+		sub := &domain.Submission{
+			ID:              uuid.New().String(),
+			ProblemID:       problemId,
+			Code:            code,
+			Status:          overallStatus,
+			ExecutionTimeMs: totalTimeMs,
+			MemoryKb:        maxMemoryKb,
+			SubmittedAt:     time.Now(),
+		}
+
+		err = uc.SubmissionRepo.Save(sub)
+		if err != nil {
+			return nil, err
+		}
+
+		if allPassed {
+			now := time.Now()
+			uc.ProgressRepo.Upsert(&domain.Progress{
+				ProblemID:     problemId,
+				Status:        "solved",
+				LastAttemptAt: &now,
+			})
+		}
+
+		return &SubmissionResultDTO{
+			SubmissionID: sub.ID,
+			Status:       overallStatus,
+			Passed:       passedCount,
+			Total:        totalCount,
+			TimeMs:       totalTimeMs,
+			MemoryKb:     maxMemoryKb,
+		}, nil
 	}
 
 	return &SubmissionResultDTO{
-		SubmissionID: sub.ID,
+		SubmissionID: "",
 		Status:       overallStatus,
 		Passed:       passedCount,
-		Total:        len(testCases),
+		Total:        totalCount,
 		TimeMs:       totalTimeMs,
 		MemoryKb:     maxMemoryKb,
 	}, nil

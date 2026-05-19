@@ -2,8 +2,10 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"io/ioutil"
-	"log"
+	"log/slog"
+	"os"
 
 	_ "modernc.org/sqlite"
 
@@ -17,7 +19,8 @@ func main() {
 	// 1. Conectar a SQLite
 	db, err := sql.Open("sqlite", "./localcode.db")
 	if err != nil {
-		log.Fatalf("Error opening database: %v", err)
+		slog.Error(fmt.Sprintf("Error opening database: %v", err))
+		os.Exit(1)
 	}
 	defer db.Close()
 
@@ -34,12 +37,22 @@ func main() {
 	// 4. Inicializar executor
 	executor, err := docker.NewDockerExecutor()
 	if err != nil {
-		log.Fatalf("Error initializing docker executor: %v", err)
+		slog.Error(fmt.Sprintf("Error initializing docker executor: %v", err))
+		os.Exit(1)
+	}
+
+	if err := executor.Ping(); err != nil {
+		slog.Warn("Docker daemon not reachable", "error", err)
+		slog.Warn("Code execution will fail until Docker is available")
+	} else {
+		slog.Info("Docker daemon reachable")
 	}
 
 	// 5. Inicializar Casos de Uso
+	progressRepo := sqlite.NewSQLiteProgressRepository(db)
+	fetchProgressUC := usecases.NewFetchProgressUseCase(progressRepo, problemRepo)
 	fetchProblemsUC := usecases.NewFetchProblemsUseCase(problemRepo, testCaseRepo)
-	submitCodeUC := usecases.NewSubmitCodeUseCase(problemRepo, testCaseRepo, submissionRepo, executor)
+	submitCodeUC := usecases.NewSubmitCodeUseCase(problemRepo, testCaseRepo, submissionRepo, executor, progressRepo)
 	fetchSubmissionsUC := usecases.NewFetchSubmissionsUseCase(submissionRepo)
 	fetchHintsUC := usecases.NewFetchHintsUseCase(hintRepo)
 	fetchFlashcardsUC := usecases.NewFetchFlashcardsUseCase(flashcardRepo)
@@ -47,31 +60,36 @@ func main() {
 	fetchContentUC := usecases.NewFetchContentUseCase("content")
 
 	// 6. Inicializar Handlers y Router
-	handlers := httpAdapter.NewHandlers(fetchProblemsUC, submitCodeUC, fetchSubmissionsUC, fetchHintsUC, fetchFlashcardsUC, getStatsUC, fetchContentUC)
+	handlers := httpAdapter.NewHandlers(fetchProblemsUC, submitCodeUC, fetchSubmissionsUC, fetchHintsUC, fetchFlashcardsUC, getStatsUC, fetchContentUC, fetchProgressUC)
 	router := httpAdapter.SetupRouter(handlers)
 
 	// 7. Iniciar Servidor
-	log.Println("Server running on :8080")
+	slog.Info("Server running on :8080")
 	if err := router.Run(":8080"); err != nil {
-		log.Fatalf("Error starting server: %v", err)
+		slog.Error(fmt.Sprintf("Error starting server: %v", err))
+		os.Exit(1)
 	}
 }
 
 func initDatabase(db *sql.DB) {
 	schema, err := ioutil.ReadFile("db/schema.sql")
 	if err != nil {
-		log.Fatalf("Error reading schema.sql: %v", err)
+		slog.Error(fmt.Sprintf("Error reading schema.sql: %v", err))
+		os.Exit(1)
 	}
 	if _, err := db.Exec(string(schema)); err != nil {
-		log.Fatalf("Error executing schema.sql: %v", err)
+		slog.Error(fmt.Sprintf("Error executing schema.sql: %v", err))
+		os.Exit(1)
 	}
 
 	seed, err := ioutil.ReadFile("db/seed.sql")
 	if err != nil {
-		log.Fatalf("Error reading seed.sql: %v", err)
+		slog.Error(fmt.Sprintf("Error reading seed.sql: %v", err))
+		os.Exit(1)
 	}
 	if _, err := db.Exec(string(seed)); err != nil {
-		log.Fatalf("Error executing seed.sql: %v", err)
+		slog.Error(fmt.Sprintf("Error executing seed.sql: %v", err))
+		os.Exit(1)
 	}
-	log.Println("Database initialized and seeded")
+	slog.Info("Database initialized and seeded")
 }

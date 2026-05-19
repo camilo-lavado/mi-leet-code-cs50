@@ -16,6 +16,7 @@ type Handlers struct {
 	FetchFlashcardsUC  *usecases.FetchFlashcardsUseCase
 	GetStatsUC         *usecases.GetStatsUseCase
 	FetchContentUC     *usecases.FetchContentUseCase
+	FetchProgressUC    *usecases.FetchProgressUseCase
 }
 
 func NewHandlers(
@@ -26,6 +27,7 @@ func NewHandlers(
 	ff *usecases.FetchFlashcardsUseCase,
 	gs *usecases.GetStatsUseCase,
 	fc *usecases.FetchContentUseCase,
+	fpr *usecases.FetchProgressUseCase,
 ) *Handlers {
 	return &Handlers{
 		FetchProblemsUC:    fp,
@@ -35,11 +37,23 @@ func NewHandlers(
 		FetchFlashcardsUC:  ff,
 		GetStatsUC:         gs,
 		FetchContentUC:     fc,
+		FetchProgressUC:    fpr,
 	}
 }
 
 func (h *Handlers) GetProblems(c *gin.Context) {
-	problems, err := h.FetchProblemsUC.Execute()
+	var week *int
+	if w := c.Query("week"); w != "" {
+		if wInt, err := strconv.Atoi(w); err == nil {
+			week = &wInt
+		}
+	}
+	var difficulty *string
+	if d := c.Query("difficulty"); d != "" {
+		difficulty = &d
+	}
+
+	problems, err := h.FetchProblemsUC.ExecuteFiltered(week, difficulty)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -65,6 +79,7 @@ type SubmitRequest struct {
 	ProblemID string `json:"problem_id" binding:"required"`
 	Language  string `json:"language" binding:"required"`
 	Code      string `json:"code" binding:"required"`
+	Mode      string `json:"mode"` // "run" or "submit" (default "submit")
 }
 
 func (h *Handlers) SubmitCode(c *gin.Context) {
@@ -74,7 +89,20 @@ func (h *Handlers) SubmitCode(c *gin.Context) {
 		return
 	}
 
-	result, err := h.SubmitCodeUC.Execute(req.ProblemID, req.Language, req.Code)
+	if len(req.Code) == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "code cannot be empty"})
+		return
+	}
+	if len(req.Code) > 100*1024 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "code exceeds maximum length of 100KB"})
+		return
+	}
+	if req.Language != "c" && req.Language != "python" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "unsupported language. Supported: c, python"})
+		return
+	}
+
+	result, err := h.SubmitCodeUC.Execute(req.ProblemID, req.Language, req.Code, req.Mode)
 	if err != nil {
 		if err.Error() == "problem not found" {
 			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
@@ -88,7 +116,8 @@ func (h *Handlers) SubmitCode(c *gin.Context) {
 }
 
 func (h *Handlers) GetSubmissions(c *gin.Context) {
-	submissions, err := h.FetchSubmissionsUC.Execute()
+	problemID := c.Query("problem_id")
+	submissions, err := h.FetchSubmissionsUC.Execute(problemID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -136,6 +165,15 @@ func (h *Handlers) GetStats(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"data": stats})
+}
+
+func (h *Handlers) GetProgress(c *gin.Context) {
+	summary, err := h.FetchProgressUC.GetSummary()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": summary})
 }
 
 func (h *Handlers) GetContent(c *gin.Context) {
