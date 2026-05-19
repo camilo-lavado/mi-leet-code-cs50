@@ -60,7 +60,7 @@
 
 ## Estado actual
 
-🟢 **MVP Core implementado** — Backend (Go + SQLite + Docker Executor) y Frontend (React + Monaco Editor + Tailwind) funcionales. Próximo paso: contenido del curso en español.
+🟢 **MVP Core & Pedagogy features completed** — Backend (Go + SQLite + Docker Executor) and Frontend (React + Monaco Editor + Tailwind) are fully functional. Pedagogy features (Active Recall Flashcards, Socratic Hints, Feynman Diary) and the Gamification Engine (daily streaks, badges) are complete. Currently seeding Week 1 content (Mario, Cash).
 
 ---
 
