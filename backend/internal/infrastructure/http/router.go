@@ -14,6 +14,7 @@ func SetupRouter(handlers *Handlers) *gin.Engine {
 		api.GET("/problems", handlers.GetProblems)
 		api.GET("/problems/:id", handlers.GetProblem)
 		api.POST("/submissions", handlers.SubmitCode)
+		api.GET("/submissions", handlers.GetSubmissions)
 	}
 
 	return r

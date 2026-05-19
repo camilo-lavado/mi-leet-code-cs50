@@ -1,9 +1,16 @@
 import { useProblems } from '@/hooks/useProblems';
+import { useSubmissions } from '@/hooks/useSubmissions';
 import { ProblemList } from '@/components/problems/ProblemList';
 
 export function CatalogPage() {
-  const { data, isLoading, error } = useProblems();
-  const problems = data?.data ?? [];
+  const { data: problemsData, isLoading: problemsLoading, error: problemsError } = useProblems();
+  const { data: submissionsData, isLoading: submissionsLoading, error: submissionsError } = useSubmissions();
+  
+  const problems = problemsData?.data ?? [];
+  const submissions = submissionsData?.data ?? [];
+
+  const isLoading = problemsLoading || submissionsLoading;
+  const error = problemsError || submissionsError;
 
   return (
     <div className="relative min-h-full overflow-y-auto">
@@ -19,7 +26,7 @@ export function CatalogPage() {
           </p>
         </div>
         
-        <ProblemList problems={problems} isLoading={isLoading} error={error as Error | null} />
+        <ProblemList problems={problems} submissions={submissions} isLoading={isLoading} error={error as Error | null} />
       </div>
     </div>
   );

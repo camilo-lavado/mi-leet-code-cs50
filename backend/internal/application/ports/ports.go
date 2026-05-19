@@ -15,6 +15,7 @@ type TestCaseRepository interface {
 
 type SubmissionRepository interface {
 	Save(submission *domain.Submission) error
+	FindAll() ([]domain.Submission, error)
 }
 
 type CodeExecutor interface {

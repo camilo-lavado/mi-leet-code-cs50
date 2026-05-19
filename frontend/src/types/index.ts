@@ -3,6 +3,7 @@ export interface Problem {
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   language: string;
+  week?: number;
 }
 
 export interface TestCase {
