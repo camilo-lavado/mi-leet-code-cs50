@@ -51,7 +51,7 @@ export function TheoryPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-local-bg pb-20 overflow-y-auto">
+    <div className="relative h-full bg-local-bg pb-20 overflow-y-auto">
       {/* Background radial glow */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-local-primary/10 to-transparent pointer-events-none -z-10"></div>
 
