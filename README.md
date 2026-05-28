@@ -35,6 +35,84 @@
 
 ---
 
+## Cómo ejecutarlo en tu computadora
+
+### Requisitos previos
+
+Antes de empezar necesitas tener instalado:
+
+| Herramienta | Para qué sirve | Descarga |
+|-------------|----------------|----------|
+| **Docker Desktop** | Ejecuta tu código de forma segura y aislada | [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) |
+| **Go 1.22+** | Corre el servidor del backend | [go.dev/dl](https://go.dev/dl/) |
+| **Node.js 20+** | Corre el servidor del frontend | [nodejs.org](https://nodejs.org/) |
+
+---
+
+### ¿Qué es Docker Desktop y por qué lo necesito?
+
+Cuando resuelves un problema en LocalCode y presionas **Ejecutar**, tu código no corre directamente en tu computadora. En cambio, la plataforma crea una pequeña "caja" aislada (llamada **contenedor**) donde tu código se ejecuta de forma segura, sin riesgo de dañar nada en tu sistema.
+
+Docker Desktop es la aplicación que hace posible crear esas cajas.
+
+**Pasos para instalar Docker Desktop:**
+
+1. Ve a [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/) y descarga la versión para tu sistema operativo (Windows, Mac o Linux)
+2. Instálalo como cualquier otra aplicación (siguiente → siguiente → instalar)
+3. **En Windows:** si el instalador pide activar WSL 2, acepta — es necesario
+4. Una vez instalado, ábrelo. Verás una ballena (🐳) en la barra de tareas/menú superior
+5. Espera a que el ícono deje de moverse — eso significa que Docker está listo
+
+> **Importante:** Docker Desktop debe estar abierto y corriendo cada vez que uses LocalCode. No necesitas hacer nada más con él, solo que esté activo.
+
+---
+
+### Instalación paso a paso
+
+**1. Clona el repositorio**
+
+```bash
+git clone https://github.com/camilo-lavado/mi-leet-code-cs50.git
+cd mi-leet-code-cs50
+```
+
+**2. Inicia el backend** (en una terminal)
+
+```bash
+cd backend
+go run ./cmd/server/main.go
+```
+
+La primera vez tardará unos segundos en descargar las dependencias de Go. Cuando veas algo como `[GIN-debug] Listening on :8080`, el servidor está listo.
+
+**3. Inicia el frontend** (en otra terminal, sin cerrar la anterior)
+
+```bash
+cd frontend
+npm install       # solo la primera vez
+npm run dev
+```
+
+Cuando veas `Local: http://localhost:5173`, abre esa dirección en tu navegador.
+
+**4. Descarga las imágenes de Docker** (solo la primera vez)
+
+La primera vez que ejecutes un problema en C o Python, Docker descargará automáticamente las imágenes necesarias (`gcc:latest` y `python:3.11-alpine`). Esto puede tardar 1-2 minutos dependiendo de tu conexión. Las siguientes ejecuciones serán instantáneas.
+
+---
+
+### Solución de problemas comunes
+
+| Problema | Causa probable | Solución |
+|----------|----------------|----------|
+| `Error: Cannot connect to Docker daemon` | Docker Desktop no está abierto | Abre Docker Desktop y espera a que el ícono deje de moverse |
+| `go: command not found` | Go no está instalado o no está en el PATH | Reinstala Go y reinicia la terminal |
+| `npm: command not found` | Node.js no está instalado | Instala Node.js desde nodejs.org |
+| La página carga pero los problemas no aparecen | El backend no está corriendo | Verifica que la terminal del backend muestra el mensaje de `:8080` |
+| Error al ejecutar código en Windows | WSL 2 no está activado | Abre Docker Desktop → Settings → General → activa "Use WSL 2 based engine" |
+
+---
+
 ## Stack Técnico
 
 - **Frontend:** React + Vite + TypeScript + Monaco Editor

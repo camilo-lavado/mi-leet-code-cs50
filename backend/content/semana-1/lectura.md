@@ -98,3 +98,71 @@ for (int i = 0; i < 3; i++)
     printf("miau\n");
 }
 ```
+
+---
+
+## 5. Constantes con `const`
+
+Cuando un valor no debe cambiar durante la ejecución del programa, se declara con la palabra clave `const`. Esto tiene dos beneficios: el compilador rechaza cualquier intento de modificarlo, y comunica la intención al lector del código.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    const float PI = 3.14159;
+    int radio = 5;
+
+    printf("Área: %.2f\n", PI * radio * radio);
+
+    // PI = 3.0;  ← Error de compilación: assignment of read-only variable 'PI'
+}
+```
+
+Por convención, las constantes se escriben en `MAYÚSCULAS_CON_GUIONES_BAJOS` para distinguirlas visualmente de las variables.
+
+---
+
+## 6. Conversión de Tipos (Type Casting)
+
+En C, cuando mezclas tipos numéricos en una operación, el compilador aplica **conversión implícita**: promueve el tipo "menor" al tipo "mayor". Sin embargo, la división entre dos `int` siempre produce un `int` (el decimal se trunca), lo que puede causar errores silenciosos.
+
+### División entera vs. división real
+
+```c
+int a = 7, b = 2;
+
+// División entera: trunca el resultado
+printf("%d\n",   a / b);        // Imprime: 3  (no 3.5)
+
+// División real: al menos un operando debe ser float
+printf("%.1f\n", (float) a / b); // Imprime: 3.5
+```
+
+### Conversión explícita con cast
+
+La sintaxis `(tipo) expresión` fuerza la conversión antes de la operación:
+
+```c
+int x = 7, y = 2;
+float resultado = (float) x / y;  // 3.5 — correcto
+float malo      = (float)(x / y); // 3.0 — incorrecto: la división ocurre ANTES del cast
+```
+
+### Tabla de reglas de promoción en C
+
+| Operandos             | Resultado    |
+|-----------------------|--------------|
+| `int` ÷ `int`        | `int` (trunca) |
+| `int` ÷ `float`      | `float`      |
+| `float` ÷ `float`    | `float`      |
+| `int` → `(float) int`| `float`      |
+
+### Truncación explícita
+
+El cast también sirve para descartar decimales intencionalmente:
+
+```c
+float precio = 3.99;
+int entero = (int) precio;  // entero = 3 (trunca, NO redondea)
+```

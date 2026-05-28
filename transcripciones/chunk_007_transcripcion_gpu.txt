@@ -1,0 +1,1237 @@
+# Transcripción: chunk_007.mp3
+# Modelo: medium | Duración audio: 0:59:59
+
+[0:00:52]  This is CS50, and this is week three already,
+[0:00:56]  wherein we'll take a look back actually at week zero, where we first began.
+[0:01:00]  And in week zero, recall that everything was very intuitive in a sense.
+[0:01:03]  We talked not just about representation of information, but algorithms.
+[0:01:06]  And we talked about tearing a phone book again and again.
+[0:01:09]  And that somehow got us to a better solution.
+[0:01:11]  But today, we'll try to start formalizing some of those ideas
+[0:01:14]  and capturing some of those same ideas, not in pseudocode just yet,
+[0:01:17]  but in actual code as well.
+[0:01:20]  But we'll also consider the efficiency of those algorithms,
+[0:01:24]  like just how good, how well designed our algorithms actually are.
+[0:01:27]  And if you recall, when we did the phone book example,
+[0:01:29]  wherein I first had an algorithm searching one page at a time,
+[0:01:32]  and then second, went two pages at a time,
+[0:01:34]  and then third, started tearing the thing in half,
+[0:01:37]  recall that we, with a wave of the hand, kind of analyzed it as follows.
+[0:01:40]  We proposed that if the x-axis here is the size of the problem,
+[0:01:43]  like number of pages in a phone book, and the y-axis
+[0:01:46]  is the time required to solve the problem in seconds, minutes,
+[0:01:50]  page tears, whatever your unit of measure is,
+[0:01:52]  recall that the first algorithm was the straight line, such that if you
+[0:01:55]  had n pages in the phone book, it might have this slope of n.
+[0:01:58]  And there's this one-to-one relationship between pages and tears.
+[0:02:02]  Two pages at a time, of course, was twice as fast,
+[0:02:05]  but still really the same shape, the yellow line here,
+[0:02:08]  indicating that, yeah, it's n over 2, maybe plus 1
+[0:02:10]  if you have to double back as we discussed.
+[0:02:12]  But it's really still fundamentally the same algorithm,
+[0:02:15]  one or two pages at a time.
+[0:02:17]  But the third algorithm, recall, was this one here.
+[0:02:20]  In green, where we called it logarithmic in terms of how fast
+[0:02:23]  or how slow it was.
+[0:02:24]  And indeed, the implication of this algorithm
+[0:02:27]  was that we could even double the size of the phone book
+[0:02:29]  and, no big deal, one additional page tear,
+[0:02:32]  and we take yet another 1,000 page bite out of the phone book.
+[0:02:34]  So today, we'll revisit some of these ideas, formalize them a bit,
+[0:02:37]  but also translate some of them ultimately to code.
+[0:02:40]  And all of that now is possible because we have this lower level understanding,
+[0:02:44]  perhaps, of what's actually inside of your computer.
+[0:02:46]  This, of course, is your computer's RAM or memory.
+[0:02:49]  And recall that if we kind of start to abstract this away,
+[0:02:51]  your computer's memory is really just a grid of bytes.
+[0:02:54]  In fact, we don't have to look at the hardware anymore.
+[0:02:56]  And we looked at a grid of bytes like this,
+[0:02:58]  whereby each of these bytes could be used to store a char, an int, a long,
+[0:03:04]  or even an entire string at that.
+[0:03:06]  But let's focus, perhaps, just on a subset of this
+[0:03:09]  because last week, of course, we emphasized really arrays,
+[0:03:12]  storing things in arrays.
+[0:03:13]  And that allowed us to start storing entire strings,
+[0:03:16]  sequence of characters, and even arrays of integers
+[0:03:19]  if we wanted to have multiple ones and not just multiple variables as well.
+[0:03:23]  But the catch is that if you look inside of an array in the computer's memory,
+[0:03:27]  and for instance, suppose these integers here are stored,
+[0:03:30]  it's pretty easy for us humans to glance at this
+[0:03:32]  and immediately find the number 50.
+[0:03:34]  You sort of have this bird's eye view from where
+[0:03:36]  you're seated of everything on the screen.
+[0:03:38]  And so it's pretty obvious how you get to the number 50.
+[0:03:41]  But in the world of computers, of course,
+[0:03:43]  it turns out that this is hardware.
+[0:03:45]  And computers, for today's purposes, can only do one thing at a time.
+[0:03:49]  They can't just take it all in and find instantly some number like 50.
+[0:03:53]  So perhaps a decent metaphor is to consider the array of memory
+[0:03:57]  inside of your computer really as a sequence of closed doors.
+[0:04:01]  And if the computer wants to find some value in an array,
+[0:04:04]  it has to do the digital equivalent of opening each of these doors
+[0:04:08]  one at a time.
+[0:04:09]  Now, how can code do that?
+[0:04:11]  Well, of course, we introduced indices, or indexes,
+[0:04:13]  last week whereby we, by convention, call the first element of an array,
+[0:04:17]  location 0, the second location 1, the third location 2, and so forth,
+[0:04:22]  so-called zero indexed.
+[0:04:24]  And this allowed us to now bridge this conceptual world
+[0:04:26]  of what's going on in memory with actual code.
+[0:04:28]  Because now we had this square bracket syntax
+[0:04:31]  via which we could go searching for something if we so choose.
+[0:04:34]  And it turns out if I now paint these red instead of yellow,
+[0:04:38]  it would seem that we actually have a pretty good physical metaphor here
+[0:04:42]  standing in place for what would be a computer's array of memory
+[0:04:46]  if, for instance, you're storing some seven numbers like that.
+[0:04:49]  And so today we begin with a look of a specific type of algorithm.
+[0:04:52]  That is for searching.
+[0:04:53]  Like, searching is all over the place.
+[0:04:55]  All of us have probably gone to google.com or some equivalent
+[0:04:58]  like already multiple times per day.
+[0:05:00]  And getting back answers fast is what companies like Google
+[0:05:03]  are really good at.
+[0:05:04]  So how are they doing that?
+[0:05:05]  How are they storing information in computers' memory?
+[0:05:08]  Well, let's consider what this really is.
+[0:05:10]  It's really just a problem, as it was back in week 0.
+[0:05:13]  The input, though, to the problem for now might be this array of seven lockers.
+[0:05:17]  So that's the input to the problem, inside of which is a number.
+[0:05:20]  And maybe for simplicity now, we just want a yes, no, a true, false answer,
+[0:05:24]  a bool, that is to say, of whether or not
+[0:05:26]  some number like 50 is in that array.
+[0:05:30]  It's not quite as fancy as Google that doesn't just tell you, yes, we
+[0:05:33]  have search results.
+[0:05:34]  It actually gives you the search results.
+[0:05:36]  But for now, we'll keep it simple.
+[0:05:37]  And just output as part of this problem, yes or no, true or false,
+[0:05:41]  we have found the number we're looking for, given an input like that array.
+[0:05:45]  But it turns out, inside of this black box that we keep coming back to,
+[0:05:48]  there's all sorts of possible algorithms.
+[0:05:51]  And we talked about this at a high level,
+[0:05:52]  conceptually, in week 0 with the phone book.
+[0:05:54]  But today, let's consider it a little more concretely by way of a game
+[0:05:58]  that some of you might have grown up with, namely, Monopoly.
+[0:06:01]  And so behind these doors, it turns out we'll
+[0:06:03]  be hidden some denominations of Monopoly money.
+[0:06:05]  But for this, we now have two volunteers, if you'd like to greet the world.
+[0:06:09]  Hi, I'm Jackson.
+[0:06:14]  Hi, my name is Stephanie.
+[0:06:15]  And do you want to say a little something about yourselves, your house,
+[0:06:19]  dorm?
+[0:06:19]  I'm a first year, living in Matthews.
+[0:06:22]  Nice.
+[0:06:22]  And I'm a first year in Canada.
+[0:06:24]  Nice.
+[0:06:25]  Well, welcome to our two volunteers.
+[0:06:27]  So why don't we do this?
+[0:06:29]  Would one of you like to volunteer the other to go first?
+[0:06:34]  OK.
+[0:06:35]  All right, so Stephanie's up first.
+[0:06:37]  And behind one of these doors here, we've hidden the Monopoly money 50.
+[0:06:41]  And so we'd like you to find the 50.
+[0:06:43]  We'll tell you nothing more about the lockers.
+[0:06:45]  But we would like you to execute a certain algorithm.
+[0:06:47]  And in fact, I'm going to give you some pseudocode for this.
+[0:06:50]  And I'm going to give you the name for it.
+[0:06:51]  It's called linear search.
+[0:06:52]  And as the name implies, you're pretty much
+[0:06:55]  going to end up walking in sort of a straight line.
+[0:06:56]  But how are you going to do this?
+[0:06:58]  Well, let me propose that in a moment, your first step
+[0:07:00]  will be to think kind of like a loop for each door from left to right.
+[0:07:04]  What do we want you to do on each iteration?
+[0:07:06]  Well, if 50 is behind that door, then we want to go ahead
+[0:07:10]  and have you return true and sort of hold up the 50 proudly,
+[0:07:13]  if you will, for the group.
+[0:07:14]  Otherwise, if you get through that whole loop
+[0:07:17]  and you haven't found the number 50, you can just throw up your hands
+[0:07:20]  and disappointment, false.
+[0:07:22]  You've not found the number 50.
+[0:07:24]  So to be clear, step one is going to be for each door from left to right,
+[0:07:29]  how would you like to begin?
+[0:07:35]  Oh, and then, yep, there we go, yep.
+[0:07:39]  And if you'd like to at least tell, oh, good, good acting here.
+[0:07:43]  What have you found instead?
+[0:07:45]  It's not 50, but 20.
+[0:07:46]  Oh, OK.
+[0:07:47]  So step one was a fail.
+[0:07:49]  So let's move on to step two.
+[0:07:50]  Inside of this loop, what are you going to do next?
+[0:07:53]  I'm going to move to the next door.
+[0:07:55]  OK.
+[0:07:59]  Almost.
+[0:08:00]  OK, almost, sort of.
+[0:08:02]  A 500 instead.
+[0:08:04]  Next locker.
+[0:08:05]  I would rather take, no.
+[0:08:12]  OK, we're not telling the audience.
+[0:08:16]  Oh, OK.
+[0:08:17]  So keep going.
+[0:08:18]  This is step three now.
+[0:08:28]  Five, OK.
+[0:08:30]  A few more lockers to check.
+[0:08:37]  Bad guys.
+[0:08:42]  All right, second to last step.
+[0:08:46]  This one, kind of close.
+[0:08:49]  All right.
+[0:08:50]  And finally, the last step.
+[0:08:51]  Clearly, you've been perhaps set up here.
+[0:08:54]  Let's go.
+[0:08:56]  All right.
+[0:08:57]  So the number 50.
+[0:09:02]  And Stephanie, if I may, let me ask you a question here.
+[0:09:04]  So on the screen, this is the pseudocode you just executed.
+[0:09:08]  Suppose, though, I had done what many of us
+[0:09:10]  have gotten to the habit of doing when you have a if condition.
+[0:09:13]  You often have an else branch as well.
+[0:09:15]  Suppose that I had done this now.
+[0:09:17]  And I'm marking it in red to be clear this is wrong.
+[0:09:20]  But what would have been bad about this code using an if and an else,
+[0:09:24]  might you say?
+[0:09:26]  Any instincts?
+[0:09:34]  Then you would end up canceling the code before you found the 50.
+[0:09:39]  Yeah, exactly.
+[0:09:39]  And it would just be eternally sad.
+[0:09:41]  Indeed.
+[0:09:41]  When Stephanie had opened the first locker, she had found 20.
+[0:09:44]  20, of course, is not 50.
+[0:09:45]  She would have decreed false.
+[0:09:46]  But of course, she hadn't checked all of the rest of the locker.
+[0:09:49]  So that would seem to be a key detail that with this implementation
+[0:09:52]  of the pseudocode, we actually do go through as we did and only return false,
+[0:09:56]  not even with an else, but just at the end of the loop,
+[0:10:00]  such that we only reach that line if we don't return truer earlier than that.
+[0:10:04]  Well, let's go ahead and do this.
+[0:10:05]  Let me take the mic from you if you'd like to take a seat next to Jackson.
+[0:10:07]  Jackson, in just a moment, we'll have you come up.
+[0:10:09]  Carter, if you don't mind reorganizing the lockers for us.
+[0:10:13]  But in the meantime, let me point out how we might now
+[0:10:15]  translate that same idea to code.
+[0:10:16]  Pretty high level, pretty English oriented with that pseudocode.
+[0:10:19]  But really, now as of last week, we have syntax via which Stephanie and Soon
+[0:10:24]  Jackson could treat this set of lockers as really indeed an array using
+[0:10:28]  bracket notation.
+[0:10:30]  So we can now get a little closer in our pseudocode to actual code.
+[0:10:33]  And the way a computer scientist, for instance,
+[0:10:35]  would translate fairly high level English pseudocode like this
+[0:10:39]  to something that's a little closer to C or any language that
+[0:10:42]  supports arrays would be a little more cryptically like this.
+[0:10:45]  But you'll see more of this syntax in the coming days.
+[0:10:48]  For i from 0 to n minus 1.
+[0:10:51]  This is still pseudocode, but that's kind of like the English-like way
+[0:10:53]  of expressing what we've come to know as a for loop.
+[0:10:56]  If 50 is behind doors bracket i, so I'm assuming for the sake of discussion
+[0:11:01]  that doors now is the name of my variable, this array of seven doors.
+[0:11:05]  But then the rest of the logic, the rest of the pseudocode
+[0:11:07]  really is the same way.
+[0:11:09]  And so you'll find in time that programmers, computer scientists
+[0:11:12]  more generally, when you start expressing ideas,
+[0:11:14]  algorithms to someone else, instead of maybe operating at this level here,
+[0:11:19]  you now have in your vocabulary really a new syntax
+[0:11:21]  that you can be a little more specific.
+[0:11:23]  Not getting so into the weeds of writing actual C code,
+[0:11:26]  but at least now doing something that's a little closer
+[0:11:29]  to manipulating an array like this.
+[0:11:30]  So Jackson, would you like to stand on up?
+[0:11:34]  All right.
+[0:11:35]  Yes, yes, support for Jackson here too.
+[0:11:37]  Nice.
+[0:11:39]  And here now, I'm going to allow you an assumption that's
+[0:11:42]  Stephanie did not have.
+[0:11:43]  Stephanie clearly was really doing her best searching from left to right
+[0:11:46]  using linear searches, we'll now call it.
+[0:11:49]  But they were pretty much in random order, right?
+[0:11:51]  There was a 20 over there, there was a 1 over there, and then a 50.
+[0:11:54]  So we deliberately jumbled things up and did not sort the numbers for her.
+[0:11:58]  But Carter kindly has just come up to give you a leg up, Jackson,
+[0:12:01]  by sorting the numbers in advance.
+[0:12:03]  And we'd like you this time, much like in week 0,
+[0:12:06]  to do something again and again, but this time using
+[0:12:09]  what we'll now call binary search.
+[0:12:11]  It's exactly the same algorithm conceptually as we did in week 0,
+[0:12:14]  but if we translate it to the context of this array,
+[0:12:17]  we now might say something like this.
+[0:12:19]  The first step for Jackson might be to ask the question,
+[0:12:21]  if 50 is behind the middle door, where presumably he's
+[0:12:25]  done some mental math to figure out what the middle is,
+[0:12:27]  then he's going to just return true.
+[0:12:29]  And hopefully we'll get lucky and 50 will be right there.
+[0:12:32]  Of course, there's two other possibilities at least, which would be what?
+[0:12:37]  50 is with respect to these doors?
+[0:12:40]  Yeah, so to the left or to the right, alternatively.
+[0:12:42]  So if 50 is less than the middle door, then presumably Jackson's
+[0:12:47]  going to want to go left.
+[0:12:48]  Else, if 50 is greater than the middle door, he's going to want to go right.
+[0:12:51]  Much like I did physically last week with the phone book,
+[0:12:55]  dividing and conquering left to right.
+[0:12:56]  But there's actually a fourth case.
+[0:12:58]  Let's put it on the board first.
+[0:13:00]  What else might happen here that Jackson should consider?
+[0:13:04]  Yeah, it's not there.
+[0:13:07]  So let me actually go back and amend my pseudocode here
+[0:13:10]  and just say, Jackson, if we don't hand you any doors at all,
+[0:13:13]  or eventually, as he's dividing and conquering,
+[0:13:16]  if he's left with no more doors, we have to handle that situation
+[0:13:19]  so that the behavior is defined.
+[0:13:21]  All right, so with that said, Jackson, do you
+[0:13:23]  want to go ahead and find us the number 50
+[0:13:24]  and walk us through verbally what you're doing and finding?
+[0:13:27]  All right, so it looks like this one is the middle door.
+[0:13:31]  So I'm going to open it, but it's 20, not 50.
+[0:13:35]  Oh, sad.
+[0:13:37]  OK, what's going through your head now?
+[0:13:40]  So now I'm looking, because 50 is higher than 20, I want to look to the right.
+[0:13:45]  Good.
+[0:13:46]  And look for the new middle door, which would be here.
+[0:13:49]  Nice.
+[0:13:50]  And it's 100, sad.
+[0:13:53]  But 50 is less than 100.
+[0:13:55]  So now we know to look left, which would be here.
+[0:13:59]  Ta-da.
+[0:14:00]  Nice.
+[0:14:00]  Very well done this time around, too.
+[0:14:04]  So thank you first to our volunteers here.
+[0:14:08]  In fact, since you're a fan of Monopoly, as we're so informed,
+[0:14:11]  we have the Cambridge edition of Monopoly with all your Harvard favorites.
+[0:14:16]  Here you go.
+[0:14:17]  Thank you so much.
+[0:14:18]  Thank you to our volunteers for finding us 50.
+[0:14:21]  So that was more popular than we expected.
+[0:14:25]  So here we can translate this one more time
+[0:14:28]  into something a little closer to code.
+[0:14:31]  And again, still pseudo code, but here now
+[0:14:33]  might be another formulation of exactly what Jackson just did just
+[0:14:36]  using the nomenclature now of arrays, where
+[0:14:38]  you can be a little more precise with your instructions
+[0:14:40]  and still leave it to someone else to translate this finally to code.
+[0:14:43]  But here we have same question at the beginning.
+[0:14:45]  If no doors left, return false.
+[0:14:47]  If 50 is behind doors, bracket, middle.
+[0:14:50]  So I'm assuming here, because this is pseudo code,
+[0:14:52]  that somewhere I've done the mental math or the actual math
+[0:14:55]  to figure out what the index of middle is.
+[0:14:58]  For instance, if these are seven doors in an array,
+[0:15:01]  this would be location 0, 1, 2, 3, 4, 5, 6.
+[0:15:06]  So somehow, I've taken the total number of doors, 7, divided by 2
+[0:15:11]  to find the middle.
+[0:15:12]  That's 3 and 1 half.
+[0:15:13]  We have to deal with rounding.
+[0:15:14]  But suffice it to say, there's a well-defined formula
+[0:15:17]  for finding the middle index, given the total number of lockers,
+[0:15:20]  divide by 2, and then round accordingly.
+[0:15:22]  So that's presumably what Jackson did just by counting or in his head
+[0:15:25]  to find us door number 3, not the third door, the fourth door,
+[0:15:29]  but door bracket 3.
+[0:15:31]  So this is just saying if 50 is behind doors, bracket, middle, return true.
+[0:15:35]  That was not the case.
+[0:15:36]  He found a $20 bill instead.
+[0:15:37]  Else, if 50 is less than the doors, bracket, middle, go ahead.
+[0:15:42]  And now it gets interesting.
+[0:15:44]  Search doors 0 through doors, middle, minus 1.
+[0:15:49]  So it's getting a little more into the weeds now.
+[0:15:51]  But if middle is 3, this one here, well, we want to now have Jackson search
+[0:15:56]  if 50 had been, if the number had been less,
+[0:15:59]  we want to start at bracket 0 and go up through this one.
+[0:16:03]  When we deliberately subtract 1, because what's
+[0:16:05]  the point of looking in the same locker again,
+[0:16:07]  we might as well do 0 through middle, minus 1.
+[0:16:10]  Else, if 50 is greater than doors, bracket, middle, which it was,
+[0:16:14]  what did we then do?
+[0:16:16]  Jackson intuitively searched for doors, middle, plus 1 through doors,
+[0:16:21]  and minus 1.
+[0:16:22]  And honestly, it gets a little annoying having the pluses and the minuses here.
+[0:16:25]  But just think of what it means.
+[0:16:26]  This is the middle door.
+[0:16:28]  And Jackson then did proceed to search through doors, middle, plus 1,
+[0:16:33]  because there's no point in searching this one again.
+[0:16:35]  And then the last element in any array of size n,
+[0:16:39]  where n is just our go-to number for the size,
+[0:16:42]  is always going to be n minus 1.
+[0:16:44]  It's not going to be n.
+[0:16:45]  It's going to be n minus 1, because we always start counting at rays at 0.
+[0:16:49]  So here, then, we have a translation into pseudocode
+[0:16:52]  that's a little closer to C of this exact same idea.
+[0:16:55]  And here, we come full circle to week 0.
+[0:16:57]  Like in week 0, it was pretty intuitive to imagine dividing and conquering
+[0:17:01]  a problem like this.
+[0:17:02]  But if you now think back to actually your iPhone, your Android phone,
+[0:17:05]  or the like, when you're doing autocomplete and searching the list,
+[0:17:08]  it's possible.
+[0:17:09]  If you don't have many friends or family or colleagues in the phone,
+[0:17:13]  you know what?
+[0:17:13]  Linear search, just checking every name for the person you're searching for,
+[0:17:18]  might be perfectly fine.
+[0:17:19]  But odds are your phone's being smarter than that,
+[0:17:22]  especially if you start to have dozens, hundreds, thousands of people
+[0:17:25]  in your contacts over the years.
+[0:17:26]  What would be better than linear search?
+[0:17:28]  Well, perhaps binary search.
+[0:17:30]  But there's an assumption, a requirement, which is what?
+[0:17:34]  Why was Jackson ultimately able to find the 50 in just like three steps
+[0:17:39]  instead of a full seven, like Stephanie?
+[0:17:43]  Because the array was sorted.
+[0:17:45]  And so this is sort of a teaser for what we'll
+[0:17:47]  have to come back to later today.
+[0:17:48]  Well, how much effort did it take someone like Carter?
+[0:17:51]  How much effort does it take your phone to sort all of those names
+[0:17:54]  and numbers in advance?
+[0:17:56]  Because maybe it's not actually worth the amount of time.
+[0:17:58]  Now someone like Google probably somehow keeps
+[0:18:00]  the database of web pages sorted.
+[0:18:03]  You can imagine it being super slow if when
+[0:18:05]  you type in cats or something else into google.com,
+[0:18:08]  if they searched linearly over their entire data set.
+[0:18:11]  Ideally, they're doing something a little smarter than that.
+[0:18:14]  So we'll formalize now exactly this kind of analysis.
+[0:18:17]  And it's not going to be so much mathy as it still will be intuitive.
+[0:18:21]  But we'll introduce you to some jargon, some terminology
+[0:18:24]  that most any programmer or computer scientist
+[0:18:26]  might use when analyzing their own algorithms.
+[0:18:29]  Let's formalize now what this kind of analysis is.
+[0:18:32]  So right now, I claim binary search better than linear search.
+[0:18:35]  But how much better?
+[0:18:36]  And why exactly?
+[0:18:38]  Well, it all comes back to this kind of graph.
+[0:18:40]  So this, recall, is how we analyzed the phone book back in week zero.
+[0:18:43]  And recall that, indeed, we had these formulas,
+[0:18:46]  rough formulas that describe the running time of those three algorithms,
+[0:18:50]  one page at a time, two pages at a time, and then tearing the thing again
+[0:18:53]  and again in half.
+[0:18:54]  And precisely, if you counted up the number of pages I was touching
+[0:18:58]  or the number of pages I was tearing, it's
+[0:19:00]  fair to say that the first algorithm, in the worst case,
+[0:19:03]  might have taken n total pages.
+[0:19:05]  It didn't, because I was searching for John Harvard at the time,
+[0:19:08]  which is somewhat early in the alphabet.
+[0:19:10]  But if I were searching for someone with the last name of Z,
+[0:19:13]  I would have had to keep going and going, in the worst case,
+[0:19:15]  through all n pages.
+[0:19:17]  Not as bad for the second algorithm.
+[0:19:19]  And that's why we do n divided by 2.
+[0:19:20]  And even that's a bit of a white lie.
+[0:19:22]  It's probably n divided by 2 plus 1, in case I have to double back.
+[0:19:27]  But again, I'm sort of doing this more generally
+[0:19:29]  to capture the essence of these things.
+[0:19:30]  And then we really got into the weeds with log base 2 of n
+[0:19:34]  for that third and final algorithm.
+[0:19:35]  And at the time, we claimed, any time you're dividing something in half,
+[0:19:39]  in half, in half, odds are there's going to be some kind of logarithm involved.
+[0:19:43]  And we'll see that today.
+[0:19:44]  But today, we're going to actually start using computer science terminology.
+[0:19:48]  And we're going to sort of formalize this imprecision, if you will.
+[0:19:52]  We are not going to care, generally, about exactly how many steps
+[0:19:56]  some algorithm takes, because that's not going to be that enlightening,
+[0:19:59]  especially if maybe you have a faster computer tomorrow than you did today.
+[0:20:03]  It wouldn't really be fair to compare numbers too precisely.
+[0:20:06]  We really kind of want to, with a wave of the hand,
+[0:20:08]  just get a sense of roughly how slow or how fast an algorithm is.
+[0:20:12]  So the notation here is deliberate.
+[0:20:14]  That is literally a capital O, often italicized, referred to as big O.
+[0:20:19]  And so the first algorithm is in big O of n.
+[0:20:22]  The second algorithm is in big O of n divided by 2.
+[0:20:26]  The third algorithm is in big O of log base 2 of n.
+[0:20:30]  But even that is kind of unnecessary detail.
+[0:20:33]  When using big O notation, you really don't care about,
+[0:20:37]  we'll see, the smaller order terms.
+[0:20:40]  We're not going to care about the divided by 2.
+[0:20:42]  Because you know what?
+[0:20:43]  The shape of these algorithms is almost the same.
+[0:20:46]  And really, the algorithm itself is sort of fundamentally the same.
+[0:20:50]  OK, instead of one page at a time, I'm doing two.
+[0:20:52]  But if you throw millions of pages, billions of pages at me,
+[0:20:56]  those algorithms are really going to kind of perform the same
+[0:20:58]  as n gets really large, goes off toward infinity.
+[0:21:01]  And the same is true for logarithms.
+[0:21:02]  Even if you're a little rusty, it turns out
+[0:21:04]  that whether you do the math with log base 2, log base 3, log base 10,
+[0:21:08]  you can just multiply one by the other to really get the same formula.
+[0:21:11]  So this is only to say, a computer scientist would generally
+[0:21:14]  say that the first two algorithms are on the order of n steps.
+[0:21:18]  The third algorithm is on the order of log n steps.
+[0:21:21]  And we don't really care precisely what we mean beyond that.
+[0:21:25]  And this big O notation, as we'll see, and actually, let me zoom out.
+[0:21:28]  If you can imagine suddenly making the x-axis much longer, so more pages
+[0:21:33]  on the screen at once, it is indeed going
+[0:21:35]  to be the shapes of these curves that matter.
+[0:21:37]  Because imagine in your mind's eye, as you zoom out, zoom out, zoom out,
+[0:21:41]  zoom out, and as n gets much, much, much bigger on the x-axis,
+[0:21:45]  the red and the yellow line are essentially going to look the same.
+[0:21:48]  Once n is sufficiently large, but the green line
+[0:21:51]  is never going to look the same.
+[0:21:53]  It's going to be a fundamentally different shape.
+[0:21:55]  And so that's the intuition of big O to get a sense of these rates
+[0:22:00]  of performance like this.
+[0:22:02]  So here, then, is big O. Here is perhaps a cheat sheet
+[0:22:05]  of the common formulas that a computer scientist,
+[0:22:07]  certainly in an introductory context, might use when analyzing algorithms.
+[0:22:11]  And let's consider for a moment which of our first two algorithms,
+[0:22:14]  linear search and binary search, fall into these categories.
+[0:22:17]  So I've ordered them from sort of slowest to fastest.
+[0:22:21]  So order of n squared, it's not something we've actually seen yet,
+[0:22:25]  but it tends to be slow because it's quadratic.
+[0:22:27]  You're doing n times n.
+[0:22:28]  That's got to add up to a lot of steps.
+[0:22:30]  Better today is going to be n log n.
+[0:22:32]  Even better is going to be n.
+[0:22:33]  Even better than that is log n.
+[0:22:35]  And best is so-called order of one, like one step or maybe two steps,
+[0:22:40]  maybe even 1,000 steps, but a fixed, finite number of steps
+[0:22:43]  that never changes no matter how big n is.
+[0:22:47]  So given this chart, just to be clear, linear search,
+[0:22:50]  let's consider the worst case.
+[0:22:52]  In the worst case, how many steps did it take someone like Stephanie
+[0:22:57]  to find the solution to the problem, assuming not seven doors but n doors?
+[0:23:02]  Yeah.
+[0:23:04]  So on the order of n.
+[0:23:05]  And in this case, it's exactly n.
+[0:23:07]  But you know what?
+[0:23:08]  You know, maybe it's arguably 2n, right?
+[0:23:10]  Because it took Stephanie a couple of steps.
+[0:23:12]  Like she had to lift the latch.
+[0:23:13]  She had to open the door.
+[0:23:14]  Maybe it's three steps.
+[0:23:15]  She had to show the money.
+[0:23:16]  So now it's 3n, 2n.
+[0:23:18]  But there, we don't really care about that level of precision.
+[0:23:21]  We really just care about the fundamental number of operations.
+[0:23:24]  So we'll say yes on the order of n.
+[0:23:26]  So that might be an upper bound, we'll call this, for linear search.
+[0:23:30]  And how about binary search?
+[0:23:32]  In Jackson's case, or in general, me and week 0,
+[0:23:34]  if there's n doors, how many steps did it take Jackson or me using binary search?
+[0:23:41]  In this case, it was literally three.
+[0:23:43]  But that's not a formula.
+[0:23:46]  Yeah, so it's on the order of log n.
+[0:23:48]  And indeed, if there's seven doors, well, that's almost eight
+[0:23:51]  if you just do a little bit of rounding.
+[0:23:53]  And indeed, if you take log base 2 of 8, OK.
+[0:23:55]  So that does actually give us three.
+[0:23:57]  So the math actually checks out.
+[0:23:58]  And if you're not comfy with logarithms, no big deal.
+[0:24:00]  Just think about it intuitively.
+[0:24:02]  Logarithm of base 2 is just dividing something again and again.
+[0:24:05]  So on this chart, when we consider big O, which to be clear,
+[0:24:10]  allows you to describe the order of an algorithm's running time,
+[0:24:14]  like the magnitude of it, but it also describes more specifically
+[0:24:17]  an upper bound.
+[0:24:19]  So in the worst case, for instance, these
+[0:24:21]  are pretty good measures of how good, or rather,
+[0:24:25]  of how bad linear search and binary search might be.
+[0:24:28]  Why?
+[0:24:28]  Well, suppose you're searching a 1,000 page phone book
+[0:24:31]  and the person's name starts with Z. The algorithm's still
+[0:24:33]  going to be on the order of n steps.
+[0:24:35]  Why?
+[0:24:35]  Because it might take you as many as all n steps to find it.
+[0:24:40]  Now, that's not necessarily going to be the case in practice.
+[0:24:44]  If I use big O as an upper bound, well, it
+[0:24:47]  would be nice if there's sort of a corresponding lower bound,
+[0:24:50]  especially if you want to consider not just worst cases, but maybe best cases.
+[0:24:55]  So what might we use here?
+[0:24:56]  Well, so this is a capital Greek omega symbol.
+[0:24:59]  So omega is the symbol that a computer scientist uses generally
+[0:25:02]  to describe a lower bound on an algorithm,
+[0:25:04]  often in the context of best case, though not necessarily.
+[0:25:07]  So a lower bound means how few steps might an algorithm take.
+[0:25:11]  And here, too, same formulas, and we'll fill in these blanks over time.
+[0:25:15]  Some algorithms might always take a minimum of n squared steps
+[0:25:19]  or on the order of n steps.
+[0:25:20]  Some might only take n log n, or n, or log n, or 1.
+[0:25:24]  So something like linear search.
+[0:25:28]  When Stephanie started with linear search,
+[0:25:30]  she didn't get lucky this time on stage, but what if she had
+[0:25:33]  and the first door she opened were 50?
+[0:25:36]  How might you then describe the lower bound on linear search
+[0:25:41]  in this so-called best case, using this list of possible answers?
+[0:25:47]  Yeah.
+[0:25:48]  Yeah, so omega of 1.
+[0:25:50]  So in the best case, the lower bound on how many steps
+[0:25:53]  it might take linear search to find something might just be one step wide,
+[0:25:58]  because maybe Stephanie had gotten lucky,
+[0:26:00]  and we had pre-filled these lockers with the numbers in some other order,
+[0:26:05]  such that she might have opened the first locker, and voila,
+[0:26:07]  the number 50 could have been there.
+[0:26:08]  So a lower bound arguably could indeed be omega of 1 for linear search.
+[0:26:13]  And how about now for Jackson?
+[0:26:14]  He used binary search, so he dived right into the middle of the problem.
+[0:26:20]  But what would be a lower bound on binary search using this logic?
+[0:26:24]  Yeah.
+[0:26:25]  Yeah, so again, omega of 1.
+[0:26:26]  Why?
+[0:26:27]  Because maybe he just gets lucky.
+[0:26:28]  And indeed, right in the middle of the lockers could have been the number 50.
+[0:26:32]  It wasn't.
+[0:26:33]  And so more germane in Jackson's actual practice
+[0:26:36]  would have been the big O discussion.
+[0:26:39]  But big O and omega, upper bound and lower bound,
+[0:26:42]  just allow a computer scientist to kind of wrestle
+[0:26:44]  with what could happen maybe in the worst case,
+[0:26:46]  what can happen in the best case.
+[0:26:47]  And you can even get even more precise, like the average case or the like.
+[0:26:51]  And this is indeed what engineers might do at a whiteboard in a company
+[0:26:54]  in a university when designing an algorithm
+[0:26:56]  and trying to make arguments as to why their algorithm is better
+[0:26:59]  than someone else's by way of these kinds of analyses.
+[0:27:03]  And just so you've seen it, it turns out that if some algorithm happens
+[0:27:08]  to have an identical upper bound and lower bound,
+[0:27:12]  you can actually use a capital Greek theta as well.
+[0:27:14]  And this is the last of the Greek symbols today.
+[0:27:17]  But a Greek theta indicates a coincidence of both upper bound and lower bound.
+[0:27:22]  That is, they are one and the same.
+[0:27:23]  That was not the case for our discussion a second ago of linear search.
+[0:27:26]  Not the case for binary search.
+[0:27:28]  But you could use the same kinds of formulas
+[0:27:31]  if it turns out that your upper bound and lower bound are the same.
+[0:27:35]  So for instance, if I were to count everyone,
+[0:27:37]  like literally in this room, 1, 2, 3, 4, 5, 6, and so forth,
+[0:27:42]  you could actually say that counting in that way is in theta of n, right?
+[0:27:47]  Because in the best case, it's going to take me n points at the people
+[0:27:51]  in the audience.
+[0:27:52]  In the worst case, it's going to take me n.
+[0:27:54]  It's always going to take me n steps.
+[0:27:55]  If I want to count everyone in the room, you
+[0:27:57]  can't really do better than that unless you skip people.
+[0:27:59]  So that would be an example off the cuff of something
+[0:28:02]  where theta is instead germane.
+[0:28:05]  Are any questions now on big O, on omega, or theta,
+[0:28:10]  which are now just more formal tools in the toolkit for talking
+[0:28:13]  about the design of our algorithms?
+[0:28:17]  Any questions?
+[0:28:21]  Oh, seeing none.
+[0:28:23]  Oh, is this yes?
+[0:28:24]  No?
+[0:28:25]  OK.
+[0:28:26]  So we're good.
+[0:28:27]  So let's go ahead and translate this, perhaps, to some actual code.
+[0:28:30]  Let me go over to VS Code here.
+[0:28:32]  And let's see if we can't now translate some of these ideas
+[0:28:36]  to some actual code, not so much using new syntax yet.
+[0:28:39]  We're going to still operate in this world of arrays like last week.
+[0:28:42]  So let me go ahead and create a program called search.c by executing
+[0:28:46]  code space search.c in my terminal.
+[0:28:48]  And then up here, let's go ahead and include our usuals.
+[0:28:50]  So include cs50.h so I can get some input,
+[0:28:53]  include standard io.h so I can print some output.
+[0:28:57]  We'll do int main void, the meaning of which
+[0:29:00]  we did start to tease apart last week.
+[0:29:02]  The fact that it's void again today just means no command line arguments.
+[0:29:05]  And let me go ahead and do this.
+[0:29:07]  Let me go ahead and declare, just for discussion's sake, a static array,
+[0:29:12]  like an array that never changes.
+[0:29:13]  And the syntax for this is going to be give me an array called numbers using
+[0:29:18]  the square bracket notation.
+[0:29:20]  And I'm going to immediately initialize it to 20, 500, 10, 5, 100, 1, and 50,
+[0:29:26]  reminiscent of those same denominations as before.
+[0:29:29]  So this is a slightly new syntax that we've perhaps not seen.
+[0:29:33]  And the curly braces here, which are different from for loops and while
+[0:29:36]  loops and functions, just tell the compiler,
+[0:29:39]  please give me an array of whatever size
+[0:29:41]  this is containing those numbers left to right.
+[0:29:44]  I could alternatively use last week's syntax of saying something like this.
+[0:29:49]  Let's see, 1, 2, 3, 4, 5, 6, 7 denominations.
+[0:29:52]  I could alternatively do this.
+[0:29:54]  And then I could say numbers bracket 0 equals 20.
+[0:30:01]  Numbers bracket 1 equals 500.
+[0:30:04]  And I could do this five more times.
+[0:30:06]  That's just a little tedious.
+[0:30:07]  If you know the numbers in advance, you don't
+[0:30:09]  have to tell the compiler how many there are.
+[0:30:11]  You can just let it figure it out that your numbers will be 20, 500, 10, 5,
+[0:30:16]  100, 1, and 50.
+[0:30:18]  So this is how you statically define an array.
+[0:30:21]  All right, let me just go ahead and ask the user now for a number.
+[0:30:24]  We'll call it n by using get int and prompting them for a number.
+[0:30:27]  So nothing new there.
+[0:30:29]  And now let me go ahead and implement linear search.
+[0:30:32]  And the pseudocode we had for this before used some array-like notation.
+[0:30:36]  Let me go ahead then and start similarly.
+[0:30:38]  For int i, and you almost always start counting it i by convention.
+[0:30:43]  So that's perhaps a good starting point.
+[0:30:45]  I'm going to do this so long as i is less than 7.
+[0:30:48]  Not the best design to hard code the 7, but this
+[0:30:50]  is just for demonstration's sake for now,
+[0:30:52]  because I know how many numbers I put in there.
+[0:30:54]  And then I'm going to do i++.
+[0:30:55]  So now I have the beginnings of a loop that will just
+[0:30:58]  allow me to iterate over the entire array.
+[0:31:00]  And let me ask this.
+[0:31:01]  If the current number at location i equals
+[0:31:06]  equals n, which is the number the human typed in,
+[0:31:09]  then let's go ahead and do something simple,
+[0:31:11]  like printf quote unquote found, backslash n.
+[0:31:15]  And then per our discussion last week to indicate that this is successful,
+[0:31:19]  I'm going to return 0 if I found it.
+[0:31:21]  And if I don't find it, I'm just going to go down here and by default say,
+[0:31:25]  not found, backslash n.
+[0:31:27]  And just for convention, whoops, just for good measure, per convention,
+[0:31:31]  I'll return 1, or really any value other than 0.
+[0:31:34]  0 recall means success.
+[0:31:36]  And any other integer tends to mean error of some sort,
+[0:31:39]  irrespective of the number I'm looking for.
+[0:31:41]  So just to revisit, the only thing that's new here
+[0:31:44]  is the syntax for creating an array of seven numbers, these numbers.
+[0:31:48]  And then after that, we have really highlighted here
+[0:31:52]  an implementation of linear search.
+[0:31:55]  I mean, this is the C version.
+[0:31:56]  I dare say what Stephanie did on the board,
+[0:31:58]  whereas now the array is called numbers instead of doors.
+[0:32:01]  But I think it's pretty much the same.
+[0:32:04]  Let me go ahead and open my terminal window and run make search.
+[0:32:09]  Seems to compile OK, dot slash search.
+[0:32:11]  And let's go ahead and search for a number.
+[0:32:13]  We'll start with what we did before, 50.
+[0:32:15]  And it's found.
+[0:32:16]  Let's go ahead and run it again, dot slash search.
+[0:32:18]  Let's search for maybe 20 at the beginning.
+[0:32:21]  That one, too, is found.
+[0:32:22]  Let's run it one more time, searching for like 1,000,
+[0:32:26]  which is not among the denominations.
+[0:32:29]  And that one, indeed, is not found.
+[0:32:31]  So we've taken an idea from week 0, now formalized in week 3,
+[0:32:35]  and just translated it now to code.
+[0:32:38]  Questions on this implementation of linear search.
+[0:32:44]  Linear search.
+[0:32:46]  Nothing.
+[0:32:48]  So successful so far today.
+[0:32:50]  OK, so let's see if we can't maybe make this a little more interesting
+[0:32:54]  and see if we can't trip over a detail that's going to be important in C.
+[0:32:58]  Instead of doing numbers, let me go ahead and do this.
+[0:33:02]  We'll stay on theme with Monopoly.
+[0:33:03]  And I went down the rabbit hole of reading the Wikipedia article on Monopoly
+[0:33:06]  and the original pieces or tokens that came with Monopoly.
+[0:33:10]  And it turns out we can represent those with strings.
+[0:33:12]  So I'm going to create an array called strings, plural,
+[0:33:15]  of whatever size I defined here.
+[0:33:18]  And the very first Monopoly pieces back in the day
+[0:33:21]  were a battleship that you could play with, a boot, a cannon, an iron,
+[0:33:28]  a thimble, and a top hat, some of which you might know from the game nowadays.
+[0:33:33]  Turns out they've been changing these, had no idea, over the years.
+[0:33:36]  So here is now an array of strings.
+[0:33:39]  Let me go ahead and prompt the user now, not for an integer anymore.
+[0:33:42]  I want to now search for one of these strings, still using linear search.
+[0:33:46]  So let me create a string s, set it equal to get string,
+[0:33:50]  prompt the user for a string to search for.
+[0:33:53]  And then I think my code here is almost the same, except for one detail.
+[0:33:58]  I now have an array called strings.
+[0:34:00]  I now have a variable called s.
+[0:34:03]  But it turns out, for reasons we'll explore in more detail next week,
+[0:34:06]  this line of code is not going to work.
+[0:34:10]  And it turns out the reason has to do with what
+[0:34:13]  we discussed last week of what a string really is.
+[0:34:15]  And what is a string again?
+[0:34:18]  A string is an array.
+[0:34:20]  And it turns out, though, that equals equals is not
+[0:34:23]  going to generously compare all of the characters in an array for you,
+[0:34:28]  just because you use equal equals.
+[0:34:30]  It turns out it's not going to compare every letter.
+[0:34:33]  And so thankfully, there is in the string library
+[0:34:39]  that we introduced last week a solution to this problem.
+[0:34:42]  The reason for the problem we'll explore in more detail next week.
+[0:34:44]  But for now, just know that when you want to compare strings in C,
+[0:34:48]  especially if you've come into the class knowing
+[0:34:50]  a bit of Java or Python or some other language, you cannot use equals equals.
+[0:34:54]  Even though you could in Scratch, you cannot in C.
+[0:34:57]  So what I have to actually do here is this.
+[0:35:00]  I have to ask the question, does the return value
+[0:35:03]  of a function called strCompare or strComp equal 0
+[0:35:09]  when passed in the current string and that user input?
+[0:35:15]  So if you read the documentation for this function called strCompare,
+[0:35:18]  you'll see that it takes two strings as input, first one and second one.
+[0:35:23]  It then, someone decades ago wrote the code that probably uses a for loop
+[0:35:27]  or a while loop to compare every character in each of those strings.
+[0:35:31]  And it turns out it returns 0 if they are, in fact, equal.
+[0:35:35]  Turns out, too, it will return a positive number or a negative number
+[0:35:39]  in other situations.
+[0:35:41]  Any intuition for why it might actually be
+[0:35:43]  useful to have a function that allows you to check if two strings are equal?
+[0:35:49]  If they're not equal, what else might be interesting to know
+[0:35:52]  when comparing two strings?
+[0:35:57]  If certain values are?
+[0:36:02]  OK, possibly.
+[0:36:03]  Maybe you want to know just how similar they are.
+[0:36:05]  And that's indeed an algorithm unto itself.
+[0:36:07]  But strCompare is a little simpler than that.
+[0:36:14]  Exactly.
+[0:36:15]  If you're trying to alphabetize a whole list of strings,
+[0:36:18]  just like your phone probably is for your contacts or address book,
+[0:36:20]  it turns out that strCompare will actually
+[0:36:23]  return a positive number or a negative number or a 0
+[0:36:27]  based on whether maybe it comes alphabetically first or later
+[0:36:31]  or are, in fact, equal.
+[0:36:32]  So that can be a useful thing.
+[0:36:34]  And that's just a teaser for a lower level explanation
+[0:36:36]  that we'll see next week.
+[0:36:37]  So now let me cross my fingers and see if I got this right.
+[0:36:40]  Let me go ahead and do make search.
+[0:36:44]  Did compile, OK, albeit slowly, dot slash search.
+[0:36:48]  And let's search for something like the thimble.
+[0:36:51]  And we see that that's indeed found.
+[0:36:52]  Otherwise, let's search for something that I
+[0:36:54]  know isn't there, like a race car, which was there when I grew up.
+[0:36:58]  But, huh, segmentation fault, core dumped.
+[0:37:02]  And actually, some of you have tripped over this error before.
+[0:37:04]  Anyone want to admit seeing this?
+[0:37:06]  So yeah, not something we've talked about.
+[0:37:08]  And honestly, not something I intended just now.
+[0:37:11]  But that, too, we'll see next week.
+[0:37:13]  Any intuition for why my program just broke?
+[0:37:18]  I didn't really change the logic.
+[0:37:20]  It's still linear search.
+[0:37:22]  Let me hide the terminal so you can see all of the code at once.
+[0:37:25]  The only thing I did was switched from integers to strings.
+[0:37:28]  And I switched to strCompare here.
+[0:37:31]  But segmentation fault happened.
+[0:37:33]  And the teaser is that that somehow relates to the computer's memory.
+[0:37:35]  Yeah.
+[0:37:40]  Yeah, and this is subtle, but spot on.
+[0:37:42]  So one, two, three, four, five, six elements total in this array
+[0:37:46]  versus the seven numbers of monopoly denominations that we had earlier.
+[0:37:51]  And this is where, see, sort of case in point, this came back to bite me.
+[0:37:54]  The fact that I hardcoded this value as opposed to maybe separating it out
+[0:37:58]  as a constant or declaring it higher up kind of
+[0:38:01]  bit me here because now I'm iterating over an array of size 6.
+[0:38:05]  But clearly, I'm going one step too far because I'm literally
+[0:38:08]  going to iterate seven times, not six.
+[0:38:11]  So it's as though I'm looking at memory that's over here.
+[0:38:14]  And indeed, next week we'll focus on memory.
+[0:38:16]  And that's just a bad thing.
+[0:38:17]  So odds are, not even seeing your code from this past week,
+[0:38:20]  if any of you have had segmentation faults, odds
+[0:38:23]  are you touched memory that you shouldn't have.
+[0:38:26]  You maybe looped too many times.
+[0:38:28]  You might have used a negative number to get into your array.
+[0:38:31]  In general, you touched memory that you shouldn't have.
+[0:38:34]  And you touched a segment of memory that you shouldn't have.
+[0:38:36]  The fix, though, at least in my case, is simple.
+[0:38:39]  Just don't do that.
+[0:38:40]  So let me go ahead and recompile this.
+[0:38:42]  Make search dot slash search.
+[0:38:45]  And I'll search again for race car.
+[0:38:48]  Enter.
+[0:38:49]  And now it does not crash, but it does tell me it's not found.
+[0:38:52]  So subtle, but something you might yourself have tripped over already.
+[0:38:55]  Questions, then, on what I just did, intentionally or otherwise?
+[0:39:02]  Yeah, in front.
+[0:39:12]  A really good question.
+[0:39:13]  So the program will still work even if I don't return 0 or return 1.
+[0:39:17]  In fact, let me go ahead and do that and just hide my terminal window
+[0:39:22]  for a second.
+[0:39:22]  Let's get rid of the return here.
+[0:39:25]  Let's get rid of the return here.
+[0:39:27]  However, watch what happens here.
+[0:39:29]  Let me go ahead and recompile this.
+[0:39:31]  Make search.
+[0:39:32]  Let me scroll up in my code here.
+[0:39:34]  Let me go ahead and do dot slash search.
+[0:39:36]  And let me go ahead and search for the first thing in the list, battleship.
+[0:39:39]  So I know that this should be found.
+[0:39:41]  I hit Enter.
+[0:39:43]  Huh, interesting.
+[0:39:44]  So it's saying found, not found.
+[0:39:46]  But do you see why logically in this case?
+[0:39:51]  Exactly.
+[0:39:52]  So the loop is still running.
+[0:39:54]  So there's a couple of solutions to this.
+[0:39:55]  I could, for instance, somehow break out of the code here.
+[0:40:00]  But that's going to still result in line 18 executing.
+[0:40:03]  I could then instead just return here.
+[0:40:05]  I don't strictly need to return 1 down at the bottom.
+[0:40:08]  But I made this claim last week that it tends
+[0:40:10]  to be helpful as your programs get more sophisticated to at least signify,
+[0:40:14]  just like a real world programmer, error codes when something goes wrong.
+[0:40:18]  So returning 0 in main is the easiest way to signify.
+[0:40:21]  My code is done.
+[0:40:23]  I'm ready to exit successfully.
+[0:40:24]  That's it.
+[0:40:25]  But down here, I could absolutely still return 0 because it's not a huge deal.
+[0:40:29]  It's not really an error that deserves annoying the user with some kind
+[0:40:32]  of pop-up that something went wrong.
+[0:40:34]  But return 1 is just a lower level way of signaling.
+[0:40:37]  It didn't really find what I was looking for.
+[0:40:39]  And remember from last week, you can see this as follows.
+[0:40:42]  If I recompile this again, now that I've reverted those changes,
+[0:40:45]  so make search.
+[0:40:47]  And if I do dot slash search and search for battleship, which is indeed found,
+[0:40:53]  recall I can execute this magical command echo dollar sign question mark,
+[0:40:57]  which you're not going to often execute.
+[0:40:58]  But it shows you what main returned.
+[0:41:01]  If I run search again and search for race car, which is not found,
+[0:41:06]  I see not found, but I can also run this command again
+[0:41:09]  and see that, oh, it returned 1.
+[0:41:11]  So now if you fast forward a few months, a few years,
+[0:41:13]  when you're actually writing code in a company or for larger projects,
+[0:41:16]  you might want to be automating software.
+[0:41:19]  You might not want the human to necessarily be running it manually.
+[0:41:22]  You might want code to be automated by some nightly process
+[0:41:26]  or something like that.
+[0:41:27]  Using these exit codes, can a program determine yes or no
+[0:41:32]  that other code succeeded or failed?
+[0:41:34]  Other questions on linear search in this way?
+[0:41:40]  No?
+[0:41:41]  All right, well, let's translate this to one other feature of C
+[0:41:46]  here by incorporating these two ideas now into one other program.
+[0:41:50]  So I'm going to create a phone book in C by doing code space phonebook.c.
+[0:41:55]  And let's combine some of these ideas and implement
+[0:41:57]  this notion of searching a phone book for an actual name
+[0:42:00]  and getting back a number.
+[0:42:01]  So I'm going to go ahead and quickly include some of the same things,
+[0:42:05]  cs50.h so we can get input, standard io.h so we can print output.
+[0:42:09]  And I'm going to preemptively include string.h in case
+[0:42:12]  we need that one as well.
+[0:42:14]  Int main void, no need for command line arguments today.
+[0:42:18]  And let me give myself now an array of names for this phone book.
+[0:42:21]  So string, names, equals, and then in curly braces,
+[0:42:25]  how about Carter will be one person in the phone book
+[0:42:27]  and David, myself, will be the other.
+[0:42:29]  So we'll keep it short so we don't have to type too many names.
+[0:42:32]  But this is a phone book with two people thus far.
+[0:42:34]  Suppose now we want to also store Carter's phone number in mind.
+[0:42:38]  So it's not just saying found or not found.
+[0:42:40]  It's literally looking up our phone numbers like a proper phone book.
+[0:42:44]  Well, at the moment, there's really no way to do this.
+[0:42:48]  I could do something hackish like I could put a number like 617-495-1000
+[0:42:54]  after Carter.
+[0:42:55]  I could maybe do something like 949-468-2750 after me.
+[0:43:01]  But now you're kind of doing the whole apples and oranges thing, right?
+[0:43:04]  Like now it's not strings.
+[0:43:05]  It's a string int, string int.
+[0:43:07]  All right, so maybe I could just make all of these strings.
+[0:43:10]  But now it's just a conceptual mixing of apples and oranges.
+[0:43:13]  Like, yes, that's an array of four strings.
+[0:43:15]  But now you're on the honor system to know
+[0:43:17]  that the first string is a name, the second string is a number,
+[0:43:19]  the third string is a name.
+[0:43:21]  You can do it, but it's a bit of a hack, so to speak.
+[0:43:24]  So what might be cleaner than this?
+[0:43:26]  Instead of combining our phone numbers into the same array as our names,
+[0:43:29]  what else might we do that's perhaps a little better?
+[0:43:34]  Say a little louder?
+[0:43:37]  A 2D array, possibly something we could do.
+[0:43:40]  I'm going to keep it even simpler now because we
+[0:43:42]  haven't used those by name, even though that is, we saw last week,
+[0:43:45]  technically what argv is.
+[0:43:46]  What else could I do if I want to store names and numbers?
+[0:43:49]  Yeah?
+[0:43:51]  Yeah, let me go with this suggestion.
+[0:43:52]  It's a little simpler.
+[0:43:53]  Rather than complicate things in literally different dimensions,
+[0:43:56]  let me go ahead and do string.
+[0:43:58]  Well, I could do int numbers.
+[0:44:00]  But you know what?
+[0:44:01]  So that we can support punctuation like dashes, or even parentheses,
+[0:44:06]  or country codes, I'm going to do this instead.
+[0:44:08]  I'm going to do string numbers so that I can represent Carter's number
+[0:44:12]  as quote unquote plus 1 for the US, 617-495-1000, complete with hyphens,
+[0:44:17]  as is US convention.
+[0:44:19]  And then for mine, I'll go ahead and do plus 1, 949, how about 4682750?
+[0:44:26]  And now down below, let's actually enable the user to search this phonebook.
+[0:44:30]  Just like in week 0, we did.
+[0:44:32]  String name equals get string.
+[0:44:34]  And let's ask the user for a name, presumably David or Carter or someone
+[0:44:38]  else.
+[0:44:38]  And now let's re-implement linear search.
+[0:44:40]  So for int i gets 0, i is less than 2.
+[0:44:44]  And do as I say, not as I do.
+[0:44:46]  I think we should beware this hard coding.
+[0:44:48]  But we'll keep it simple for now.
+[0:44:51]  i plus plus.
+[0:44:52]  And then in this for loop, I think we have all of the ingredients
+[0:44:55]  to solve this.
+[0:44:56]  So if the return value of str compare of all of the names, bracket i,
+[0:45:03]  comparing against the name that the human typed in, if all of that
+[0:45:07]  equals equals 0, that is, all of the characters in those two strings
+[0:45:11]  are equal, then I think we can go ahead and say found, just like last time.
+[0:45:15]  But you know what, let's actually print Carter's or my phone number.
+[0:45:18]  So found percent s.
+[0:45:20]  And we'll plug in numbers, bracket i.
+[0:45:23]  And then just for consistency, I'll return 0 here.
+[0:45:26]  And down here, how about I'll say something like printf not found,
+[0:45:31]  just to be clear.
+[0:45:32]  And then I'll return 1 as well.
+[0:45:35]  So just to recap, here's all of the code.
+[0:45:37]  It's almost the same as before, except now it's useful.
+[0:45:40]  I'm not just saying found or not found.
+[0:45:42]  I found a number in Monopoly.
+[0:45:43]  Or I found a piece in Monopoly.
+[0:45:46]  I'm looking up in one array one of the strings.
+[0:45:48]  And then I'm printing from the other array the answer.
+[0:45:51]  So let me go ahead here and run the compiler.
+[0:45:56]  Make phonebook.
+[0:45:57]  Enter.
+[0:45:58]  OK, that's promising.
+[0:45:59]  No errors.
+[0:45:59]  Dot slash phonebook now.
+[0:46:01]  And let's search for, for instance, Carter.
+[0:46:04]  Enter.
+[0:46:05]  All right, so we found Carter's number.
+[0:46:06]  All right, let me do that again.
+[0:46:07]  Phonebook.
+[0:46:08]  Let's search for David.
+[0:46:09]  All right, we seem to have found David's number.
+[0:46:11]  All right, let's do it one last time.
+[0:46:13]  Phonebook.
+[0:46:13]  Enter.
+[0:46:14]  And now we'll search for John Harvard.
+[0:46:16]  Enter.
+[0:46:17]  Not found.
+[0:46:19]  All right, so I dare say, albeit with minimal testing, this code is correct.
+[0:46:24]  Would anyone now like to critique the design?
+[0:46:27]  Does something rub you the wrong way, perhaps, about this approach here?
+[0:46:34]  And as always, think about how if the program maybe
+[0:46:37]  gets longer, more complicated, how decisions like this might unfold.
+[0:46:40]  Yeah.
+[0:46:43]  OK, so if i is less than 2.
+[0:46:45]  So technically, if I change the number of people in this phonebook,
+[0:46:49]  I'm going to have to update i.
+[0:46:50]  And we've already seen that I get myself into trouble.
+[0:46:52]  So that's bad design.
+[0:46:53]  Good.
+[0:47:03]  Yeah, so again, I'm sort of trusting myself not to screw up.
+[0:47:07]  If I add John or anyone else to the first array,
+[0:47:09]  but I forget to add their number to the second array,
+[0:47:12]  eventually things are going to drift and be inconsistent.
+[0:47:15]  And then the code will be incorrect at that point.
+[0:47:17]  So sort of a poor design setting me up for future failure, if you will.
+[0:47:22]  Other thoughts?
+[0:47:24]  Yeah.
+[0:47:32]  Yeah, really good.
+[0:47:33]  We're assuming the same order.
+[0:47:34]  From left to right, the names go.
+[0:47:36]  And from left to right, the numbers go.
+[0:47:38]  But that's kind of just the honor system.
+[0:47:40]  Like, there's literally nothing in code preventing me
+[0:47:42]  from reversing the order for whatever reason, or maybe sorting the names.
+[0:47:46]  Like, they're sorted now, and maybe that's deliberate, but maybe it's not.
+[0:47:49]  So this honor system here, too, is just not good, right?
+[0:47:51]  I could put a comment here to remind myself to note to self,
+[0:47:56]  always update arrays the same way.
+[0:47:58]  But something's going to happen eventually, especially when we have not
+[0:48:01]  two, but three, but 30, 300 names and numbers.
+[0:48:05]  It would be nice to keep all of the related data together.
+[0:48:08]  And so in fact, the one new feature of C we'll introduce today
+[0:48:11]  is one that actually allows us to implement our very own data structures.
+[0:48:17]  You can think of arrays as a very lightweight data structure,
+[0:48:21]  and that allows you to cluster related data back to back to back to back.
+[0:48:24]  And this is how strings are implemented.
+[0:48:27]  They are a data structure effectively implemented with an array.
+[0:48:30]  But with C and with other languages, it turns out
+[0:48:33]  you can invent your own data types, whether they're
+[0:48:35]  one-dimensional, two-dimensional, even, or beyond.
+[0:48:38]  And with C, can you specifically create your own types
+[0:48:44]  that have their own names?
+[0:48:46]  So for instance, wouldn't it have been nice
+[0:48:48]  if C came with not just char and int and float and long and others,
+[0:48:55]  wouldn't it be nice if C came with a data type called person?
+[0:48:59]  And ideally, a person would have a name and a number.
+[0:49:01]  Now, that's a little naive and unrealistic.
+[0:49:03]  Why would they define a person to have just those two fields?
+[0:49:07]  Certainly, people could have disagreed what a person is, so they leave it to us.
+[0:49:11]  The authors of C gave us all of these primitives, ints and floats
+[0:49:14]  and strings and so forth, but it's up to us
+[0:49:16]  now to use those in a more interesting way
+[0:49:18]  so that we can create an array of person variables, if you will,
+[0:49:23]  inside of an array called people, just to pluralize it here.
+[0:49:26]  So how are we going to do this?
+[0:49:28]  Well, for now, let's just stipulate that a person in the world
+[0:49:33]  will have a name and a number, that we could argue all day long what
+[0:49:35]  else a person should have, and that's fine.
+[0:49:37]  You can invent your own person eventually.
+[0:49:40]  At the moment, I'm using just two variables
+[0:49:43]  to define a person's name and number, but wouldn't
+[0:49:45]  be nice to encapsulate, that is, combine these two data types
+[0:49:49]  into a new and improved data type called person.
+[0:49:53]  And the syntax for that is going to be this.
+[0:49:56]  So it's a bit of a mouthful, but you can perhaps
+[0:49:58]  infer what some of this is doing here.
+[0:50:00]  So it turns out C has a keyword called typedef.
+[0:50:03]  As the name kind of suggests, this allows you to define your own type.
+[0:50:07]  Struct is an indication that it's a structure.
+[0:50:10]  It's like a structure that has multiple values inside of it
+[0:50:13]  that you are trying to define.
+[0:50:15]  And then at the very bottom here, outside of the curly braces,
+[0:50:18]  is the name of the type that you want to create.
+[0:50:21]  So you don't have discretion over using typedef or struct
+[0:50:24]  in this particular case, but you can name the thing whatever you want,
+[0:50:27]  and you can put anything in the structure that you want as well.
+[0:50:31]  And as soon as this semicolon is executed at the bottom of the code,
+[0:50:35]  every line thereafter can now have access to a person data type,
+[0:50:40]  whether as a single variable or as an entire array.
+[0:50:44]  So if I want to build on this then, let me go ahead and do this.
+[0:50:49]  Let me go back to my C code here, and I'm
+[0:50:51]  going to go ahead and change just a couple of things.
+[0:50:56]  Let's go ahead and do this.
+[0:50:58]  I'm going to go ahead and first get rid of those two hard-coded arrays,
+[0:51:02]  and let me go ahead and, at the top of my file, invent this type.
+[0:51:07]  So typedef struct inside of it will be a string name and then a string number,
+[0:51:13]  and then the name of the structure will be person.
+[0:51:15]  And best practice would have me define it at the very top of my file
+[0:51:18]  so that any of my functions, in fact, could use it,
+[0:51:21]  even though I just have main in this case.
+[0:51:23]  Now, if I wanted, I could do this, like person p1 and person p2.
+[0:51:29]  But we know from last week, that already is bad design.
+[0:51:31]  If you want to have multiple instances of the same type of variable,
+[0:51:36]  we should probably use what instead?
+[0:51:40]  And yeah, an array.
+[0:51:42]  So let me not even go down that road.
+[0:51:44]  Let me instead just do this.
+[0:51:45]  Person will be the type of the array, but I'm going to call it,
+[0:51:49]  I could call it persons, but in English, we typically say people.
+[0:51:52]  So I'll call the array people, and I want two people to exist in this array,
+[0:51:56]  though I could certainly change that number to be anything I want.
+[0:52:00]  How now do you put a name inside of a person
+[0:52:03]  and then put the number inside of that same person?
+[0:52:06]  Well, slightly new syntax today.
+[0:52:08]  I'm going to go ahead and say this.
+[0:52:09]  People bracket 0 just gives me the first person in the array.
+[0:52:13]  That's not new.
+[0:52:14]  But if you want to go inside of that person in memory, you use a dot,
+[0:52:19]  and then you just specify the name of the attribute therein.
+[0:52:23]  So if I want to set the first person's name to Carter,
+[0:52:26]  I just use that so-called dot notation.
+[0:52:28]  And then if I want to set Carter's number using dot notation,
+[0:52:31]  I would do this, plus 1, 6, 1, 7, 4, 9, 5, 1,000.
+[0:52:35]  And then if I want to do the same for myself,
+[0:52:37]  I would now do people bracket 1, dot name, equals quote unquote David,
+[0:52:42]  and then people bracket 1 still, dot number,
+[0:52:46]  equals quote unquote plus 1, 9, 4, 9, 4, 6, 8, 2, 7, 5, 0.
+[0:52:52]  And now at the bottom of my file, I think my logic
+[0:52:55]  can pretty much stay the same.
+[0:52:57]  I can still, on this line here, prompt the user
+[0:53:01]  for the name of the person they want to look up.
+[0:53:03]  For now, even though I admit it's not the best design,
+[0:53:05]  I'm just doing this for demonstration's sake,
+[0:53:07]  I'm going to leave the 2 there because I know I have two people.
+[0:53:10]  But down here, this is going to have to change.
+[0:53:13]  I don't want to compare names bracket i anymore.
+[0:53:15]  What do I want to type here as the first argument to str compare?
+[0:53:21]  What do I want to do here?
+[0:53:23]  Yeah, so people i, dot name.
+[0:53:27]  Yeah, so I want to go into the people array at the i-th location,
+[0:53:31]  because that's what my loop is doing.
+[0:53:33]  It's updating i again in the game.
+[0:53:34]  And then look at name, and that's good.
+[0:53:37]  I think now I need to change this too.
+[0:53:38]  What do I want to print if the person is found, someone else?
+[0:53:44]  What do I want to print here?
+[0:53:45]  If I found the person's name?
+[0:53:47]  Yeah, say a little louder.
+[0:53:53]  Perfect, so people bracket i, dot number,
+[0:53:55]  if indeed I want to print the corresponding number to this person.
+[0:53:59]  And then I think the rest of my code can stay the same.
+[0:54:01]  So let me go ahead and rerun, make phonebook to recompile this version.
+[0:54:06]  So far, so good, dot slash phonebook.
+[0:54:08]  Let's go ahead and type in Carter's name, found.
+[0:54:11]  All right, let's go ahead and run it again, David's name, found.
+[0:54:14]  Let's go ahead and run it one more time, type in John Harvard, for instance.
+[0:54:17]  Not found in this case.
+[0:54:19]  So fundamentally, the code isn't all that different.
+[0:54:22]  Linear search is still behaving the same way.
+[0:54:25]  And I admit, this is kind of ugly looking.
+[0:54:27]  We've kind of made a two-line solution, like five lines of code now.
+[0:54:31]  But if we fast forward a week or two, when we start saving information to files,
+[0:54:36]  we'll introduce you to files like CSV files, comma-separated values,
+[0:54:41]  or spreadsheet files, which you've surely opened on your Mac or PC
+[0:54:44]  at some point in the past.
+[0:54:45]  Suffice it to say, we'll soon learn techniques for storing information
+[0:54:48]  like names and numbers in files.
+[0:54:50]  And at that point, we're not going to do any of this hackish sort
+[0:54:53]  of hard coding of the number 2 and manually typing my name and Carter's
+[0:54:56]  name and number into our program.
+[0:54:58]  We'll read the information dynamically from a file.
+[0:55:00]  And in a few weeks, we'll read it dynamically from a database instead.
+[0:55:04]  But this is, for now, just syntactically,
+[0:55:06]  how we can create an array of size 2 containing one person each.
+[0:55:11]  We can update the name and number of the first person,
+[0:55:13]  update the name and the number of the second person,
+[0:55:15]  and then later search across those names and print out
+[0:55:19]  the corresponding numbers.
+[0:55:20]  And in this sense, this is a better design.
+[0:55:23]  Why?
+[0:55:23]  Because my person data type encapsulates now
+[0:55:27]  everything that it means to be a person, at least in this narrow world.
+[0:55:32]  And if I want to add something to the notion of a person, for instance,
+[0:55:36]  I could go up to my typedef and tomorrow add an address to every person
+[0:55:40]  and start reading that in as well.
+[0:55:42]  And now it's not the honor system.
+[0:55:44]  It's not a names array, a numbers array, an addresses array,
+[0:55:48]  and everything else you might imagine related to a person.
+[0:55:51]  It's all encapsulated, which is a term of art, inside of the same type.
+[0:55:56]  Reminiscent, if some of you have programmed before,
+[0:55:58]  of something called object-oriented programming, but we're not there yet.
+[0:56:02]  C is not that.
+[0:56:03]  Questions on this use of struct or this new syntax,
+[0:56:08]  the dot operator being really the juicy part here?
+[0:56:13]  Any questions?
+[0:56:14]  Yeah.
+[0:56:21]  On what line number?
+[0:56:25]  16?
+[0:56:25]  So yes, so syntactically, we introduced the square brackets last week.
+[0:56:30]  So doing people bracket 0 just means go to the first person in the array.
+[0:56:34]  That was like when Stephanie literally opened this door.
+[0:56:36]  That's doors bracket 0, but this is, of course, people bracket 0 instead.
+[0:56:41]  Today, the dot is a new piece of syntax.
+[0:56:43]  It means go inside of that person in memory
+[0:56:47]  and look at the name therein and set it equal to Carter
+[0:56:51]  and do the same for number.
+[0:56:52]  So that's all.
+[0:56:52]  It's like open the locker door, go inside of it,
+[0:56:55]  and check or set the name and the number.
+[0:56:57]  Yeah, attributes is fine.
+[0:57:09]  Good question.
+[0:57:10]  In the struct, can you set default values?
+[0:57:13]  Short answer, no.
+[0:57:14]  And this is where C becomes less featureable than more modern languages
+[0:57:17]  like Python and Java and others, where you can, in fact, do that.
+[0:57:21]  So when we transition to Python in a few weeks' time,
+[0:57:23]  we'll see how we can start solving problems like that.
+[0:57:26]  But for now, it's up to you to initialize name and number to something.
+[0:57:43]  Really good question.
+[0:57:44]  How can we adjust or critique the design of what I'm doing?
+[0:57:47]  This is one of the few situations where I would say,
+[0:57:50]  hypocritically, do as I say, not as I do.
+[0:57:52]  I am using pretty ugly lines like this just to introduce the syntax.
+[0:57:56]  But my claim, pedagogically today, is that eventually when
+[0:57:59]  we start storing names and numbers or other things in files or in databases,
+[0:58:03]  you won't have this redundancy.
+[0:58:05]  You'll have one line of code or two lines of code
+[0:58:07]  that read the information from the file or database
+[0:58:10]  and then fill the entire array with that data.
+[0:58:13]  For now, I'm just doing it manually so as to keep our focus only
+[0:58:16]  on the new syntax.
+[0:58:17]  But that's it.
+[0:58:18]  So forgive the bad design by design today.
+[0:58:21]  Other questions on this?
+[0:58:24]  All right.
+[0:58:25]  That's been a lot already.
+[0:58:26]  Why don't we go ahead and take our 10-minute break with snacks first?
+[0:58:29]  We have some delightful brownies in the lobby.
+[0:58:31]  All right.
+[0:58:33]  We are back.
+[0:58:34]  And up until now, it clearly seems to be a good thing
+[0:58:37]  if your data is sorted because you can use binary search.
+[0:58:41]  You know a little something more about the data.
+[0:58:44]  But it turns out that sorting of itself is kind of a problem to solve, too.
+[0:58:49]  And you might think, well, if sorting is going to be pretty fast,
+[0:58:54]  we absolutely should do it before we start searching because that'll just
+[0:58:57]  speed up all of our searches.
+[0:58:58]  But if sorting is slow, that kind of invites the question,
+[0:59:01]  well, should we bother sorting our data if we're only
+[0:59:04]  going to search the data maybe once, maybe twice?
+[0:59:07]  And so here is going to be potentially a trade-off.
+[0:59:09]  So let's consider what it means really to sort data.
+[0:59:12]  In our case, it's just going to be simple and use numbers.
+[0:59:14]  But it might, in the case of the Googles of the world,
+[0:59:17]  be actual web pages or persons or the like.
+[0:59:19]  So here is our typical picture for solving any problem.
+[0:59:25]  Input at left and output at right.
+[0:59:27]  The input to our sort problem is going to be some unsorted set of values.
+[0:59:33]  And the output, ideally, will be the same set of values sorted.
+[0:59:36]  And if we do this concretely, let's suppose
+[0:59:39]  that we want to go about sorting this list of numbers.
+[0:59:41]  7, 2, 5, 4, 1, 6, 0, 3.
+[0:59:44]  So it's all of the numbers from 0 to 7.
+[0:59:46]  But they're somehow jumbled up randomly.
+[0:59:48]  That's going to be the input to the problem.
+[0:59:50]  And the goal is now to sort those so that you indeed get out 0, 1, 2, 3, 4,
+[0:59:54]  5, 6, 7 instead.
+[0:59:56]  So it turns out there's lots of different ways we can actually

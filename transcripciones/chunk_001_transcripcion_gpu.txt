@@ -1,0 +1,1337 @@
+# Transcripción: chunk_001.mp3
+# Modelo: medium | Duración audio: 0:59:59
+
+[0:00:00]  8, 10, 12, this algorithm.
+[0:00:02]  Is this correct?
+[0:00:04]  So no, why?
+[0:00:07]  Yeah, so I'm skipping every other page.
+[0:00:08]  So if I don't consider that and I find myself in the i section or the j
+[0:00:14]  section, well, I might accidentally conclude, nope,
+[0:00:17]  I haven't found John Harvard yet, just because I skipped him because it
+[0:00:20]  was sandwiched between two pages.
+[0:00:22]  Now, I can fix this, I think.
+[0:00:23]  If I do hit the i section, well, let me just double back one page,
+[0:00:27]  just in case he was in that last page.
+[0:00:29]  So it's recoverable.
+[0:00:30]  But it's almost twice as fast, minus that hiccup there.
+[0:00:33]  But what most of us would do, and what your phones are doing,
+[0:00:35]  albeit digitally, is they open up roughly to the middle of the phone book.
+[0:00:39]  And they look down and they say, oh, I'm in roughly the m section.
+[0:00:42]  So I'm roughly halfway through this 1,000 page phone book.
+[0:00:45]  But what do I now know about John Harvard?
+[0:00:47]  Where is he, to my left or to my right?
+[0:00:51]  All right, so alphabetically, he's presumably to my left.
+[0:00:53]  And so here I can both metaphorically and physically
+[0:00:58]  tear the problem in half.
+[0:01:01]  You don't need to be impressed.
+[0:01:02]  It's really easy down the spine that way.
+[0:01:04]  But I know that John Harvard is to the left here.
+[0:01:07]  But now I can throw unnecessarily dramatically half and page 1 out of the way.
+[0:01:13]  And what do I now know?
+[0:01:14]  I've gone from 1,000 pages to like 500.
+[0:01:16]  I can kind of repeat roughly the same algorithm, go to the half of this.
+[0:01:19]  And so this time I went back a little too far.
+[0:01:21]  I'm in now the e section.
+[0:01:24]  So what do I know?
+[0:01:24]  Is John Harvard to my left or to my right?
+[0:01:28]  So I can, again, tear the problem in half, throw this half away.
+[0:01:32]  And now I'm really flying.
+[0:01:33]  I'm doing it verbally slowly.
+[0:01:35]  But that went from 1,000 pages to 500 to now 250.
+[0:01:39]  And now I can do it again, 125.
+[0:01:41]  I do it again, roughly like 67, and keep doing it again and again and again
+[0:01:45]  until I get left with, hopefully, just one single page.
+[0:01:49]  Or in this case, an ad for, ironically, a mechanic.
+[0:01:52]  OK, so what is the implication for our performance?
+[0:01:57]  Well, let's just do this.
+[0:01:58]  Sort of in the abstract, if you will, if that first algorithm
+[0:02:02]  were to be plotted just quickly on a chart without even numbers,
+[0:02:05]  here's my x-axis, size of problem on the x-axis.
+[0:02:08]  So the bigger the problem, the farther out that way.
+[0:02:10]  Time to solve the problem.
+[0:02:12]  The higher you go up on the y-axis, the more time you're taking to solve it.
+[0:02:16]  How would we draw the running time, the amount of time
+[0:02:19]  taken to run that first algorithm?
+[0:02:20]  Well, it's going to be a straight line.
+[0:02:21]  Why?
+[0:02:22]  Because if you add one more page next year,
+[0:02:24]  because more people move to Cambridge, you're
+[0:02:26]  going to add one more page turn, potentially.
+[0:02:28]  So one more second, one more unit of time.
+[0:02:30]  So it's a straight line, and we'll abstract it away as n.
+[0:02:32]  If there's n pages in the phone book, the slope of this line is essentially n.
+[0:02:37]  The second algorithm, wherein I was doing two pages at a time,
+[0:02:41]  was twice as fast, but it's still a straight line.
+[0:02:43]  And in fact, let me just draw some dotted lines here.
+[0:02:46]  If the phone book is this big, with my first algorithm,
+[0:02:49]  it might take this many units of time, this many steps, this many page turns.
+[0:02:54]  But with that second algorithm, notice that the intersection
+[0:02:57]  is much lower on the yellow line than on the red.
+[0:03:00]  So n over 2 means there's half as many pages here,
+[0:03:03]  if n is the number of pages.
+[0:03:04]  So indeed, that algorithm, the second one,
+[0:03:06]  is twice as fast, minus the little hiccup that I have to double back one page.
+[0:03:10]  But that's not a big deal if I'm still doing things twice as fast.
+[0:03:14]  But the third algorithm looks fundamentally different.
+[0:03:16]  It looks like this.
+[0:03:17]  Logarithms, if you recall from high school or prior, if you don't,
+[0:03:20]  that's fine too.
+[0:03:21]  It's just a fundamentally different function,
+[0:03:23]  a different shape.
+[0:03:24]  And notice that the green line is going up and up and up,
+[0:03:27]  but a much slower rate of increase, which
+[0:03:30]  means crazy things are possible.
+[0:03:32]  If two towns in Massachusetts, like Cambridge and Alston across the river,
+[0:03:36]  merge next year, for instance, in terms of their phone book,
+[0:03:39]  their phone book just got twice as big.
+[0:03:42]  For the first algorithm, that's going to take me twice as many steps
+[0:03:44]  to go through.
+[0:03:45]  The second algorithm, it's going to take me 50% more steps
+[0:03:49]  to go through, two at a time.
+[0:03:50]  But the third algorithm that I ended with,
+[0:03:52]  tearing things again and again, dividing and conquering, if you will,
+[0:03:55]  in half and in half and in half, how many more steps
+[0:03:58]  will my third algorithm take if Cambridge and Alston
+[0:04:01]  merge into a phone book that's twice as big?
+[0:04:04]  Just one more step, right?
+[0:04:06]  No big deal.
+[0:04:07]  You just take a really big bite out of the problem
+[0:04:09]  once you decide if John Harvard is to the left or to the right,
+[0:04:12]  and so you've made much faster progress.
+[0:04:14]  And so this, in essence, is what your computer, your phone,
+[0:04:17]  is probably doing underneath the hood when searching for Harry
+[0:04:21]  or Hermione or Hagrid or anyone else, because it's that much faster,
+[0:04:25]  especially when you have large data.
+[0:04:26]  If you don't have that many contacts, it probably
+[0:04:28]  doesn't matter if you search from top to bottom or more in the form
+[0:04:32]  of this divide and conquer algorithm.
+[0:04:34]  But if you're the Googles of the world or you're analyzing large data sets,
+[0:04:37]  indeed, this is going to add up quite quickly.
+[0:04:40]  So where do we go with this?
+[0:04:41]  Well, we're going to introduce next something called pseudocode.
+[0:04:44]  How can I translate what I did verbally there, sort of intuitively,
+[0:04:47]  to actual code?
+[0:04:48]  Well, this won't be Scratch, this won't be C or Python just yet.
+[0:04:51]  It's just going to be an English-like syntax.
+[0:04:53]  And this is how many programmers would start solving a problem.
+[0:04:56]  They don't start typing out code in C or Python or the like.
+[0:04:59]  They use English or whatever their human language is to jot down
+[0:05:02]  an outline for their ideas.
+[0:05:04]  My first step really was picking up the phone book.
+[0:05:06]  My second step was opening to the middle of the phone book.
+[0:05:09]  My third step was somewhat different.
+[0:05:12]  Look at the page, because why?
+[0:05:13]  My fourth step was, if person I'm looking for is on the page,
+[0:05:17]  I then do what?
+[0:05:19]  Never happens in my example, but I call the person, so I'm done.
+[0:05:23]  Else if the person is earlier in the book alphabetically,
+[0:05:26]  as John Harvard was in the case of my age,
+[0:05:29]  then I should search to the middle of the left of the phone book.
+[0:05:33]  And then I should go back to step three.
+[0:05:36]  Step three is look at the page, thereby repeating
+[0:05:39]  the same process again and again.
+[0:05:40]  Step nine, though, might be else if the person is later in the book,
+[0:05:43]  then let's go ahead and open to the middle of the right half of the book,
+[0:05:47]  and then go back to line three.
+[0:05:50]  Else there's a fourth scenario we should probably consider,
+[0:05:53]  lest my search process freeze or crash or give me
+[0:05:56]  one of those spinning beach balls with a bug.
+[0:05:58]  Yeah.
+[0:06:00]  Yeah, what if John Harvard isn't in the phone book?
+[0:06:02]  I'd prefer that my algorithm, my phone, not just reboot or freeze,
+[0:06:05]  I should handle that with some kind of catch-all.
+[0:06:07]  Else, so to speak, let's just quit the program.
+[0:06:10]  So there's well-defined behavior for every possible scenario of the four.
+[0:06:15]  Now let's call out a few of these salient terms.
+[0:06:17]  It turns out if I highlight in yellow here,
+[0:06:19]  there's a pattern to what I've been doing here.
+[0:06:21]  These are all of my English verbs.
+[0:06:23]  And in a moment, we're going to start calling those verbs functions.
+[0:06:26]  When you program or write code and you want the program or the computer
+[0:06:30]  to do something for you, some action or verb,
+[0:06:33]  we're going to refer to those actions or verbs
+[0:06:34]  as these things called functions, like those here.
+[0:06:37]  By contrast, I've just highlighted instead my if, my else if,
+[0:06:40]  my else if and else.
+[0:06:42]  This is going to represent what we're going
+[0:06:43]  to start calling a conditional, a proverbial fork in the road,
+[0:06:47]  where you can either go this way or that way,
+[0:06:49]  do this thing or this other thing.
+[0:06:50]  And you're going to decide which of those things
+[0:06:53]  to do based on what I've now highlighted here, which are going
+[0:06:56]  to be called Boolean expressions.
+[0:06:59]  Boo referring to a mathematician last name Boo.
+[0:07:02]  A Boolean expression is just a question with a yes, no, a true, false, a one,
+[0:07:07]  or a zero answer, if you will.
+[0:07:08]  And it governs whether you do this thing or this thing or this thing
+[0:07:12]  or that.
+[0:07:12]  The indentation, in this case, is important.
+[0:07:15]  The fact that I've indented line 5 implies, by convention in programming,
+[0:07:20]  that I should only do line 5 if the answer to line 4 is a yes or a true.
+[0:07:24]  And same for these other indented lines as well.
+[0:07:27]  And the last characteristic here is this here.
+[0:07:30]  Someone called this out earlier, in fact.
+[0:07:32]  These lines 8 and 11 are now highlighted and represent what?
+[0:07:36]  What might we call these in code if you've done that?
+[0:07:39]  Yeah, so these are loops, some kind of cycles
+[0:07:42]  that result in my doing the same thing again and again.
+[0:07:45]  But there's a key detail with this algorithm in pseudocode.
+[0:07:49]  Even though it's telling me to go back to line 3,
+[0:07:52]  why is this algorithm eventually going to stop?
+[0:07:55]  Why do I not constantly keep looking for John Harvard forever
+[0:07:59]  by nature of these loops telling me to keep going back to line 3?
+[0:08:04]  Good.
+[0:08:04]  Eventually, he'll be on the page or, to your point earlier, he won't be at all.
+[0:08:09]  And we're out of pages, and so we just quit.
+[0:08:12]  And that's the key about going to the left half or the right half.
+[0:08:15]  It doesn't matter if you do the same thing again and again.
+[0:08:17]  You're not going to get stuck in the so-called infinite loop
+[0:08:19]  so long as you keep dividing the problem and shrinking it
+[0:08:23]  into something smaller, smaller, smaller.
+[0:08:24]  Eventually, there's going to be no problem left to solve.
+[0:08:27]  So even if you don't think of yourself as a computer person,
+[0:08:30]  even if you've never written code, what you'll find in the coming days
+[0:08:33]  is that these ideas that we've just kind of harnessed from real life
+[0:08:36]  are at your fingertips already.
+[0:08:39]  And a lot of the process of learning to code
+[0:08:41]  is just going to be some bumps in the road
+[0:08:43]  because you can't quite see the new syntax in a familiar way.
+[0:08:46]  But you'll find that the ideas, in fact, are
+[0:08:49]  going to be more familiar than you might otherwise think.
+[0:08:51]  And so we'll see in a bit, and we'll take a break in a moment
+[0:08:54]  to take a breather, that you will see these same ideas in a moment
+[0:08:57]  in the context of Scratch, an actual programming language
+[0:09:00]  via which we'll drag and drop puzzle pieces to make actual code work.
+[0:09:03]  We'll see some variants of these ideas, things
+[0:09:05]  called arguments and return values and variables,
+[0:09:08]  but we'll ultimately convert it into this somehow.
+[0:09:11]  Anyone want to wager what this program will do if fed to your Mac or PC
+[0:09:16]  or phone?
+[0:09:17]  Here's just a massive pattern of zeros and ones.
+[0:09:22]  It will indeed say, rather disappointingly apparently, just hello world.
+[0:09:26]  And indeed, baked into all of these zeros and ones
+[0:09:29]  are not just the H-E-L-L-O, but also the verbs, the action of printing
+[0:09:35]  something to the screen.
+[0:09:36]  And there's other stuff, too, so that the program knows
+[0:09:39]  how to start and how to stop.
+[0:09:40]  A lot of stuff that we won't have to worry about that whoever designed
+[0:09:43]  the computer or the language did, but at the end of the day,
+[0:09:45]  you're never going to be writing these zeros and ones yourselves,
+[0:09:49]  though our ancestors once upon a time did in some form.
+[0:09:52]  We'll be using a much higher level language, like this in C,
+[0:09:56]  or better yet, in just a moment, like in Scratch, like this.
+[0:10:00]  And indeed, this is why today we focus on and begin
+[0:10:03]  with Scratch, this graphical programming language,
+[0:10:06]  that we have in a way of expressing ourselves with functions,
+[0:10:08]  conditionals, loops, and more, but in a way that
+[0:10:11]  doesn't have stupid parentheses and curly braces
+[0:10:13]  and all of these visual distractions in the way.
+[0:10:15]  And we'll translate that thereafter to this lower level language.
+[0:10:18]  But for now, that was a lot.
+[0:10:20]  That was definitely a firehose.
+[0:10:21]  Let's go ahead and take a 10 minute break.
+[0:10:22]  Feel free to get up or stay here.
+[0:10:24]  And we'll resume in a bit with some actual code.
+[0:10:28]  So this then is Scratch, a graphical programming language
+[0:10:31]  from our friends down the road at MIT's Media Lab
+[0:10:33]  that indeed some of you might have used in grade school
+[0:10:35]  for playing and writing code and the like,
+[0:10:38]  but you maybe didn't necessarily think about how some of these primitives
+[0:10:42]  ultimately worked.
+[0:10:43]  And in fact, everything you've done if you've used Scratch before
+[0:10:46]  and everything you'll see today is going to apply to all of the weeks
+[0:10:49]  to come as we explore these things called functions and loops
+[0:10:51]  and conditionals, Boolean expressions, and more.
+[0:10:54]  With Scratch, because it's so graphical and animated,
+[0:10:57]  can you create animations like this one, interactive art and software
+[0:11:01]  more generally.
+[0:11:02]  But you'll do so by dragging and dropping puzzle pieces that
+[0:11:05]  only lock together if it makes logical sense to do so.
+[0:11:08]  And what you won't have to deal with in this first week of class
+[0:11:11]  is curly braces, parentheses, all of the weird symbology
+[0:11:14]  that you might recall seeing when we just wanted to say hello world.
+[0:11:18]  Now this particular program, Reigning Men,
+[0:11:20]  was written by a former CS50 teaching fellow, Andrew Berry, who's actually now
+[0:11:24]  the general manager of the Cleveland Browns, the American football team.
+[0:11:28]  And so these are just some of the programs
+[0:11:30]  that some of your predecessors in the class have created.
+[0:11:32]  And you'll see in the remainder of class here a couple of others as well
+[0:11:36]  and more in the course's first assignment, namely Problem Set 0.
+[0:11:40]  So how do we get there?
+[0:11:41]  Well first, a quick tour of what it is we're going to do.
+[0:11:44]  This, in Scratch, is perhaps the simplest program you can write.
+[0:11:47]  And even if you've never seen Scratch or any programming language
+[0:11:50]  before, you can probably guess that this just says on the screen
+[0:11:53]  somehow, hello world.
+[0:11:55]  But what you don't have to do is type esoteric commands and weird syntax,
+[0:11:58]  those curly braces and parentheses I keep alluding to.
+[0:12:01]  You just drag this yellow puzzle piece, you drag this purple puzzle piece,
+[0:12:04]  let them magnetically lock together, so to speak, click a button, and boom.
+[0:12:08]  With those same building blocks and several others,
+[0:12:11]  can you make exactly the sorts of things that Andrew brought to life as well?
+[0:12:15]  So here's what we're about to see.
+[0:12:17]  At scratch.mit.edu is a cloud-based programming environment on MIT servers.
+[0:12:22]  You can also download it offline on your own Mac or PC.
+[0:12:25]  And it gives you an interface like this.
+[0:12:28]  On the left-hand side of the screen, you'll see a blocks palette.
+[0:12:32]  These puzzle pieces, AKA blocks, come in different colors,
+[0:12:35]  which rather categorize them.
+[0:12:36]  So pictured here, for instance, in blue, are a whole bunch of motion-related
+[0:12:41]  blocks.
+[0:12:41]  So Andrew used a whole bunch of those to have the singer and the men moving
+[0:12:44]  around on the screen in synchronicity with the song
+[0:12:48]  that was playing in the background.
+[0:12:49]  Meanwhile, in the middle of this interface is going to be the code area.
+[0:12:53]  And this is where Andrew and Sun Yu will drag and drop
+[0:12:56]  some of those puzzle pieces and other colors as well
+[0:12:58]  and lock them together to get your character, soon to be invented,
+[0:13:02]  to do something on the screen.
+[0:13:04]  Indeed, at the bottom right here will you see, ultimately, a sprite area,
+[0:13:09]  where a sprite is a technical term for a character in a video game
+[0:13:12]  or a programming environment like this.
+[0:13:14]  By default, historically, Scratch is the cat, the mascot, if you will,
+[0:13:19]  for this programming environment.
+[0:13:20]  And so here we see, by default, just one sprite selected,
+[0:13:23]  because on the top right of the screen is the stage for that sprite.
+[0:13:26]  And you can click and zoom in to make it full screen.
+[0:13:29]  But this is the world in which Scratch, by default, the cat will live.
+[0:13:33]  But you can change Scratch's costume so that it
+[0:13:35]  looks like a singer or the man falling from the sky or the like
+[0:13:38]  or anything else, either creating the art yourself
+[0:13:41]  or importing some of the things that come with it or elsewhere online.
+[0:13:44]  So what is this world that Scratch, rather, lives in?
+[0:13:48]  Well, generally speaking, we won't have to care too much about numbers
+[0:13:51]  because we'll be able to ask questions like interactive ones,
+[0:13:54]  like is Scratch the cat or any character otherwise?
+[0:13:57]  Touching the edge of the screen, touching something else.
+[0:14:00]  But Scratch does exist in this two dimensional coordinate system world.
+[0:14:05]  So when the cat or any character is dead center in the middle,
+[0:14:08]  that would be x, y location 0 comma 0, if you will.
+[0:14:12]  Meanwhile, over here is 240 pixels or dots all the way to the right.
+[0:14:17]  So this would be 240 comma 0, where y is 0
+[0:14:20]  because it's right on that midline.
+[0:14:22]  So it's neither up or below.
+[0:14:23]  Over here to the left, of course, would be negative 240 and 0.
+[0:14:27]  Above the cat would be x equals 0 because it's
+[0:14:30]  right on that vertical midline and 180.
+[0:14:33]  And then down here, as you might guess, would be 0 comma negative 180.
+[0:14:36]  Generally speaking, we don't have to care about those precise pixel
+[0:14:39]  coordinates.
+[0:14:40]  But it's helpful, ultimately, if you do want the cat to move up, down, left,
+[0:14:43]  or right, having some sense of direction according to the x-axis and y-axis
+[0:14:47]  as well can help you express your ideas, ultimately.
+[0:14:50]  So what might some of those ideas be?
+[0:14:53]  Well, let's do this.
+[0:14:54]  I'm going to go ahead and create, on scratch.mit.edu,
+[0:14:59]  just an empty screen like this one here.
+[0:15:02]  And so this is the exact same interface.
+[0:15:04]  But now I'm in my browser, full screen, so that I can start writing some code.
+[0:15:08]  And let's get that cat to say something actually on the screen.
+[0:15:11]  Now, this takes a little bit of practice.
+[0:15:13]  But honestly, just by scrolling through these puzzle pieces,
+[0:15:16]  can you quickly get a sense of what's possible, not just categorically,
+[0:15:20]  but specifically?
+[0:15:21]  And I'll jump around, because I've done this, of course, before.
+[0:15:23]  But I'm going to go to events in yellow first.
+[0:15:26]  And I'm going to drag and drop this first block called when green flag clicked.
+[0:15:30]  And I've zoomed in there just to make it a little more legible.
+[0:15:32]  And notice that the shape of this green flag
+[0:15:34]  just so happens to mirror this green flag here at top
+[0:15:39]  next to this red stop sign of sorts.
+[0:15:41]  And the green flag is going to mean go.
+[0:15:43]  And the red stop sign is going to mean stop, to start or stop our program.
+[0:15:46]  Next week, you're going to be writing a textual command at your keyboard
+[0:15:49]  to do the exact same idea.
+[0:15:50]  But for now, it's a button.
+[0:15:52]  So when green flag clicked, what do I want Scratch to do?
+[0:15:55]  Well, how about we have Scratch just initially say something
+[0:15:57]  like hello world, which indeed, historically, is the first program
+[0:16:01]  that most any programmer might write.
+[0:16:03]  So anything related to what the cat looks like it's doing
+[0:16:06]  is actually going to be under looks here in purple.
+[0:16:09]  So I'm going to drag over say hello.
+[0:16:11]  And you'll notice something curious and different about this purple block.
+[0:16:15]  It says, of course, say in purple.
+[0:16:17]  But then there's this white oval and some text that by default is hello,
+[0:16:21]  because MIT just decided that by default, the placeholder will be hello.
+[0:16:25]  But anytime you see this white oval, it's an opportunity
+[0:16:28]  to provide an input into the function called say.
+[0:16:33]  And so here, I'm borrowing terminology from before.
+[0:16:35]  Problem solving, again, is all about inputs, producing outputs.
+[0:16:38]  And in between there is some algorithm.
+[0:16:40]  In a moment, we're going to start referring to algorithms quite frequently
+[0:16:43]  as functions.
+[0:16:45]  Why?
+[0:16:45]  Because it's the implementation of some algorithm.
+[0:16:47]  So let me override the default with hello, comma, world.
+[0:16:51]  I'll zoom out.
+[0:16:52]  And now, if I go to the top right of the screen and click the green flag,
+[0:16:55]  we'll see, hopefully, my very first program in code.
+[0:16:59]  Now, it wasn't a huge lift.
+[0:17:01]  It only was a matter of dragging and dropping puzzle pieces.
+[0:17:04]  But what has now happened?
+[0:17:05]  Well, it turns out that two things have happened.
+[0:17:08]  When I, the human, clicked on that green flag,
+[0:17:11]  I triggered what we're going to start calling now an event.
+[0:17:14]  An event is generally something graphical or interactive that just
+[0:17:17]  happens in a computer program.
+[0:17:19]  You and I trigger events on our phones all day long.
+[0:17:22]  Whenever you tap, or drag, or long press, or pinch,
+[0:17:25]  or any of those gestures in vogue nowadays on phones,
+[0:17:28]  you are triggering events.
+[0:17:29]  And people at Apple, and Google, and elsewhere
+[0:17:32]  have written code that listen for those events
+[0:17:34]  and do something when that event happens.
+[0:17:37]  That's what I just did.
+[0:17:38]  When green flag is clicked, I want something to happen.
+[0:17:41]  Namely, I want this purple function, this verb, this action,
+[0:17:45]  called say to do something.
+[0:17:47]  What do I want it to do?
+[0:17:48]  I want it to say what this input is.
+[0:17:50]  And I'm going to introduce another vocabulary term.
+[0:17:52]  The white ovals here are, yes, inputs very generically.
+[0:17:55]  But in a programmer's terminology, they're
+[0:17:58]  called arguments, otherwise known as parameters.
+[0:18:00]  And that just means an input to a function that
+[0:18:02]  modifies its behavior in some way.
+[0:18:04]  When I click stop, that's just another event.
+[0:18:06]  And that one is just built into Scratch.
+[0:18:08]  Scratch knows that when you click the green stop sign,
+[0:18:11]  everything should just stop automatically.
+[0:18:12]  I don't have to write code to support that feature.
+[0:18:15]  So that's all fine and good.
+[0:18:17]  Hello, world.
+[0:18:17]  But if I keep doing stop and start and stop and start,
+[0:18:21]  it's going to do the same thing again and again.
+[0:18:23]  And it's really not that interesting at the end of the day.
+[0:18:26]  Maybe gratifying once.
+[0:18:27]  But it'd be nice if this were a little more interactive.
+[0:18:29]  So it turns out that we can do that too.
+[0:18:32]  But we need a different mental model instead.
+[0:18:34]  So in this case here, when we think about this function
+[0:18:38]  say in this input, hello, world, this actually
+[0:18:40]  maps pretty cleanly to this model earlier
+[0:18:42]  that I proposed is problem solving, is computer science, if you will.
+[0:18:46]  The input to the current problem is going to be in white here, hello, world.
+[0:18:51]  The algorithm is the say algorithm.
+[0:18:54]  Now, I don't know how MIT got it to print out the little pretty speech
+[0:18:57]  bubble on the screen.
+[0:18:58]  But they wrote those underlying low level implementation details.
+[0:19:02]  And they gave me and you a purple function called say
+[0:19:05]  that just does that for you.
+[0:19:07]  You and I don't have to reinvent that wheel.
+[0:19:09]  The output of say is another technical term now called a side effect.
+[0:19:12]  A side effect is usually something visual that happens,
+[0:19:15]  like as a side effect of you calling a function.
+[0:19:18]  And so the side effect here is that the cat has this speech bubble magically
+[0:19:21]  appear, inside of which is hello, world.
+[0:19:24]  So we have an input.
+[0:19:25]  We have an output.
+[0:19:26]  We have an algorithm.
+[0:19:27]  But now we're talking about these ideas in the context of programming.
+[0:19:31]  So now the input is an argument.
+[0:19:33]  The algorithm is a function.
+[0:19:35]  And the output, in this case, is a side effect,
+[0:19:38]  terminology that you'll just hear more and more.
+[0:19:40]  And it will eventually sink in.
+[0:19:41]  But not to worry if the terminology doesn't come naturally early on.
+[0:19:45]  So what more might I do with this?
+[0:19:48]  Well, let me go back to Scratch here and make this maybe perhaps more
+[0:19:51]  interactive and actually get the cat to say something a little more dynamically.
+[0:19:54]  So instead of hello, world, why don't I get it to say hello to me,
+[0:19:57]  or to you, or anyone else?
+[0:19:59]  So let me do this.
+[0:20:00]  Let me go under, say, let me get rid of this first.
+[0:20:04]  And you'll notice this neat trick.
+[0:20:06]  As soon as you start dragging on a block, if it gets close to it,
+[0:20:09]  it kind of goes gray.
+[0:20:10]  And it can be magnetically snapped together.
+[0:20:13]  You don't have to do it very precisely.
+[0:20:14]  Conversely, if I want to get rid of a puzzle piece,
+[0:20:16]  I can just drag it anywhere on the left, let go, and that deletes it.
+[0:20:20]  Or you can right click or Control click, and a little menu
+[0:20:22]  will let you delete it as well.
+[0:20:24]  Well, let me do this instead.
+[0:20:25]  Under Sensing, which I know is there because I've done this before,
+[0:20:28]  are a whole bunch of things related to sensing,
+[0:20:31]  whereby the cat can kind of feel out its world in some sense.
+[0:20:35]  It can do things like ask this question.
+[0:20:37]  Am I touching the mouse pointer, like the user's cursor?
+[0:20:40]  Am I touching a specific color that you can override to be anything you want?
+[0:20:43]  Is the distance to the mouse pointer some specific value?
+[0:20:46]  But for now, I'm going to focus on this, this blue puzzle piece that
+[0:20:50]  asks a question, which itself is this white oval that I can apparently change,
+[0:20:54]  and then it's going to wait for a response.
+[0:20:56]  But this puzzle piece is a little different.
+[0:20:58]  It's a little special.
+[0:20:59]  It comes with a freebie.
+[0:21:01]  It comes with what we're going to call, technically, a return value.
+[0:21:04]  So some functions don't just do something on the screen.
+[0:21:07]  They hand you back, so to speak, a value that you
+[0:21:10]  can do anything that you want with.
+[0:21:12]  Nothing happens immediately unless you do something
+[0:21:14]  with that so-called return value.
+[0:21:16]  So let me go ahead and drag this thing over here.
+[0:21:19]  Ask what's your name.
+[0:21:20]  And I'll use the default question.
+[0:21:21]  That seems a reasonable place to start.
+[0:21:22]  I'm not going to override that default.
+[0:21:24]  And now let me go ahead and zoom out.
+[0:21:26]  Let me go back to looks.
+[0:21:28]  Let me go to say.
+[0:21:30]  And let me just form the English sentence I want.
+[0:21:33]  So let me zoom in here and type in hello, maybe comma, space.
+[0:21:38]  I could do David, but that's obviously not right,
+[0:21:40]  because I'm asking for a name, and then I'm in advance hard coding my name.
+[0:21:44]  That's not what I want.
+[0:21:45]  I just want hello, comma.
+[0:21:47]  And now let me zoom out and grab one more say block.
+[0:21:50]  Let me maybe say here.
+[0:21:51]  OK, I don't want to say hello, hello.
+[0:21:53]  I don't want to just type in my own name,
+[0:21:55]  because again, then what's the point of asking the user for their name?
+[0:21:58]  But notice this.
+[0:21:59]  If I go back to the sensing block, this is
+[0:22:02]  where that oval that's blue called answer is useful.
+[0:22:06]  This will be the so-called return value of that function.
+[0:22:09]  So I'm just going to go ahead and do this and drag and drop.
+[0:22:12]  Even though it's not the right size, it is the right shape.
+[0:22:15]  And so Scratch will be smart about it and grow
+[0:22:17]  to fill that puzzle piece for you.
+[0:22:19]  Let me zoom out now.
+[0:22:20]  And now let me click the green flag.
+[0:22:22]  You'll see that Scratch is indeed prompting me with a speech bubble.
+[0:22:24]  What's your name?
+[0:22:25]  Notice the little text box below the cat is asking what's your name.
+[0:22:28]  So I'm going to type in d-a-v-i-d and hit Enter.
+[0:22:31]  Or I can click the blue check.
+[0:22:32]  Enter.
+[0:22:34]  OK, it's a little weird.
+[0:22:36]  I wanted him to say hello, not just my name.
+[0:22:38]  So let me stop.
+[0:22:39]  Let me start it again.
+[0:22:40]  All right, hello, what's your name?
+[0:22:42]  d-a-v-i-d.
+[0:22:42]  Enter.
+[0:22:44]  Huh, kind of rude.
+[0:22:46]  Why is there this bug?
+[0:22:49]  I wanted to say hello, David, not just David.
+[0:22:52]  And yet twice it has failed to do so.
+[0:22:56]  Yeah.
+[0:22:58]  Yeah, the computer is processing my directions, my actions, really quickly.
+[0:23:02]  And so it actually is doing it.
+[0:23:03]  It's just you and I in the room are just way too slow to notice
+[0:23:06]  that it said, hello, David.
+[0:23:07]  It just seems to have just said David.
+[0:23:09]  So all right, how can I fix this?
+[0:23:11]  Well, here's where you start to poke around and think
+[0:23:13]  about how you might solve this.
+[0:23:14]  Let me go back under looks.
+[0:23:15]  Maybe there's a smarter way to do this.
+[0:23:17]  Maybe I could do, OK, I could do this.
+[0:23:19]  How about instead of just say hello, there's
+[0:23:21]  apparently another puzzle piece where I can time it.
+[0:23:24]  So I can maybe slow things down a little bit.
+[0:23:26]  So let me do this.
+[0:23:27]  Let me throw away all of this.
+[0:23:30]  Let me drag a say hello for two seconds.
+[0:23:33]  Let me drag another say hello for two seconds.
+[0:23:36]  Let me change the first one to indeed hello, comma.
+[0:23:39]  And then let me go back to sensing.
+[0:23:42]  Let me grab that same answer because I threw it away a second ago.
+[0:23:45]  And I'll just change it.
+[0:23:45]  I don't even have to delete hello.
+[0:23:47]  I can just overwrite it like this.
+[0:23:49]  So now I think we'll kind of pump the brakes and see things more slowly.
+[0:23:52]  Let me stop.
+[0:23:54]  Let me start.
+[0:23:54]  D-A-V-I-D, enter.
+[0:23:56]  Hello, David.
+[0:23:59]  OK, so it's better.
+[0:24:01]  It seems to be working.
+[0:24:02]  I think your hypothesis was right.
+[0:24:04]  Just looks kind of stupid, right?
+[0:24:06]  The fact that it's saying hello, David, we can do better.
+[0:24:10]  And literally every piece of software on your phone or Mac or PC
+[0:24:13]  is better than that.
+[0:24:14]  It adds words together in the user interfaces you and I are familiar with.
+[0:24:18]  So let's go a little more fishing here.
+[0:24:19]  Let me throw away these.
+[0:24:21]  Let me go back to looks and just get the simpler say.
+[0:24:24]  I want this to say hello, comma, name, where name comes from that answer
+[0:24:29]  return value.
+[0:24:30]  So how can I do this?
+[0:24:31]  Well, let me go under operations, which we haven't been before.
+[0:24:33]  There's a lot of stuff in here.
+[0:24:35]  Some of it's mathematically related, adding, subtracting, and so forth.
+[0:24:38]  You can generate random numbers, which might be useful.
+[0:24:40]  And if I keep scrolling down, there's this join apple and banana.
+[0:24:44]  But that's just placeholder text.
+[0:24:45]  You can join one piece of text with another piece of text.
+[0:24:49]  By default, apple and banana, but let's change it to hello and my name.
+[0:24:53]  So this too, wrong size but right shape.
+[0:24:55]  So let me let it snap into place.
+[0:24:57]  Let me go ahead now and do hello, comma.
+[0:25:00]  And now I think I just want to go grab that answer return value.
+[0:25:05]  Let me drag the same oval as before, clobber, that is overwrite banana.
+[0:25:09]  So now I'm kind of composing functions.
+[0:25:12]  The output of one function, join, is going
+[0:25:16]  to be the input of another function, say.
+[0:25:18]  So let's see what happens now that they're kind of stacked on top of each
+[0:25:21]  other, or nested, so to speak.
+[0:25:23]  Click the green arrow, a green flag, d-a-v-i-d, enter.
+[0:25:26]  Hello, David.
+[0:25:27]  All right, that was pretty fast.
+[0:25:29]  Let's just do it once more, stop, start.
+[0:25:31]  Here we go, d-a-v-i-d, enter.
+[0:25:34]  OK.
+[0:25:34]  Right, it's not the most exciting program in the world, but it's more correct.
+[0:25:38]  It's better designed just because that's what you would kind of expect
+[0:25:40]  the software to do and not be some kind of lame user
+[0:25:43]  interface that's just inserting random delays to just make it kind of work.
+[0:25:46]  Like, that's a workaround, a hack, if you will.
+[0:25:48]  But there's some cool things you can do with Scratch.
+[0:25:50]  And we won't really go down the rabbit hole of all of the fun
+[0:25:53]  and family-friendly features that it has, but there
+[0:25:55]  is one that's kind of cool here.
+[0:25:57]  Let me go into the Extensions button at the bottom left of my screen.
+[0:26:01]  And this one's kind of cool.
+[0:26:02]  Let me go to Text to Speech.
+[0:26:03]  And you'll notice that this one requires internet because it's cloud-based.
+[0:26:07]  But this just gave me some new puzzle pieces in a new category, Text to Speech.
+[0:26:12]  And these green ones do exactly what they say.
+[0:26:15]  So let me do this.
+[0:26:16]  Let me zoom out again.
+[0:26:17]  Let me keep the join block.
+[0:26:19]  And I'm just going to temporarily toss it over here.
+[0:26:21]  It's not going to delete itself because I didn't drag it over to the other side.
+[0:26:24]  But I'm going to get rid of the say block in purple.
+[0:26:27]  I'm going to do the speak block here in green and let it snap into place.
+[0:26:32]  And then I'm going to drag and drop this onto the input to speak.
+[0:26:35]  And now, perhaps a little more adorably, let's try this.
+[0:26:38]  Green flag.
+[0:26:40]  What's your name?
+[0:26:40]  D-A-V-I-D. Enter and?
+[0:26:42]  Hello, David.
+[0:26:45]  OK.
+[0:26:45]  It's a little robotic, but at least now it has synthesized speech.
+[0:26:50]  And I've kind of got my own like Siri or Google Assistant or Alexa
+[0:26:53]  thing going on here now where it's now recognized whatever text it is
+[0:26:56]  and it's played it.
+[0:26:58]  Well, let's make this an actual cat that doesn't
+[0:27:00]  talk in that weird human voice.
+[0:27:01]  Let me go ahead and get rid of most of this stuff.
+[0:27:04]  And let's get the cat to actually meow like a cat tends to.
+[0:27:07]  And let me go under the sounds block.
+[0:27:09]  Now, MIT gives you a few sounds for free because it's
+[0:27:11]  designed around a cat by default.
+[0:27:13]  And I'm going to go ahead and grab this one.
+[0:27:15]  Play sound meow until done.
+[0:27:17]  And now, we saw or heard a teaser for this earlier in the crowd.
+[0:27:23]  It's a little piercing, admittedly.
+[0:27:25]  We can lower the volume a little bit there.
+[0:27:26]  But notice, if I want the cat to meow a second time, I'll just click it again.
+[0:27:31]  OK, and over there too, I hear.
+[0:27:34]  OK.
+[0:27:35]  All right, so it's kind of cute now, right?
+[0:27:37]  So it's just meow.
+[0:27:39]  OK, yes, echo, echo.
+[0:27:41]  So it's meowing now every time I hit the green flag.
+[0:27:44]  Now, that's great.
+[0:27:45]  But even a kid is probably going to like would
+[0:27:47]  prefer that it just meow, perhaps, again and again,
+[0:27:50]  without having to keep hitting the button.
+[0:27:52]  So how might we do this?
+[0:27:54]  All right, well, if I want it to meow multiple times,
+[0:27:57]  why don't I just grab it another time and another time?
+[0:28:00]  Alternatively, you can right click or Control click a puzzle piece
+[0:28:03]  and just duplicate it from a little menu that drops down.
+[0:28:06]  So here we go, three meows.
+[0:28:10]  All right, that's not really a happy cat, it sounds.
+[0:28:12]  Maybe hungry.
+[0:28:13]  So can we slow that down?
+[0:28:15]  Well, maybe.
+[0:28:16]  In fact, if I poke around, let me go under Control.
+[0:28:19]  Looks like there's a wait block.
+[0:28:21]  Wait one second by default. And notice, scratch
+[0:28:23]  will be pretty accommodating.
+[0:28:25]  If you just hover in between blocks, it will grow to fill that, too.
+[0:28:29]  So I could change it to one or two or anything seconds.
+[0:28:31]  I'll just leave it at the default for now, one.
+[0:28:33]  And now I'll go ahead and do this.
+[0:28:39]  OK, so cuter and less hungry and just more friendly.
+[0:28:43]  But this isn't the best design.
+[0:28:45]  It is correct, and let's use that as a term of art.
+[0:28:47]  Correct means the code does what you want it to do.
+[0:28:50]  I want the cat to meow three times, slowly, and it did.
+[0:28:53]  So I'd quager this is correct.
+[0:28:54]  But it's not the best design.
+[0:28:56]  And this is where things get more subjective, right?
+[0:28:59]  Like, you could write accurate sentences in an essay for an English class.
+[0:29:03]  But otherwise, it's just completely a mess,
+[0:29:05]  like your argument's here and there, and you don't say anything wrong,
+[0:29:08]  but you don't say it well.
+[0:29:09]  In the context of code, we can do better than this.
+[0:29:12]  And copy paste or repeating yourself again and again
+[0:29:15]  tends to be bad practice.
+[0:29:16]  Why?
+[0:29:17]  Suppose that you want to change the wait to two seconds instead of one.
+[0:29:21]  It's admittedly not a big deal.
+[0:29:22]  Fine, I click there, I change it to two.
+[0:29:24]  I click there, I change it to two.
+[0:29:26]  But what if you meow five times, 10 times?
+[0:29:28]  Now I have to change the wait, like, in five, 10 different places?
+[0:29:31]  Like, that's just stupid.
+[0:29:32]  It's taking unnecessary human time.
+[0:29:34]  And you're going to screw up eventually, especially
+[0:29:36]  if your program's getting longer.
+[0:29:37]  You're going to miss one of the inputs.
+[0:29:39]  You're going to leave the number wrong, and that's a bug.
+[0:29:41]  So just based on what you've seen already,
+[0:29:43]  or if you've programmed before, which a few of you
+[0:29:45]  have, what's the term of art here that will solve this?
+[0:29:48]  How can we design this better?
+[0:29:51]  I heard it here.
+[0:29:52]  Yeah, so a loop, a loop, some kind of cycle that says do that again,
+[0:29:56]  do that again.
+[0:29:57]  Not infinitely many times necessarily, but some finite number.
+[0:30:00]  Well, you can perhaps see a spoiler on the screen
+[0:30:03]  under the same orange control category is a repeat block.
+[0:30:07]  And by default, it's proposing 10, but we can change that.
+[0:30:09]  So let me do this.
+[0:30:10]  I'm going to throw away most of this copy paste as redundant.
+[0:30:14]  I'm going to detach this temporarily just to make room for something else.
+[0:30:18]  And I'm going to drag a repeat block over here
+[0:30:20]  and let that snap into place.
+[0:30:22]  And I'm going to change it for now just to be three for consistency.
+[0:30:24]  And this is the correct shape, even though it's too small,
+[0:30:27]  but Scratch will accommodate that for us.
+[0:30:29]  And now, same output, but arguably better designed.
+[0:30:34]  Why?
+[0:30:35]  Because if I want to change the number of meows, I change it in one place.
+[0:30:38]  No copy paste messiness.
+[0:30:39]  If I want to change the weighting, one place.
+[0:30:41]  I don't have to change it in multiple places and not screw up.
+[0:30:44]  So let me hit the green flag.
+[0:30:50]  All right, so nice.
+[0:30:51]  Now, it would have been nice if MIT had just
+[0:30:54]  given us a meow block that just automates all of this for us.
+[0:30:57]  Let me wager.
+[0:30:58]  They gave us the low level implementation details.
+[0:31:00]  They gave us the play sound meow.
+[0:31:02]  But I had to implement a decent number of blocks
+[0:31:05]  just to get a cat to meow again and again.
+[0:31:07]  I feel like we should have gotten that for free from MIT.
+[0:31:10]  Well, they don't have to be the only ones that invent blocks for us to use.
+[0:31:14]  You can write your own functions, your own verbs or actions.
+[0:31:18]  So how can we do this?
+[0:31:19]  Let's make our own puzzle piece called meow that uses this code
+[0:31:24]  but creates it in such a way that it's reusable elsewhere.
+[0:31:27]  So let me do this.
+[0:31:27]  Under My Blocks in pink here, I'm going to go ahead and click Literally
+[0:31:31]  Make a Block.
+[0:31:32]  Now, here's an interface via which I can give the block a name.
+[0:31:35]  M-E-O-W will be the name of this block.
+[0:31:37]  And I'm just going to go ahead and quickly click OK.
+[0:31:40]  That just gives me a very generic pink puzzle piece
+[0:31:43]  that starts with the word define, because Scratch is asking me to define,
+[0:31:47]  that is, implement or create this new puzzle piece for me.
+[0:31:51]  Well, what does it mean to meow?
+[0:31:52]  I'm going to claim that it means to do these two steps, to play the sound meow
+[0:31:57]  and then just wait for one second.
+[0:31:59]  But what's powerful about this idea is look at this up top.
+[0:32:03]  Now that I've made a block, it exists in Scratch.
+[0:32:06]  MIT didn't need to create this for me.
+[0:32:08]  I created it for myself and even you if we end up sharing code.
+[0:32:11]  So I can now drag meow up in here.
+[0:32:14]  And what's nice about meow is that itself is, yes, a function,
+[0:32:18]  but it's also an abstraction.
+[0:32:20]  Like, never again do I or even you need to worry or care about what
+[0:32:24]  it means to meow or implement it.
+[0:32:26]  I can sort of drag it out of the way.
+[0:32:28]  I didn't delete it.
+[0:32:29]  Drag it out of the way, out of sight, out of mind.
+[0:32:31]  Why?
+[0:32:31]  Because my code is now even better designed in some sense
+[0:32:34]  because it's more readable.
+[0:32:35]  What is it doing?
+[0:32:36]  When the green flag is clicked, repeat three times meow.
+[0:32:39]  It just says what it means.
+[0:32:40]  And so it's a lot easier to read it and it's
+[0:32:42]  a lot easier to think about it, especially if you're
+[0:32:44]  using meow in other projects too.
+[0:32:47]  Now, let me go ahead and hit play.
+[0:32:50]  Same thing.
+[0:32:52]  So it's not really fundamentally any different.
+[0:32:54]  But I can make this custom puzzle piece, this own function of my meow,
+[0:32:58]  even more powerful.
+[0:32:59]  Let me kind of rewind a bit and go to my meow puzzle piece.
+[0:33:02]  And I am going to Control-click or right-click on my pink puzzle piece
+[0:33:06]  and I'm going to edit it.
+[0:33:07]  So I kind of regret making meow so simple.
+[0:33:09]  Wouldn't it be nice if meow took an input,
+[0:33:12]  a.k.a. an argument, that tells meow how many times to meow.
+[0:33:16]  Then I can get rid of that loop and just tell meow
+[0:33:19]  how many meows I actually want.
+[0:33:21]  So I'm going to click on another button here called literally add an input.
+[0:33:25]  And it's going to have placeholder here.
+[0:33:26]  So I'm just going to put a placeholder there.
+[0:33:28]  I keep using n for number, which is a go-to in computer scientist terms.
+[0:33:32]  And I'm going to add some descriptive text just so that it's
+[0:33:34]  a little more self-explanatory.
+[0:33:36]  I'm just going to say meow n times.
+[0:33:38]  But there's only one oval times it's just going to be explanatory text.
+[0:33:42]  And now notice what has happened.
+[0:33:43]  Now my puzzle piece takes an input, a.k.a.
+[0:33:47]  an argument, that will tell that function to meow some number of times.
+[0:33:50]  But it's not just going to work magically.
+[0:33:52]  I need to implement that lower level detail.
+[0:33:55]  So let me zoom out.
+[0:33:57]  I have to remind myself what this function was.
+[0:33:59]  So I'm going to drag it higher up just so they're
+[0:34:01]  on the screen at the same time.
+[0:34:03]  I'm going to go ahead now and temporarily move this over here.
+[0:34:06]  I'm going to temporarily detach this over here.
+[0:34:08]  Why?
+[0:34:09]  Because what I think I want to do is move my loop into the function itself,
+[0:34:14]  move the play and the wait into the loop.
+[0:34:18]  But I don't want to hard code 3.
+[0:34:19]  Notice that n here is its own oval.
+[0:34:22]  I can drag a copy of n and just let it go there.
+[0:34:25]  So now I have a new version of meow that takes an argument,
+[0:34:29]  n, that tells meow how many times to meow.
+[0:34:32]  And now let me again drag this out of sight, out of mind,
+[0:34:35]  because who cares how I implemented it?
+[0:34:37]  Once it's implemented, it's sort of done.
+[0:34:39]  Now my program is even better designed in some sense.
+[0:34:42]  Why?
+[0:34:43]  Because now it really just says what it means.
+[0:34:45]  There's no loop.
+[0:34:46]  There's no repeat, no implementation details.
+[0:34:48]  When green flag clicked, meow three times.
+[0:34:51]  And so functions indeed let you implement algorithms.
+[0:34:55]  Like they're just code that do something for you.
+[0:34:57]  But they're also themselves abstractions.
+[0:34:59]  Why?
+[0:34:59]  Because once a function exists, it has a name.
+[0:35:02]  And you can think about it in that term.
+[0:35:03]  And you can use it by its name.
+[0:35:06]  You don't have to care or remember how the function itself was built,
+[0:35:10]  whether it's by you or even MIT.
+[0:35:12]  So again, here I'll click the green flag.
+[0:35:13]  It's the same thing.
+[0:35:14]  Meow.
+[0:35:19]  So still correct, but better and better designed.
+[0:35:22]  And so anytime here and out with Scratch or soon C and eventually Python,
+[0:35:26]  when you find yourself doing anything resembling copy paste
+[0:35:29]  or again and again grabbing the same code, probably an opportunity
+[0:35:32]  to say, wait a minute, let me refactor this, so to speak.
+[0:35:35]  That is, rip out the code that seems to be repeated again and again
+[0:35:39]  and put it in its own function so you can give it a descriptive name
+[0:35:42]  and use and reuse it.
+[0:35:44]  Any questions just yet on now saying or these loops or these functions
+[0:35:49]  that we're using?
+[0:35:51]  Yeah.
+[0:35:54]  How did I make it so it meows three times?
+[0:35:56]  So I originally only had a puzzle piece called meow.
+[0:35:59]  And I decided to improve it.
+[0:36:01]  So I held down Control.
+[0:36:02]  And I right clicked or Control clicked on the pink puzzle piece at top left.
+[0:36:06]  And I clicked Edit.
+[0:36:07]  And that brought back the original interface
+[0:36:09]  that lets me add some arguments to the puzzle piece itself.
+[0:36:13]  And I clicked Add an input on the left here.
+[0:36:15]  And then I clicked on Add a label over here.
+[0:36:18]  So that just lets you customize it even further.
+[0:36:21]  All right, so we've done this.
+[0:36:22]  Let's add one of those other primitives too to do something optionally.
+[0:36:26]  So how about we make the cat meow only if it's being petted by a human,
+[0:36:30]  as by moving the mouse to hover over the cat like a human would pet a cat?
+[0:36:35]  Well, let me go ahead and throw away the meowing for now.
+[0:36:39]  And let me simplify it by just using a sound.
+[0:36:41]  I'm going to go ahead and do this.
+[0:36:42]  I'm going to go ahead and have a control block that says if,
+[0:36:47]  because I want to implement the idea of if the cursor is touching the cat,
+[0:36:51]  then play sound meow.
+[0:36:53]  Or I could use my same pink puzzle piece.
+[0:36:55]  But I'm going to throw that away and focus only now on the sounds.
+[0:36:58]  And I'm going to do this.
+[0:37:00]  If touching mouse pointer.
+[0:37:02]  So I need to sense something about the world.
+[0:37:04]  And we saw this earlier.
+[0:37:05]  So if touching mouse pointer.
+[0:37:06]  So notice this shape here, way too big.
+[0:37:09]  But it is the right shape.
+[0:37:10]  So if I hover just right, it'll snap into place.
+[0:37:13]  And this now in blue is my Boolean expression, a yes-no question, true-false.
+[0:37:19]  If is a conditional.
+[0:37:21]  And what do I want to do?
+[0:37:22]  Well, if the cat is touching the mouse pointer,
+[0:37:26]  I want to go ahead and play sound meow until done.
+[0:37:29]  So let's do this.
+[0:37:30]  I'm going to hit green flag, click.
+[0:37:33]  Now nothing's happened yet because it's a conditional, right?
+[0:37:35]  It's only supposed to do something if I'm touching the cat.
+[0:37:38]  Let me move the cursor over to the cat.
+[0:37:39]  And, and, and, wait for it.
+[0:37:45]  Another bug.
+[0:37:46]  Why is the cat not meowing?
+[0:37:48]  Even though I very explicitly said if touching mouse pointer, meow.
+[0:37:53]  Yeah, in the middle.
+[0:37:57]  Yeah, this is, again, my computers are so darn fast.
+[0:37:59]  Like yours, I clicked the green flag.
+[0:38:01]  It asked the question, am I touching the mouse pointer?
+[0:38:03]  Well, no, because my cursor was up there, not touching the cat.
+[0:38:05]  It's too late.
+[0:38:06]  The cat's out of the bag.
+[0:38:07]  And so we have to instead solve this some other means, by some other means.
+[0:38:12]  How can we fix this?
+[0:38:14]  How do we fix that sort of race?
+[0:38:16]  Yeah.
+[0:38:17]  Yeah, so why don't we just keep asking the question
+[0:38:19]  until I eventually am or am not actually petting the cat.
+[0:38:22]  So let me detach this temporarily.
+[0:38:25]  Let me go under Control.
+[0:38:26]  Let me go under, instead of repeat some finite number of times,
+[0:38:29]  let's just do it forever.
+[0:38:30]  So sometimes loops that do work forever are a good thing.
+[0:38:33]  Like the clock on your phone, that's in a loop forever
+[0:38:36]  because you want it to always tell time and not stop at the end of the day.
+[0:38:39]  So sometimes you do want code to loop forever, as in this case.
+[0:38:43]  So let me go ahead and drag and drop it there.
+[0:38:45]  Let me, again, click the green flag.
+[0:38:47]  Nothing's happening yet, but notice the program's still running.
+[0:38:50]  And so if I move my cursor, move my cursor, move my cursor, and oh, OK.
+[0:38:57]  So maybe we could add some waiting, but the cat does not
+[0:39:00]  want to be pet in this case.
+[0:39:02]  But it's indeed conditional.
+[0:39:04]  So there we have an incarnation in Scratch
+[0:39:06]  of doing something conditionally.
+[0:39:08]  Now we can make this really cool, really fast, if you will.
+[0:39:11]  Let me stop this version.
+[0:39:12]  Let me go ahead and do this.
+[0:39:15]  Let me go ahead and throw all of this away.
+[0:39:17]  Let me go into my little extensions bucket over here.
+[0:39:20]  And let me do video sensing, since most laptops or phones these days
+[0:39:24]  have cameras.
+[0:39:25]  And there, indeed, I am with Sanders behind me.
+[0:39:28]  And let me do this.
+[0:39:30]  When video motion, and let me get out of the way,
+[0:39:33]  when video motion is greater than some value,
+[0:39:36]  so 10 is the default, this is just a number that measures how much motion
+[0:39:40]  there is or isn't.
+[0:39:41]  So small number is like no motion.
+[0:39:42]  Big number is lots of motion.
+[0:39:44]  So I'm going to choose 50, somewhat arbitrarily here, so 50.
+[0:39:47]  This is not normal to program off to the side.
+[0:39:49]  But I'm now going to say this.
+[0:39:52]  When video motion is 50, go ahead and play sound meow like this.
+[0:39:59]  So the cat is still in that world.
+[0:40:00]  I'm going to stop the program and rerun it.
+[0:40:03]  So here we go, green flag.
+[0:40:05]  And now, here come, all right, this is a little creepy the way
+[0:40:09]  I'm petting the cat, but.
+[0:40:11]  And, ah, OK, there we go.
+[0:40:20]  OK, so 50 was too big of a number.
+[0:40:22]  I have to pet the cat faster.
+[0:40:27]  Whereas this, if, I don't know, yeah, so, OK.
+[0:40:35]  So you can make things even more interactive in this way
+[0:40:38]  by just assembling different puzzle pieces.
+[0:40:40]  And honestly, there are so many different puzzle pieces in here.
+[0:40:42]  We're not going to even scratch the surface of a lot of them.
+[0:40:45]  But they generally just do what they say.
+[0:40:47]  And indeed, when you see on the screen here,
+[0:40:50]  this pallet of puzzle pieces, really, a lot of programming,
+[0:40:52]  especially early on when learning a language,
+[0:40:54]  is just trying different things.
+[0:40:56]  And try and fail, and if it doesn't work quite right,
+[0:41:00]  look for an alternative solution there, too,
+[0:41:01]  as even I just had to do a moment ago.
+[0:41:04]  Well, let's go ahead and use, actually, how about another example of something
+[0:41:07]  a predecessor of yours made.
+[0:41:09]  Let me go ahead and grab a program I opened in advance here called Whack-a-Mole.
+[0:41:14]  Might we get a brave volunteer to come up
+[0:41:17]  who is willing to whack-a-mole with their head, virtually?
+[0:41:23]  OK, let's see.
+[0:41:24]  How about way back?
+[0:41:25]  You want to come on down?
+[0:41:26]  All right, come on down.
+[0:41:28]  And in just a moment, sure, round of applause for our volunteer.
+[0:41:36]  All right, so here we have, come on down.
+[0:41:46]  What's your name?
+[0:41:47]  Oh, actually say it into the microphone.
+[0:41:49]  Hi, I'm Josh.
+[0:41:51]  OK, nice.
+[0:41:52]  Welcome, Josh.
+[0:41:52]  Come on over.
+[0:41:55]  All right, so same idea here.
+[0:41:57]  I'll take the mic back.
+[0:41:58]  You'll have to stand in front of the camera.
+[0:41:59]  In just a moment, you're going to have to position your head in a box
+[0:42:02]  that your classmate from yesteryear created.
+[0:42:07]  And we'll start with beginner.
+[0:42:09]  So line your head up in the box in a moment.
+[0:42:29]  12 seconds, 5 seconds.
+[0:42:38]  Notice the score is up to 18 already.
+[0:42:40]  Pretty good.
+[0:42:42]  All right, so round of applause for Josh, if we could.
+[0:42:50]  So notice how, using some fairly simple primitives,
+[0:42:53]  things do get interesting pretty fast.
+[0:42:55]  And how was that implemented?
+[0:42:56]  Well, there were probably at least four sprites.
+[0:42:58]  So you're not confined to just one cat.
+[0:43:00]  You can create more and more sprites, change what they look like.
+[0:43:03]  So they actually look like a mole in this case.
+[0:43:05]  There's probably some conditionals in there, some loops for 30 seconds.
+[0:43:08]  That's checking if Josh's head's movement is exceeding some value over this way
+[0:43:12]  or over this way, then increment something called a variable.
+[0:43:16]  We'll see those too.
+[0:43:16]  Just like in algebra, you might have x and y and z storing values like numbers.
+[0:43:20]  So can computer programs have variables called x or y or z,
+[0:43:24]  or more descriptively called score, as in this case at top right,
+[0:43:28]  or another variable called countdown, typically one word in code,
+[0:43:31]  but in this case two words, that just store some value.
+[0:43:34]  So there's probably some math going on in there,
+[0:43:36]  whereby the author of this program just is incrementing.
+[0:43:39]  That is adding one and one every time it detected
+[0:43:41]  that a mole had been whacked, in this case, with movement.
+[0:43:45]  So back in the day, I myself actually implemented my very first program
+[0:43:49]  in Scratch when I was at a graduate student actually at MIT,
+[0:43:52]  cross-registered at MIT, taking a class from MIT's Media Lab,
+[0:43:55]  specifically the Lifelong Kindergarten Group, which
+[0:43:57]  is the group that created Scratch itself.
+[0:44:00]  And the program I wrote all those years ago and still rather cling to
+[0:44:05]  is a little something here called Oscar Time
+[0:44:07]  that I thought I'd play just a quick excerpt of myself here.
+[0:44:11]  So in this case, consider as the music starts playing how this program, which
+[0:44:16]  is much more sophisticated certainly than the earliest,
+[0:44:19]  say hello examples we just did, might also be implemented.
+[0:44:22]  Let me go ahead now and click the green flag.
+[0:44:31]  So some trash is moving, presumably in some kind of loop from the top.
+[0:44:36]  If I'm touching the mouse cursor, it follows me.
+[0:44:40]  If I hover over the trash can, it responds.
+[0:44:44]  If I let go, in some kind of loop, Oscar pops out,
+[0:44:48]  creates a variable with the current score, and it happens again.
+[0:45:05]  Pretty easy at first, but I don't need to keep playing this off
+[0:45:13]  on stage in front of everyone.
+[0:45:14]  So my score is already now up to some 6 or so.
+[0:45:17]  But in a moment, too, you'll see that it's going to escalate.
+[0:45:20]  So I'm taking into account some time, apparently,
+[0:45:27]  so more and more sprites are suddenly appearing.
+[0:45:29]  And notice that each time they're appearing
+[0:45:30]  from a different part of the screen.
+[0:45:32]  That's an illusion.
+[0:45:33]  Perhaps do that.
+[0:45:34]  Pick a random number between x and y.
+[0:45:36]  So you can actually pick some range of values
+[0:45:38]  to have the game constantly changing.
+[0:45:40]  And indeed, I'm going to go ahead and click Stop since I'd spent like eight
+[0:45:43]  plus years ago making this.
+[0:45:45]  And I can never listen to the song again.
+[0:45:47]  Not that I should be anyway at this point in my life.
+[0:45:49]  But this song is synchronized in with a lot of the actions that's happening.
+[0:45:54]  And ultimately, there's just a lot of building blocks.
+[0:45:56]  But I didn't sit down and implement Oscar time, as I called it, all at once.
+[0:46:00]  I really did take baby steps, so to speak.
+[0:46:01]  And I figured out, well, how could I decompose this vision I had at the time
+[0:46:06]  to create this game, ultimately?
+[0:46:08]  And how do I bite off maybe the easiest parts first?
+[0:46:10]  And honestly, the first thing I did was I found this image.
+[0:46:13]  And I just dragged and dropped it into Scratch.
+[0:46:15]  OK, done.
+[0:46:16]  Lamp post is installed.
+[0:46:18]  It doesn't do anything.
+[0:46:19]  It's not interactive.
+[0:46:19]  But I at least set the stage, so to speak, for the program.
+[0:46:22]  Then what else might I have done?
+[0:46:23]  Well, let me do this.
+[0:46:25]  Let me go ahead and open up in another editor here
+[0:46:28]  a early incarnation of Oscar time by doing this.
+[0:46:33]  Let me go into Oscar time here.
+[0:46:35]  Let me full screen this.
+[0:46:37]  And here you have, let me hide the trash for just a moment,
+[0:46:40]  is what I might call the second version of my program.
+[0:46:43]  Wherein, at the top right of the stage here,
+[0:46:46]  I had the lamp post, which I just dragged and dropped and got going.
+[0:46:49]  But then I added an actual sprite.
+[0:46:50]  And it has to be a sprite if you wanted to do things interactively.
+[0:46:53]  The lamp post, not a sprite.
+[0:46:54]  It's just an image, a costume, if you will, for the whole stage itself,
+[0:46:58]  a backdrop.
+[0:46:59]  But this thing is indeed a sprite because it
+[0:47:01]  needs to respond to code and events like dragging and dropping.
+[0:47:04]  So what might I have done early on with that code?
+[0:47:08]  Well, maybe the first version would have been something like this,
+[0:47:11]  whereby my very first version of Oscar time
+[0:47:14]  might have said something like, oh, this.
+[0:47:16]  How about let me control the program as before, or rather events.
+[0:47:20]  When the green flag is clicked, what do I want to do?
+[0:47:23]  Well, I want to go ahead and forever do something like this, forever.
+[0:47:28]  So I want the lid to open up if I touch it.
+[0:47:31]  So if the cursor gets near the lid, I want the lid to open up.
+[0:47:33]  And then if I move away, I want it to close.
+[0:47:35]  So how can I do that?
+[0:47:36]  I want an if, but I just don't want one question.
+[0:47:39]  I really want two, a fork in the road that goes left or right, so to speak.
+[0:47:43]  And let me grab this puzzle piece here, as I did long ago.
+[0:47:47]  So notice it grows to fill.
+[0:47:49]  What's the question I want to ask?
+[0:47:50]  Well, under sensing, I'm going to go ahead here and say,
+[0:47:53]  if this trash can is touching the mouse pointer, what do I want to do?
+[0:47:58]  Well, I want to change what the trash can looks like.
+[0:48:00]  And this part I did in advance of class.
+[0:48:02]  If you go up here to costumes, this is where all the graphical stuff happens.
+[0:48:05]  And you'll see that I imported a whole bunch of different costumes
+[0:48:10]  that effectively, much like a video, when you play them quickly,
+[0:48:13]  creates the illusion of movement, some animation.
+[0:48:15]  But it's really just dot, dot, dot, dot, dot,
+[0:48:17]  different images showing on the screen.
+[0:48:19]  Well, some of these costumes are called Oscar 1, Oscar 2.
+[0:48:23]  Oscar 1 is closed.
+[0:48:25]  Oscar 2 is open.
+[0:48:26]  So let's just deal with those first.
+[0:48:28]  So if I'm touching the mouse pointer, let me go under, how about looks?
+[0:48:32]  And we didn't use this before, but there's this block.
+[0:48:35]  Switch costume to something else.
+[0:48:37]  I'm going to drag and drop this inside of the if.
+[0:48:39]  And notice it's a little bit indented.
+[0:48:41]  I'm going to change it not to Oscar 8, but Oscar 2.
+[0:48:45]  Otherwise, if not touching the mouse pointer,
+[0:48:47]  this is the other direction in the fork in the road,
+[0:48:50]  let's go ahead and switch the costume back to what I described as Oscar 1.
+[0:48:55]  So let me run this program.
+[0:48:56]  And not much of interest is happening yet.
+[0:48:59]  But notice, if I move the cursor up, down.
+[0:49:03]  But how is that working?
+[0:49:04]  It's just changing the costume that's being overlaid on the sprite.
+[0:49:07]  So it looks like interactivity, but you're really just changing the aesthetics.
+[0:49:10]  And we humans are just kind of assuming, oh, it's opening up.
+[0:49:13]  Well, no, it's just changing a costume.
+[0:49:15]  So here's the difference.
+[0:49:16]  The high level abstraction, trash can opening, the lower level
+[0:49:19]  implementation detail, costume changing, creating that illusion.
+[0:49:22]  And if I wanted to look prettier, I could just have many other costumes
+[0:49:26]  and go boom, boom, boom, boom, boom to create more frames per second,
+[0:49:29]  if you will.
+[0:49:30]  So I need to do one other thing.
+[0:49:33]  Maybe if I accidentally leave the trash can open, let me make one change here.
+[0:49:37]  Let me make sure that the very first thing I
+[0:49:39]  do when the green flag is clicked is always start with the trash can closed.
+[0:49:43]  Because otherwise, you might accidentally leave it open.
+[0:49:46]  So this gets me into some default state.
+[0:49:47]  So now it's always closed until I manually hover over it instead.
+[0:49:52]  Well, what might I have done next?
+[0:49:54]  Well, if I wanted to introduce something like the trash,
+[0:49:56]  I need a second sprite.
+[0:49:58]  And here in advance, I grabbed the image already.
+[0:50:00]  Let me pretend that this never happened.
+[0:50:02]  Let me drag this away here.
+[0:50:04]  And now I have nothing in my code area for this piece of trash.
+[0:50:08]  But it is the second sprite.
+[0:50:09]  And all I did was I clicked on the little cat plus icon here,
+[0:50:12]  created a second sprite.
+[0:50:13]  I named it trash.
+[0:50:14]  I added a costume for it.
+[0:50:16]  Sort of the aesthetic stuff I did in advance.
+[0:50:18]  But here I'll do now the code.
+[0:50:20]  How do I want to do this?
+[0:50:22]  Well, how about when the green flag is clicked for the trash can,
+[0:50:26]  I want the trash can in parallel to do, or I want the trash, the piece of trash,
+[0:50:31]  to do its own thing.
+[0:50:32]  So what I want it to do is maybe let's do motion how about.
+[0:50:37]  And let's go to a specific coordinate.
+[0:50:38]  Now, there's a lot of options here.
+[0:50:40]  There's turning, go to a random position, go to x, y, glide more elegantly.
+[0:50:45]  There's a lot of different ways to implement movement.
+[0:50:48]  I just want it to go to a very specific location first.
+[0:50:50]  So I'm just going to go to x, y first.
+[0:50:53]  And I'm going to say x how about will be, let's not hard code this.
+[0:50:58]  Let's just have it be, well, let's do it as 0 initially, and then 240.
+[0:51:03]  Let's do 0, 240 so that this piece of trash always
+[0:51:06]  starts at the top middle of the screen if you think back to that coordinate
+[0:51:09]  system.
+[0:51:09]  0, 0 is in the middle, 240 is straight above it.
+[0:51:13]  Now, after I do that, what do I want to do?
+[0:51:15]  Well, how about I control this thing by forever falling?
+[0:51:19]  Now, how do I make the trash move?
+[0:51:21]  We haven't seen this puzzle piece yet, but under motion,
+[0:51:23]  the very first thing is called move some number of steps.
+[0:51:26]  By default, it's 10, but we'll do it more simply.
+[0:51:29]  Let me go ahead and move.
+[0:51:32]  Sorry, move is going to move it in whatever direction it's facing.
+[0:51:36]  I only want it to move down.
+[0:51:38]  So here, even I'm getting confused as to how many different ways
+[0:51:40]  there are to do things.
+[0:51:42]  What I think I want to do is this.
+[0:51:44]  Let me only change my y-axis as follows.
+[0:51:48]  So here's another puzzle piece called change y.
+[0:51:50]  So again, y is the vertical.
+[0:51:52]  So let me just change y by one pixel downward at a time.
+[0:51:56]  So negative 1, one pixel at a time.
+[0:51:58]  So it's kind of slow.
+[0:52:00]  And I think now, I think that's it.
+[0:52:02]  Let me hit stop.
+[0:52:03]  Notice that my trash can is still going to be interactive.
+[0:52:06]  I haven't changed or deleted that code.
+[0:52:07]  I've just added now code for my trash piece of trash.
+[0:52:11]  If I click the green flag, notice that after I enable it,
+[0:52:16]  let me start that again.
+[0:52:17]  I had it hidden before class, but let me enable it now.
+[0:52:19]  Green flag.
+[0:52:20]  Notice it starts dead center at x equals 0, y equals 240,
+[0:52:24]  and it's dropping one pixel at a time.
+[0:52:27]  If that seems a little boring, we can change it to negative 10 pixels
+[0:52:30]  at a time, and boom, it's done.
+[0:52:31]  So that's how you might change the speed of a program.
+[0:52:34]  But I'm going to leave it more simply as negative 1.
+[0:52:36]  And honestly, it would be nice if it doesn't always start from the top.
+[0:52:39]  Otherwise, this game is not going to be very interactive.
+[0:52:41]  I'm literally going to be grabbing the trash from the same place every time.
+[0:52:45]  So why don't I instead stop this?
+[0:52:47]  Let me go under operators, and let's pick a random number.
+[0:52:51]  So let me change the hard coded, the manually inputted 0,
+[0:52:54]  and let's make x be somewhere between 0.
+[0:52:56]  So in the middle, and all the way over to, what was it, 1?
+[0:53:01]  Oh, I got my numbers wrong.
+[0:53:02]  240, and my y will be 180.
+[0:53:05]  Sorry, I got my x and my y confused.
+[0:53:08]  So let me play this again.
+[0:53:09]  And now we have a game that's more like games you might have played growing up,
+[0:53:13]  or even now, like there's some randomness to it.
+[0:53:15]  So the CPU, so to speak, is doing something more interesting.
+[0:53:18]  Let me run it again.
+[0:53:19]  Now it's a little to the left.
+[0:53:20]  Let me run it again.
+[0:53:21]  Now it's a little more to the left.
+[0:53:22]  Again, now it's back to the right.
+[0:53:24]  So randomness just makes games more interesting,
+[0:53:26]  and this is why when you play any video game,
+[0:53:27]  if different things are happening, there's probably just some randomness.
+[0:53:30]  And it's quantized, it's just a simple number.
+[0:53:32]  Now I think I just need one final flourish here, if I may.
+[0:53:36]  Let me go ahead and add this.
+[0:53:38]  How about events, or rather, yes, events.
+[0:53:42]  When green flag is clicked, I can do multiple things within the same sprite.
+[0:53:47]  They don't all have to be attached to the same one.
+[0:53:49]  Let me go ahead and forever go ahead and do something else.
+[0:53:54]  How about whenever the trash is, how about touching the trash can.
+[0:54:02]  So forever, if, let's see, I need a sensing block.
+[0:54:05]  So how about is touching, not the mouse pointer this time,
+[0:54:10]  but touching Oscar himself there.
+[0:54:13]  Now let's see what happens.
+[0:54:15]  All right, so let's go ahead and click the green flag.
+[0:54:18]  Now I go down over here and let go.
+[0:54:22]  OK.
+[0:54:23]  So I kind of want it to go into the trash can.
+[0:54:25]  How do I make it go into the trash can?
+[0:54:28]  How can we take this high level idea, put trash into the trash can,
+[0:54:32]  and make it seem to disappear?
+[0:54:34]  Logically, what could we do?
+[0:54:35]  Yeah.
+[0:54:38]  OK, so when it touches it, let's have it disappear so I could hide it.
+[0:54:41]  Or honestly, if the game is going to be ongoing like it was,
+[0:54:43]  letting me drop more and more trash, let me just
+[0:54:46]  have it go ahead and pick a new random location.
+[0:54:48]  So let me do this.
+[0:54:50]  Let me go ahead and copy this puzzle piece up here and duplicate.
+[0:54:53]  And I don't want the whole thing.
+[0:54:54]  Sorry, let me get rid of this.
+[0:54:56]  Let me just do this.
+[0:54:57]  Let me go back to some random location at the top.
+[0:55:01]  So now notice what happens.
+[0:55:02]  If I click and drag on it, here it goes.
+[0:55:04]  And I let go, it looks like it's going into the trash can
+[0:55:08]  because it snaps back up to some random location.
+[0:55:10]  Now the only thing I'm not doing really is keeping track of any kind of score.
+[0:55:14]  And it turns out if I full screen this, it's
+[0:55:16]  not going to be draggable by default. So just as a corner case,
+[0:55:19]  so to speak, something that you might trip over otherwise,
+[0:55:22]  let me go ahead and under, let's see, sensing,
+[0:55:27]  it turns out I also need this for the piece of trash.
+[0:55:30]  There's this way of setting in Scratch a sprite to be draggable or not
+[0:55:35]  draggable.
+[0:55:36]  I need to explicitly make it draggable so
+[0:55:37]  that when I do full screen this thing now, it still remains draggable.
+[0:55:41]  And someone like myself can play it again and again.
+[0:55:44]  Well, how about we supplement this with one final flourish?
+[0:55:47]  Why don't we keep track now of the user's score?
+[0:55:50]  So how about when the user actually drags the piece of trash to the trash can?
+[0:55:56]  Let me go under variables here where in advance I've already
+[0:55:58]  made myself a variable called score.
+[0:56:01]  I could have called it x or y or z or a, b, c,
+[0:56:03]  but that's not very descriptive in programming.
+[0:56:05]  You typically give things a more descriptive English or some other
+[0:56:08]  language name.
+[0:56:09]  So I called this one score.
+[0:56:10]  So how do I want to do this in my score?
+[0:56:13]  Well, let me go ahead and initially set this game score
+[0:56:17]  at the very top of one of these scripts or one of these programs up here.
+[0:56:22]  And then any time my cursor, my piece of trash is touching Oscar,
+[0:56:27]  let's not just jump to the top.
+[0:56:29]  Let's change the score by one up here.
+[0:56:34]  So now notice, if touching Oscar, change the score,
+[0:56:36]  that is add one to the score, and then pick a new random location.
+[0:56:40]  And now, green flag, let's do this slowly.
+[0:56:43]  Here it goes.
+[0:56:44]  It's the trash can opens.
+[0:56:45]  I let go, and now notice at the top left of my program,
+[0:56:49]  notice the score is now two.
+[0:56:51]  Notice the score, if I do this again, is about to become three.
+[0:56:54]  And so here we have building blocks, literally,
+[0:56:57]  of making this program better and better and better.
+[0:57:00]  And so indeed, that's how you generally approach solving any large program,
+[0:57:03]  any problem with code, be it in Scratch or C or Python or some other.
+[0:57:07]  You take this vision you might have or some vision you've
+[0:57:09]  been assigned in a homework assignment and try
+[0:57:11]  to break it down into these constituent parts
+[0:57:13]  and just pluck off the easy ones first.
+[0:57:16]  Put the lamp post there first and at least
+[0:57:17]  feel like you're making some progress.
+[0:57:19]  Then pluck off something like the trash can and just make it do a little thing.
+[0:57:22]  And it doesn't have to be in some same order here.
+[0:57:24]  I could have done this in a million different ways,
+[0:57:27]  but figure out what the small pieces are that ultimately,
+[0:57:30]  like a few of the problems we've solved today,
+[0:57:32]  assemble into a greater solution there too.
+[0:57:36]  So that you have now a mental model for these types of blocks and others,
+[0:57:40]  let's return for a moment to this.
+[0:57:43]  We saw a moment ago that when I started saying, hello, David,
+[0:57:46]  and nesting those puzzle pieces, we had a whole different paradigm altogether.
+[0:57:51]  My input for that second version of hello world
+[0:57:53]  was to now pass in, for instance, what's your name, into my function called ask.
+[0:57:59]  That gave me not a side effect, but what I called, again, a return value,
+[0:58:03]  called answer by default in Scratch.
+[0:58:06]  And now notice and recall, when I had that same output
+[0:58:10]  become the input to my next block, it looked a little something like this.
+[0:58:15]  Say, so how does this type of block and this nesting,
+[0:58:19]  this stacking of blocks fit into the same mental model?
+[0:58:22]  Well, same idea.
+[0:58:22]  My input for that part of the story is now taking in not one input, but two.
+[0:58:28]  Two arguments, hello and the answer from before.
+[0:58:31]  The function in this case is that new block called join.
+[0:58:34]  The output thereof is hello, David, which itself became,
+[0:58:38]  if we sort of animate this, the input to my final function,
+[0:58:43]  which indeed was still say.
+[0:58:45]  And this is only to say, no pun intended,
+[0:58:47]  that almost everything that you do with these puzzle pieces,
+[0:58:50]  be it in the context of Oscar time or the mole whacking
+[0:58:54]  or even just something simple like hello world,
+[0:58:56]  will ultimately fit into that relatively simple mental model there.
+[0:59:00]  Now I thought we'd end by taking a look at just a couple of final examples.
+[0:59:04]  These ones, too, made by some of your predecessors.
+[0:59:07]  And for this, I thought we would not write code together, but read it instead.
+[0:59:12]  And so allow me to open up one other example here
+[0:59:15]  that will show us a few different versions of a program
+[0:59:19]  that a predecessor made.
+[0:59:21]  Give me just a moment here.
+[0:59:22]  And we'll see how we might build up to something even more interactive.
+[0:59:27]  And in just a moment, we'll see something
+[0:59:29]  they called Ivy's hardest game focused here on these particular mechanics.
+[0:59:35]  So here is version 0, so to speak, of this program,
+[0:59:39]  wherein the goal was to create a game where you have
+[0:59:41]  to get out of some kind of maze.
+[0:59:42]  And you have to get out, in this case, the Harvard crest from this maze.
+[0:59:46]  Let me go ahead and just hit play on this green flag
+[0:59:48]  so you can see what the first building block for this program might have been.
+[0:59:52]  Notice that my hand here is actually on the arrow keys of my keyboard.
+[0:59:57]  And it seems that by moving up, down, up, down, up, down, up, down,

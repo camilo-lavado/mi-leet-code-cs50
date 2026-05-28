@@ -1,0 +1,1275 @@
+# Transcripción: chunk_000.mp3
+# Modelo: medium | Duración audio: 0:59:59
+
+[0:00:00]  This is a Harvard University course taught by Dr. David Malan,
+[0:00:04]  and we are proud to bring it to the FreeCodeCamp YouTube channel.
+[0:00:08]  Throughout a series of lectures, Dr. Malan
+[0:00:10]  will teach you how to think algorithmically and solve problems efficiently.
+[0:00:15]  And make sure to check the description for a lot of extra resources
+[0:00:19]  that go along with the course.
+[0:01:36]  This is CS50, Harvard University's introduction
+[0:01:40]  to the intellectual enterprises of computer science
+[0:01:42]  and the arts of programming.
+[0:01:44]  My name is David Malan, and I actually took this course myself back in 1996.
+[0:01:48]  I was a sophomore at the time.
+[0:01:50]  I was actually concentrating in government,
+[0:01:52]  because a year prior as a first year, I'd come into Harvard
+[0:01:54]  thinking that I liked history and constitutional law
+[0:01:58]  and sort of similar classes in high school.
+[0:02:01]  And so when I got here, I rather gravitated
+[0:02:03]  toward that which was familiar.
+[0:02:05]  I figured if I liked and if I were good at that particular subject
+[0:02:08]  in high school, then that's presumably who I'm supposed to be here.
+[0:02:11]  It wasn't until sophomore year that I got up the nerve
+[0:02:14]  to step foot in the CS50 classroom.
+[0:02:17]  And even then, it was only out of curiosity.
+[0:02:18]  I had no intention of studying computer science,
+[0:02:22]  of even taking CS50 when I got to campus.
+[0:02:24]  But people were talking about it.
+[0:02:26]  And there was a lot of like, beware.
+[0:02:28]  And it was perhaps for the initiated only.
+[0:02:31]  And I didn't really know ultimately what computer science was.
+[0:02:33]  But for me, the sort of light bulb went off.
+[0:02:36]  And I found that, contrary to what I'd seen in high school,
+[0:02:39]  where I saw friends of mine programming away in the computer lab,
+[0:02:42]  heads down, sort of anti-socially just doing
+[0:02:44]  whatever it was they were doing, it really
+[0:02:46]  wasn't that once I got to this particular class in this particular place.
+[0:02:50]  It was much more about problem solving more generally
+[0:02:52]  and just learning how to express yourself in code in different languages
+[0:02:55]  so that you can actually solve problems of interest to you
+[0:02:58]  even if you have no intention of being a computer scientist or an engineer
+[0:03:02]  but just want to be able to solve problems, analyze data,
+[0:03:04]  do interesting things in the arts, humanity, social sciences,
+[0:03:08]  physical sciences, or really any other field.
+[0:03:10]  And indeed, this particular path led me to computer science.
+[0:03:13]  But the hope for CS50 more generally is that, indeed, you just
+[0:03:17]  find your way to applying principles that you'll
+[0:03:19]  learn over the coming months to whatever field is of interest to you.
+[0:03:23]  With that said, it was definitely a lot of work.
+[0:03:26]  And not without its frustrations for me.
+[0:03:28]  But there was no better feeling than banging your head proverbial
+[0:03:31]  against the wall for some number of hours,
+[0:03:33]  even days trying to fix a bug, a mistake in your code.
+[0:03:36]  And then, oh my god, the rush of emotion, of accomplishment,
+[0:03:40]  of pride, of exhaustion.
+[0:03:41]  When you finally solve some problem that's really been weighing on you,
+[0:03:44]  it's just so incredibly gratifying but also empowering.
+[0:03:47]  Because unlike a lot of fields, computer science
+[0:03:49]  was built by humans themselves.
+[0:03:52]  And so if a human built this, surely you, another human,
+[0:03:54]  can understand it as well.
+[0:03:56]  And so even though there's going to be some distractions along the way,
+[0:03:59]  you're going to see what looks incredibly cryptic if you've never
+[0:04:02]  programmed before over time.
+[0:04:04]  And with practice, everything just starts to make more sense.
+[0:04:07]  And with time and with practice, you just get better at this particular field.
+[0:04:10]  And indeed, really, the key to success in programming in general
+[0:04:14]  is just to allow yourself enough time.
+[0:04:16]  And so at least thankfully, I quickly got into the habit
+[0:04:19]  of starting early in the week, for instance, when writing actual code.
+[0:04:21]  Why?
+[0:04:22]  Because you're going to run up against a wall.
+[0:04:24]  You're not going to see some bug.
+[0:04:25]  Something's not going to jump out at you.
+[0:04:26]  And that's fine.
+[0:04:27]  That's when you sort of call it a day, take a break, move on to something else,
+[0:04:30]  and then just come back to it.
+[0:04:32]  And that's what keeps programming fun for me.
+[0:04:34]  Even all of these years later, whether it's teaching or actually applying it.
+[0:04:37]  But there's, down the road, a history of an MIT hack.
+[0:04:40]  And it looked a little something like this in yesteryear.
+[0:04:43]  And there was a little sign the MIT students, when they made this hack,
+[0:04:46]  on the wall that says, getting an education from MIT
+[0:04:48]  is like drinking from a fire hose, which indeed, they
+[0:04:51]  have connected to what should have been otherwise just a water fountain.
+[0:04:54]  And that's going to be what it feels like sometimes,
+[0:04:57]  not just in computer science per se, but just an unfamiliar field.
+[0:05:00]  If you're not from STEM, if you're not from CS, that's fine.
+[0:05:03]  But so much of it, ultimately, is going to be absorbed by you
+[0:05:07]  and going to be within your grasp by term's end.
+[0:05:10]  So just keep in mind, that's very much the intent.
+[0:05:13]  But you'll be amazed what you're able to create to accomplish just three
+[0:05:17]  or so months hence.
+[0:05:18]  Indeed, 2 thirds of you, contrary to what you might think or assume,
+[0:05:22]  have never taken a CS class before.
+[0:05:24]  So it's absolutely not the case that the person to the left
+[0:05:26]  and to the right surely must know more than you.
+[0:05:28]  Indeed, it's quite the opposite.
+[0:05:30]  And as you'll see in the coming weeks, as you write your own code
+[0:05:33]  and solve your own problems, what ultimately matters in this course
+[0:05:36]  is not so much where you end up relative to your classmates,
+[0:05:38]  but where you end up relative to yourself when you began.
+[0:05:41]  And it really is all about that delta, whether you've programmed or not,
+[0:05:44]  just getting something out of a class like this.
+[0:05:48]  And if it does take time, and if you do feel those frustrations,
+[0:05:51]  but you simultaneously eventually feel that sense of accomplishment,
+[0:05:53]  that just means it's all working.
+[0:05:55]  And indeed, hopefully, all the more worthwhile and gratifying,
+[0:05:58]  ultimately, as a result.
+[0:06:00]  So what are we going to do in the coming week?
+[0:06:02]  Here we are in week 0.
+[0:06:04]  We'll soon see why computers and computer scientists
+[0:06:06]  start counting, if you will, from 0.
+[0:06:08]  But week 0 is one in which we explore computational thinking,
+[0:06:12]  thinking like a computer and starting to clean up your thought processes,
+[0:06:15]  getting you to think, to solve problems more methodically,
+[0:06:18]  and then ultimately translating that into code.
+[0:06:20]  And some of you might recognize this environment here,
+[0:06:22]  AKA Scratch, coincidentally also from MIT.
+[0:06:25]  You might have used it in grade school.
+[0:06:27]  We'll use it today and a little bit this weekend
+[0:06:29]  in the course's first homework assignment or problem set,
+[0:06:32]  but not so much to kind of play around in a way
+[0:06:34]  that you might have if you did use it in yesteryear,
+[0:06:36]  but to explore ideas of computer science and programming
+[0:06:39]  that we're going to use and reuse every week hereafter as well.
+[0:06:43]  Thereafter, we're going to transition just next week to week 1, so to speak,
+[0:06:47]  whereby we'll introduce you to a more traditional language,
+[0:06:50]  a lower level language, an older language called C.
+[0:06:53]  And in C, you're going to use your keyboard, not so much your mouse
+[0:06:55]  and pointing and clicking, but you're going
+[0:06:57]  to write code that soon is going to look a little something like this.
+[0:06:59]  And if you've programmed before, you can probably
+[0:07:01]  glean what this is going to do.
+[0:07:03]  If you've never programmed before, which is the case for most of you,
+[0:07:06]  this too will soon make sense.
+[0:07:08]  But this is the most canonical program that most any programmer ever writes
+[0:07:12]  called Hello World.
+[0:07:13]  And indeed, that and all of the surrounding syntax above and below
+[0:07:16]  just that sentence, Hello World, will soon make all the more sense.
+[0:07:20]  You'll learn how to use industry standard tools, so to speak.
+[0:07:23]  Pictured here is something called Visual Studio Code or VS Code.
+[0:07:25]  You'll use a cloud-based version of it initially,
+[0:07:28]  so you don't have to suffer with any technical difficulties or headaches
+[0:07:31]  like that.
+[0:07:31]  It'll just work right off the bat.
+[0:07:33]  But we'll use that to one others, ultimately, to then explore
+[0:07:36]  ideas in computer science, principles that you can apply.
+[0:07:40]  And we'll take a look underneath the hood, so to speak, of your computer,
+[0:07:42]  at your memory or RAM, random access memory, where all of the data
+[0:07:46]  is ultimately going to be stored.
+[0:07:48]  We'll also take a look thereafter at bugs.
+[0:07:50]  A bug is a mistake in a program.
+[0:07:52]  Here is an actual bug in an actual computer in yesteryear.
+[0:07:55]  But we'll teach you how to debug programs, find your own mistakes,
+[0:07:59]  find others' mistakes, and improve that code as well.
+[0:08:02]  We'll transition, then, to algorithms, step-by-step instructions
+[0:08:05]  for solving some problems, which we'll touch on today, too.
+[0:08:08]  And if you picture here, this is actually a pretty representative problem.
+[0:08:11]  Odds are you haven't had to deal with something like this,
+[0:08:13]  but it's representative sorting, for instance.
+[0:08:16]  If you think of each of these small bars as being a small number,
+[0:08:19]  each of the bigger bars as being a bigger number,
+[0:08:21]  you might wonder, well, how could you, as a human, sort all of these bars?
+[0:08:26]  Get all the short bars over here, all the big bars over there.
+[0:08:29]  Well, odds are, if you're like me, you would probably eyeball it.
+[0:08:32]  And if you could physically interact, you
+[0:08:34]  might just start grabbing the smallest elements first,
+[0:08:36]  put them over on the left, maybe grab the biggest elements,
+[0:08:38]  put them over on the right.
+[0:08:40]  But what's your algorithm there?
+[0:08:42]  How would you teach someone younger than you, who's never
+[0:08:44]  done that before, how to do it?
+[0:08:45]  How would you compel your Mac or PC or phone to do something like that?
+[0:08:49]  You can't just kind of wave your hand and say, oh, figure it out,
+[0:08:52]  move things around.
+[0:08:53]  You have to express yourself more methodically.
+[0:08:55]  So we'll translate even ideas like this into code, too.
+[0:08:57]  And that's what the Googles and others of the world
+[0:08:59]  are doing constantly as they sort and organize the world's information.
+[0:09:03]  We'll use metaphors along the way if it helps.
+[0:09:06]  We'll talk about your computer's memory as kind of being like a postal address.
+[0:09:09]  Like every mailbox in the world has some form of postal address, street, city,
+[0:09:14]  state, country, and the like.
+[0:09:15]  And it turns out that's how your Mac, your PC, and your phone also work.
+[0:09:18]  You've got a whole bunch of memory, like the picture before.
+[0:09:21]  But you can think of it really as individual mailboxes.
+[0:09:23]  And you can put anything you want in those mailboxes.
+[0:09:26]  And you can go to a mailbox to grab information that's from it.
+[0:09:29]  So at the end of the day, that's really all your computer's
+[0:09:32]  doing with information.
+[0:09:33]  It's just kind of organizing it, not into mailboxes, per se,
+[0:09:36]  but a term you probably know called bytes, for instance, instead.
+[0:09:40]  We'll talk about problems that arise even nowadays.
+[0:09:43]  In fact, most of you are familiar with your Mac, PC, even phone,
+[0:09:47]  spontaneously rebooting sometimes, crashing,
+[0:09:50]  the little annoying spinning beach ball, or hourglass icon that happens.
+[0:09:53]  What is with that?
+[0:09:54]  Well, those are just bugs in programs that humans at Apple, and Google,
+[0:09:57]  and Microsoft, and others, they screwed up.
+[0:09:59]  And they wrote buggy code.
+[0:10:01]  And your computer, when it encounters those mistakes,
+[0:10:04]  doesn't know what to do.
+[0:10:05]  And so nine times out of 10, so to speak, it just crashes, or freezes,
+[0:10:08]  or the like.
+[0:10:09]  But that kind of stuff will make more sense.
+[0:10:10]  Even the real world will make sense.
+[0:10:12]  And pictured here are some lower level terms
+[0:10:14]  we'll eventually get to mid-semester.
+[0:10:16]  But generally speaking, when something is going this way, as per this arrow,
+[0:10:19]  and something is going this way, as per this arrow, that does not end well.
+[0:10:23]  And that often is what happens when your computer crashes.
+[0:10:26]  Someone's using memory up here, but someone else is using memory down here.
+[0:10:29]  And then they're not really talking left hand and right hand.
+[0:10:32]  So that is just a high level overview of some of the problems we'll encounter.
+[0:10:36]  But we'll focus too on data, ultimately.
+[0:10:37]  So pictured here is something fairly technical called a hash table.
+[0:10:41]  It's an amalgam of something we're going to soon call an array,
+[0:10:44]  and also something we call a linked list.
+[0:10:46]  And these are just fancy terms for describing
+[0:10:48]  how you can organize information even more flexibly
+[0:10:51]  than just putting individual values in mailboxes.
+[0:10:55]  Like, how could you build structures, like actual data structures,
+[0:10:58]  so to speak, two dimensional structures at that?
+[0:11:01]  And so what you're seeing here is a glimpse,
+[0:11:03]  as some of you might have recognized, of some Harry Potter universe names.
+[0:11:06]  But they're organized somewhat alphabetically.
+[0:11:09]  And notice that any time there's multiple people
+[0:11:11]  with a name that starts with H, like Hermione, Harry, and Hagrid,
+[0:11:14]  well, they can't all fit in that mailbox,
+[0:11:16]  if each of these squares along the left is that same mailbox.
+[0:11:19]  So you have to kind of chain them together.
+[0:11:21]  Well, you'll learn how to do that in code,
+[0:11:23]  so that even if you get more data than you expect,
+[0:11:25]  if your business is booming and you're some web-based business,
+[0:11:28]  how do you keep adding and adding information to your software
+[0:11:31]  to actually keep up with it?
+[0:11:33]  But this, again, is what code is going to soon look like.
+[0:11:36]  As soon as next week in week one, this here being C,
+[0:11:39]  but we'll transition in a few weeks to a more modern, higher level language,
+[0:11:44]  so to speak, called Python.
+[0:11:46]  Indeed, the course very deliberately, back in my day and now this,
+[0:11:48]  introduces you first to C, which, funny enough,
+[0:11:51]  many people don't tend to program in, certainly, every day.
+[0:11:54]  I use C generally September, October, November, December,
+[0:11:58]  when teaching CS50 itself.
+[0:11:59]  But it's everywhere, nonetheless.
+[0:12:01]  In fact, even today's other languages, with which you might be familiar,
+[0:12:04]  like Python and Java and yet others still,
+[0:12:08]  use C, the same primitive language underneath the hood,
+[0:12:11]  because it's so darn fast.
+[0:12:13]  And as you'll learn over the coming weeks, it really gives you access to
+[0:12:16]  and an understanding of what's going on conceptually down here
+[0:12:20]  so that thereafter, after CS50, when you're writing code,
+[0:12:22]  you can sort of think at a very high level what's actually going on.
+[0:12:26]  So in fact, in just a few weeks, what looks like this in C
+[0:12:29]  is going to look instead like this in Python.
+[0:12:32]  And you'll better understand what's going on underneath the hood.
+[0:12:35]  And odds are, after this class, you'll reach for a language like Python
+[0:12:38]  more frequently than C, but you're going to benefit from that bottom up
+[0:12:42]  understanding thereof.
+[0:12:43]  Thereafter, and towards Shurm's end, we'll
+[0:12:45]  introduce you to a few other ideas, like where
+[0:12:48]  do you put large amounts of data in things called databases,
+[0:12:50]  not things like spreadsheets like here, but actual databases
+[0:12:53]  where using those same kinds of data structures
+[0:12:55]  you lay things out in an interesting way in memory.
+[0:12:58]  Thereafter, we'll transition to a very familiar environment
+[0:13:00]  that you and I use every day, the web.
+[0:13:03]  The web has become, rather, the user interface or UI
+[0:13:05]  that we use everywhere on the laptops, desktops,
+[0:13:08]  and even mobile devices nowadays.
+[0:13:10]  Well, pictured here is a language called HTML.
+[0:13:13]  It's not a programming language.
+[0:13:14]  It's a markup language.
+[0:13:15]  And some of you might have made home pages or portfolios in the past.
+[0:13:18]  But you'll understand what's going on here.
+[0:13:21]  But more powerfully, you'll understand how the computer sees
+[0:13:24]  that same kind of code, builds up a hierarchical family tree
+[0:13:28]  type structure in memory.
+[0:13:29]  And then you can manipulate that tree with code
+[0:13:32]  to actually add more and more information, chat messages, anything
+[0:13:35]  on the screen that you like.
+[0:13:37]  And finally, we'll tie all of this together
+[0:13:40]  by introducing what are called frameworks and libraries, third party
+[0:13:44]  code that makes it a lot easier to solve problems of interest to you.
+[0:13:48]  And so in particular here, this is the very first web app
+[0:13:51]  that I myself made back in like 1997.
+[0:13:54]  I was part of the first year intramural sports program, not as an athlete,
+[0:13:58]  but as the programmer.
+[0:13:59]  And I was teaching myself how to build web applications.
+[0:14:02]  I only knew C and maybe a little bit of something else at the time.
+[0:14:05]  But this became, for Harvard at least, the very first website
+[0:14:08]  for the first year intramural sports program.
+[0:14:10]  And it wasn't just a static website with links and images and the like.
+[0:14:14]  It was interactive.
+[0:14:15]  You could register for sports.
+[0:14:16]  We could input exactly who was in a tournament bracket or the like.
+[0:14:19]  And it could actually automatically keep track of this data.
+[0:14:22]  So there too, after just three months of a class like this,
+[0:14:25]  you'll go from writing quite simply this week in Next Hello World
+[0:14:28]  to building things like this for whether it's web, mobile, or other platforms
+[0:14:33]  as well, if you so choose.
+[0:14:34]  But we'll get you off of the course's infrastructure.
+[0:14:37]  By the end of the term, you won't be using any toy environments along the way.
+[0:14:40]  We'll empower you ultimately to write code after CS50,
+[0:14:43]  especially if this is the only CS class you ever
+[0:14:46]  take on your own Mac or PC using the same software,
+[0:14:49]  but not the cloud-based version thereof.
+[0:14:51]  But all of this software is itself free and can
+[0:14:53]  be used by you powerfully after the course's own end.
+[0:14:58]  But along the way, as you may know, there
+[0:15:01]  are this tradition within the class, particularly
+[0:15:03]  in healthy times, of a number of events that really brings people
+[0:15:06]  together, not just collaboratively academically,
+[0:15:09]  but to just solve problems and generally engage with each other as well.
+[0:15:13]  Coming up first, CS50 Puzzle Day, which is meant to be not jigsaw puzzles,
+[0:15:16]  but logic puzzles that require no prior experience with computer science
+[0:15:20]  or programming, but it's just an opportunity
+[0:15:22]  to sort of quietly work on a packet of puzzles
+[0:15:25]  with some number of friends for prizes and more.
+[0:15:28]  Later in the semester, once you tackle your final projects,
+[0:15:31]  the capstone of the course, where we don't give you a homework to write,
+[0:15:34]  you yourself come up with something to build,
+[0:15:36]  we'll get together generally around 7 PM in the evening,
+[0:15:41]  wrap up around 7 AM, if you so choose, and it's an evening,
+[0:15:44]  a 12-hour opportunity to collaborate with classmates
+[0:15:47]  on your very own final project in a large space on campus that ends.
+[0:15:52]  If you're awake with us at 5 AM, we can hop on some CS50 shuttles
+[0:15:55]  and go down the road for some pancakes at IHOP around 6.
+[0:15:59]  Of course, this is 6, 7 AM at that point,
+[0:16:04]  but it's an opportunity finally to lead into what's called the CS50
+[0:16:07]  Fair, which is an end-of-semester celebration,
+[0:16:09]  an exhibition of everything that you'll accomplish over the coming months.
+[0:16:13]  And in fact, pictured here are some of your predecessors and healthy times.
+[0:16:17]  The CS50 Fair allows you to come with your laptop or phone
+[0:16:20]  and exhibit to students, faculty, and staff across campus,
+[0:16:23]  put together something in person and on video
+[0:16:25]  that people can delight in seeing as you exhibit what it is you created
+[0:16:28]  and what you learned over the course of the several weeks,
+[0:16:31]  and ultimately a chance to just share and inspire others as well.
+[0:16:35]  And you'll all walk home ultimately with your own I took CS50 t-shirts saying
+[0:16:39]  as much as well.
+[0:16:41]  So with that high-level overview of the course,
+[0:16:44]  I propose that we begin to take a look at what computer science itself is
+[0:16:48]  and what it is we're going to be doing over the next several weeks
+[0:16:52]  at this lower level than 2.
+[0:16:53]  So what is computer science?
+[0:16:55]  If you're maybe like me or new people like my friends in high school,
+[0:16:59]  you probably assume that it means programming.
+[0:17:01]  And that's absolutely a big part of it for a lot of people.
+[0:17:04]  Because with code, you can write, you can express ideas
+[0:17:06]  and solve actual problems, especially involving data.
+[0:17:09]  But computer science itself is really the study of information, if you will.
+[0:17:13]  How do you represent it?
+[0:17:14]  And how do you actually process it?
+[0:17:16]  And in that sense, computational thinking
+[0:17:18]  is just the application of ideas from computer science, a course like this,
+[0:17:23]  to problems of interest to you.
+[0:17:24]  Again, in the arts, humanities, sciences, social sciences,
+[0:17:27]  whatever the domain of interest is to you.
+[0:17:30]  So with that, if computer science is all about information
+[0:17:33]  and with it the solving of problems, well, what does it actually
+[0:17:36]  mean to solve a problem?
+[0:17:37]  Let's see if we can't propose a model into which all of the lessons learned
+[0:17:41]  will ultimately follow.
+[0:17:42]  And I propose that this is problem solving.
+[0:17:46]  You've got some input, which is like the problem you want to solve.
+[0:17:49]  The goal is to solve it, so that's the so-called output.
+[0:17:51]  And then somewhere in here, the proverbial black box,
+[0:17:54]  is some kind of secret sauce that gets the work done.
+[0:17:57]  And in the coming months, we'll have to decide,
+[0:17:59]  well, how are we going to represent these inputs and outputs?
+[0:18:01]  And really, how do we code up?
+[0:18:03]  How do we write solutions for what it is that's
+[0:18:05]  solving the problem of interest to us?
+[0:18:08]  So when it comes to representation of information,
+[0:18:10]  there's a lot of ways we can do this.
+[0:18:12]  And for instance, if the problem at hand quite simply
+[0:18:14]  is to take attendance at the beginning of class
+[0:18:17]  on the first day of school, well, how could we go about doing this?
+[0:18:20]  Well, we could actually use a system called unary.
+[0:18:23]  Well, what is that?
+[0:18:24]  Well, that's a fancy way of saying 1, 2, 3, 4, 5, maybe 6, 7, 8, 9, 10.
+[0:18:29]  And I can use my digits, pun intended, on my fingers
+[0:18:32]  to actually count everyone up.
+[0:18:34]  And eventually, you need toes and whatnot if you have to count so high.
+[0:18:37]  But unary is a very simple system of using a single symbol, a human finger
+[0:18:42]  in this case, to just solve some problem,
+[0:18:43]  like counting the number of people in the room.
+[0:18:45]  Let's make this slightly more technical for a moment, a little more mathy.
+[0:18:49]  That's just called base 1, where the base under which you're operating
+[0:18:52]  has one digit in it, like literally a human finger,
+[0:18:55]  and maybe multiple such fingers if you need to count higher.
+[0:18:58]  But of course, most of you, if not all of you,
+[0:19:00]  generally vaguely know that computers use something other than unary.
+[0:19:05]  And even you and I probably don't use this that often.
+[0:19:07]  They use what language or alphabet instead?
+[0:19:11]  Yeah, so binary.
+[0:19:13]  So binary is indeed the system that computers somehow use.
+[0:19:16]  So in this case, by implying 2.
+[0:19:19]  And so computers have two digits, it turns out, at their disposal.
+[0:19:22]  And in fact, if you've ever heard the technical term
+[0:19:24]  bit, which is like a smaller version of a byte, more on that soon,
+[0:19:28]  well, a binary digit is the origin of that term bit.
+[0:19:31]  Because if you get rid of some of the letters
+[0:19:33]  and you're left from binary digit with just bit, thus is a bit.
+[0:19:37]  A bit is just a 0 and 1.
+[0:19:39]  It's two more digits than you might have on your own finger.
+[0:19:41]  And of course, it's fewer, though, than you and I have.
+[0:19:44]  You and I typically use as humans the decimal system,
+[0:19:46]  deck meaning 10, because you and I generally use 0 through 9.
+[0:19:50]  So on the one hand, another pun intended, you've got unary.
+[0:19:53]  Computers use binary.
+[0:19:55]  We humans generally think and talk in terms of decimal.
+[0:19:58]  But at the end of the day, these are fundamentally
+[0:20:01]  going to be the same thing, which is to say that it's all
+[0:20:03]  pretty accessible to us.
+[0:20:05]  Even if you're not a computer person, I dare say you're about to be.
+[0:20:08]  So what is a bit?
+[0:20:09]  Well, a bit then is a 0 or a 1.
+[0:20:12]  That is a so-called binary digit.
+[0:20:14]  But how do computers only speak in binary?
+[0:20:17]  How do they solve problems, represent information using only binary?
+[0:20:20]  Well, at the end of the day, if they want to represent 0 and 1,
+[0:20:23]  we need to do so physically somehow.
+[0:20:26]  And I dare say that maybe the simplest way
+[0:20:28]  to think about a bit, a 0 or 1, is like a light bulb.
+[0:20:32]  And so by human convention, let's just assume
+[0:20:34]  that if you are a computer, be it a laptop, desktop, phone, or the like,
+[0:20:38]  and you want to represent the number 0, you know what?
+[0:20:41]  You just keep a light switch off.
+[0:20:43]  You keep a light bulb off.
+[0:20:45]  If, by contrast, you're that same computer
+[0:20:47]  and you want to represent the number 1, you take that same switch,
+[0:20:49]  that same light bulb, and just turn it on.
+[0:20:52]  So a light bulb that's on represents a 1, and a light bulb that's off
+[0:20:55]  represents a 0.
+[0:20:56]  So why is this relevant to computers?
+[0:20:58]  Well, at the end of the day, you and I are charging our laptops or phones
+[0:21:01]  at night, so there's some physical resource being replenished there,
+[0:21:04]  whether you're on battery or some power cord.
+[0:21:07]  And so inside of a computer are just thousands, millions
+[0:21:10]  of tiny little switches nowadays.
+[0:21:12]  You can think of them metaphorically as light bulbs,
+[0:21:14]  but they don't get it to actually shine light.
+[0:21:16]  But there are tiny, tiny little switches.
+[0:21:18]  And those switches, if you've ever heard the term, are just called transistors.
+[0:21:22]  So like computers have millions of transistors
+[0:21:24]  that can either be flipped on to represent 1s or flipped off to represent 0s.
+[0:21:29]  And from that very simple mechanism, electricity is there or it's not.
+[0:21:34]  A 1 or a 0, computers can actually count, obviously, from 0 to 1,
+[0:21:40]  but it turns out even higher.
+[0:21:41]  If they use a little more electricity as well.
+[0:21:44]  So how might I do this?
+[0:21:45]  Well, let me go ahead and propose that I just
+[0:21:47]  grab one of our own light bulbs here on stage.
+[0:21:49]  This one's off.
+[0:21:50]  So for instance, if this were miniaturized inside of your Mac, PC,
+[0:21:53]  or phone, this would be a transistor.
+[0:21:54]  And indeed, here's the little switch on the bottom.
+[0:21:56]  And if your computer wants to represent a 0, it just leaves the switch off,
+[0:22:00]  and the light is not shining.
+[0:22:01]  If you want to represent a 1, well, now I've counted as high as 1,
+[0:22:05]  because the switch is now on.
+[0:22:06]  I've grabbed a little electricity.
+[0:22:07]  I'm holding onto it inside of the computer.
+[0:22:09]  And so now I see that this is a 1.
+[0:22:11]  All right, but unfortunately, with just one switch, one light bulb,
+[0:22:14]  I can only count from 0 to 1.
+[0:22:17]  How do I count out higher, might you think intuitively?
+[0:22:21]  Say again?
+[0:22:22]  Yeah, so more light bulbs.
+[0:22:23]  So let me do this.
+[0:22:24]  Let me just grab something to put these on so I
+[0:22:27]  can use a few of them at a time.
+[0:22:29]  And let me propose that here, instead of having just one light bulb,
+[0:22:32]  let me give myself maybe three in total.
+[0:22:35]  So all of them are initially off.
+[0:22:37]  And if you think of this in miniature form in your mind's eye,
+[0:22:39]  this is like a computer with three transistors, three switches,
+[0:22:42]  representing now the number you and I know as 0.
+[0:22:45]  Why?
+[0:22:46]  They're just all off.
+[0:22:48]  So how does a computer go about representing the number 1?
+[0:22:51]  Well, it turns on one of these light bulbs.
+[0:22:54]  And how does the computer represent the number 2?
+[0:22:56]  Well, you might think, if I may, you just turn on a second light bulb.
+[0:23:00]  And if you might think, how does a computer represent 3?
+[0:23:03]  You just turn on the third light bulb.
+[0:23:05]  And so as such, with three bits, a computer
+[0:23:08]  would seem to be able to count from 0 on up to 1, 2, 3.
+[0:23:12]  But it turns out, if I'm a little smarter here,
+[0:23:14]  I can actually count higher than that.
+[0:23:16]  Why?
+[0:23:17]  Well, I'm just considering the combination of bulbs being on here.
+[0:23:20]  What if I do something like this?
+[0:23:21]  This is still 0, I will claim.
+[0:23:22]  But what if I propose now that this will be how a computer represents 1?
+[0:23:27]  On, off, off.
+[0:23:29]  This, though, will be how the computer represents 2.
+[0:23:33]  Notice I didn't turn on the same 2.
+[0:23:35]  I'm just turning on the 1 in the middle.
+[0:23:37]  This, I now claim, will be how a computer represents 3.
+[0:23:40]  This is going to be, in just a second, how a computer represents
+[0:23:44]  the number we know as 4.
+[0:23:47]  And yet, I'm still only using three bulbs.
+[0:23:49]  This is going to be the number the computer represents as 5.
+[0:23:53]  This is going to be how the computer represents the number 6.
+[0:23:57]  And then lastly, it turns out, with three light bulbs,
+[0:23:59]  if you're smart about it, you can count.
+[0:24:01]  It seems as high as 7.
+[0:24:03]  Now, even if you kind of lost track of what I was turning on and why,
+[0:24:07]  I claim there were eight different patterns, from all of them
+[0:24:09]  off to all of them on.
+[0:24:11]  But notice that I started to permute them.
+[0:24:13]  I took into account which ones were on and which ones were off.
+[0:24:16]  Why, though, do these represent the numbers we know as 0 through 7?
+[0:24:20]  Well, let me go ahead and maybe let's do this.
+[0:24:23]  Instead of just considering there to be light bulbs,
+[0:24:25]  let's assign some special significance to each of them based on where it is.
+[0:24:30]  And maybe for this, could we get maybe three volunteers?
+[0:24:36]  OK.
+[0:24:37]  You're being volunteered.
+[0:24:38]  OK, come on up if you want to go over to the stage there.
+[0:24:40]  Yeah, you want to come on up as well, and over here as well.
+[0:24:43]  So there's some stairs on either end.
+[0:24:45]  Maybe a round of applause for our first volunteers of term.
+[0:24:55]  All right, so you want to be here, you are number 1.
+[0:24:57]  And if you want to go ahead and stand roughly right here,
+[0:24:59]  how about you want to be number 2?
+[0:25:01]  OK, come on over and right to the right of here.
+[0:25:04]  And you'll be number 4, it turns out.
+[0:25:06]  And if you want to come over here on this end,
+[0:25:09]  let's give you all a moment to introduce yourselves briefly
+[0:25:12]  to your classmates if you'd like.
+[0:25:14]  Hi, I'm Ellie.
+[0:25:15]  I'm a senior.
+[0:25:17]  Nice to meet.
+[0:25:18]  I'm Rihanna, and I'm a first year.
+[0:25:20]  Welcome.
+[0:25:22]  Hi, I'm Joseph.
+[0:25:23]  I am a first year.
+[0:25:25]  Welcome.
+[0:25:25]  All right, so so glad to have all three of you up here.
+[0:25:28]  Thank you.
+[0:25:31]  Let me propose now that we'd like you three to represent,
+[0:25:36]  how about the number 0?
+[0:25:37]  And I claim now that if each of you now represents a switch,
+[0:25:40]  you have sort of fancier light bulbs now.
+[0:25:42]  One is a 1, one is a 2, one is a 4.
+[0:25:44]  But each of you still just has a switch on the bottom,
+[0:25:46]  in fact, of your plastic devices.
+[0:25:48]  I claim these three volunteers are representing the number 0.
+[0:25:51]  Let me ask you all now, how might you represent the number 1?
+[0:25:55]  How should you cooperate here?
+[0:25:57]  OK, so we would have on, off, off, which I think
+[0:26:00]  matches what I did with my three light bulbs as well.
+[0:26:02]  If you want to go ahead and turn yours off,
+[0:26:04]  how might you three represent the number 2?
+[0:26:07]  OK, so off, on, off now from right to left,
+[0:26:11]  how would you three represent the number 3?
+[0:26:15]  So that's why my two light bulbs went on at the end.
+[0:26:18]  How would you three represent the number 4?
+[0:26:23]  Perfect, number 5, number 6, and number 7.
+[0:26:31]  All right, and give us one more.
+[0:26:32]  How would you represent 8?
+[0:26:35]  OK, you can't.
+[0:26:37]  How about then one more volunteer?
+[0:26:40]  One more volunteer.
+[0:26:41]  OK, come on up.
+[0:26:46]  What's your name, if you want to say that?
+[0:26:49]  My name's Mowin.
+[0:26:50]  All right, Mowin, you're going to be number 8.
+[0:26:52]  And if now you all, actually, let's make this,
+[0:26:54]  how would you represent number 8, all collectively,
+[0:26:57]  as four bits or four switches?
+[0:27:01]  OK, 8, and now lastly, give me 15.
+[0:27:07]  Everyone's awkwardly doing arithmetic in their head.
+[0:27:10]  Oh, using Unary.
+[0:27:14]  Yeah, is everyone?
+[0:27:16]  Yes, OK, round of applause.
+[0:27:18]  OK, thank you all.
+[0:27:21]  If you want to leave your numbers over here,
+[0:27:24]  we have a CS50 stress ball for you.
+[0:27:27]  But thank you for volunteering.
+[0:27:28]  You can turn those numbers off and leave them over here.
+[0:27:30]  Thank you.
+[0:27:32]  So how do we go from there to creating these patterns?
+[0:27:40]  Well, even though we still had three bits initially and three switches,
+[0:27:45]  later four bits and four switches, ultimately,
+[0:27:48]  we still used the same approach fundamentally
+[0:27:51]  to actually representing information.
+[0:27:53]  And now, why were they those patterns?
+[0:27:55]  And why did I very deliberately have our volunteers line up in that way?
+[0:27:59]  Well, I wanted them using base 2, AKA binary.
+[0:28:02]  But with binary, there come certain rules.
+[0:28:05]  And even if you're not familiar with binary beyond that it exists
+[0:28:08]  and relates somehow to computers, it's actually
+[0:28:11]  pretty much identical to the system you and I use every day,
+[0:28:14]  known as base 10, AKA decimal.
+[0:28:16]  So let's consider, if you will, by rewinding to primary school
+[0:28:19]  for just a moment how decimal works.
+[0:28:21]  And you'll see that even if you're not a computer person, you actually are.
+[0:28:24]  You just have to tweak your mental model ever so slightly.
+[0:28:27]  So here is the number that you're probably viewing as 123.
+[0:28:31]  But why is that?
+[0:28:32]  Well, it's not really 123.
+[0:28:35]  This is just a pattern of three symbols on the screen, 1, 2, 3.
+[0:28:40]  And your mind is sort of rapidly assigning mathematical meaning to them,
+[0:28:43]  123.
+[0:28:44]  But why is that?
+[0:28:45]  Well, if you're like me, you probably learned back in the day
+[0:28:47]  when you have a three digit number like this.
+[0:28:49]  The rightmost number is in the ones place.
+[0:28:52]  The middle digit is the tens place.
+[0:28:53]  The leftmost digit is in the hundreds place.
+[0:28:55]  And why is that relevant?
+[0:28:56]  Well, if you then quickly do some mental math,
+[0:28:58]  as you and I just do instantly nowadays, that just means 100 times 1 plus 10
+[0:29:03]  times 2 plus 1 times 3.
+[0:29:05]  Of course, 100 plus 20 plus 3 gives us the number you and I know as 123.
+[0:29:11]  But beyond that, how do we get to just two digits instead of as many as 9
+[0:29:16]  in the decimal system?
+[0:29:17]  Well, let's generalize this.
+[0:29:19]  In the decimal system, you and I know if we've
+[0:29:21]  got three digits represented by these hashes here, yes, it's the ones place,
+[0:29:25]  tens place, hundreds place.
+[0:29:26]  And if we keep going, thousands, 10,000s, and so forth.
+[0:29:29]  But why is that?
+[0:29:30]  Well, base terminology is now a little more germane.
+[0:29:33]  That's technically the 10 to the 0th column, the 10 to the 1, 10 to the 2.
+[0:29:38]  So these are powers of 10, where 10 is your base.
+[0:29:41]  Computers just simplify things a little bit.
+[0:29:44]  Because computers, at the end of the day,
+[0:29:46]  only have access to electricity on or off.
+[0:29:48]  They don't have access to like 10 different types of electricity,
+[0:29:51]  just two, on or off, if you will.
+[0:29:53]  They just use a different base.
+[0:29:55]  And the rightmost digit would be in the so-called 2 to the 0s.
+[0:29:58]  Then the middle digit is 2 to the 1.
+[0:30:00]  The leftmost is 2 to the 2, AKA 1s place, 2s place, 4s place.
+[0:30:05]  And as we kept going, 8.
+[0:30:06]  And if we keep going, 16, 32, 64, 128, and so forth.
+[0:30:11]  But the idea is fundamentally the same.
+[0:30:12]  So why is this how the computer represents the number you and I know is 0?
+[0:30:17]  Well, off, off, off, from right to left, or in this case, left to right,
+[0:30:22]  is just 0.
+[0:30:23]  Why?
+[0:30:24]  Because that's 4 times 0 plus 2 times 0 plus 1 times 0 is, of course, 0.
+[0:30:29]  This is why 001 represents 1.
+[0:30:33]  This is why 010 represents 2, and 3, and 4, and 5, and 6, and 7 on up.
+[0:30:41]  And why did we need a fourth bit to represent 8?
+[0:30:44]  Well, we kind of needed to carry the 1, so to speak,
+[0:30:47]  using our familiar human terminology.
+[0:30:50]  But for that, we need a fourth bit, another transistor.
+[0:30:53]  And this now represents the number 8.
+[0:30:55]  And that's why we ended with on, from left to right, off, off, off.
+[0:31:00]  So I keep saying on and off, or the light bulb is on or off.
+[0:31:03]  But really, I just mean 1 or 0.
+[0:31:06]  And so computers and we humans think of things digitally
+[0:31:09]  as just being 0s and 1s.
+[0:31:10]  But mechanically, you can think of it indeed as these light bulbs.
+[0:31:13]  Now, a bit is not very useful.
+[0:31:15]  Even 3 bits, 4 bits, not that useful.
+[0:31:17]  You can count to 7 or 15.
+[0:31:18]  Generally speaking, bytes are a more useful unit of measure.
+[0:31:22]  And anyone familiar?
+[0:31:23]  How many bits is in a byte?
+[0:31:25]  Yeah, so 8 bits are in a byte.
+[0:31:27]  You can think of it as an octet equivalently.
+[0:31:29]  In some contexts, there are nuances there.
+[0:31:31]  But think of a byte as just being 8 bits.
+[0:31:33]  And that's just a more useful measure.
+[0:31:35]  So what does this mean in real terms?
+[0:31:36]  Well, if you've ever downloaded a music file or a photograph or a video,
+[0:31:42]  those are measured in bytes, probably not small numbers of bytes,
+[0:31:45]  probably kilobytes for thousands of bytes,
+[0:31:47]  megabytes for millions of bytes, gigabytes for billions of bytes,
+[0:31:52]  especially for video.
+[0:31:53]  That just means you have a lot of patterns of 8 bits,
+[0:31:57]  some combination of 0s and 1s on your computer's hard drive.
+[0:32:00]  Here then, with a byte of bits, 8 bits is how a computer would typically
+[0:32:05]  represent the number 0.
+[0:32:07]  And if that same computer uses all 8 of its bits,
+[0:32:10]  its full byte to change it to 1, anyone who's quick with math
+[0:32:14]  or have seen this before, how high can a computer
+[0:32:17]  count with 8 bits or 1?
+[0:32:19]  Yeah, 255.
+[0:32:21]  Why is that?
+[0:32:22]  Well, we're not going to turn this into a constant math exercise.
+[0:32:24]  Indeed, after today, we're not really going
+[0:32:26]  to think about or talk about bits at this low level.
+[0:32:29]  But this is the ones place, 2s, 4s, 8s, 16, 32, 64, 128.
+[0:32:35]  And if I do all of that math from left to right, that indeed gives me 255.
+[0:32:40]  It ignores how we might represent negative numbers, but perhaps more
+[0:32:43]  on those some other day.
+[0:32:45]  But computers, of course, do so much more than numbers and math
+[0:32:48]  and all this low level stuff.
+[0:32:49]  We send text messages, write documents, emails, and the like.
+[0:32:53]  So how might a computer represent something like the letter A?
+[0:32:57]  I claim at the end of the day, your Mac, your PC, your phone
+[0:33:00]  just has lots of transistors, lots of switches
+[0:33:03]  that it can use in units of 8, in units of bytes.
+[0:33:07]  How, though, if it's already using those patterns of 0s and 1s
+[0:33:10]  apparently to represent numbers from 0 on up,
+[0:33:14]  how do you go about representing letters of the alphabet, might you think?
+[0:33:19]  Yeah.
+[0:33:20]  OK, so we could assign a number to every letter.
+[0:33:22]  OK, so let me just conjecture.
+[0:33:24]  Well, let's just call A 0 for simplicity, B 1, C 2.
+[0:33:28]  And now let me play devil's advocate.
+[0:33:29]  OK, how do I now represent 0 or 1 or 2?
+[0:33:34]  Well, we've maybe created a problem for ourselves.
+[0:33:37]  If now we have to steal some numbers to represent letters,
+[0:33:40]  we kind of have to pick a lane.
+[0:33:40]  But there's a solution to that too that we'll see.
+[0:33:43]  It turns out the world is not quite as simple as A being 0.
+[0:33:46]  A typically is represented by computers everywhere, phones everywhere,
+[0:33:50]  with the number 65, the decimal number 65.
+[0:33:53]  Using 8 bits, if we turn some of the 0s to 1s, let me just stipulate,
+[0:33:57]  you can represent the letter A using 8 bits by turning
+[0:34:01]  certain ones on and certain ones off.
+[0:34:03]  But we will try not to focus on that binary level too much.
+[0:34:07]  So if A is 65, it turns out that B is going to be 66,
+[0:34:10]  and C is going to be 67, and so forth.
+[0:34:13]  And so where does that get us?
+[0:34:15]  Well, it turns out there's a whole system that maps numbers to letters.
+[0:34:20]  And here, as I alluded to verbally a moment ago,
+[0:34:22]  is the pattern of 0s and 1s via which you'd represent 65.
+[0:34:26]  And just quick check here, we won't constantly do math.
+[0:34:29]  1s place, that's easy.
+[0:34:31]  2s, 4s, 8, 16, 32.
+[0:34:33]  64s place, so 64 plus 1 gives us 65.
+[0:34:39]  So once I do that, how do I get to all of the others?
+[0:34:42]  Well, it turns out a bunch of Americans years ago came up with this, ASCII,
+[0:34:46]  the American Standard Code for Information Interchange.
+[0:34:49]  Now, what does that mean?
+[0:34:51]  Well, it's just an acronym describing what really you proposed,
+[0:34:53]  a mapping between numbers and letters.
+[0:34:56]  Not quite as simple as 0, 1, 2.
+[0:34:58]  Starts at 65, 66, 67 for capital letters.
+[0:35:02]  But here are most of the letters in use today, at least with this system.
+[0:35:06]  So this is just a big chart from online.
+[0:35:08]  And you'll see in the middle of this chart here, here's my 65A.
+[0:35:13]  Here's my 66B, C. And let's see, 72 is H, 73 is I, and so forth.
+[0:35:19]  So there's a mapping, at least for English, between all of these numbers
+[0:35:23]  and all of these letters.
+[0:35:24]  And if we focus here, those are the beginning of our uppercase alphabet.
+[0:35:28]  So suppose, then, that today, tomorrow, you
+[0:35:30]  receive a text message from someone.
+[0:35:33]  And underneath the hood, now that you're a computer person,
+[0:35:36]  you figure out a way to see what pattern of 0s and 1s was sent.
+[0:35:40]  In this case, it's wireless, as opposed to wired.
+[0:35:42]  But it's still some pattern of 0s and 1s.
+[0:35:44]  And your phone is turning some switches of its own on and off
+[0:35:46]  to represent that message from a friend.
+[0:35:49]  Suppose that the three patterns you received
+[0:35:51]  were these three bytes from left to right, spelling out a three-letter word.
+[0:35:56]  Well, if we do out the math, 1s place, 2s place, and so forth,
+[0:35:59]  I'll spoil it for you.
+[0:36:01]  Suppose that you received a text message that doesn't literally
+[0:36:04]  say 72, 73, 33.
+[0:36:06]  But you've received a pattern of 8 plus 8 plus 8, 24 bits,
+[0:36:10]  that if you do out the math, represent the decimal number 72, 73, 33.
+[0:36:15]  Anyone recall what message you might have received
+[0:36:18]  from the green and white charts?
+[0:36:19]  Yeah.
+[0:36:21]  Hi.
+[0:36:22]  But yes, hi is the message.
+[0:36:24]  But 72, 73 gives us h and i.
+[0:36:27]  What's 33?
+[0:36:29]  Any guesses to 33?
+[0:36:31]  Yeah, over here?
+[0:36:33]  Yeah, so it's an exclamation point.
+[0:36:34]  How would you know that?
+[0:36:35]  Well, you really do need some kind of cheat sheet, AKA ASCII in this case.
+[0:36:38]  And if we look elsewhere, let me highlight the left of the chart,
+[0:36:41]  you can see that next to 33 in decimal is indeed the exclamation point.
+[0:36:45]  So back in the day, a bunch of humans got in a room,
+[0:36:48]  decided that, hey, when we start building PCs and later Macs and phones,
+[0:36:52]  we all just have to agree on this form of representation
+[0:36:55]  of letters of the English alphabet in this case.
+[0:36:59]  We just need to agree on this mapping.
+[0:37:00]  But somewhat curiously, notice this.
+[0:37:03]  It turns out that once you paint yourself into this corner
+[0:37:07]  and start using 65 for a, 66 for b, well, how do you represent 65 the number
+[0:37:14]  and 66 the number if you want to do math or use Excel or something like that?
+[0:37:18]  Does anyone kind of see the solution, perhaps?
+[0:37:22]  How do you represent the number 1 in ASCII?
+[0:37:27]  Yeah, in the middle?
+[0:37:30]  Yeah, so this is getting a little maybe inception or something.
+[0:37:34]  But you could represent numbers with other numbers.
+[0:37:36]  And so if you want to represent the number you and I know as 1,
+[0:37:38]  like when you type it on your keyboard, turns out
+[0:37:41]  the computer stores that as the decimal number 49.
+[0:37:44]  If you hit 2 on your keyboard, the computer's not storing 2, per se.
+[0:37:48]  It's storing the decimal number 50.
+[0:37:50]  Now, thankfully, the paradox kind of stops there.
+[0:37:54]  We just have a mapping now of numbers to numbers.
+[0:37:57]  But really, at the end of the day, and you're
+[0:37:58]  going to learn this when we start writing code in that other language seen
+[0:38:02]  It's just context dependent at the end of the day.
+[0:38:04]  Inside of your Mac, PC, and phone, there's
+[0:38:06]  just all of these permutations of bits, all of these patterns of 0s and 1s.
+[0:38:10]  And generally speaking, when you open up a text message
+[0:38:13]  that you've received from someone, it's 0s and 1s.
+[0:38:16]  But obviously, if it's a text message, the whole point of text messages
+[0:38:19]  is to send text.
+[0:38:20]  And so those patterns of 0s and 1s by default
+[0:38:22]  will typically be interpreted as letters of the alphabet.
+[0:38:25]  So you won't see 0s and 1s.
+[0:38:27]  You won't see decimal numbers.
+[0:38:28]  You'll see the English message that your friend intended.
+[0:38:31]  By contrast, if you open up something like Excel,
+[0:38:34]  that same pattern of 0s and 1s might indeed
+[0:38:37]  work out to be 72, 73, 33.
+[0:38:40]  You might see cells in your spreadsheet with literally those three numbers.
+[0:38:44]  Why?
+[0:38:45]  Because spreadsheets are all about numbers and number crunching and math
+[0:38:48]  in many cases.
+[0:38:49]  If by contrast, you open up Photoshop and try
+[0:38:52]  to look at that same pattern of 0s and 1s,
+[0:38:54]  it's not going to be 72, 73, 33.
+[0:38:57]  It's not going to be 0s and 1s.
+[0:38:59]  It's not going to be high.
+[0:39:00]  It's going to be some color of the rainbow.
+[0:39:03]  You're going to use those patterns of 0s and 1s,
+[0:39:05]  it turns out, too, to represent colors.
+[0:39:07]  And indeed, so long as you and I just agree, as humans long have,
+[0:39:12]  what these patterns are going to be, all of our systems,
+[0:39:14]  many of our systems nowadays are indeed interoperable.
+[0:39:17]  But I'm being very biased here.
+[0:39:19]  And indeed, the A in ASCII is very American-centric.
+[0:39:22]  What do you not see in this chart?
+[0:39:24]  If you speak any other language than English,
+[0:39:27]  odds are you're not seeing characters you know and love
+[0:39:29]  and need every day to type or send messages,
+[0:39:32]  well, there's a huge character set that's not supported here.
+[0:39:35]  Whether it's accented characters and a lot of Asian alphabets,
+[0:39:38]  you have many more symbols than can fit even on this screen here.
+[0:39:41]  And so humans kind of painted themselves into a corner early on,
+[0:39:44]  or really Americans did.
+[0:39:45]  But on a typical keyboard, US English keyboard,
+[0:39:48]  yeah, you have A's and B's and C's, uppercase and lowercase.
+[0:39:52]  But you also have accented characters here.
+[0:39:55]  And nowadays, not sure if this is maybe necessary,
+[0:39:58]  but nowadays you have other characters on your keyboard like these.
+[0:40:01]  And these are kind of a playful incarnation
+[0:40:04]  of what's actually a technical solution to this problem.
+[0:40:06]  If I claim for the moment that ASCII historically
+[0:40:09]  used seven bits to represent letters, and let's just
+[0:40:12]  round that up to a byte, eight bits to represent letters,
+[0:40:15]  ASCII can represent as many as 255 or really 256 total characters.
+[0:40:21]  Why 256?
+[0:40:22]  Well, if you have them all 0, that's 0.
+[0:40:24]  And the highest number I claimed a moment ago was 255.
+[0:40:27]  So that's 256 total possibilities.
+[0:40:30]  That's not many letters.
+[0:40:31]  It's fine for English, but not a lot of human languages.
+[0:40:34]  So what might the intuitive solution be if you
+[0:40:37]  want to represent accented characters, Asian characters, emoji even
+[0:40:42]  like these, which are just keys on a keyboard nowadays?
+[0:40:46]  What's the intuitive solution if a byte's too few?
+[0:40:49]  Yeah.
+[0:40:51]  Yeah, so add another digit.
+[0:40:52]  Just like we had a fourth volunteer come on up to give us a fourth bit,
+[0:40:55]  let's just throw hardware at the problem and use a few more bits.
+[0:40:58]  So maybe instead of one byte, let's use two.
+[0:41:00]  Or heck, let's use three or four bytes, even though it's
+[0:41:03]  getting a little expensive.
+[0:41:04]  We're going from 8 to 16 to 24 or 32 bits.
+[0:41:08]  That's how computers do things these days.
+[0:41:10]  And thankfully, we have so much memory inside of our computers and phones,
+[0:41:13]  we can certainly spare a few to represent these things.
+[0:41:15]  And the solution then to ASCII is what we'll call Unicode.
+[0:41:19]  So Unicode is also just a mapping of numbers to letters,
+[0:41:25]  but in many different languages.
+[0:41:27]  And indeed, the Unicode consortium is a bunch
+[0:41:29]  of people from all different companies and a lot of different companies
+[0:41:35]  and countries and cultures whose mission as an organization
+[0:41:38]  is to capture digitally all forms of human language in this case
+[0:41:43]  and to ensure that especially smaller demographics of humans
+[0:41:46]  speaking lesser known languages are nonetheless
+[0:41:49]  represented and preserved digitally using some mapping of these zeros
+[0:41:52]  and ones.
+[0:41:53]  It turns out, though, if you start using 32 bits,
+[0:41:56]  as many as 32 bits, to represent characters on a keyboard,
+[0:42:00]  that's 4 billion possible permutations of zeros and ones.
+[0:42:03]  That's way more than we need for most human languages.
+[0:42:06]  So there's a little bit of room in there
+[0:42:07]  for some of those more playful things, like those emoji.
+[0:42:10]  So for instance, suppose you got a text message
+[0:42:12]  with this pattern of zeros and ones.
+[0:42:16]  Or if we do out the math, suppose you receive a text message
+[0:42:18]  that if you do out the math in decimal is 4,000,036,991,106.
+[0:42:24]  Anyone know what emoji you're looking at?
+[0:42:27]  This would be weird if you do, but what is this?
+[0:42:32]  Well, it turns out that as of this past year,
+[0:42:33]  this is the most popular emoji to be sent by many measures,
+[0:42:38]  face with tears of joy.
+[0:42:39]  So that is the pattern that a bunch of humans in the Unicode Consortium
+[0:42:43]  decided would represent this.
+[0:42:45]  But you'll notice many of you might have iPhones.
+[0:42:48]  Some of you might have Android devices, too.
+[0:42:50]  And sometimes these don't actually look quite the same.
+[0:42:52]  This happens to be the current version of face with tears of joy on iOS.
+[0:42:57]  On Android, it tends to look a little something more like this.
+[0:43:01]  And here's kind of a curiosity.
+[0:43:03]  Even though you and I look at these things and they look like images,
+[0:43:06]  they're not images.
+[0:43:07]  They're characters, at least as we've defined them now in Unicode.
+[0:43:11]  And iOS and Android and Windows and Facebook and other companies
+[0:43:16]  and apps nowadays really just have different fonts, if you will.
+[0:43:20]  So just like fonts with English and other languages
+[0:43:22]  can give you different characters with serifs or not,
+[0:43:25]  emoji are themselves, yes, drawings that someone made,
+[0:43:28]  but they're really just a font.
+[0:43:30]  And so that same pattern of zeros and ones
+[0:43:32]  might just render slightly differently on someone's phone or another.
+[0:43:35]  If you've ever gotten an icon on your phone that's broken
+[0:43:39]  and you've been sent an emoji but it's like a square or something arbitrary
+[0:43:42]  and not sensible, it might just mean that you have not
+[0:43:45]  updated to the latest version of iOS or Android, which just updates
+[0:43:49]  the font of supported emoji.
+[0:43:50]  Because those folks at Unicode pretty much every year nowadays
+[0:43:53]  are adding more and more emoji to that particular character set.
+[0:43:58]  Now I went down the rabbit hole figuring out the other day just which
+[0:44:00]  are the most popular emoji these days.
+[0:44:02]  On Twitter specifically this past year, the most popular emoji, by contrast,
+[0:44:08]  was loudly crying face.
+[0:44:10]  I don't know if that says more about 2021 or about Twitter,
+[0:44:13]  but you'll see different trends certainly in how these are used.
+[0:44:16]  But even humans themselves didn't necessarily think two steps ahead.
+[0:44:21]  And now a lot of the emoji are the sort of default yellow color,
+[0:44:24]  but there's a lot of emoji that aren't sort of these cartoon characters,
+[0:44:27]  but they're meant to represent humans in various professions or gestures
+[0:44:30]  or the like.
+[0:44:31]  And nowadays too, you've probably noticed on your phone and Macs and PCs,
+[0:44:35]  there are different skin tones that you can assign to certain emojis.
+[0:44:39]  If it's supported by the company and by Unicode,
+[0:44:42]  you can actually touch and hold on a certain emoji
+[0:44:45]  and then you can choose the appropriate skin tone
+[0:44:46]  to represent yourself or someone else, and that then modifies the display.
+[0:44:50]  Well, let's just think for a moment here, how did Apple and Google and Microsoft
+[0:44:54]  and others go about implementing support for emoji with different skin tones?
+[0:44:59]  How could you do this?
+[0:45:01]  If you want to represent some smiling emoji, but in five, in this case,
+[0:45:06]  different skin tones, you could come up with what?
+[0:45:08]  Five different patterns that are identical structurally
+[0:45:11]  except for the skin tone used in places in that image.
+[0:45:15]  But that's a little inefficient, right?
+[0:45:16]  To kind of just do copy, paste, paste, paste, paste,
+[0:45:19]  and like change the color in Photoshop, if you will.
+[0:45:21]  That's going to use more bits, more information than you might need to.
+[0:45:26]  How else, if you now start to think a little bit more
+[0:45:28]  like a computer scientist, if at the end of the day all you have are 0s and 1s,
+[0:45:32]  how else could you implement skin tones, might you think?
+[0:45:35]  Yeah.
+[0:45:36]  OK, so RGB, we'll come to that in just a moment.
+[0:45:39]  That stands for red, green, blue.
+[0:45:40]  That's one way.
+[0:45:41]  In this case though, I'm seeking an alternative
+[0:45:44]  to just using five different patterns of 0s and 1s
+[0:45:48]  to represent the same emoji, but different skin tones.
+[0:45:50]  So not quite RGB.
+[0:45:51]  Yeah.
+[0:45:53]  OK, so store one copy of the emoji, and then
+[0:45:56]  store different variants of the color that you want to assign to that emoji.
+[0:46:00]  Yeah, so this is actually an example of it.
+[0:46:02]  Do you want to elaborate?
+[0:46:05]  OK, so you can use a loop to actually output these things.
+[0:46:07]  More on that in a moment.
+[0:46:08]  Let me go down this road for just a moment.
+[0:46:11]  This would be, in some sense, sort of a better design, if you will.
+[0:46:15]  But why?
+[0:46:15]  Yeah.
+[0:46:17]  OK, so filter, if we think sort of the Instagram sense,
+[0:46:19]  you can sort of change the color of something.
+[0:46:21]  And that could be related here, too.
+[0:46:25]  Oh, interesting.
+[0:46:26]  So maybe it could be just a completely different font.
+[0:46:28]  And you have five different fonts that are almost identical,
+[0:46:30]  except for the various interpretations of skin tone for those same emoji.
+[0:46:33]  Let me spoil.
+[0:46:34]  I think if we go down this one particular road,
+[0:46:36]  the way the Unicode folks decided to do this some years ago
+[0:46:40]  were the first byte or bytes that you receive via text or email
+[0:46:46]  just represent the structure of the emoji,
+[0:46:48]  the default yellow version thereof.
+[0:46:50]  But if it's immediately followed by a certain pattern of bits
+[0:46:53]  that these humans standardize to represent each of these different shades
+[0:46:57]  of skin tone, then the phone, the Mac, the PC
+[0:47:00]  will change that default color, yellow in most cases,
+[0:47:03]  to whatever the more apt human tone is.
+[0:47:06]  So you just use twice as many bits, but you don't use five times as many bits.
+[0:47:10]  So what do I mean?
+[0:47:11]  You don't have five completely distinct patterns, per se,
+[0:47:15]  for each of these possible variants.
+[0:47:18]  You have a representation of just the emoji itself structurally,
+[0:47:23]  and then reusable patterns for those five skin tones.
+[0:47:29]  Unfortunately, that wasn't quite versatile enough for other features
+[0:47:32]  that were in the pipeline.
+[0:47:33]  And nowadays, too, and there's a double meaning now to representation,
+[0:47:37]  emojis had tended to focus on certain professions.
+[0:47:40]  And early on, too, were certain professions associated
+[0:47:43]  with certain genders and vice versa.
+[0:47:45]  And you couldn't necessarily be one gender or another
+[0:47:47]  in a certain profession or another.
+[0:47:49]  There were these combinatorics that just weren't possible.
+[0:47:51]  But nowadays, as you might have seen, you
+[0:47:52]  can have couples in love, for instance, that actually look a little more
+[0:47:56]  like three emojis, but just kind of combined into one.
+[0:47:58]  And indeed, this is just one key press on your phone.
+[0:48:01]  And you can combine different emoji on the left and then
+[0:48:03]  the right with an emoji in the middle.
+[0:48:06]  And so it turns out how computers nowadays represent these patterns
+[0:48:10]  are one set of bits for the character on the left,
+[0:48:14]  one set of bits for a character on the right,
+[0:48:15]  one set of bits for whatever emoji you want in the middle.
+[0:48:19]  And then you assemble more complicated compositions of emoji
+[0:48:23]  by just reusing those same patterns and bits and bits.
+[0:48:27]  The Unicode folks don't have to come up with a whole new representation
+[0:48:31]  for some very specific incarnation.
+[0:48:33]  They can create one for person, for male, for female,
+[0:48:36]  for other characters that you might want to display
+[0:48:39]  and reuse those same patterns of zeros and ones.
+[0:48:42]  And so here you see sort of the imperfection
+[0:48:44]  of a lack of foresight of humans for building a system early on that
+[0:48:47]  was entirely American-centric, no characters, emoji, or the like,
+[0:48:50]  that's evolved to.
+[0:48:51]  And so that's an important detail in computing nowadays.
+[0:48:54]  It, too, is evolving.
+[0:48:55]  And the languages you're about to learn in the coming days,
+[0:48:58]  those, too, are evolving as well.
+[0:49:00]  And new features are getting added.
+[0:49:01]  And even programming languages have version numbers.
+[0:49:04]  You might have a different version of an app on your phone.
+[0:49:07]  Programming languages, too, have different versions as well.
+[0:49:10]  Questions then, thus far, on how information is represented using ASCII
+[0:49:15]  or Unicode or anything in between.
+[0:49:17]  Yeah.
+[0:49:20]  Oh, good question.
+[0:49:21]  So to recap, why can't you just, well, let me summarize that as,
+[0:49:27]  why can't you similarly use different patterns
+[0:49:30]  to change the context of what these patterns of bits
+[0:49:32]  represent, whether it's a number or a letter or a graphic?
+[0:49:36]  In actuality, that's kind of what's happening underneath the hood.
+[0:49:38]  It's not standardized in quite the same way.
+[0:49:41]  But starting next week when we transition from scratch to C,
+[0:49:43]  you'll learn about types, data types, where the onus initially
+[0:49:46]  is going to be on you, the programmer, to tell the program whether or not
+[0:49:51]  this pattern of bits should be interpreted as a number or as a letter
+[0:49:54]  or as a color or something else.
+[0:49:56]  Nowadays, though, and toward the end of the semester,
+[0:49:58]  you'll use languages like Python, where the computer just figures it out
+[0:50:02]  for you by context, which makes it even easier and faster to program as well.
+[0:50:06]  Other questions on Unicode, ASCII, or the like?
+[0:50:11]  Well, how about just a few other forms of information?
+[0:50:14]  RGB was called out earlier, red, green, blue.
+[0:50:16]  How do images get represented in computers?
+[0:50:18]  Well, in fact, it's typically an assembly of some amount of red,
+[0:50:21]  some amount of green, some amount of blue.
+[0:50:23]  But there are other representations.
+[0:50:25]  If you're a graphic designer, you might know them.
+[0:50:27]  But RGB is still pretty common.
+[0:50:28]  What does this mean?
+[0:50:29]  This means to represent every dot on your phone or every dot on your TV
+[0:50:34]  or your laptop or desktop, there is a number representing
+[0:50:37]  how much red that dot should show, a number representing how much green,
+[0:50:41]  and a number representing how much blue it should show,
+[0:50:44]  red, green, blue, respectively.
+[0:50:45]  So for instance, if a dot on your screen were using these three numbers,
+[0:50:50]  these three values or bytes, 72, 73, 33, in a text message or email,
+[0:50:55]  that would be interpreted as, I claimed, high.
+[0:50:58]  But in Photoshop or in some graphical program,
+[0:51:01]  that same pattern would be interpreted as, let's call it a medium amount of red,
+[0:51:06]  a medium amount of green, and a little bit of blue.
+[0:51:08]  And why medium and little?
+[0:51:10]  Turns out that each of these are bytes.
+[0:51:12]  The smallest value you can have in a byte, we said, is 0.
+[0:51:15]  The largest value you can have in a byte is 255.
+[0:51:17]  So I'm just kind of spitballing here.
+[0:51:19]  This is like medium, medium, and a low amount of red, green, blue,
+[0:51:22]  specifically.
+[0:51:23]  Those three colors, like wavelengths of light,
+[0:51:26]  are combined in such a way that you would have this dot on the screen,
+[0:51:31]  a sort of murky shade of yellow or brown that is how a computer would
+[0:51:36]  store precisely that color.
+[0:51:37]  And in fact, we've seen this color.
+[0:51:39]  When you type in, faced with tears of joy, generally on your screen
+[0:51:42]  it looks like this, typically much smaller.
+[0:51:44]  But let's zoom in.
+[0:51:46]  Or let's zoom in a little more.
+[0:51:49]  What are you starting to see, if you know the term?
+[0:51:52]  So pixels, it's getting very pixelated.
+[0:51:54]  A pixel is just a dot on the screen.
+[0:51:56]  And if you really zoom in on it, you can literally
+[0:51:58]  see all of the dots that compose an emoji, in this case on iOS,
+[0:52:02]  in the font that Apple's using to represent this particular pattern
+[0:52:05]  of 0s and 1s.
+[0:52:06]  So one of those yellow dots, and there's many of them,
+[0:52:09]  all that kind of blend together here, each dot on the screen, I claim,
+[0:52:13]  is three bytes.
+[0:52:14]  How much red, green, blue for this dot?
+[0:52:16]  How much red, green, blue for this dot?
+[0:52:18]  How much red, green, blue for this dot?
+[0:52:19]  And you'll notice, too, that when it gets to be sort of brownish here,
+[0:52:22]  the dots really stand out.
+[0:52:23]  The three values, the three bytes, AKA 24 bits, are just slightly different.
+[0:52:29]  And so underneath the hood, this is why images, photographs that you take,
+[0:52:33]  or GIFs that you download, get so darn big, potentially,
+[0:52:36]  because you have a number representing every dot on the screen.
+[0:52:41]  Well, if this, I claim, is indeed how images are typically represented,
+[0:52:44]  using pattern of bits that are assigned to some amount of red, green, or blue,
+[0:52:49]  how do you get video?
+[0:52:50]  What is a video if, at the end of the day, all we have are 0s and 1s?
+[0:52:55]  What's a video, perhaps?
+[0:52:57]  Yeah, oh, let's go here.
+[0:52:59]  Way in back?
+[0:53:00]  Yeah, pixels really changing values over time.
+[0:53:03]  Do you want to confirm or deny the hand that went up here?
+[0:53:06]  Yeah, or equivalently, a sequence of images that, over time,
+[0:53:09]  are changing on the screen.
+[0:53:10]  So both of those are valid interpretations.
+[0:53:12]  And just for fun, if you grew up with these sort of picture books,
+[0:53:16]  you might remember a little something like this.
+[0:53:18]  If we could dim the lights.
+[0:53:40]  So that's sort of the old school analog way
+[0:53:42]  to implement a video in the sense that that artist wrote out
+[0:53:46]  like hundreds of pieces of paper with almost identical images,
+[0:53:50]  but where the ink from their pencil or pen was slightly moving.
+[0:53:53]  And if you digitize that such that each of those strokes
+[0:53:56]  are represented with dots instead, that's really
+[0:53:58]  what you're seeing is a sequence of all these images flying across the screen.
+[0:54:02]  And if we dive into the real world, if you've ever watched a film,
+[0:54:05]  a Hollywood movie is typically 24 FPS, frames per second.
+[0:54:09]  That really means you're seeing 24 images per second.
+[0:54:12]  Or on TV or in soap operas, it's often 30 frames per second.
+[0:54:16]  That makes things look a little more smooth.
+[0:54:18]  So it's not actual motion picture, if you will.
+[0:54:20]  It's sequences of pictures.
+[0:54:22]  And your brain and mind are kind of interpolating that, oh,
+[0:54:25]  this is smooth movement, even though we're just
+[0:54:27]  seeing a lot of pictures really fast.
+[0:54:29]  Now, that gets really big.
+[0:54:30]  And we'll talk later in the semester how you can compress information
+[0:54:33]  so that you're not using way more bits than you actually need to.
+[0:54:36]  And there's fancy algorithms that folks have developed.
+[0:54:38]  But at the end of the day, that's really all a video might be,
+[0:54:41]  is a sequence of images.
+[0:54:42]  Conversely, if you want to represent the music that
+[0:54:44]  accompanies that or something else, if any of you
+[0:54:47]  play an instrument and can read sheet music, how could you digitize this?
+[0:54:52]  Like, how could you represent musical notes in a computer?
+[0:54:55]  You and I hear them when we play files.
+[0:54:57]  But what's really going on underneath the hood?
+[0:55:00]  Any musicians?
+[0:55:03]  Piano players?
+[0:55:05]  Anyone?
+[0:55:05]  Yeah.
+[0:55:06]  OK, so Hertz values, so some frequency.
+[0:55:09]  So sound is some frequency, and it's kind of hitting your eardrum.
+[0:55:13]  And that's what makes it sound low or high or somewhere in between.
+[0:55:15]  So maybe we could assign, just like there's letters A through G here,
+[0:55:19]  maybe we could assign specific frequency values, which are just
+[0:55:21]  going to be numbers measured in something called Hertz, something per second.
+[0:55:25]  And maybe we could have a few other numbers for each of these notes,
+[0:55:27]  not just the note or the frequency.
+[0:55:29]  Maybe we could represent the loudness of it,
+[0:55:32]  like how hard or how softly a human might equivalently press it.
+[0:55:35]  Maybe a third number, like duration, like how long
+[0:55:38]  is their finger on the keyboard.
+[0:55:40]  So you could imagine quantizing something like music
+[0:55:42]  that in the real world is perfectly continuous as something more discreet
+[0:55:46]  by representing each note over time as just some sequence of values.
+[0:55:50]  And there's so many different ways to do this, MIDI, if you've heard,
+[0:55:53]  MP3s, AAC.
+[0:55:55]  I mean, almost all the file extensions you see on your Mac or PC,
+[0:55:58]  if you see them at all, ultimately just mean
+[0:56:01]  there's a different form of representation for, in this case,
+[0:56:04]  something like sound.
+[0:56:06]  So let me just stipulate, there are these and many more ways
+[0:56:10]  to represent inputs and outputs.
+[0:56:11]  And thankfully, humans have standardized a lot of this.
+[0:56:14]  They don't always disagree.
+[0:56:15]  And this is why we have different file formats for Apple numbers
+[0:56:18]  and Microsoft Excel and Google spreadsheets and sort
+[0:56:21]  of stupid incompatibilities like that.
+[0:56:23]  But generally speaking, humans have standardized
+[0:56:25]  how we represent the inputs and outputs to and from problems.
+[0:56:28]  But let's now focus on this black box, so to speak,
+[0:56:31]  in the middle, this abstraction.
+[0:56:33]  So abstraction is technically a term that you'll
+[0:56:35]  see all over the place in computer science and really problem solving.
+[0:56:38]  That just refers to the simplification of something
+[0:56:42]  so that you don't focus on the lower level implementation details.
+[0:56:46]  You really just focus on the high level goals or the process itself.
+[0:56:50]  Therefore, your car, if you have a license and have driven or have
+[0:56:54]  been in a car, a car, so far as you're concerned,
+[0:56:56]  is probably an abstraction.
+[0:56:57]  Most of us, if you're like me, probably don't really
+[0:57:00]  know or care how the engine works and all the parts that are moving.
+[0:57:03]  To you, it's just a way of getting from point A to point B.
+[0:57:06]  It's an abstraction.
+[0:57:06]  But someone, hopefully, the mechanic, does
+[0:57:09]  know those lower level implementation details.
+[0:57:11]  If you had to understand how a car works every time you
+[0:57:13]  want to go to school or to the store, it's
+[0:57:15]  probably going to be a pretty slow process.
+[0:57:17]  You just want to think and operate at this higher level of abstraction.
+[0:57:21]  And we're going to do this all the time when writing code and solving problems.
+[0:57:25]  So what, then, is in this black box, this abstraction at the moment?
+[0:57:29]  Well, generally, it's what a computer scientist
+[0:57:31]  would call an algorithm, step-by-step instructions
+[0:57:33]  for solving some problem.
+[0:57:35]  Now, let's consider the implementation details.
+[0:57:38]  That is to say, how you might solve certain problems.
+[0:57:41]  And let's take a sort of old school example, but in modern form.
+[0:57:45]  This icon, if you have an iPhone, is, of course, for your contacts
+[0:57:48]  application.
+[0:57:49]  And if you've got a whole bunch of family members or friends
+[0:57:51]  or colleagues in your phonebook, you have some kind of contacts pictured here.
+[0:57:55]  And it's alphabetized typically by first name and last name.
+[0:57:57]  And odds are you and I are in the habit, if they're not already
+[0:58:00]  a favorite, of clicking on search and then using autocomplete.
+[0:58:03]  And what happens when you start typing autocomplete?
+[0:58:06]  Well, if you type in the letter H, you'll
+[0:58:08]  see only, presumably, Hagrid, Harry, Hermione, and so forth.
+[0:58:11]  If you type in H-A, that shows you only Hagrid and Harry.
+[0:58:15]  And it all happens super fast.
+[0:58:17]  So how is that happening?
+[0:58:18]  Well, typically, you could just start at the top
+[0:58:22]  and look to the bottom, searching for all the H's or all of the H-A's.
+[0:58:26]  But for larger data sets, that's going to get slow.
+[0:58:28]  For the Googles of the world, that's going to get really slow.
+[0:58:31]  And even on our phones, when you have hundreds, thousands of contacts
+[0:58:34]  eventually, even that kind of approach, that algorithm,
+[0:58:37]  step-by-step might be slow.
+[0:58:39]  So how might we go about searching for someone in a phone book like this,
+[0:58:43]  like, say, John Harvard?
+[0:58:45]  Well, here's an old school incarnation of this.
+[0:58:47]  And odds are you might not have had occasion to even physically
+[0:58:50]  use this thing nowadays.
+[0:58:51]  And in fact, this is a bit of a white lie because this is the Yellow Pages,
+[0:58:55]  which means this is a book of companies, not people.
+[0:58:58]  But this is all you can find.
+[0:58:59]  And at that, it's even hard to find this.
+[0:59:01]  But this is the same thing in analog form, physical form.
+[0:59:04]  So if I wanted to search for someone like John Harvard, how could I do that?
+[0:59:08]  Well, I could start on page 1.
+[0:59:10]  And I could start searching for page 2, page 3, page 4, page 5.
+[0:59:16]  A little hard to do physically, especially since no one's
+[0:59:18]  used this phone book in a lot of years.
+[0:59:20]  But is this algorithm correct, turning page by page?
+[0:59:26]  Very inelegantly.
+[0:59:27]  Is this correct?
+[0:59:27]  Well, I find John Harvard if he's in here.
+[0:59:30]  All right, so yes.
+[0:59:31]  I mean, this is a little stupidly tedious because if there's like 1,000 pages,
+[0:59:35]  he might be a few hundred pages into this.
+[0:59:37]  But it's correct.
+[0:59:38]  At some point, I will find him.
+[0:59:39]  And if he's on the page, I'll be able to call.
+[0:59:41]  Why?
+[0:59:41]  Because presumably, the names are alphabetized in here.
+[0:59:43]  And there's no like cheat sheet on the edge.
+[0:59:45]  So I have to search for John Harvard from left to right,
+[0:59:47]  searching for H if it's alphabetized by last name.
+[0:59:50]  Well, what would be marginally better?
+[0:59:51]  Well, how about two pages at a time?
+[0:59:53]  It's hard to do with a 20-year-old phone book
+[0:59:55]  where the pages are kind of grown together.
+[0:59:57]  But 2, 4, 6.
+[0:59:59]  2, 4, 6.

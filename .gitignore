@@ -1,0 +1,33 @@
+# Base de datos local
+backend/localcode.db
+
+# Binarios compilados
+backend/server
+backend/localcode
+
+# Dependencias frontend
+frontend/node_modules/
+frontend/dist/
+
+# Archivos de audio (demasiado pesados para git)
+transcripciones/*.mp3
+transcripciones/*.webm
+transcripciones/*.webm.part
+
+# Archivos temporales de transcripción
+transcripciones/transcripcion.log
+transcripciones/.progreso_gpu.json
+transcripciones/transcripcion_final.txt
+transcripciones/transcripcion_gpu.txt
+
+# Herramientas internas de Claude Code
+.agents/
+skills-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

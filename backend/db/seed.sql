@@ -77,3 +77,107 @@ INSERT INTO hints (id, problem_id, order_index, question) VALUES
 ('h-cash-3', 'p-cash-c', 3, 'Puedes restar 25 al total de forma repetida (con un bucle) o usar el operador `/` para obtener la división entera y `%` para el residuo.'),
 ('h-cash-4', 'p-cash-c', 4, 'Una vez que termines con las de 25, haz el mismo proceso con las de 10, luego 5 y finalmente 1 centavo. Al final, suma todas las monedas usadas y muéstralas.')
 ON CONFLICT(id) DO NOTHING;
+
+-- =============================================================
+-- SEMANA 0: Pensamiento Computacional y Representación Binaria
+-- =============================================================
+
+INSERT INTO problems (id, title, description, difficulty, language, week) VALUES
+('p-binary-py', 'Binary', '## El reto de Binary
+
+Implementa un programa en Python que convierta un número entero no negativo a su representación en binario, **sin usar** la función incorporada `bin()`.
+
+El programa debe:
+1. Leer un entero `n` desde la entrada estándar
+2. Imprimir su representación binaria (solo los dígitos, sin prefijos como `0b`)
+
+### Ejemplos:
+
+| Entrada | Salida     |
+|---------|------------|
+| `0`     | `0`        |
+| `1`     | `1`        |
+| `5`     | `101`      |
+| `42`    | `101010`   |
+| `255`   | `11111111` |
+
+### Restricciones
+- No puedes usar `bin()`, `format()` con `b`, ni f-strings con formato `f"{n:b}"`
+- El algoritmo debe implementar divisiones sucesivas por 2', 'Fácil', 'python', 0)
+ON CONFLICT(id) DO NOTHING;
+
+INSERT INTO test_cases (id, problem_id, input_data, expected_output, is_hidden) VALUES
+('tc-binary-1', 'p-binary-py', '0\n',   '0\n',          0),
+('tc-binary-2', 'p-binary-py', '1\n',   '1\n',          0),
+('tc-binary-3', 'p-binary-py', '42\n',  '101010\n',     0),
+('tc-binary-4', 'p-binary-py', '255\n', '11111111\n',   1)
+ON CONFLICT(id) DO NOTHING;
+
+INSERT INTO hints (id, problem_id, order_index, question) VALUES
+('h-binary-1', 'p-binary-py', 1, '¿Cuál es la regla para determinar el último bit (el menos significativo) de un número? Si el número es par, ese bit es 0; si es impar, es 1. ¿Qué operador de Python te da el residuo de una división?'),
+('h-binary-2', 'p-binary-py', 2, 'Después de anotar el bit menos significativo (el residuo de dividir por 2), ¿cómo "eliminas" ese bit del número para seguir procesando los bits restantes? Pista: usa división entera `//`.'),
+('h-binary-3', 'p-binary-py', 3, 'Los bits que obtienes por divisiones sucesivas salen en orden inverso: del menos significativo al más significativo. ¿Cómo invertirías una lista o un string en Python para presentarlos en el orden correcto?'),
+('h-binary-4', 'p-binary-py', 4, '¿Qué caso especial debes manejar? Si `n = 0`, el bucle de divisiones nunca se ejecuta porque la condición `n > 0` ya es falsa. ¿Cuál debería ser la salida para ese caso?')
+ON CONFLICT(id) DO NOTHING;
+
+-- =============================================================
+-- SEMANA 1 (adicional): Population
+-- =============================================================
+
+INSERT INTO problems (id, title, description, difficulty, language, week) VALUES
+('p-population-c', 'Population', '## El reto de Population
+
+Implementa un programa en C que calcule cuántos **años** tarda una población de llamas en crecer de un tamaño inicial a un tamaño objetivo.
+
+Cada año, nacen `n/3` llamas nuevas y mueren `n/4` llamas (división entera), donde `n` es la población actual al inicio del año:
+
+```
+n = n + n/3 - n/4
+```
+
+El programa debe:
+1. Solicitar un tamaño de población inicial (mínimo 9; si el usuario ingresa un valor menor, volver a preguntar)
+2. Solicitar un tamaño de población objetivo (debe ser mayor o igual al inicial; si no, volver a preguntar)
+3. Imprimir el número de años necesarios para alcanzar o superar la población objetivo
+
+### Ejemplo para inicial=20, objetivo=28:
+
+| Año | Cálculo                      | Población |
+|-----|------------------------------|-----------|
+| 1   | 20 + 20/3 - 20/4 = 20+6-5   | 21        |
+| 2   | 21 + 21/3 - 21/4 = 21+7-5   | 23        |
+| 3   | 23 + 23/3 - 23/4 = 23+7-5   | 25        |
+| 4   | 25 + 25/3 - 25/4 = 25+8-6   | 27        |
+| 5   | 27 + 27/3 - 27/4 = 27+9-6   | 30 ≥ 28   |
+
+Salida: `5`', 'Fácil', 'c', 1)
+ON CONFLICT(id) DO NOTHING;
+
+INSERT INTO test_cases (id, problem_id, input_data, expected_output, is_hidden) VALUES
+('tc-population-1', 'p-population-c', '20\n28\n',   '5\n', 0),
+('tc-population-2', 'p-population-c', '100\n200\n', '9\n', 0),
+('tc-population-3', 'p-population-c', '9\n9\n',     '0\n', 0),
+('tc-population-4', 'p-population-c', '9\n18\n',    '8\n', 1)
+ON CONFLICT(id) DO NOTHING;
+
+INSERT INTO hints (id, problem_id, order_index, question) VALUES
+('h-population-1', 'p-population-c', 1, '¿Qué tipo de dato usarías para la población? ¿Un `int` es suficiente para poblaciones grandes, o necesitas un `long`? Considera que el enunciado no especifica un límite superior.'),
+('h-population-2', 'p-population-c', 2, 'La fórmula `n = n + n/3 - n/4` usa división entera en C (los decimales se truncan automáticamente). ¿Cómo inicializas el contador de años y en qué momento lo incrementas dentro del bucle?'),
+('h-population-3', 'p-population-c', 3, 'Para validar los inputs, ¿qué tipo de bucle usarías para seguir pidiendo al usuario hasta que ingrese un valor válido? ¿`while` o `do-while`? ¿Cuál comunica mejor la intención de "pedir al menos una vez"?'),
+('h-population-4', 'p-population-c', 4, '¿Cuál es la condición de parada del bucle de simulación? El enunciado dice "alcanzar o superar". Si la población inicial ya es igual al objetivo, ¿cuántos años deberías imprimir? Revisa el caso de prueba `9 → 9`.')
+ON CONFLICT(id) DO NOTHING;
+
+-- =============================================================
+-- FLASHCARDS: Semana 0
+-- =============================================================
+
+INSERT INTO flashcards (id, week, question, answer, order_index) VALUES
+('fc-0-1', 0, '¿Qué es un `bit` y de dónde viene ese nombre?', 'Un `bit` es la unidad mínima de información en informática: puede ser `0` o `1`. El nombre es una contracción de *binary digit* (dígito binario). Representa un transistor en estado apagado (`0`) o encendido (`1`).', 1),
+('fc-0-2', 0, '¿Cuántos valores distintos puede representar un `byte`? ¿Por qué ese número?', 'Un `byte` tiene 8 bits y cada bit puede ser `0` o `1`. Esto da 2⁸ = **256** combinaciones posibles, representando valores del 0 al 255. Es la razón por la que los colores RGB van de 0 a 255 por canal.', 2),
+('fc-0-3', 0, '¿Por qué las computadoras usan el sistema binario en lugar del decimal?', 'Por razones físicas: un transistor es un interruptor que solo puede estar en dos estados confiables (conduce electricidad o no). Distinguir entre 10 niveles de voltaje distintos (base 10) sería mucho más difícil de fabricar con precisión y más propenso a errores.', 3),
+('fc-0-4', 0, '¿Qué es `ASCII` y cuál es su limitación principal?', '`ASCII` es un estándar de 1963 que asigna un número del 0 al 127 a cada carácter del inglés básico (letras, dígitos, puntuación). Su limitación es que solo cubre el inglés: no tiene `ñ`, `á`, caracteres chinos, árabes, emojis ni ningún otro símbolo fuera del inglés básico.', 4),
+('fc-0-5', 0, '¿En qué se diferencia `Unicode` de `ASCII`?', '`Unicode` es un estándar moderno que unifica todos los sistemas de escritura del mundo en una sola tabla de más de 1.1 millones de puntos de código, incluyendo emojis. `ASCII` solo define 128 caracteres del inglés. `Unicode` con codificación `UTF-8` es compatible con `ASCII` para los primeros 128 caracteres.', 5),
+('fc-0-6', 0, '¿Qué es un algoritmo? Menciona sus tres propiedades esenciales.', 'Un algoritmo es una secuencia finita, precisa y sin ambigüedad de pasos para resolver un problema. Sus tres propiedades esenciales son: (1) **Correcto** — produce la respuesta correcta para todas las entradas válidas. (2) **Finito** — siempre termina. (3) **Eficiente** — usa los recursos (tiempo, memoria) de forma razonable.', 6),
+('fc-0-7', 0, '¿Por qué la búsqueda binaria es más eficiente que la búsqueda lineal? ¿Cuándo no se puede usar?', 'La búsqueda lineal revisa cada elemento uno a uno: hasta O(n) pasos. La búsqueda binaria divide el espacio a la mitad en cada paso: O(log n) pasos. Para 1,024 elementos, lineal necesita hasta 1,024 pasos; binaria solo 10. La condición: **los datos deben estar ordenados**. Si no están ordenados, no se puede aplicar.', 7),
+('fc-0-8', 0, '¿Qué es el `pseudocódigo` y para qué sirve?', 'El `pseudocódigo` es una descripción informal de un algoritmo escrita en lenguaje humano estructurado, sin la sintaxis exacta de ningún lenguaje de programación. Se usa para planificar la lógica antes de codificar, facilitando la detección de errores de diseño sin preocuparse por detalles sintácticos.', 8)
+ON CONFLICT(id) DO NOTHING;

@@ -1,0 +1,1266 @@
+# Transcripción: chunk_002.mp3
+# Modelo: medium | Duración audio: 0:59:59
+
+[0:00:00]  down left or right, this little crest on the screen
+[0:00:02]  responds in exactly that way.
+[0:00:04]  Now, let's hypothesize for just a moment.
+[0:00:06]  Even though we've not done anything quite like this before,
+[0:00:09]  how might this code be implemented?
+[0:00:11]  How do you get a sprite, be it a cat or a crest,
+[0:00:15]  to respond to keys on a keyboard?
+[0:00:17]  Might you think intuitively?
+[0:00:18]  Yeah.
+[0:00:22]  Yeah, there could be something sensing what key you're pressing on.
+[0:00:24]  And if you do it again in a forever loop,
+[0:00:26]  you'll just constantly be listening for keystrokes.
+[0:00:29]  And this is how every piece of software nowadays works.
+[0:00:31]  It's constantly waiting for your phone to be tapped
+[0:00:34]  or something to be typed on the screen.
+[0:00:36]  So let me go ahead and look inside of this existing program here.
+[0:00:39]  And there's more going on, but we'll take a quick glance.
+[0:00:42]  What's actually going on?
+[0:00:44]  Well, up here at top left, notice we just have go to x equals 0 and y
+[0:00:48]  equals 0.
+[0:00:49]  That means put the Harvard crest dead center in the middle of the stage.
+[0:00:52]  Then we have forever two functions that we made in advance as custom functions.
+[0:00:57]  Listen for keyboard, feel for walls.
+[0:00:59]  So it's doing two things at once.
+[0:01:01]  It's forever listening for the keyboard, up, down, left, right,
+[0:01:04]  and feeling for the walls in the sense that if I get too far to the left,
+[0:01:07]  I don't want it to keep moving past that black wall.
+[0:01:10]  And if it moves too far to the right, I don't
+[0:01:11]  want it to blow through that wall either.
+[0:01:13]  So it's going to do two things constantly, listening for keyboard
+[0:01:16]  and feeling for walls, so to speak.
+[0:01:18]  And how are those implemented?
+[0:01:20]  Well, this one's a bit long, but on the left here is listen for keyboard.
+[0:01:24]  So this pink puzzle piece, listen for keyboard, first checks.
+[0:01:29]  If the key up arrow is pressed, question mark,
+[0:01:31]  Boolean expression in a conditional, change y by 1.
+[0:01:35]  That means move it up 1.
+[0:01:36]  Else if the key down arrow is pressed, then change y by negative 1.
+[0:01:41]  And similar for left arrow, similar for right arrow.
+[0:01:44]  And even though there's not a loop in this pink function,
+[0:01:47]  there is where I'm using it.
+[0:01:48]  So it's constantly being asked again and again.
+[0:01:51]  How about feeling for walls?
+[0:01:52]  Well, over here to the right, it's a little cut off.
+[0:01:55]  But here you have if touching left wall, change x by 1.
+[0:01:59]  So if you hit the wall, it's too late.
+[0:02:01]  You're kind of blowing through it already.
+[0:02:03]  So I want to move it whack one pixel so it's no longer touching that wall.
+[0:02:07]  Similarly, if it's touching the right wall,
+[0:02:09]  I want to back it up one pixel so it's no longer touching that wall.
+[0:02:12]  So it's kind of like bouncing off ever so slightly so that it
+[0:02:15]  doesn't slip through that actual wall.
+[0:02:17]  And what are those walls?
+[0:02:18]  Well, notice down here, it's just a simple sprite with a black line
+[0:02:23]  that I've oriented vertically instead of horizontally.
+[0:02:26]  And that's just so that I can ask questions of these other two sprites.
+[0:02:29]  Now, that gives me that form of interactivity.
+[0:02:31]  What more can I now do?
+[0:02:33]  Well, what if we make things a little more interactive here?
+[0:02:36]  Let me go ahead and see inside version 1, our second,
+[0:02:40]  and let me propose what's going to happen here.
+[0:02:43]  Well, how might we add a little something like Yale into the mix?
+[0:02:47]  Well, what's Yale going to do when I hit the green flag now based on this code?
+[0:02:52]  Any hunches?
+[0:02:54]  Here is the code for my Yale sprite.
+[0:02:57]  Yeah.
+[0:02:59]  Yeah, it's kind of going to be an adversary by blocking my path
+[0:03:02]  theoretically if I keep writing more code.
+[0:03:03]  So why?
+[0:03:04]  It, too, goes to the middle of the screen.
+[0:03:06]  It points in direction 90 degrees.
+[0:03:08]  So similarly, there's a whole degree system as well.
+[0:03:10]  And it forever asks this.
+[0:03:12]  If touching the left wall or, notice the green block, touching the right wall,
+[0:03:16]  then just turn around 180 degrees.
+[0:03:18]  And indeed, if you think this through logically,
+[0:03:20]  that just means you're bouncing this way and this way
+[0:03:23]  by just flipping yourself around 180 degrees for just this Yale sprite.
+[0:03:27]  So if I go ahead and zoom in on this and click the green flag,
+[0:03:31]  I can still move up and down.
+[0:03:32]  But Yale is just kind of doing this all day long,
+[0:03:35]  back and forth and back and forth forever.
+[0:03:37]  Nothing bad happens if I try to go through it.
+[0:03:40]  But we could add that, certainly, to the mix.
+[0:03:42]  In fact, let's add one final feature before we play this particular game.
+[0:03:46]  And let me go ahead and open up the final version of these building blocks
+[0:03:50]  that adds MIT to the mix.
+[0:03:53]  So here's MIT.
+[0:03:55]  Someone want to explain what this code does?
+[0:03:57]  And this is what we're doing.
+[0:03:58]  This itself is a skill.
+[0:03:59]  Reading someone else's code and understanding it
+[0:04:02]  is half of the part of programming besides writing.
+[0:04:05]  Yeah.
+[0:04:06]  Yeah, it's chasing down the Harvard logo outline.
+[0:04:09]  So this is apparently the name of the costume
+[0:04:11]  that this student made, Harvard logo outline.
+[0:04:14]  And apparently, it goes to a random position first,
+[0:04:17]  but then it forever points to Harvard.
+[0:04:19]  So no matter where I'm moving it, up, down, left, or right,
+[0:04:21]  MIT is being a little more strategic than Yale bouncing back and forth
+[0:04:24]  like this.
+[0:04:25]  So let's go ahead and play this one in full screen.
+[0:04:27]  And here we have a green flag.
+[0:04:30]  So if I move up, MIT, rather strategically,
+[0:04:35]  is following me no matter where I go.
+[0:04:37]  All right, so still, nothing bad happens.
+[0:04:40]  And now it's struggling, right?
+[0:04:41]  It's going up, down, up, down.
+[0:04:42]  It's trying to follow me even though I'm not moving.
+[0:04:45]  So we need some final flourishes.
+[0:04:47]  And so I think for this, we need perhaps one final volunteer.
+[0:04:51]  After this, cake awaits for everyone outside,
+[0:04:54]  as is an end of first lecture CS50 tradition.
+[0:04:56]  Would you like to come up and be our vinyl volunteer?
+[0:05:07]  All right.
+[0:05:08]  And so this will be the actual version written
+[0:05:11]  by one of your predecessors that I'll full screen here.
+[0:05:14]  It's going to stitch together all of these same primitives and more,
+[0:05:17]  add the notion of scores and lives so that there's actually
+[0:05:20]  a goal, which in this case is to move the Harvard crest to constantly pursue
+[0:05:25]  the character on the right-hand side so that your sprite touches that one.
+[0:05:29]  Would you like to introduce yourself?
+[0:05:30]  Hi, my name is Mohammed.
+[0:05:32]  All right, wonderful.
+[0:05:33]  Welcome aboard.
+[0:05:34]  And here we come with some instructions and final flourish
+[0:05:36]  if we want to keep the lights up and perhaps increase the music.
+[0:07:00]  All right, this is CS50.
+[0:07:02]  And this is week one, wherein we continue programming,
+[0:07:05]  but we do it in a different language.
+[0:07:07]  Because recall last time we focused on this graphical language called
+[0:07:11]  Scratch.
+[0:07:11]  But we use Scratch not only because it's sort of fun and accessible,
+[0:07:15]  but because it allows us to explore a lot of these concepts here, namely
+[0:07:18]  functions and conditionals, Boolean expressions, loops, variables, and more.
+[0:07:22]  And so indeed, even if today's syntax, as we transition to this new language
+[0:07:27]  called C, feels a little bit cryptic, maybe a little intimidating at first,
+[0:07:31]  and you don't quite see all of the meaning of the symbols
+[0:07:34]  beyond the syntax itself, realize that the ideas are ultimately
+[0:07:37]  going to be the same.
+[0:07:39]  In fact, as we transition from what was last week,
+[0:07:42]  a hello world program that looked a little something like this,
+[0:07:46]  this week, of course, it's going to now look a little more cryptic.
+[0:07:49]  It's going to look a little something like this.
+[0:07:50]  And now even if you can't quite distinguish what all of the various
+[0:07:53]  symbols mean in this code, turns out that at the end of the day
+[0:07:56]  it's indeed going to do what you expect.
+[0:07:58]  It's just going to say hello world on the screen,
+[0:08:00]  just like we did in Scratch.
+[0:08:02]  So let's start to apply some terminology to these tokens first.
+[0:08:06]  So what we're about to see, what we're about to write henceforth,
+[0:08:09]  we're going to start calling source code.
+[0:08:10]  Code that you, the human programmer, write is just henceforth called source code.
+[0:08:14]  Doesn't matter if it's Scratch.
+[0:08:15]  Doesn't matter if it's C. Doesn't matter if it's Python before long.
+[0:08:19]  Source code is the general term for really what you and I as human
+[0:08:21]  programmers will ultimately write.
+[0:08:24]  Of course, computers don't understand source code, it turns out.
+[0:08:28]  Computers don't understand Scratch and puzzle pieces per se,
+[0:08:32]  or C code like we're about to see.
+[0:08:33]  They only understand this, which we called what last week.
+[0:08:37]  Yeah, so this is binary, zeros and ones.
+[0:08:39]  But really it's just information represented in binary.
+[0:08:43]  And in fact, the technical term now for patterns of zeros and ones
+[0:08:47]  that a computer not only understands how to interpret as letters or numbers
+[0:08:51]  or colors or images or more, but knows how to execute as well,
+[0:08:55]  henceforth is going to be called machine code
+[0:08:58]  to contrast it with source code.
+[0:08:59]  So whereas you and I, the humans, write source code,
+[0:09:01]  it's the computer that ultimately only understands machine code.
+[0:09:05]  And even though we won't get into the details of exactly what pattern
+[0:09:08]  of symbols means what, you'll see that in this kind of pattern of zeros and ones,
+[0:09:14]  there's going to be numbers, there's going to be letters,
+[0:09:16]  but there's also going to be instructions.
+[0:09:17]  Because indeed, computers are really good at doing things, addition,
+[0:09:20]  subtraction, moving things in and out of memory.
+[0:09:23]  And suffice it to say that the Macs, the PCs, the other computers of the world
+[0:09:27]  have just decided as a society what certain patterns of zeros and ones
+[0:09:31]  mean when it comes to operations as well.
+[0:09:33]  So not just data, but instructions.
+[0:09:35]  But those patterns are not something we're
+[0:09:37]  going to focus on in a class like this.
+[0:09:39]  We're going to focus on the higher level software side of things,
+[0:09:42]  simply assuming that we need to somehow output machine code.
+[0:09:45]  So it turns out then that this problem we
+[0:09:48]  have to solve getting from source code to machine code
+[0:09:50]  actually fits into the same paradigm as last time.
+[0:09:53]  But the input in this case is going to be source code on the one hand.
+[0:09:57]  That's what you and I ideally will write so that we
+[0:10:00]  don't have to write zeros and ones.
+[0:10:02]  But we need to somehow output machine code,
+[0:10:04]  because that's what your Macs, PCs, phones are actually going to understand.
+[0:10:08]  Well, it turns out there are special programs in life whose purpose
+[0:10:11]  is to do exactly this conversion, convert the source code you and I
+[0:10:15]  write to the machine code that our phones and computers understand.
+[0:10:19]  And that type of program is going to be called a compiler.
+[0:10:22]  So indeed today, we'll introduce you to another piece of software.
+[0:10:26]  And these come in many forms.
+[0:10:27]  We'll use a popular one here that allows you to convert source code in C
+[0:10:32]  to machine code in zeros and ones.
+[0:10:35]  Now, you didn't have to do this with Scratch.
+[0:10:37]  In the world of Scratch, it was as simple as clicking the green flag,
+[0:10:40]  because essentially MIT did all of the heavy lifting there,
+[0:10:43]  figuring out how to convert these graphical puzzle pieces
+[0:10:45]  to the underlying machine code.
+[0:10:47]  But now, starting today, as we begin to study programming and computer
+[0:10:50]  science proper, now that power moves to you.
+[0:10:53]  And it's up to you now to do that kind of conversion.
+[0:10:56]  But thankfully, the fact that these compilers exist
+[0:10:58]  means that you and I don't have to program in machine code,
+[0:11:02]  like our ancestors once upon a time did, be it virtually
+[0:11:05]  or with physical punch cards, like pieces of paper with holes in them.
+[0:11:08]  You and I get to focus on our keyboard as such.
+[0:11:12]  But it's not just going to be a matter today of writing code.
+[0:11:16]  It's going to be a matter ultimately today
+[0:11:17]  onward of writing good code as well.
+[0:11:19]  And this is the kind of thing that you don't just learn overnight.
+[0:11:21]  It takes time.
+[0:11:22]  It takes practice, just like writing an essay in any subject
+[0:11:25]  might take time and practice and iteration over time.
+[0:11:27]  But in a programming class like CS50, we're
+[0:11:30]  going to aspire to evaluate the quality of code along these three axes,
+[0:11:35]  generally.
+[0:11:36]  Is it correct first and foremost?
+[0:11:37]  Like, does the code do what it's supposed to do?
+[0:11:39]  After all, if it doesn't, well, what was the point
+[0:11:41]  of writing it in the first place?
+[0:11:42]  So it sort of goes without saying that you want code you write to be correct.
+[0:11:46]  And it's obviously not always.
+[0:11:47]  Again, any time your Mac or PC or phone has crashed,
+[0:11:50]  some human somewhere wrote buggy.
+[0:11:52]  That is, code with mistakes.
+[0:11:53]  But code correctness is going to be the first and foremost goal.
+[0:11:56]  But then there's a more subjective goal we'll
+[0:11:58]  see in time, a matter of design.
+[0:12:00]  And we saw a little bit of this last week
+[0:12:02]  when I proposed that we could design even scratch programs better,
+[0:12:06]  maybe by using loops instead of just by copying and pasting
+[0:12:09]  the same blocks again and again.
+[0:12:10]  So design is more subjective.
+[0:12:12]  It's more of a learned art whereby two people might ultimately
+[0:12:16]  disagree as to which version of a program is better designed,
+[0:12:19]  but will give you building blocks and principles over the coming weeks
+[0:12:22]  so that you can have a better sense for yourself if your own code is
+[0:12:25]  well-designed.
+[0:12:26]  And why is that valuable?
+[0:12:28]  Well, the better design your code is, often the faster it's going to run,
+[0:12:31]  the more maintainable it's going to be by you
+[0:12:33]  or colleagues if you're working with others in the real world.
+[0:12:36]  So good design is a good thing.
+[0:12:37]  It helps you communicate your ideas, just like in a typical English essay.
+[0:12:41]  And then lastly, we'll talk this week onward about style.
+[0:12:44]  And this is really just the aesthetics of your code.
+[0:12:46]  It turns out that computers often don't care how sloppy your actual code is.
+[0:12:51]  Where in the world of code, it turns out that you don't really
+[0:12:55]  need to indent things in a beautiful way.
+[0:12:57]  You don't need to paginate things like you might in an essay.
+[0:12:59]  The computer generally does not care, but the human does.
+[0:13:03]  The teaching assistant does.
+[0:13:04]  You will care the next day when you're just
+[0:13:06]  trying to understand what your code does.
+[0:13:08]  So we'll focus lastly on style, the aesthetics of the code
+[0:13:11]  that you're writing.
+[0:13:12]  So where are we going to write code?
+[0:13:13]  Where are we going to compile code?
+[0:13:15]  So for this class, not only with C, but the other languages
+[0:13:18]  we use later in the term, we're going to use a free text editor that
+[0:13:22]  is programmed called Visual Studio Code, AKA VS Code.
+[0:13:25]  It's super popular nowadays, not just for C, but for C++, and Python,
+[0:13:30]  and Java, and any number of other languages.
+[0:13:32]  It's a text editor in the sense that it lets you edit text.
+[0:13:35]  And that's all code is going to be.
+[0:13:38]  Now, strictly speaking, you could write code on paper pencil.
+[0:13:41]  In fact, in high school, if you took a class,
+[0:13:43]  you might have done that one or more times as sort of an in-class exercise.
+[0:13:46]  You can't run it on paper, of course, but you could write it certainly.
+[0:13:49]  You could use something like Microsoft Word, or Notepad.exe,
+[0:13:52]  or TextEdit on the Mac.
+[0:13:54]  But none of those programs are really designed
+[0:13:56]  to format the code in the best way for you,
+[0:13:58]  nor are they designed to let you compile and run the code.
+[0:14:01]  So VS Code is going to be a tool via which you can do all that and more.
+[0:14:06]  Write the code, compile the code, run the code,
+[0:14:09]  so that you all don't have to wrestle with stupid technical support
+[0:14:12]  headaches at the beginning of the course by installing this software
+[0:14:15]  and that on your Macs or PCs.
+[0:14:17]  We'll use a cloud-based version of VS Code at code.cs50.io.
+[0:14:21]  And that's going to be the exact same tool.
+[0:14:23]  And the goal, then, is by the end of the semester
+[0:14:25]  to sort of migrate you off of that cloud-based environment
+[0:14:28]  to your own Mac and PC so that even if CS50 is the only CS class you ever take,
+[0:14:32]  you're 100% equipped to continue writing code after the class using not
+[0:14:37]  something that's even CS50 specific, but a de facto industry standard,
+[0:14:41]  at least for some time.
+[0:14:42]  So what's this program VS Code going to look like,
+[0:14:44]  be it on your Mac PC or initially in your browser?
+[0:14:47]  It's going to look a little something like this.
+[0:14:49]  And there's going to be several different regions to the screen.
+[0:14:52]  And pictured here is that very same code I keep proposing
+[0:14:54]  is the simplest program you can write in C.
+[0:14:57]  And what are these different regions of the screen?
+[0:14:59]  Well, there's essentially these four here.
+[0:15:02]  So first, highlighted up top is going to be one or more tabs where you're
+[0:15:06]  going to actually write code.
+[0:15:07]  So much like in Google Docs or Microsoft Word,
+[0:15:09]  you can have tabs open with files.
+[0:15:11]  Similarly, in VS Code or really any programming environment,
+[0:15:14]  do you generally nowadays have tabs of some sort?
+[0:15:17]  And this is going to be a tab containing a file, it seems, called hello.c.
+[0:15:21]  And that's going to be the very first file we write in just a moment.
+[0:15:24]  Down here, though, is going to be an interface
+[0:15:26]  that many of you might not know.
+[0:15:28]  This is what's called a terminal window.
+[0:15:31]  And a terminal window provides what's generally
+[0:15:33]  called a command line interface, or CLI.
+[0:15:36]  And this is in contrast with a graphical user
+[0:15:39]  interface, or GUI.
+[0:15:40]  Now, you and I every day are using GUIs on our phones, on our PCs.
+[0:15:44]  And a GUI is literally graphical, so menus and buttons and icons.
+[0:15:48]  And you generally use your finger or a trackpad or a mouse or something
+[0:15:51]  like that to interact with it.
+[0:15:53]  But it turns out that many programmers, they're
+[0:15:55]  saying most programmers, at least over time, come to prefer not a GUI,
+[0:15:59]  but a CLI, a command line interface where you actually
+[0:16:01]  do everything somewhat arcane-ly via keyboard alone.
+[0:16:07]  Why?
+[0:16:07]  Well, it turns out there's just more features built in to most computers
+[0:16:11]  if you can access them with a keyboard.
+[0:16:13]  Turns out most of us can type faster than you can point and click.
+[0:16:16]  And so that ends up being an efficiency gain over time.
+[0:16:19]  So in time, will you get comfortable using this terminal window
+[0:16:22]  to do things like compile your code or make your program, as well as run it?
+[0:16:27]  So you won't be in the habit initially of just double-clicking icons
+[0:16:30]  like we do in our typical real world.
+[0:16:32]  You'll do it sort of the programmer's way.
+[0:16:34]  But it's not to the exclusion of adding icons and clickability and more.
+[0:16:38]  On the left-hand side of VS Code, there's
+[0:16:40]  going to be a somewhat familiar file explorer,
+[0:16:43]  some kind of hierarchical tree, like on your Mac or PC,
+[0:16:46]  where you can see all of the files in your account.
+[0:16:48]  Pictured here, for instance, is just hello.c,
+[0:16:51]  which I'll create myself in a moment.
+[0:16:52]  And then far away on the left is the so-called activity bar.
+[0:16:55]  And this is where you just get a lot of traditional menus and buttons.
+[0:16:58]  So VS Code itself gives you both a GUI and a CLI.
+[0:17:03]  But it's within the CLI, the terminal window, the bottom region of the screen,
+[0:17:07]  that we're actually going to type most of our commands.
+[0:17:08]  And in general in class, I'm going to hide all of the graphical stuff that's
+[0:17:11]  just not of all that much interest.
+[0:17:15]  So with that said, let me actually change over to a live version of VS Code.
+[0:17:19]  And I've indeed hit in the activity bar.
+[0:17:21]  I've indeed hit in the file explorer.
+[0:17:23]  So what I have here for visibility's sake
+[0:17:24]  is a really big area for writing code and a really big terminal
+[0:17:28]  window at the bottom.
+[0:17:29]  You'll see in the terminal window, there's a dollar sign.
+[0:17:31]  And this doesn't mean any form of currency.
+[0:17:33]  This is just the standard symbol that represents type commands here.
+[0:17:37]  So the fact that there's just a dollar sign and a cursor
+[0:17:40]  means eventually that's where I'm going to type commands.
+[0:17:42]  But first, I'm going to actually create some code.
+[0:17:44]  So how might I program using VS Code, be it on my Mac, PC,
+[0:17:49]  or in this cloud-based environment that you'll get set up for problem set one,
+[0:17:54]  go about writing my first file?
+[0:17:55]  Well, perhaps the easiest way is this.
+[0:17:57]  Literally run the command code.
+[0:17:59]  And then the name of the file you want to create.
+[0:18:02]  Notice that I deliberately end the file with .c in lowercase.
+[0:18:05]  Notice that I deliberately lowercase the whole file name.
+[0:18:08]  And these are just conventions.
+[0:18:09]  You could use a capital H. You kind of could use a capital C.
+[0:18:12]  But just don't do that.
+[0:18:14]  Follow best practices so that it's consistent with what
+[0:18:16]  most everyone else would do.
+[0:18:17]  When I hit Enter, I just get an empty tab,
+[0:18:20]  just like the screenshot a moment ago.
+[0:18:22]  And it's in this tab where I can now write my very first program in C.
+[0:18:26]  Unfortunately, it's not quite as user-friendly as Scratch,
+[0:18:29]  where you drag and drop a couple of puzzle pieces, and boom, it's done.
+[0:18:32]  So I'm going to do this for memory.
+[0:18:34]  But this, too, will become familiar to you over time.
+[0:18:36]  I'm going to include something called standard io.h.
+[0:18:40]  I'm going to type int main void in parentheses.
+[0:18:44]  On a new line, I'm going to insert some curly braces, as we'll call them.
+[0:18:47]  And then I'm going to type printf, and then some parentheses, and then
+[0:18:51]  in quotes, hello, comma, world, then a backslash, then a lowercase n,
+[0:18:57]  then a close quote, and then a semicolon at the very end of the line.
+[0:19:01]  So all I've done is recreate, just from memory,
+[0:19:04]  that very first program.
+[0:19:05]  In a little bit, we'll make clear what most of this does.
+[0:19:08]  But for now, let's just actually run this thing.
+[0:19:10]  And just like I clicked the green flag last week for the first time,
+[0:19:13]  let's actually compile and run this program.
+[0:19:16]  If it were your Mac or PC and Google or Microsoft or someone else
+[0:19:20]  had made the software, at this point in the story,
+[0:19:22]  we'd be double clicking an icon.
+[0:19:24]  But we can't do that yet.
+[0:19:25]  This is still source code.
+[0:19:26]  So I'm going to click back down in my terminal window.
+[0:19:29]  Notice I have a second dollar sign below the first,
+[0:19:31]  which just means it's ready for a second command.
+[0:19:34]  And now the command via which to make this an actual program,
+[0:19:38]  to compile it from source code to machine code,
+[0:19:41]  is going to be, quite simply, make, and then the name of the program
+[0:19:45]  I want to make.
+[0:19:46]  Slight subtlety, I'm omitting deliberately dot c,
+[0:19:49]  because the program I want to make, I just want to call hello.
+[0:19:52]  So don't write make hello dot c, just write make hello.
+[0:19:55]  And this program make is essentially our compiler.
+[0:19:59]  Technically speaking, it's a program that automates the compilation
+[0:20:02]  of my program for me.
+[0:20:04]  But it is going to see that I've typed the word hello.
+[0:20:06]  It's going to automatically look now for a file on the hard drive called
+[0:20:10]  hello dot c and convert it from source code in c to machine code in 0s and 1s.
+[0:20:17]  So if I didn't make any typos, Enter, nothing seems to happen.
+[0:20:23]  And that's a good thing.
+[0:20:24]  Almost always, if nothing gets outputted on the screen, like you did good.
+[0:20:28]  Like you didn't make any mistakes, you didn't get yelled at,
+[0:20:30]  there's no error messages.
+[0:20:31]  So this is actually a good thing.
+[0:20:33]  How do I now run this program?
+[0:20:34]  Well, notice I've got a third dollar sign,
+[0:20:36]  which just means I'm ready for a third command.
+[0:20:38]  And now I'm going to go ahead and run dot slash hello.
+[0:20:42]  And this is admittedly a little weird that you have to do dot slash.
+[0:20:45]  But for now, just take on faith that this
+[0:20:47]  is how you run a program called hello in your current folder,
+[0:20:51]  in your current directory in this cloud-based environment.
+[0:20:54]  All right, crossing my fingers again, hitting Enter, and voila,
+[0:20:58]  my very first program in C, hello world.
+[0:21:02]  And now let me go ahead and reveal the file explorer
+[0:21:06]  that I proposed exist earlier.
+[0:21:07]  I'm just going to use the keyboard shortcut to reveal that.
+[0:21:10]  And generally, I keep it closed because I don't really
+[0:21:12]  need to know constantly what files are in my account.
+[0:21:15]  But you'll see now in the file explorer, similar in spirit to a Mac or PC,
+[0:21:18]  but graphically a little different, here's my file, hello dot c.
+[0:21:22]  It's highlighted because I have that tab open.
+[0:21:24]  But now there's a second file here, jolhald, just hello.
+[0:21:27]  That's the name of my program.
+[0:21:29]  So if you were on a Mac or PC, you would ideally double click that thing.
+[0:21:32]  You can't do that in a command line environment.
+[0:21:34]  You have to run it down here.
+[0:21:36]  But that's all we've done.
+[0:21:37]  We've created a file called hello dot c.
+[0:21:39]  And then my compiler made the program from that.
+[0:21:42]  Let me pause here and see if there's any questions because it's
+[0:21:46]  a lot of magical phrases.
+[0:21:48]  Yeah.
+[0:21:51]  Yeah, so if you're currently following along, playing along at home,
+[0:21:55]  and you're getting some kind of error message, part of today
+[0:21:57]  will be for me to deliberately induce some of those error messages.
+[0:22:00]  For now, let me just propose that if you literally did what I did,
+[0:22:03]  you must have made a typo somewhere.
+[0:22:06]  And notice that it's indeed standard io, s-t-d-i-o dot h.
+[0:22:10]  Maybe you type studio dot h.
+[0:22:13]  Super common mistake, if I could call you out, it is not studio dot h.
+[0:22:18]  It is standard io dot h.
+[0:22:20]  So common, but this is exactly representative
+[0:22:23]  of the kind of stupid headaches you're going to run into this week, probably
+[0:22:26]  for a few weeks, probably honestly for a few years.
+[0:22:28]  But you start to see past these sort of stupid mistakes over time.
+[0:22:31]  And it just gets easier and easier because the computer
+[0:22:34]  is going to be so regimented.
+[0:22:35]  It will only do what you tell it to do.
+[0:22:37]  And if you say, because it verbally sounds like studio dot h,
+[0:22:40]  it's not going to know what the file is.
+[0:22:42]  So actually, thank you for tripping over that so early.
+[0:22:44]  That's super common to happen.
+[0:22:46]  Yeah.
+[0:22:49]  Why do I have two hello files?
+[0:22:51]  So why do I have two hello files?
+[0:22:52]  One is the one I created as the human called hello.c.
+[0:22:55]  And it's pictured right here.
+[0:22:57]  But then when I ran make hello, that process compiled my source code
+[0:23:02]  into machine code.
+[0:23:03]  So this second file, just called hello, is
+[0:23:06]  the file that contains all of those zeros and ones
+[0:23:09]  that the server actually understands.
+[0:23:12]  All right, so yeah, question.
+[0:23:16]  If you try clicking on the hello file, you'll
+[0:23:18]  see in this environment of VS code, quote unquote,
+[0:23:21]  the file is not displayed in the editor because it
+[0:23:23]  is either binary, a.k.a.
+[0:23:25]  zeros and ones, or used as an unsupported text encoding.
+[0:23:28]  In this case, it's binary.
+[0:23:29]  It's zeros and ones.
+[0:23:30]  Now, you could use software to see those zeros and ones.
+[0:23:34]  It won't be intellectually enlightening to most any human.
+[0:23:37]  So VS code just takes the choice of not showing it to you at all.
+[0:23:39]  So that would be a common mistake, too, clicking on a file you don't intend.
+[0:23:43]  But the source code is indeed going to be editable by us.
+[0:23:46]  All right, so I've written this program.
+[0:23:48]  It seems to sort of magically work, at least with some effort.
+[0:23:51]  If you get every single keystroke right, well, what is it that's going on?
+[0:23:55]  And how is this working?
+[0:23:56]  Well, first of all, notice that even without my highlighting things
+[0:23:59]  or choosing buttons from menus, notice that it's already kind of color coded.
+[0:24:04]  And yet, I wasn't highlighting along the way
+[0:24:06]  in sort of Google Docs style changing the color, certainly.
+[0:24:09]  Well, it turns out what VS code and most programming environments nowadays
+[0:24:13]  do for you automatically is syntax highlighting.
+[0:24:16]  So syntax highlighting is just this feature of typical text editors
+[0:24:20]  nowadays that analyzes the code that you've typed.
+[0:24:23]  And when it notices certain types of keystrokes,
+[0:24:26]  things that represent functions or conditionals or loops or variables
+[0:24:30]  a lot of the vocab from last week, it just
+[0:24:32]  highlights it ever so differently for you.
+[0:24:34]  So main, for instance, which we'll soon see, is in purple here.
+[0:24:38]  Int and void and include are in red.
+[0:24:40]  Hello world is in blue.
+[0:24:42]  My parentheses are in green.
+[0:24:43]  This will totally vary by program or two.
+[0:24:45]  In fact, if you do want to change these colors for problem set one
+[0:24:49]  for your own environment, you can poke around VS code settings
+[0:24:52]  via the gear icon.
+[0:24:53]  You can change to a different color theme.
+[0:24:56]  Syntax highlighting isn't some specific color scheme like it is in Scratch.
+[0:25:00]  It just generally is to each human their own preference.
+[0:25:03]  But that's all that's happening here is this notion of syntax highlighting
+[0:25:06]  at the moment.
+[0:25:07]  Well, what more is going on in this code before I run it but rather write it?
+[0:25:12]  Well, it looks a little something like this
+[0:25:13]  if I take away all of the colors.
+[0:25:15]  And then just for discussion sake, let me go ahead and color it
+[0:25:17]  a little more like Scratch.
+[0:25:19]  Recall that our very first Scratch program that
+[0:25:21]  just said hello world on the screen had a when green flag clicked
+[0:25:26]  puzzle piece, roughly in orange, and then a purple say block beneath it.
+[0:25:31]  So whereas this is the C version, if we rewind to last week,
+[0:25:35]  this was the same program in Scratch.
+[0:25:37]  But what's happening now is exactly the same.
+[0:25:39]  So if you think back to last week and you've
+[0:25:41]  got some function like the say function in purple,
+[0:25:45]  that might take one or more arguments like inputs
+[0:25:47]  that influences what it says on the screen.
+[0:25:50]  And then functions, recall, can sometimes have side effects, right?
+[0:25:53]  Like the speech bubble appears on the screen.
+[0:25:55]  So last week, when we used the say block and we passed in an argument
+[0:25:58]  of hello world at left, we got this visual side effect
+[0:26:02]  on the screen that says now hello world in the speech bubble.
+[0:26:05]  And that's exactly what just happened in VS code,
+[0:26:07]  but much, much more textually.
+[0:26:10]  And let's look a little closer now at the code itself.
+[0:26:12]  Let me wave my hand at the equivalent of the when green flag clicked
+[0:26:16]  part of my code.
+[0:26:18]  And let's focus only on the say block in Scratch
+[0:26:21]  and the corresponding function in C.
+[0:26:25]  So if I step through this and I wanted to convert what we did last week
+[0:26:29]  with the say block to C, I would first use the print function.
+[0:26:33]  Although that's actually a bit of a white lie.
+[0:26:35]  It's actually the printf function.
+[0:26:37]  Printf means formatted.
+[0:26:38]  And it's just a function that allows you to format text on the screen.
+[0:26:42]  There is no say function in C. There's a printf function.
+[0:26:45]  What MIT did down the road years ago was
+[0:26:47]  they took what existed historically as printf
+[0:26:50]  and they simplified it for a broader audience
+[0:26:51]  by just calling it essentially say instead.
+[0:26:54]  But notice that now, if I want to convert the Scratch code at left
+[0:26:59]  to C code at right, it's sort of the same shape.
+[0:27:02]  So MIT deliberately used this white oval,
+[0:27:05]  if only because it kind of conjures this idea of having parentheses too.
+[0:27:10]  So on the right, if I want to pass an argument or an input to the printf
+[0:27:14]  function, I use an open parenthesis and a closed parenthesis.
+[0:27:18]  In those parentheses, I then type whatever
+[0:27:20]  it is I want to print on the screen, in this case, hello, comma, world.
+[0:27:24]  But notice I've deliberately left some room
+[0:27:25]  because you need some extra keystrokes in the world of C.
+[0:27:29]  Any time you type out some text, otherwise known as a string of text,
+[0:27:34]  to use computer science jargon, you need to quote it,
+[0:27:37]  in this case with double quotes.
+[0:27:38]  Double quote at the left, double quote at the right.
+[0:27:41]  And notice, too, I'm going to include some slightly cryptic symbol here,
+[0:27:44]  too, backslash n, which I also typed and said verbally earlier.
+[0:27:48]  And then one last nuisance at the end of this, which is a semicolon.
+[0:27:52]  So suffice it to say, this is why we start with Scratch.
+[0:27:55]  This drag and drop, you're good to go.
+[0:27:57]  In a language like C, printf, parenthesis, double quotes,
+[0:28:00]  the text you want, backslash n, semicolon at the end,
+[0:28:03]  there's just so much syntactic overhead.
+[0:28:05]  But at the end of the day, it's just a function.
+[0:28:07]  And you'll get used to these sort of nuisances,
+[0:28:10]  like the parentheses, the quotes, the semicolon, and the like.
+[0:28:13]  But things can very easily go wrong.
+[0:28:17]  And it's very easy to make mistakes even with lines of code like this.
+[0:28:19]  So let me do this.
+[0:28:20]  Let me go back to VS code, where I have the exact same code.
+[0:28:23]  Notice that on line five is exactly that line of code.
+[0:28:27]  So this is the equivalent of the say block.
+[0:28:29]  And let's consider what mistakes I make early on,
+[0:28:32]  or even now, 20 years later after learning this,
+[0:28:34]  that are quite common in general.
+[0:28:36]  Suppose I forget the semicolon there.
+[0:28:39]  So easy to do.
+[0:28:40]  You will do this eventually.
+[0:28:41]  Let's see what happens now when I go back to my terminal window
+[0:28:44]  and try to compile my code again.
+[0:28:46]  Just to keep things tidy, I'm going to clear my screen.
+[0:28:49]  But that's just for lecture's sake, so that we can focus only
+[0:28:51]  on the most recent command.
+[0:28:53]  But I'm going to go ahead now and rerun make hello.
+[0:28:56]  This will ensure that my program is recompiled.
+[0:29:00]  And this is a manual process.
+[0:29:01]  I changed my code.
+[0:29:02]  The zeros and ones on the hard drive have not changed.
+[0:29:05]  I need to recompile it to output the latest machine code.
+[0:29:08]  So here we go.
+[0:29:09]  I'm going to hit Enter, crossing my fingers as before.
+[0:29:11]  But again, I remove the semicolon by accident.
+[0:29:16]  Oh my god.
+[0:29:16]  There's more lines of errors now than there are of actual code.
+[0:29:20]  And this, too, takes some getting used to.
+[0:29:22]  The programs we're using were not necessarily
+[0:29:25]  written with the least comfortable audience in mind,
+[0:29:27]  but really professional programmers back in the day.
+[0:29:29]  But through practice, and through experience, and through mistakes,
+[0:29:32]  you'll start to notice patterns here, too.
+[0:29:34]  So here's what I typed.
+[0:29:35]  Make hello after the dollar sign prompt.
+[0:29:38]  Now I get yelled at as follows.
+[0:29:40]  Hello.c colon 5 colon 29.
+[0:29:43]  Well, what's that referring to?
+[0:29:45]  I've screwed up somewhere on line 5 on the 29th character on that line.
+[0:29:50]  Generally, the specific character is not that useful
+[0:29:52]  unless you actually want to count it out.
+[0:29:54]  But line 5 is a good clue.
+[0:29:55]  Why?
+[0:29:55]  It means I screwed up somewhere on line 5 here.
+[0:29:58]  All right, well, what is the error?
+[0:30:00]  Expected a semicolon after expression.
+[0:30:02]  And this error is actually pretty obvious now that I see it.
+[0:30:05]  And I realize, oh, wait a minute.
+[0:30:06]  All right, here's my line of code.
+[0:30:08]  Here in sort of ASCII art, so to speak, text representing graphics,
+[0:30:13]  it wants me to put in green here this semicolon at the end of that line.
+[0:30:17]  One error generated, built in, so some esoteric stuff there.
+[0:30:20]  But my program did not compile.
+[0:30:23]  When you see an error like this, it means it did not work.
+[0:30:26]  So what's the fix?
+[0:30:27]  Well, obviously, the fix is to go back up here, put the semicolon there.
+[0:30:32]  And now if I recompile my code with make hello,
+[0:30:35]  it won't clear my screen just yet just to show you the difference.
+[0:30:38]  Now it just worked.
+[0:30:39]  So we're back in business as before.
+[0:30:42]  All right, let me pause here, though, and ask
+[0:30:44]  if there's any questions about what I just did.
+[0:30:49]  These error messages will become frequent initially.
+[0:30:51]  Yeah.
+[0:30:56]  Really good question.
+[0:30:57]  Do you need a semicolon after every line or just some?
+[0:30:59]  It turns out just some.
+[0:31:00]  This is something you'll learn through practice,
+[0:31:02]  through demonstrations and examples today.
+[0:31:05]  Generally, you put a semicolon after a statement, so to speak.
+[0:31:09]  And this is the technical term for this line of code.
+[0:31:11]  It's a statement.
+[0:31:12]  And think of it as it's kind of the code equivalent of an English sentence.
+[0:31:15]  So the semicolon in code is sort of like a period in English
+[0:31:19]  when you're done with that particular thought.
+[0:31:21]  You don't need semicolons for now anywhere else.
+[0:31:24]  And we'll see examples of where else you put them.
+[0:31:26]  But it usually is at the end of a line of code
+[0:31:29]  that isn't purely syntactic like curly braces instead.
+[0:31:33]  Other questions on the mistake I just fixed and created for myself?
+[0:31:38]  Yeah.
+[0:31:42]  Correct.
+[0:31:42]  So line 5 is where the error is most likely.
+[0:31:45]  Character 29 means it's sort of 29 characters that way.
+[0:31:48]  And then it's actually, in this case, giving me a suggestion.
+[0:31:51]  The compiler won't always know how to advise me,
+[0:31:54]  especially if I've made a real mess of my code.
+[0:31:56]  But often, it will do its best to give you the answer like this.
+[0:31:59]  Yeah.
+[0:32:04]  So how come I first typed code space hello.c,
+[0:32:07]  and now I'm typing make hello?
+[0:32:09]  Two different processes.
+[0:32:10]  When I typed code space hello.c, that was
+[0:32:14]  because I wanted to open VS code and create a new file called hello.c.
+[0:32:17]  It's like going to file new in a Mac or PC.
+[0:32:21]  Thereafter, though, once the file exists and is actually open here,
+[0:32:25]  and it does autosave, you don't need to hit Command-S or Control-S
+[0:32:28]  all the time, I can now compile it with make hello again and again.
+[0:32:32]  So theoretically, I should never need to type code space hello.c again
+[0:32:37]  unless I want to create a brand new file called the same thing.
+[0:32:41]  So what about this other piece of syntax here?
+[0:32:43]  Let me clear my terminal window here.
+[0:32:45]  You can also hit Control-L just to throw everything away,
+[0:32:48]  just to clean it up aesthetically.
+[0:32:50]  Suppose that I omit whatever this sequence of symbols is,
+[0:32:53]  backslash n, since I'm not really sure at first glance why that's even there.
+[0:32:58]  Does anyone want to conjecture, especially if you've never programmed before,
+[0:33:01]  what might happen now if I recompile and rerun this version of the program?
+[0:33:07]  I left the semicolon, but I took away the backslash n.
+[0:33:11]  Any instincts?
+[0:33:15]  All right, well, yeah.
+[0:33:21]  It will.
+[0:33:21]  The next dollar sign will appear right after my hello world.
+[0:33:25]  But what makes you think that?
+[0:33:30]  Exactly.
+[0:33:30]  Backslash n is actually a special sequence of symbols that creates a new line.
+[0:33:34]  And so to your point, if I recompile this program, make hello, enter,
+[0:33:39]  no syntax error.
+[0:33:40]  So it did compile this time.
+[0:33:42]  So you don't need the backslash n.
+[0:33:43]  You do need the semicolon.
+[0:33:45]  But if you don't have the backslash n, watch
+[0:33:47]  what happens when I do dot slash hello this time.
+[0:33:50]  Now, indeed, I see hello, comma, world, and then a weird dollar sign.
+[0:33:53]  And this is still a prompt.
+[0:33:55]  I can still type commands at it, like clear, and everything gets cleaned up.
+[0:33:59]  But it just looks kind of stupid.
+[0:34:00]  If I run it again here with dot slash hello,
+[0:34:03]  it's just not very user friendly.
+[0:34:04]  It is convention that when you're done running your program,
+[0:34:07]  you should ideally clean things up, move the cursor
+[0:34:09]  to the next line for the user.
+[0:34:11]  And so the backslash n is simply the special symbol,
+[0:34:14]  otherwise known as an escape sequence, that c, knows,
+[0:34:19]  means move the cursor to the next line.
+[0:34:21]  And other languages, Python among them, uses the same symbology as well.
+[0:34:26]  Now, if I go back to the code here and, for instance,
+[0:34:31]  I try to do this differently, like suppose I don't put the backslash n.
+[0:34:35]  I just hit Enter, like a normal person would in Google Docs or Microsoft Word.
+[0:34:39]  Let me go ahead and try compiling this program.
+[0:34:42]  And this, you would hope, would work, right?
+[0:34:43]  You would hope this would print out hello, world, and then a blank line,
+[0:34:46]  because I moved the cursor to the next line.
+[0:34:49]  But no, if I run make hello now and try to compile that, c does not like this.
+[0:34:53]  Now I get a different error, still on line five,
+[0:34:56]  this time starting at character 12, error,
+[0:34:59]  missing terminating double quote character,
+[0:35:02]  and then some other esoteric stuff.
+[0:35:03]  And then this does not sound good, fatal error this time,
+[0:35:06]  too many errors omitted, stopping now.
+[0:35:08]  So I really screwed up here.
+[0:35:10]  So why can't I do this?
+[0:35:12]  Just because, like the humans who designed c
+[0:35:14]  decided that if you have a string of text, it must stay on the same line.
+[0:35:18]  It can get really long.
+[0:35:19]  It can soft wrap, that is, without you hitting Enter,
+[0:35:22]  but you can't hit Enter to create a new line.
+[0:35:24]  If you deliberately want a new line, you have to indeed use this backslash
+[0:35:29]  n escape character.
+[0:35:30]  So let me go ahead and do this.
+[0:35:31]  Let me put it back.
+[0:35:33]  Let me go back to my terminal window.
+[0:35:35]  I'll clear the screen again.
+[0:35:36]  Let me go ahead now and do make hello to recompile to that version,
+[0:35:39]  dot slash hello, and voila, we're back in business with hello.
+[0:35:44]  All right, so now let's tease apart some other aspects of this code,
+[0:35:47]  because there's a lot going on just to get us to say hello world on the screen.
+[0:35:51]  For today, we're largely going to ignore this int main void
+[0:35:55]  and these curly braces here.
+[0:35:56]  We'll come back to that before long as to why it's there.
+[0:35:59]  But for now, just think of int main void and these curly braces
+[0:36:02]  here as really being the c equivalent of when green flag clicked.
+[0:36:05]  Like why?
+[0:36:06]  You just need it there.
+[0:36:07]  That's how you get your program going.
+[0:36:09]  And main is indeed going to be some special function,
+[0:36:11]  but more on that another time.
+[0:36:13]  But why do I have this line of code here?
+[0:36:15]  The correct spelling is indeed standard io.h, s-t-d-i-o.h.
+[0:36:20]  And they're angled brackets this time, so that's a little new.
+[0:36:24]  There's a hash and then an include keyword.
+[0:36:27]  If you don't know what something is, there's
+[0:36:29]  not really that much harm in just getting rid of it and see what happens.
+[0:36:31]  So let me delete that line.
+[0:36:33]  Let me go back to my terminal window, clear the screen,
+[0:36:35]  and then run make hello again.
+[0:36:36]  And let's try compiling this program now without that first line.
+[0:36:40]  Why?
+[0:36:40]  I don't understand it, so let's see what happens.
+[0:36:43]  All right, here's yet another error, but let's see.
+[0:36:45]  Hello.c, line 5, character 5, so it's pretty early on, error.
+[0:36:50]  Implicitly declaring library function printf with type int and then dot,
+[0:36:55]  dot, dot.
+[0:36:56]  So implicitly declaring library function printf.
+[0:36:59]  So this is very cryptic sounding.
+[0:37:01]  You'll get better at understanding phrases like these.
+[0:37:03]  But apparently, I do need the include line for standard io.h.
+[0:37:09]  But why?
+[0:37:10]  Based on this symptom, what might your instinct
+[0:37:14]  be for what that first line of code is doing for us in the first place?
+[0:37:20]  Why intuitively must it be there?
+[0:37:24]  Exactly, it's like importing a library so that you can do things
+[0:37:27]  like print things out on the screen.
+[0:37:28]  Now in Scratch, you didn't have to do this for most of the puzzle pieces,
+[0:37:31]  but you might recall that partway through week 0,
+[0:37:34]  I went to the extensions button at the bottom left of the Scratch screen,
+[0:37:38]  and I imported some extra puzzle pieces for text to speech
+[0:37:41]  that gave us the sort of creepy humanized voice that actually
+[0:37:45]  came out of the cat's mouth.
+[0:37:46]  Well, that was like adding a library, code that someone else wrote.
+[0:37:51]  In that case, it was a third party, but I gave myself access to it.
+[0:37:55]  Same here.
+[0:37:55]  Turns out that you don't really get printf automatically in C.
+[0:38:00]  You have to include a so-called header file that
+[0:38:04]  declares that function to exist.
+[0:38:06]  Now the reason for this historically is just efficiency.
+[0:38:09]  Back in the day when computers were really slower and resource constrained,
+[0:38:13]  you don't want to just give yourself access to the entire kitchen
+[0:38:16]  sink of functionality.
+[0:38:17]  You only want to include only the functions you actually care about.
+[0:38:21]  Nowadays, it's sort of a copy paste step because you almost always
+[0:38:25]  want to print something out on the screen, at least
+[0:38:27]  when writing programs like these.
+[0:38:29]  But these so-called header files contain enough information
+[0:38:32]  about all of the functions in what's called the standard IO library.
+[0:38:37]  And standard IO just means standard input and output.
+[0:38:40]  And that's appropriate, right?
+[0:38:41]  Because printing is pretty basic output.
+[0:38:43]  Turns out there's other functions for getting input from the human's
+[0:38:46]  keyboard, more on that in a bit.
+[0:38:47]  But any time you want to print something on the screen in C,
+[0:38:50]  you indeed need to include this header file at the top of your code.
+[0:38:54]  And that's going to essentially inform the compiler, hey, compiler,
+[0:38:58]  I want to use functionality from the standard IO library,
+[0:39:02]  including printf in this case.
+[0:39:04]  And if you omit the header file by accident,
+[0:39:07]  it's just not going to work because it doesn't know what printf is.
+[0:39:10]  It's sort of some unrecognized symbol in that case.
+[0:39:14]  All right, questions then about this line of code.
+[0:39:19]  This line of code here, or what these header files are.
+[0:39:24]  All right, you might wonder, well, how do you know what functions exist?
+[0:39:27]  How do you know what files you might indeed want to include?
+[0:39:30]  Well, it turns out that C is a many-year-old language,
+[0:39:33]  and it has ample documentation.
+[0:39:35]  A caveat is that its documentation isn't necessarily all that user-friendly.
+[0:39:39]  But what we have for the course is a simplified version
+[0:39:43]  of the official documentation for C at this URL here, manual.cs50.io.
+[0:39:48]  So in the world of C and other languages too,
+[0:39:51]  there are what are called manual pages.
+[0:39:52]  And these are just like text-based documentation
+[0:39:55]  that honestly is typically written in a voice
+[0:39:57]  that you kind of have to be an experienced programmer
+[0:39:59]  to understand some of it.
+[0:40:01]  So what we've done in this version of the same documentation
+[0:40:04]  is we've imported all of the original official documentation,
+[0:40:07]  but we've added sort of less comfortable translations
+[0:40:10]  in English for a lot of the functionality
+[0:40:12]  that you might use in class just to help onboard you.
+[0:40:14]  So at the end of the day, you don't need this documentation long term.
+[0:40:17]  But just to get started, we'll translate it into terminology
+[0:40:21]  that you might appreciate from a teaching assistant, for instance,
+[0:40:24]  as opposed to the original author of these documents.
+[0:40:26]  And so for instance, if you were interested in reading up
+[0:40:29]  on what functions exist in the standard io.h header file,
+[0:40:34]  well, you could go to a URL like this.
+[0:40:36]  Or you could search for it at manual.cs50.io.
+[0:40:39]  That would show you a list of all of the available functions in that library.
+[0:40:43]  And printf, indeed, would be one of them.
+[0:40:45]  And then you could click further on that, reaching a URL like this.
+[0:40:47]  That's just going to view all of the documentation for how to use printf.
+[0:40:50]  It turns out you can do even more than it than just printing out
+[0:40:53]  hello world.
+[0:40:54]  And we'll scratch the surface of that today.
+[0:40:56]  But it turns out that the documentation will always
+[0:40:59]  be your authoritative source, ultimately, for questions like, what can I do
+[0:41:03]  and how can I do it?
+[0:41:04]  Meanwhile, it turns out that CS50 has its own library
+[0:41:09]  accessible via header file called cs50.h.
+[0:41:12]  It turns out in C that output is actually pretty easy relatively speaking.
+[0:41:17]  Once you get used to all the curly braces, parentheses,
+[0:41:19]  quote marks, and the like.
+[0:41:20]  But input is a little more difficult.
+[0:41:23]  If you have programmed before, input's not that hard to do in Python.
+[0:41:27]  It's not that hard to do in Java.
+[0:41:29]  It's more difficult to do in C. And we'll see why in a couple of weeks.
+[0:41:33]  But for the first couple of weeks of the class,
+[0:41:35]  we actually provide you with some training wheels of sorts,
+[0:41:38]  whereby we have a number of functions that are declared in this file, cs50.h.
+[0:41:43]  It lives its documentation in a URL like this.
+[0:41:46]  And in a moment, we'll use a few of these.
+[0:41:47]  You'll see that cs50 provides you with some functions like getchar,
+[0:41:52]  forget a single character from the user's keyboard,
+[0:41:55]  getint to get an integer from the user's keyboard,
+[0:41:58]  getstring to get a sequence of text from the user's keyboard,
+[0:42:01]  and a bunch of others as well.
+[0:42:03]  So let's actually use some of these functions, how about,
+[0:42:06]  by revisiting really the second program we wrote in Scratch last time, which
+[0:42:10]  adds some input to the output.
+[0:42:13]  So first version of Scratch was just hello world.
+[0:42:15]  Said the same thing every time you click the green flag.
+[0:42:17]  Version two, recall though, did this.
+[0:42:19]  It asked the user, what's your name?
+[0:42:22]  And then that somehow gave it back a return variable,
+[0:42:25]  a return value, we called it.
+[0:42:27]  And we then joined hello in that name to say something
+[0:42:30]  a little more interesting on the screen.
+[0:42:33]  So what did that model look like?
+[0:42:35]  Same thing as before, we've got a function in the middle,
+[0:42:37]  where function is like the code implementation of our algorithm.
+[0:42:41]  That takes in one or more arguments, like what is it
+[0:42:43]  you want to say on the screen ultimately.
+[0:42:46]  And return value in this case is going to be actually a value that comes back.
+[0:42:50]  So in the case of getting input, we can consider this ask block again,
+[0:42:54]  like last week.
+[0:42:55]  The input to it is whatever words of English you want to ask the user.
+[0:42:59]  And then it returns a value.
+[0:43:01]  And this was called by default in MIT's world answer, that we'll see and see.
+[0:43:05]  You can call these return values anything you want, ultimately,
+[0:43:07]  in variables.
+[0:43:08]  But this is different from a side effect.
+[0:43:10]  A side effect is just something visual often
+[0:43:12]  that happens on the screen, like the speech bubble or hello world.
+[0:43:15]  A return value is actually a value you get back from a function
+[0:43:18]  you can use or reuse.
+[0:43:20]  So how do we convert this scratch block from last week to C code this week?
+[0:43:25]  Well, if you want to ask the user for something like their name,
+[0:43:28]  you can do this.
+[0:43:29]  You use a CS50 function called get string.
+[0:43:32]  And you've used the parentheses to represent.
+[0:43:34]  Here comes the inputs there, too.
+[0:43:36]  You can then put the sentence you want to ask the user.
+[0:43:39]  Quote unquote, what's your name?
+[0:43:40]  But you do indeed need the quotes literally in C.
+[0:43:43]  So I'll go ahead and add those as well.
+[0:43:46]  Subtle, but I've deliberately included a space after the question mark,
+[0:43:50]  but before the double quote, just so that the cursor moves one step over.
+[0:43:54]  Because in this case, we're not going to get a special speech box
+[0:43:57]  like we did in Scratch.
+[0:43:58]  It's just going to leave the cursor where it is.
+[0:44:00]  So we'll see that aesthetically, that just moves the blinking cursor one space
+[0:44:04]  after the sentence on the screen.
+[0:44:06]  All right, but the catch is with Scratch, we just automatically
+[0:44:09]  got back the answer from the user in a special variable called answer.
+[0:44:14]  In C, you're going to have to be a little more specific.
+[0:44:17]  In C, if you want to get back a return value from a function like get string,
+[0:44:22]  you have to use an equal sign and then the name of a variable on the left.
+[0:44:27]  The choice of variables is up to you.
+[0:44:29]  I could have called this anything, x, y, z.
+[0:44:31]  I'm going to more descriptively call it answer for parity
+[0:44:33]  with what MIT did with Scratch.
+[0:44:35]  But notice that this doesn't represent equality, per se.
+[0:44:39]  This is assignment in this case.
+[0:44:42]  So in C, when you use a single equal sign,
+[0:44:44]  that means copy the value on the right over to the value on the left,
+[0:44:49]  from right to left.
+[0:44:50]  So what does this do for us?
+[0:44:52]  Well, if get string is a function that prompts the user with, quote unquote,
+[0:44:55]  what's your name, and it has, I claim, a return value,
+[0:44:58]  that means it kind of hands me back some value.
+[0:45:01]  But it's up to me in C to do something with that value.
+[0:45:04]  So if I want to copy that value into a variable that I can use and reuse,
+[0:45:08]  I use an equal sign.
+[0:45:09]  And I invent on the left-hand side of that equal sign any variable name I
+[0:45:13]  want.
+[0:45:14]  There are certain rules.
+[0:45:15]  There are certain conventions.
+[0:45:16]  But generally, if you use a single word with all lowercase,
+[0:45:19]  you're in good shape.
+[0:45:21]  But C is a little more pedantic than that.
+[0:45:23]  And those of you who have programmed before might not
+[0:45:26]  be used to this, for instance, in Python, which is a world we'll get to
+[0:45:29]  in a few weeks, you also have to tell C what type of value you're storing.
+[0:45:35]  So if I do want a string of text from the user,
+[0:45:39]  so not an integer, not a single character,
+[0:45:41]  I want a whole string of text, like a phrase, a sentence, a name,
+[0:45:44]  in this case, I have to tell C that this variable is of type string.
+[0:45:50]  So it's a little wordy, but you get used to it.
+[0:45:53]  And you just have to be precise.
+[0:45:54]  You're informing the computer what type of value is going in this variable.
+[0:45:59]  All right, it's so close to being correct.
+[0:46:01]  But I have omitted something that's annoyingly important still.
+[0:46:05]  What's missing still?
+[0:46:07]  Yeah.
+[0:46:08]  So semicolon.
+[0:46:09]  This is a statement.
+[0:46:10]  This is like a full thought, if you will, in code.
+[0:46:14]  I do need to end it ultimately with the semicolon at the end there.
+[0:46:18]  All right.
+[0:46:18]  So this was more of a mouthful, but let's try using this in now my code.
+[0:46:22]  Let me go back to VS Code, where I have version 0 of my code here.
+[0:46:26]  Let me go ahead and include one other file at the top of hello.c, namely
+[0:46:31]  include CS50.h, so that I have access now to get string
+[0:46:36]  and anything else I might want.
+[0:46:38]  Now let me go ahead and add a line of code here inside of these curly braces.
+[0:46:43]  And let me go ahead and do this.
+[0:46:45]  String answer equals get string, quote unquote,
+[0:46:49]  what's your name, question mark.
+[0:46:51]  I'm going to add an extra space before the double quote.
+[0:46:53]  I'm going to indeed end my thought with a semicolon.
+[0:46:57]  And now let me deliberately make a mistake just to make a point here.
+[0:47:00]  Let me now try changing hello world to hello, answer.
+[0:47:06]  All right.
+[0:47:07]  Perhaps, even though this is some new lines of code,
+[0:47:09]  you can see where I've erred already.
+[0:47:11]  But let me try making this program now.
+[0:47:13]  So far, so good.
+[0:47:14]  So no error messages.
+[0:47:15]  So that's a good thing.
+[0:47:16]  Let me go ahead and run dot slash hello, and you'll see the prompt.
+[0:47:20]  What's your name, question mark.
+[0:47:22]  And notice the cursor is indeed one space to the right,
+[0:47:24]  just because I thought it would look prettier to put a little blank space
+[0:47:27]  there, as opposed to leaving it right after the question mark.
+[0:47:30]  Let me type my name.
+[0:47:31]  But even if you've never programmed before, I have screwed up here.
+[0:47:35]  What are we going to see on the screen when I hit Enter?
+[0:47:39]  Yeah, hello, answer, most likely.
+[0:47:40]  Why?
+[0:47:41]  Because the computer is going to take me literally.
+[0:47:43]  And if I say quote unquote hello, answer, that
+[0:47:46]  is the string of text followed by a new line that's
+[0:47:48]  going to be outputted to the screen.
+[0:47:50]  So we need some way of actually plugging answer into this line of code.
+[0:47:55]  It's not quite as simple as Scratch, where you could just grab a second say
+[0:47:58]  block and drag and drop the variable there.
+[0:48:00]  We actually need a new syntax.
+[0:48:02]  And it's going to look weird at first, but it is everywhere in software
+[0:48:05]  nowadays, especially in the world of C and certain other languages.
+[0:48:09]  So let me go ahead and propose that I solve it as follows.
+[0:48:14]  Well, back when we did this in Scratch, remember that the most elegant
+[0:48:17]  solution was this here.
+[0:48:19]  We used the say block still, which is going to be analogous to printf today.
+[0:48:23]  But I used the join puzzle piece in Scratch
+[0:48:25]  to combine hello, comma, space, and then the name of the human.
+[0:48:30]  So how do we translate this code to C?
+[0:48:32]  Well, it's going to look a little different now.
+[0:48:34]  I'm going to start with printf with some parentheses and a semicolon,
+[0:48:38]  representing the say block.
+[0:48:40]  But how do I now do this joining?
+[0:48:41]  This is where the puzzle pieces don't quite translate perfectly.
+[0:48:44]  This would be the way to do this.
+[0:48:47]  You put hello, comma, and then a placeholder.
+[0:48:50]  So this is what's known as a format code in C, specifically for printf.
+[0:48:54]  And it just means this is a placeholder for a string.
+[0:48:58]  Again, a string is just text.
+[0:48:59]  So this means, hey, computer, print out literally hello, comma, space,
+[0:49:03]  and then not literally percent s.
+[0:49:05]  Percent s is treated specially to mean plug in some value here.
+[0:49:10]  All right.
+[0:49:11]  So what else do I still need?
+[0:49:12]  Well, this is still some text.
+[0:49:14]  So I'm still going to surround the whole thing with double quotes.
+[0:49:19]  I'm still going to include my backslash n just to keep things tidy
+[0:49:22]  and move the cursor to the next line.
+[0:49:24]  So the last step here in C is to somehow join the answer with that word hello.
+[0:49:31]  And the way you do this is with printf passing it not one argument, which
+[0:49:36]  is what I keep doing.
+[0:49:37]  I keep passing it one string of text, quote unquote.
+[0:49:40]  I'm going to now add a comma and then the name of the value
+[0:49:44]  that I want printf to go back and plug into that percent s.
+[0:49:49]  And printf is just smart about this.
+[0:49:51]  If you have 1% s and one additional argument after a comma,
+[0:49:55]  it just does, from right to left, it plugs it in.
+[0:49:57]  If you have 2% s's and two variables after the comma, that's OK, too.
+[0:50:03]  If you separate them with commas, it'll plug the first into the first percent
+[0:50:06]  s and the second variable into the second percent s.
+[0:50:09]  So it's just left to right order of operations.
+[0:50:11]  It's not as pretty or as simple as this, but this is how it's done in C.
+[0:50:17]  All right, let me pause because this is a lot of symbology.
+[0:50:19]  Any questions on this technique here?
+[0:50:21]  Yeah.
+[0:50:27]  Yeah, really good question.
+[0:50:28]  Why did I exclude the backslash n a moment ago?
+[0:50:32]  Really just my sense of aesthetics, if you will.
+[0:50:34]  No good reason beyond that.
+[0:50:36]  So if I look back at my code, you quite rightly
+[0:50:38]  notice that I didn't have a backslash n there.
+[0:50:41]  That's just because for whatever sense of style that I have,
+[0:50:44]  I wanted the name to be typed right after the question.
+[0:50:47]  I totally could have added a backslash n there instead of a space.
+[0:50:50]  That would have just allowed me to type down here.
+[0:50:53]  Totally fine.
+[0:50:54]  Just wanted to show you something different.
+[0:50:56]  Good catch.
+[0:50:56]  Yeah.
+[0:50:58]  Can I show an example with 2% s's?
+[0:51:01]  Surely.
+[0:51:01]  So let me, in VS code, do this.
+[0:51:04]  Let me clear my terminal window to clean things up.
+[0:51:06]  And let me do this.
+[0:51:07]  Instead of calling the variable answer all over the place,
+[0:51:10]  let me call it first.
+[0:51:12]  And I'll ask two questions.
+[0:51:14]  What's your first name?
+[0:51:15]  And now let me do string last equals get string quote on, whoops,
+[0:51:19]  capitalization matters.
+[0:51:21]  So let me fix my capital S there.
+[0:51:22]  Quote unquote, what's your last name?
+[0:51:25]  Question mark.
+[0:51:27]  Semicolon.
+[0:51:28]  And now we'll plug in 1% s and a second percent s.
+[0:51:34]  And now I'm going to plug in first, first, and last, last, coincidentally.
+[0:51:39]  And now I'm going to go back to the terminal window.
+[0:51:42]  Make hello, crossing my fingers.
+[0:51:45]  All good.
+[0:51:45]  Dot slash hello.
+[0:51:47]  Here's my first question, David.
+[0:51:49]  Here's my second question, Malin.
+[0:51:50]  And again, hello, David Malin.
+[0:51:53]  So it just inserts them left to right.
+[0:51:55]  All I was doing for parity with Scratch, though,
+[0:51:57]  and let me go ahead and undo this again.
+[0:51:59]  I'll go back to answer like this.
+[0:52:01]  I'll go back to just asking for the person's name.
+[0:52:04]  I'm going to delete mention of last.
+[0:52:05]  I'm going to delete mention of the second percent s.
+[0:52:08]  And now if I recompile this simpler version, I did screw up.
+[0:52:12]  Didn't intend it.
+[0:52:14]  What did I do wrong?
+[0:52:18]  Yeah, so just newbie mistake.
+[0:52:19]  So I changed my variable back to answer just to be consistent with week 0.
+[0:52:24]  But I didn't change it here.
+[0:52:26]  So I have a use of undeclared identifier first.
+[0:52:29]  It's undeclared in the sense that I declared answer a line prior.
+[0:52:33]  I didn't declare first.
+[0:52:34]  So indeed, intuitively, I want to just change that to that.
+[0:52:37]  Let me now do make hello again.
+[0:52:39]  Dot slash hello.
+[0:52:41]  Type in just my first name this time.
+[0:52:43]  And there it is.
+[0:52:44]  Hello, David.
+[0:52:46]  Questions on this then syntax with printf.
+[0:52:48]  Yeah.
+[0:52:52]  The placeholder I'll zoom in is just a single percent and then an s.
+[0:52:56]  So inside of my string here is percent s.
+[0:53:01]  And then I have a comma outside the quotes and then
+[0:53:04]  the name of the variable whose value I want to plug in for that percent s.
+[0:53:10]  And now notice there's technically two commas inside of these parentheses
+[0:53:15]  on line 7.
+[0:53:17]  And yet I claim that printf at the moment is only taking in two arguments.
+[0:53:24]  Why is there then two commas but only two arguments?
+[0:53:28]  If there were two commas, you would think there'd be three arguments, right?
+[0:53:36]  Exactly.
+[0:53:37]  The comma in between the quotes is just an English thing.
+[0:53:39]  It's separating the hello from the name.
+[0:53:41]  So that's why, indeed, it's not only in quotes.
+[0:53:44]  That's also why programs like VS code tend to syntax highlight it
+[0:53:48]  a little differently just so that it sort of jumps out as different to you,
+[0:53:52]  even though in this case it's a little subtle, a light blue versus white.
+[0:53:55]  But indeed, it's trying its best.
+[0:53:57]  Other questions now on this placeholder?
+[0:53:59]  Yeah.
+[0:54:09]  Ah, good question.
+[0:54:09]  If I wanted to add an exclamation point after the name,
+[0:54:12]  would I have to add another placeholder and so forth?
+[0:54:14]  I could actually do that much more simply.
+[0:54:16]  I can just put the exclamation point right after the percent sign.
+[0:54:20]  I don't need an additional placeholder per se.
+[0:54:22]  If I zoom out now and run make hello again, dot slash hello,
+[0:54:26]  and type in just my name, no exclamation point,
+[0:54:28]  now you'll see more excitedly hello comma David.
+[0:54:31]  So printf is smart.
+[0:54:33]  It will figure out where the percent s is and then go and replace it.
+[0:54:38]  Now, let me propose that a common thing in programming
+[0:54:41]  is that as soon as we make a decision as to how to design something,
+[0:54:44]  we often paint ourselves into a corner and sort of regret a decision.
+[0:54:48]  Can anyone think of a problem that arises from using
+[0:54:52]  percent s as a placeholder in this string to printf?
+[0:54:58]  What could go wrong if we're using percent in this special way?
+[0:55:04]  Yeah, if you literally want to say, for whatever weird reason,
+[0:55:06]  percent s on the screen, or honestly, even just a single percent,
+[0:55:10]  it turns out that a percent sign is treated
+[0:55:12]  specially inside of printf strings.
+[0:55:16]  So what's the solution here?
+[0:55:18]  There's different patterns of solutions to problems like these.
+[0:55:21]  But suppose you wanted to say, I got 100%, for instance.
+[0:55:27]  Let me go ahead and change this completely.
+[0:55:30]  So I got 100% on your test or whatever.
+[0:55:34]  All right, let me go ahead and run make hello, Enter.
+[0:55:37]  All right, so invalid conversion specifier.
+[0:55:39]  I mean, I have no idea what this means.
+[0:55:41]  But it's underlining the percent sign is problematic.
+[0:55:44]  Well, it turns out that humans years ago decided, all right, damn it,
+[0:55:47]  we already use percent.
+[0:55:48]  Well, 2% signs will mean 1% literally.
+[0:55:51]  So now, if I rerun make hello, aha, dot slash hello, I got 100%.
+[0:55:56]  So there's going to be things like that, honestly,
+[0:55:58]  that you have to ask someone, you have to Google,
+[0:56:00]  you have to look it up in the documentation.
+[0:56:01]  But there's always a solution to those kinds of problems.
+[0:56:04]  And thankfully, they don't come up all that often.
+[0:56:06]  Yeah, oh, just pointing.
+[0:56:09]  Other questions, yeah.
+[0:56:14]  If you have multiple variables, it is in the left-right order.
+[0:56:18]  So printf will analyze the first string of text
+[0:56:20]  that you pass in between quotes.
+[0:56:22]  And whatever the first percent is, the first variable
+[0:56:25]  that's passed in after a comma gets plugged in there.
+[0:56:28]  And then the second gets plugged into the second, third into the third,
+[0:56:30]  and so forth.
+[0:56:31]  So it's just based on left to right.
+[0:56:33]  Yeah.
+[0:56:39]  It's just a placeholder.
+[0:56:40]  It's called a format code.
+[0:56:42]  And it just means colloquially plug in some value here.
+[0:56:45]  And printf, like the humans who wrote printf decades ago,
+[0:56:49]  decided to treat percent s special.
+[0:56:51]  Why?
+[0:56:51]  Just because.
+[0:56:52]  They needed some placeholder.
+[0:56:53]  They decided that, eh, no one's ever going to really want to type percent s.
+[0:56:56]  And if they do, they can just do percent percent s.
+[0:56:59]  So they decided to implement printf in such a way
+[0:57:01]  that they have code that analyzes whatever text comes in,
+[0:57:05]  looks for percent s, and then somehow plugs in the subsequent values
+[0:57:09]  into that placeholder.
+[0:57:11]  And just as a question?
+[0:57:15]  Sorry?
+[0:57:18]  Ah, so what if you wanted to do single characters,
+[0:57:20]  like initials like dm or djm for first, middle, last?
+[0:57:24]  Absolutely.
+[0:57:24]  And that, too, is a perfect segue from the two of you
+[0:57:27]  to what in general are going to be called data types in C.
+[0:57:31]  So it turns out in C, there's not only strings as text.
+[0:57:35]  And we'll see in more detail over the next couple of weeks
+[0:57:37]  what a string really is underneath the hood.
+[0:57:39]  But strings of text are not the only thing that programs can output.
+[0:57:42]  They can indeed output single characters as for initials.
+[0:57:45]  They can output integers as well.
+[0:57:47]  Turns out that printf has different format codes
+[0:57:50]  for all sorts of different data types.
+[0:57:52]  And just some of the data types we'll see in the coming weeks
+[0:57:54]  will be this list here, which you'll notice it almost perfectly lines up
+[0:57:59]  with the CS50 functions that I rattled off earlier,
+[0:58:01]  like getChar, getInt, getString.
+[0:58:04]  The reason we call those functions that is because each of them
+[0:58:07]  is designed to return to you a different type of value.
+[0:58:10]  We've used getString already in this example here.
+[0:58:12]  We'll soon see getInt.
+[0:58:14]  And we'll see opportunities to use others.
+[0:58:16]  But these, indeed, are the menu of available data types, plus others,
+[0:58:21]  dot, dot, dot, that you can use when writing a program in C.
+[0:58:25]  The onus, therefore, is on you to decide in advance,
+[0:58:28]  do I want to store an int in this variable, or a string,
+[0:58:30]  or heck, when writing fancier code, an image, or a sound, or a video even.
+[0:58:35]  Those can all be different data types, dot, dot, dot.
+[0:58:37]  But for now, we'll focus really on just these primitives.
+[0:58:41]  That was a lot.
+[0:58:41]  Let's go ahead and take a five minute break here.
+[0:58:43]  No cookies yet.
+[0:58:44]  But in five minutes, we'll come back, dive into more detail.
+[0:58:46]  And our second break today, we'll have cookies.
+[0:58:52]  All right.
+[0:58:53]  We are back.
+[0:58:53]  And so if you have been playing along at home
+[0:58:55]  but hitting some bumps in the road, that's totally normal.
+[0:58:58]  And indeed, the goals of lecture generally
+[0:59:00]  will be to give you a sense, conceptually, of where we'll be going
+[0:59:03]  during the course of the week.
+[0:59:04]  But it's indeed through the hands-on labs and problem sets
+[0:59:07]  that you'll really have an opportunity at your own pace
+[0:59:09]  to work through some of those same bumps in the road.
+[0:59:12]  But for today, let me give you a few more building blocks.
+[0:59:15]  And these two will translate from scratch initially, namely conditionals.
+[0:59:19]  Like how, now, and see, after knowing now how we can use functions,
+[0:59:23]  at least get string and printf, and we can use variables,
+[0:59:27]  like the string I created earlier, how can I now
+[0:59:30]  add to the mix things like decision making and conditionals at that?
+[0:59:33]  Well, with conditionals and scratch, we had this kind of syntax.
+[0:59:36]  On the left, here in scratch is how you might express
+[0:59:39]  if two variables, x and y, have this relationship.
+[0:59:43]  If x is less than y, then, say, on the screen, x is less than y.
+[0:59:47]  Well, let me translate that to the right now in C code.
+[0:59:50]  So in C, the corresponding code is going to look like this,
+[0:59:53]  assuming x and y already exist.
+[0:59:55]  More on that later.
+[0:59:56]  And notice a pattern we're going to see again and again.

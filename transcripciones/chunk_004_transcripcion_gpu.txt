@@ -1,0 +1,1200 @@
+# Transcripción: chunk_004.mp3
+# Modelo: medium | Duración audio: 0:59:59
+
+[0:00:00]  Like, it's better designed because there's a lower probability of mistakes.
+[0:00:03]  But I could technically still screw up somehow.
+[0:00:06]  I could technically accidentally write a line of code like n plus plus.
+[0:00:11]  Or I could just change the value of that variable,
+[0:00:13]  even though I don't want it to ever change.
+[0:00:15]  And maybe it's because I'm a bad programmer.
+[0:00:17]  I copy-pasted wrong.
+[0:00:18]  I'm working with someone who doesn't know what n represents.
+[0:00:21]  I can defend myself and my code against human error
+[0:00:25]  like that by going up here to line 5, and instead of just declaring
+[0:00:28]  a simple variable like we did in Scratch, I can further harden my code,
+[0:00:33]  so to speak, by declaring it to be a constant using the keyword const.
+[0:00:37]  Now, this is just a feature of C and some other languages
+[0:00:40]  to protect you against yourself.
+[0:00:42]  By proactively saying n is a constant, specifically the number 5
+[0:00:47]  or previously the number 3, you cannot accidentally
+[0:00:50]  write code elsewhere that changes it.
+[0:00:52]  The computer will throw an error and catch that error.
+[0:00:54]  So it's just a way of programming a little more defensively.
+[0:00:58]  Some languages have this.
+[0:00:59]  Some languages don't.
+[0:01:00]  But in general, it's a good practice.
+[0:01:02]  It makes your code better designed because it just
+[0:01:05]  is less vulnerable to mistakes by you, colleagues,
+[0:01:08]  or anyone else using the code.
+[0:01:10]  So let me change this back to 3 just to be our default.
+[0:01:13]  But now I'm using n in both places.
+[0:01:15]  And if I do make Mario dot slash Mario, we're
+[0:01:18]  back to where we originally started.
+[0:01:19]  But the code's a little more better designed.
+[0:01:22]  And let me note this, too.
+[0:01:24]  All this time, I've been mentioning that correctness is important.
+[0:01:27]  Design is important.
+[0:01:28]  There was also this matter of style.
+[0:01:30]  I've been very deliberately writing pretty code, if you will.
+[0:01:33]  Not just the syntax highlighting, which is automatic.
+[0:01:35]  But notice that I keep indenting everything nicely.
+[0:01:38]  Anytime I have curly braces, like on lines 4 and 14,
+[0:01:42]  everything is indented one level.
+[0:01:44]  When I have additional curly braces on lines 7 and 13,
+[0:01:48]  everything is nicely indented as well.
+[0:01:51]  Technically speaking, the computer does not
+[0:01:53]  care about that kind of white space, so to speak.
+[0:01:56]  And you could really make a mess of things like this
+[0:01:59]  because you have a strange sense of style
+[0:02:01]  or just because you're being a little sloppy.
+[0:02:03]  But this code is actually still correct.
+[0:02:07]  If I recompile it, let me open up my terminal window, make Mario,
+[0:02:12]  no errors, dot slash Mario, it works perfectly fine.
+[0:02:15]  But you can imagine just how annoying this now is to read.
+[0:02:18]  Certainly for a TA, but certainly for you the next day,
+[0:02:21]  certainly for a colleague who has to read your code, this is just bad style.
+[0:02:24]  It still works.
+[0:02:25]  And it's well-designed in that you're writing code defensively.
+[0:02:29]  You're using a constant.
+[0:02:30]  But my god, the style is atrocious.
+[0:02:33]  Now you'll often find that there's tools that
+[0:02:35]  can help you format your code for you in a manner consistent with the courses
+[0:02:38]  or a company's style.
+[0:02:40]  But this is the kind of muscle memory you'll
+[0:02:42]  want to develop over time to take VS code suggestions as it's
+[0:02:45]  outputting lines of code for you, because it's
+[0:02:48]  trying to format your code in a readable way.
+[0:02:50]  And oh my god, if and when you do have bugs in your code
+[0:02:53]  and things aren't even indented properly, there's no way you, the human,
+[0:02:56]  are going to be able to wrap your mind around what's happening and where.
+[0:03:00]  You're just making the problem harder for yourself.
+[0:03:02]  So do get into this habit, too, of manifesting good style as well.
+[0:03:07]  All right, well let me propose that we don't only want a 3 by 3 grid.
+[0:03:11]  We want this to be a little more dynamic.
+[0:03:13]  So suppose we moved away from a constant to just using an integer called n.
+[0:03:18]  And let's ask the user for the size of this grid,
+[0:03:21]  as by prompting them with get int as we've done before.
+[0:03:25]  And I'll store it in n here.
+[0:03:27]  And then I can go ahead and more dynamically run, make Mario to compile it.
+[0:03:31]  Whoops.
+[0:03:33]  Oh, I screwed up accidentally.
+[0:03:36]  What is it suggesting I do, albeit cryptically?
+[0:03:43]  Yeah, I forgot to include the CS50 header file up top.
+[0:03:46]  And that's why it doesn't know that get int is, in fact, valid.
+[0:03:50]  So that's an easy fix.
+[0:03:51]  I'm just going to go up here and include CS50.h.
+[0:03:54]  Now I'm going to clear my terminal and rerun, make Mario.
+[0:03:57]  Now we're good, dot slash Mario.
+[0:03:59]  And now notice I'm prompted for size.
+[0:04:01]  So if I type in 3, it's the same as before.
+[0:04:03]  If I type in 10, it's even bigger.
+[0:04:05]  But it happens all now automatically.
+[0:04:07]  But there are some things that we're not detecting.
+[0:04:10]  For instance, suppose I type in cat.
+[0:04:12]  Well, that's handled by the get int function, as I claimed earlier.
+[0:04:15]  That's one of the features of using a library.
+[0:04:17]  You don't have to deal with erroneous input.
+[0:04:19]  But we only designed a function called get int to get you an integer.
+[0:04:22]  We don't know if you want it to be positive, negative,
+[0:04:25]  zero, or some combination thereof.
+[0:04:27]  And it's kind of weird to allow the user to type in negative 1
+[0:04:30]  for the size of the grid or negative 3 for the size of the grid.
+[0:04:35]  And indeed, your code does nothing.
+[0:04:36]  So at least it's not crashing.
+[0:04:38]  But that's kind of stupid, right?
+[0:04:39]  It'd be nice to force the user, if they want a grid,
+[0:04:41]  to give us a positive value.
+[0:04:43]  So how could we do this?
+[0:04:45]  Well, I could go up here.
+[0:04:46]  And I could say something like, if n is less than 1,
+[0:04:50]  so if it's 0 or negative, which I don't want, what could I do?
+[0:04:54]  Well, I could say, well, prompt the user again for the size.
+[0:04:59]  And now notice, I'm not declaring n again.
+[0:05:02]  Because once it exists, you don't have to mention the data type again.
+[0:05:05]  We said that earlier.
+[0:05:06]  But this is kind of stupid.
+[0:05:08]  Why?
+[0:05:08]  Because now when you've given the user a second chance, OK,
+[0:05:11]  now maybe I'll do, all right, if this version of n is less than 1,
+[0:05:15]  well, let's just go and prompt the user a third time.
+[0:05:19]  I mean, you can kind of see where this is stupidly going.
+[0:05:21]  This can't be the right solution to keep typing recursively the same thing
+[0:05:25]  again and again.
+[0:05:26]  Where would it stop?
+[0:05:27]  You'd have to give them a finite number of chances
+[0:05:29]  or just make a mess of your code.
+[0:05:31]  So what would be intuitively a better solution here?
+[0:05:36]  Yeah, so some kind of loop.
+[0:05:37]  We've seen a while loop.
+[0:05:38]  We've seen a for loop.
+[0:05:39]  So maybe one of those.
+[0:05:40]  So let me try this.
+[0:05:41]  Let me delete this messiness and just go back to the first question.
+[0:05:45]  And let me do this.
+[0:05:46]  So while n is less than 1, so while the number is not what we want,
+[0:05:51]  let's just prompt the user in a loop this time for the size again.
+[0:05:56]  Now here, too, this is better because it's only two requests for information.
+[0:06:02]  But clearly, line 6 and 9 are pretty much identical other than the int.
+[0:06:06]  And if I went in and changed the size, if I add this, if I change the wording
+[0:06:11]  here, change it to a different language,
+[0:06:12]  I have to change it in two places.
+[0:06:14]  That's bad.
+[0:06:14]  Copy paste, bad.
+[0:06:16]  So what might be better?
+[0:06:17]  Well, it turns out there's another paradigm in C
+[0:06:20]  that you can use that gets around this problem, this duplication of code.
+[0:06:24]  It would be much nicer if I just write this code once.
+[0:06:28]  And I can do that using a third type of loop called a do while loop.
+[0:06:32]  So it turns out in C, you can do this.
+[0:06:34]  If you want to get the value of a variable like n,
+[0:06:37]  first just to create the variable without an initial value.
+[0:06:39]  So int n semicolon means we don't know what value it has yet, but that's OK.
+[0:06:44]  We're going to add a value to it eventually.
+[0:06:46]  Then I'm going to say this.
+[0:06:47]  Do, literally, I'm going to open my curly braces.
+[0:06:51]  And what do I want to do?
+[0:06:52]  I want to assign to n the return value of get int prompting the user for size.
+[0:06:58]  Well, when do you want to do that?
+[0:07:00]  I want to do that while n is less than 1.
+[0:07:04]  And this code now achieves the exact same goal,
+[0:07:08]  but by never repeating myself.
+[0:07:10]  Why?
+[0:07:10]  Well, notice on these lines of code now, I'm literally saying, on line 6,
+[0:07:15]  give me a variable called n of type integer.
+[0:07:18]  It doesn't have a value initially, but that's fine.
+[0:07:20]  You can do that.
+[0:07:21]  Line 7 says do the following.
+[0:07:23]  What do you want to do?
+[0:07:24]  Get int prompting the user with the word size,
+[0:07:26]  and just store that value in n.
+[0:07:28]  But because C code runs top to bottom, left to right,
+[0:07:31]  now it's reasonable on line 11 to ask that question, OK,
+[0:07:35]  is the current value of n, which it definitely got on line 8, less than 1.
+[0:07:40]  And if the user didn't cooperate, they typed in 0, or negative 1,
+[0:07:43]  or negative 3, what's going to happen?
+[0:07:45]  It's going to go back up here and repeat, repeat, repeat,
+[0:07:48]  everything in the do while loop.
+[0:07:51]  So a do while loop in C, which is not something some other languages have,
+[0:07:55]  like Python, if you know it, does not have a do while loop,
+[0:07:57]  this is perhaps the cleanest way to achieve this,
+[0:07:59]  even though it's a little weird that you have to declare your variable,
+[0:08:03]  create your variable up top, and then check it down below.
+[0:08:07]  But otherwise, it's similar to a while loop.
+[0:08:09]  It just flips the order in which you're asking the question.
+[0:08:13]  Any questions on this construct?
+[0:08:15]  And do while in general is super useful when
+[0:08:17]  you want to get input from the user and make sure it meets certain requirements.
+[0:08:22]  All right, so now that we have this building block after that interlude,
+[0:08:26]  how can I go about cleaning up this code?
+[0:08:28]  And then let's conclude by taking a look at things
+[0:08:30]  that our code can't do or can't do very well or correctly.
+[0:08:34]  Let me propose that in a final version of Mario,
+[0:08:37]  let me just add what are called now some comments.
+[0:08:40]  So it turns out in code in C, you can define
+[0:08:43]  what are called comments, which are just notes to self.
+[0:08:46]  Some of you discovered these in Scratch.
+[0:08:47]  There's little yellow sticky notes you can
+[0:08:49]  use to add citations or explanations.
+[0:08:51]  In C, there's a couple of ways to write comments.
+[0:08:53]  And in general, comments are notes for yourself, for your TA,
+[0:08:56]  for your colleague, as to what your code is doing and why or how.
+[0:09:00]  It's a little explanatory note in English or whatever
+[0:09:02]  your human language might be.
+[0:09:04]  So for instance, what I might do here in my implementation
+[0:09:09]  of this version of Mario, I might first ask myself a question
+[0:09:14]  like I might first make a note to self like this
+[0:09:16]  on a new line above this first block of code, get size of grid.
+[0:09:21]  It's just an explanatory remark in any terse English
+[0:09:24]  that generally explains the next six or so lines, the next chunk
+[0:09:28]  or block of code, if you will.
+[0:09:30]  It would be a little excessive to comment every single line.
+[0:09:33]  At some point, the programmer should know what individual lines of code do.
+[0:09:36]  But it's nice to be able to kind of glance at this comment on line six
+[0:09:40]  that starts with two slashes.
+[0:09:42]  And it gets grayed out because of syntax highlighting.
+[0:09:44]  It's not logic.
+[0:09:45]  It's just a note to self.
+[0:09:47]  It generally gives me a little cheat sheet
+[0:09:48]  as to what the following lines of code should be doing and or why.
+[0:09:52]  And then down here, well, there's a second block of code
+[0:09:54]  that's a bunch of lines.
+[0:09:55]  But together, this just what?
+[0:09:57]  Prints grid of bricks.
+[0:10:00]  And so it's another comment to myself that just makes it
+[0:10:03]  a little more understandable what these 20-some-odd lines of code
+[0:10:06]  are doing by adding some English explanations thereof.
+[0:10:10]  But now that I have these, wouldn't it be nice
+[0:10:13]  if I could kind of abstract these pieces of functionality
+[0:10:17]  away, this getting of the size and this printing of the grid?
+[0:10:20]  In other words, suppose that you didn't know
+[0:10:22]  where to begin with this problem.
+[0:10:24]  The problem at hand were literally implement
+[0:10:26]  a program that prints a grid of bricks of some variable size,
+[0:10:30]  three or four or five or whatever the human types in.
+[0:10:33]  If you have really no idea where to start,
+[0:10:35]  comments are actually a good way of getting started.
+[0:10:38]  Because comments can be a approximation of what we called last week pseudocode.
+[0:10:42]  Pseudocode is terse English that kind of gets your point across,
+[0:10:46]  like for the phone book searching like last time.
+[0:10:48]  So if you didn't really know where to begin,
+[0:10:50]  you could do something like this.
+[0:10:53]  I could, for instance, just say get size of grid as my first step,
+[0:10:58]  and then print grid of bricks as my second step.
+[0:11:01]  And that's it for my program thus far.
+[0:11:03]  This is now implemented in pseudocode.
+[0:11:05]  I have some massive placeholders there, like I still have work to be done.
+[0:11:09]  But at least I have a high level solution to the problem in comments.
+[0:11:12]  And now I can even go this far.
+[0:11:14]  I could say, well, let's suppose that there's just a function already
+[0:11:18]  that exists called get size.
+[0:11:21]  I could do something like this.
+[0:11:22]  I could do int n equals get size.
+[0:11:25]  And now I just have to assume for the moment
+[0:11:27]  that some abstraction called get size exists.
+[0:11:29]  It doesn't.
+[0:11:30]  This does not come with the CS50 library.
+[0:11:32]  But I could invent it, I bet.
+[0:11:34]  How else might I proceed?
+[0:11:35]  Well, let's just assume for the moment that there's also
+[0:11:38]  a function called print grid that just prints a grid of that size n.
+[0:11:43]  So here, too, is an abstraction.
+[0:11:45]  These puzzle pieces don't exist.
+[0:11:47]  These functions don't yet exist.
+[0:11:48]  But in C, just like in Scratch, I can create my own functions.
+[0:11:53]  How do I do that?
+[0:11:54]  Well, let me go down later in the file.
+[0:11:56]  And by convention, you generally want to leave main at the top of your code.
+[0:11:59]  Why?
+[0:11:59]  Because it's the main function.
+[0:12:00]  And it's just where the human eye is going to look
+[0:12:02]  to see what some file of code does.
+[0:12:04]  And let me do this.
+[0:12:06]  I want to create a function of my own called
+[0:12:08]  get size whose purpose in life is to get the size that the user wants.
+[0:12:12]  I want this function to return an integer.
+[0:12:15]  And the syntax for doing that is this write,
+[0:12:17]  similar to a variable, the data type that this function returns.
+[0:12:21]  I don't need this function to take any inputs.
+[0:12:24]  And so I'm going to use a new keyword that we've actually
+[0:12:26]  been using thus far, more on it in another time, just called void,
+[0:12:29]  which just means this get size function does not take any inputs.
+[0:12:32]  It does have an output.
+[0:12:33]  It outputs an int.
+[0:12:34]  And this is just a weird order in which you write it.
+[0:12:37]  You write the output format, the name of the function,
+[0:12:39]  and then the inputs, if any, inside of parentheses.
+[0:12:42]  And now I can implement get size.
+[0:12:44]  But I've already implemented get size.
+[0:12:45]  Or at least now, at this point in the story,
+[0:12:47]  I at least know concretely what to do.
+[0:12:49]  And I could figure out eventually, with some trial and error perhaps,
+[0:12:53]  all right, if I declare a variable and I do the following,
+[0:12:55]  n equals get int prompting the user for size.
+[0:12:59]  And I keep doing that while n is less than 1.
+[0:13:03]  Once that block of code is done, here is a new keyword in C
+[0:13:07]  where you can return that value n.
+[0:13:09]  So I keep referring to these values that some functions return
+[0:13:12]  as return values.
+[0:13:14]  In C, there's literally a keyword called return
+[0:13:17]  that will hand back to any function that uses that function the value
+[0:13:22]  in question.
+[0:13:23]  So in a nutshell, between lines 15 and 21 now,
+[0:13:27]  here is some code identical to our solution earlier
+[0:13:30]  that gets a value n from the user that is positive.
+[0:13:33]  It's 1 or 2 or higher.
+[0:13:35]  It's not 0 or it's not less than 1.
+[0:13:38]  And as soon as we've got that value, we hand it back as a return value.
+[0:13:43]  Notice how I'm using this function on line 7, just like with get int,
+[0:13:47]  just like with get string.
+[0:13:48]  I'm calling the function, nothing in the parentheses in this case.
+[0:13:51]  But then I'm using the assignment operator
+[0:13:53]  to copy whatever its return value is into my variable n.
+[0:13:56]  And so now I have a function that didn't used to exist called get size
+[0:14:02]  that gets me a positive integer, no matter what.
+[0:14:05]  And now for the grid, how do I do this?
+[0:14:08]  How do I invent a function called print grid
+[0:14:10]  that takes a single argument, a number, and prints a grid of that size?
+[0:14:13]  Well, let's go down here.
+[0:14:15]  I'm going to write the name of this function, print grid.
+[0:14:18]  This function just needs to print.
+[0:14:20]  It has a side effect, as we keep saying.
+[0:14:22]  So I'm just going to say it has no return value.
+[0:14:24]  It's just void.
+[0:14:25]  It doesn't have an output per se.
+[0:14:27]  It's just an aesthetic side effect.
+[0:14:29]  But it does take in an argument.
+[0:14:31]  An argument is an input.
+[0:14:32]  And the syntax for this in C is to name the type of the input it takes
+[0:14:37]  and the name of the variable.
+[0:14:39]  And I could call this anything I want.
+[0:14:40]  I'll call it size.
+[0:14:41]  I could call it n.
+[0:14:42]  And it's OK to use the same variable in different functions.
+[0:14:45]  But I'll call it size just to be distinct.
+[0:14:47]  And then in this function, I'm just going to copy from memory
+[0:14:51]  the same code as before.
+[0:14:52]  For int i gets 0, i less than size instead of 3, i++.
+[0:14:58]  Inside of this, for int j gets 0, j is less than size, j++.
+[0:15:05]  And inside of that, print out with printf a single hash,
+[0:15:10]  print out after that loop a single new line, and that's it.
+[0:15:15]  Now, I did this fast, admittedly.
+[0:15:17]  But it's the same code that I wrote earlier.
+[0:15:19]  But now, just like I did with Scratch, let
+[0:15:21]  me just arbitrarily hit Enter a bunch of times
+[0:15:23]  to move the code out of sight, out of mind.
+[0:15:26]  Now I have abstractions.
+[0:15:27]  I have puzzle pieces that now exist called get size and print grid,
+[0:15:31]  syntax for which takes some getting used to, but they now just exist.
+[0:15:34]  Except I do need to do one thing.
+[0:15:37]  Because C is a little naive, if I try to do make Mario now and hit Enter,
+[0:15:43]  implicit declaration of function get size is invalid.
+[0:15:46]  And we've seen that before, when I hadn't included a file, right?
+[0:15:50]  When I hadn't included CS50 library, get int didn't work.
+[0:15:53]  But that's not the issue here, because this is not from a library.
+[0:15:55]  I just invented this.
+[0:15:57]  C kind of takes you literally.
+[0:15:59]  And if you define these functions at the bottom of your file,
+[0:16:02]  they don't exist on line 7 or 10.
+[0:16:05]  So I could do this.
+[0:16:07]  I could, all right, fine.
+[0:16:08]  Well, let me just kind of highlight all of this, cut to my clipboard,
+[0:16:12]  and paste it up here.
+[0:16:13]  This would solve the problem.
+[0:16:14]  I could just move all of those functions at the top of my file.
+[0:16:17]  That's kind of annoying, because now main is at the bottom of the file.
+[0:16:19]  It's going to take longer to find it.
+[0:16:21]  That's not a clean solution.
+[0:16:23]  So let me put it back where it was at the bottom.
+[0:16:25]  And let me do this.
+[0:16:27]  This is the only time in CS50 and really in C programming
+[0:16:30]  where copy paste is reasonable, if you copy and paste
+[0:16:34]  the first line of code from each function and then end it with a semicolon,
+[0:16:39]  you can tease the compiler by giving it just enough of a hint
+[0:16:43]  at the top of the file that, OK, these functions don't exist till down later,
+[0:16:47]  but here's a hint that they will exist.
+[0:16:50]  This is how you can convince the compiler to trust you.
+[0:16:54]  So those other functions can still be lower in the file, below main.
+[0:16:58]  But now, when I do make Mario, damn it.
+[0:17:02]  Oh, I said print instead of printf.
+[0:17:03]  That's my bad.
+[0:17:06]  Printf.
+[0:17:07]  So if I do make Mario dot slash Mario, now I can type in 3,
+[0:17:13]  and we're back in business.
+[0:17:14]  Now, this was a very heavy-handed way and long way
+[0:17:16]  to get to a much more complicated solution.
+[0:17:19]  But this solution, in some sense, is better designed.
+[0:17:21]  Why?
+[0:17:22]  Because now, especially without the comments,
+[0:17:24]  I mean, look how short my code is.
+[0:17:26]  My main function is literally two lines of code.
+[0:17:29]  Why?
+[0:17:29]  Well, I kind of factored out the juicy stuff into its own functions.
+[0:17:32]  And now, especially if I'm working with colleagues or others,
+[0:17:35]  you could imagine splitting up large programs into smaller parts,
+[0:17:38]  having different people implement different parts,
+[0:17:41]  so long as you all agree in advance on what those inputs and those outputs
+[0:17:45]  actually are.
+[0:17:47]  All right, so let's now consider what computers can do well and not so well.
+[0:17:50]  C, indeed, supports a whole bunch of operators mathematically,
+[0:17:54]  via which we can do addition and subtraction, multiplication, division,
+[0:17:57]  and even calculate the remainder when you divide one number by another.
+[0:18:00]  In fact, why don't we go ahead and use these in a very simple program
+[0:18:03]  and make our very own calculator?
+[0:18:05]  So let me go over here to VS code.
+[0:18:08]  Let me go ahead and create a new file called calculator.c.
+[0:18:11]  And in this file, let's go ahead and first include a couple of now familiar
+[0:18:15]  header files, cs50.h as well as standard io.h.
+[0:18:20]  Let's go ahead then and declare main with int main void.
+[0:18:24]  And then inside of main, let's do something relatively simple.
+[0:18:26]  Let's declare an int and call it x and set it
+[0:18:29]  equal to whatever the return value is of get int,
+[0:18:32]  prompting the user for a value for x.
+[0:18:34]  Let's then give ourselves a second variable.
+[0:18:36]  We'll call it, say, y.
+[0:18:38]  Set that equal to the return value of another call
+[0:18:41]  to get int, prompting the user this time for that value y.
+[0:18:44]  And then let's very simply go ahead at the very end
+[0:18:47]  and just print out, say, the sum of x plus y, a super simple calculator.
+[0:18:51]  So I'll use printf, quote unquote, percent i for integer,
+[0:18:55]  backslash n to give me the new line.
+[0:18:57]  Then I'm going to go ahead and do x plus y to indeed print out the sum.
+[0:19:01]  Let me go down to my terminal window now.
+[0:19:03]  Let me do make calculator in order to compile the code.
+[0:19:07]  No error messages, so that's good.
+[0:19:08]  Let me do dot slash calculator.
+[0:19:10]  And let's do something like 2 plus 2, which of course should equal 4.
+[0:19:15]  And it does.
+[0:19:16]  But it turns out that sometimes there are going to be limitations
+[0:19:20]  that we bump up against.
+[0:19:21]  And let me get a little more ambitious here.
+[0:19:23]  Let me clear my terminal window.
+[0:19:24]  And let me go ahead and rerun calculator again.
+[0:19:26]  And this time, let's type in o, 2 billion for x.
+[0:19:32]  And let's type in the same for y.
+[0:19:33]  And of course, now the answer of 2 billion plus 2 billion
+[0:19:36]  should, of course, be 4 billion.
+[0:19:39]  And yet it's not.
+[0:19:40]  So curiously, we see, of all things, a negative number here,
+[0:19:43]  which suggests that somehow the plus operator doesn't quite
+[0:19:46]  work as well as we might like.
+[0:19:48]  Now, why might this actually be?
+[0:19:50]  Well, it turns out that inside of your computer
+[0:19:52]  is, of course, memory or RAM, random access memory.
+[0:19:55]  And depending on the size of your computer and the type of computer,
+[0:19:57]  it might very well look a little something like this,
+[0:20:00]  a little circuit board with these black little modules on it
+[0:20:02]  that actually contain all of the bytes of your computer's memory.
+[0:20:06]  Unfortunately, you and I only have a finite amount of this memory
+[0:20:10]  inside of our computers, which means no matter how high we want to count,
+[0:20:13]  there's ultimately going to be a limitation on high how we can count
+[0:20:16]  because we only have a finite amount of memory.
+[0:20:19]  We don't have an infinite number of 0s and 1s to play with.
+[0:20:22]  We have to actually be bounded ultimately.
+[0:20:25]  So what's the implication of this?
+[0:20:26]  Well, it turns out that computers typically use as many as 32 bits,
+[0:20:30]  0s or 1s, to represent something like an integer, or in C, an int.
+[0:20:34]  So for instance, the smallest number we could represent using 32 bits,
+[0:20:39]  of course, would be 0, 32 0s like this here.
+[0:20:43]  And the biggest number we could represent
+[0:20:45]  is by changing all of those 0s to 1s, which in this case
+[0:20:49]  will ideally give us a number that equals roughly 4 billion in total.
+[0:20:53]  It's actually 4 billion, 294 million, 967,295 maximally
+[0:20:59]  if you set all 32 of those bits to 1s and then do out the actual math.
+[0:21:03]  The catch, though, is that we humans and computers in general
+[0:21:07]  also sometimes want to and need to be able to represent negative numbers.
+[0:21:11]  So if you want to represent negative numbers as well as positive numbers
+[0:21:14]  in 0, you can't really just start counting at 0
+[0:21:17]  and go all the way up to roughly 4 billion.
+[0:21:19]  You've got to kind of split the difference
+[0:21:21]  and maybe allocate half of those patterns of 0s and 1s to negative numbers
+[0:21:26]  and the other half roughly to positive numbers.
+[0:21:28]  So in fact, in practice, when you're using even as many as 32 bits,
+[0:21:32]  the highest most computers could count, certainly in a program like this
+[0:21:35]  in C using an int, would be roughly 2 billion.
+[0:21:39]  That is 2,147,483,647.
+[0:21:43]  But the flip side of that is that we could also now,
+[0:21:46]  using different patterns of bits, represent negative numbers
+[0:21:49]  as low as negative 2 billion give or take.
+[0:21:53]  But the implication then, of course, is that if we only
+[0:21:55]  have a finite number of bits and can only count so high, at some point
+[0:22:00]  we're going to run out of bits, so to speak.
+[0:22:02]  In other words, we encounter what's generally known as integer overflow,
+[0:22:06]  where you want to use more bits than you have available.
+[0:22:09]  And as a result, you sort of overflow the available space.
+[0:22:13]  What does this mean, in fact, in real terms?
+[0:22:15]  Well, let's suppose that you only have three bits.
+[0:22:17]  But I'm going to gray out a fourth bit just
+[0:22:19]  to convey where we'd like to put an additional bit ultimately.
+[0:22:23]  If this, of course, is 0 per week 0s discussion,
+[0:22:26]  this is 1, 2, 3, 4, 5, 6, 7.
+[0:22:32]  Now ideally, in binary, if you want to add one more to this value 7,
+[0:22:36]  you're going to have to carry the one mathematically.
+[0:22:39]  And that would ideally give you 1, 0, 0, 0.
+[0:22:43]  But if you don't have four bits and your computer's only sophisticated enough
+[0:22:47]  to have three bits, not even 32, but three,
+[0:22:50]  the implication is that you're effectively representing not 1, 0, 0, 0,
+[0:22:54]  but rather 0, 0, 0.
+[0:22:57]  There's just no room to store that fourth bit that I've grayed out here,
+[0:23:01]  which is to say that your integer might overflow.
+[0:23:04]  And as soon as you get to 7, the next number, once you add 1,
+[0:23:08]  is actually going to be 0, or worse, as we've seen here in my code,
+[0:23:11]  a negative value instead.
+[0:23:13]  So what could we do to perhaps address this kind of concern?
+[0:23:16]  Well, C does not have just integers or ints.
+[0:23:19]  It also has longs, which is the name suggests, or just longer integers,
+[0:23:22]  which means they have more bits available to them.
+[0:23:25]  So let me go back into my code here.
+[0:23:26]  I'll clear the terminal window.
+[0:23:28]  And let me go ahead and change my integers to literally long here, long here.
+[0:23:33]  I'm going to have to change my function in CS50's library
+[0:23:38]  to be not get int, but get long.
+[0:23:39]  And that's indeed another function we provide in the library.
+[0:23:42]  Let me change this get int to get long as well.
+[0:23:44]  I'll keep my variable names the same, but I do need to make one other change.
+[0:23:48]  It turns out that printf also supports other format codes,
+[0:23:51]  so not just percent i for integers or percent s for strings,
+[0:23:55]  but also, for instance, percent li for a long integer,
+[0:23:59]  as well as percent f for floating point values with decimals.
+[0:24:03]  So with that said, let's go ahead and change my printf line
+[0:24:05]  to be not percent i, but percent li.
+[0:24:08]  Now let me go ahead and do make calculator again.
+[0:24:12]  Enter.
+[0:24:13]  No apparent errors now.
+[0:24:14]  Dot slash calculator, and 2 plus 2 still equals 4 as before.
+[0:24:18]  But now if I do calculator again, and let's do 2 billion again,
+[0:24:24]  as well as 2 billion for y, previously we overflowed the size of an integer
+[0:24:29]  and got some weird negative number because the pattern was misinterpreted,
+[0:24:33]  if you will, as a negative number instead.
+[0:24:35]  But a long, instead of using 32 bits, conventionally
+[0:24:38]  uses 64 bits, which means we have more than enough spare bits to go when
+[0:24:42]  we add 2 billion plus 2 billion.
+[0:24:44]  And now, in fact, we get the correct answer of 4 billion,
+[0:24:47]  which does fit inside of the size of a long.
+[0:24:51]  Now a long can count up quite high.
+[0:24:54]  And in fact, it can count as high as this, 9 quintillion.
+[0:24:59]  And so that will give us quite a bit more runway.
+[0:25:01]  But of course, it too is ultimately going to be finite.
+[0:25:04]  So if you have numbers that need to go bigger than that,
+[0:25:06]  you might still very well have a problem.
+[0:25:09]  Now there's another problem that we might run into as well.
+[0:25:12]  And we can see it in the context of even this simple calculator.
+[0:25:15]  Computers also suffer from, potentially, what's called truncation,
+[0:25:19]  where especially when you're doing math involving floating point values,
+[0:25:22]  that is numbers with decimals, you might accidentally, unknowingly,
+[0:25:26]  truncate the value.
+[0:25:27]  That is, lose everything after the decimal point.
+[0:25:30]  So in fact, let me go back to VS code here.
+[0:25:32]  I'll clear my terminal window.
+[0:25:33]  And let's still use longs.
+[0:25:35]  But let's go ahead and use division instead of addition here.
+[0:25:39]  So let me change this plus to a divide operator.
+[0:25:41]  Let me go ahead and recompile the code down here with make calculator.
+[0:25:45]  Let me go ahead and run dot slash calculator.
+[0:25:47]  And let me go ahead and do something like 1 for x and 3 for y.
+[0:25:53]  And we'll see that, well, wait a minute.
+[0:25:55]  1 divided by 3, I learned, should be 1 third.
+[0:25:58]  But in a floating point value, that should be 0.33333,
+[0:26:04]  maybe with a little line over it in grade school,
+[0:26:06]  but really an infinite number of 3s.
+[0:26:08]  And yet, we seem to have lost even one of those 3s after the decimal point
+[0:26:12]  because the answer is coming back here as just 0.
+[0:26:16]  So why might that be?
+[0:26:18]  Well, if I know that two integers, when divided one by the other,
+[0:26:22]  is supposed to give me a fraction, a floating point
+[0:26:25]  value with a decimal point, I can't continue to use integers,
+[0:26:28]  or even in this case, longs, which do not have support for decimal points.
+[0:26:33]  So let me go ahead and change this format code here from %li to %f,
+[0:26:37]  which is, again, going to represent a floating point value instead
+[0:26:41]  of a long integer or even an integer.
+[0:26:43]  And let me go ahead further and define maybe a third variable, z,
+[0:26:49]  as a float itself.
+[0:26:50]  So I'll give myself a variable z equals x divided by y.
+[0:26:54]  And now, rather than print x divided by y, let's just go ahead and print z.
+[0:26:57]  So now I'm operating in a world of floating point values
+[0:26:59]  because I know proactively that a long or an int divided
+[0:27:03]  by another such value, if it's meant to have a fraction,
+[0:27:07]  needs to be stored in a floating point value, something with a decimal point.
+[0:27:11]  Well, let me go down to my terminal window here and rerun make of calculator.
+[0:27:15]  Seems to work OK.
+[0:27:16]  Dot slash calculator, and let's do 1 divided by 3 again.
+[0:27:21]  And still here, we see all 0s.
+[0:27:23]  So we do at least see a decimal point.
+[0:27:25]  So we've made some progress thanks to the %f and the float.
+[0:27:28]  But it seems that we've already truncated the value 1 divided by 3.
+[0:27:33]  So how do we actually get around this issue?
+[0:27:35]  Well, if you, the programmer, know that you're
+[0:27:36]  dealing in a world that's going to give you floating point
+[0:27:39]  values with decimal points, you might very well
+[0:27:41]  need to use what's called a feature known as typecasting.
+[0:27:45]  That is, convert one data type to another
+[0:27:47]  by explicitly telling the compiler that you want to do so.
+[0:27:51]  Now, how do I do this?
+[0:27:52]  Let's go back to my code here.
+[0:27:53]  And if the issue fundamentally is that C is still treating x and y as integers,
+[0:28:00]  or technically longs, with no decimal point,
+[0:28:03]  and dividing one by the other therefore has no room,
+[0:28:06]  so to speak, for any numbers after a decimal point,
+[0:28:09]  why don't I proactively do this?
+[0:28:11]  Let me, using a slightly new syntax with parentheses,
+[0:28:14]  specify that I want to convert x proactively from a long to a float.
+[0:28:20]  Let me specify proactively that I want to convert y from a long to a float
+[0:28:25]  as well.
+[0:28:26]  And now let me go ahead and trust that in z
+[0:28:29]  should be the result of dividing not a long by a long or an int by an int,
+[0:28:33]  but rather a float by a float.
+[0:28:36]  Let me clear my terminal window, run make calculator again.
+[0:28:39]  Seems to work OK.
+[0:28:40]  Dot slash calculator, and now 1, 3, and hopefully now we actually
+[0:28:46]  see that my code has outputted 0.3333333.
+[0:28:52]  And I think if we kept showing more numbers after the decimal point,
+[0:28:55]  we'd theoretically see as many of those 3's as we want.
+[0:28:58]  But there is still one more catch.
+[0:29:00]  And especially when we're manipulating numbers in this way in a computer
+[0:29:03]  using a finite amount of memory, another challenge
+[0:29:06]  we might run up against besides integer overflow, besides truncation,
+[0:29:10]  is this known as floating point imprecision.
+[0:29:13]  Just as we can't represent as big of an integer
+[0:29:16]  as we want using int or long alone, because there
+[0:29:19]  is going to be an upper bound, there's similarly
+[0:29:21]  going to be a boundary on just how precise our numbers can be.
+[0:29:26]  And indeed, let's go back to VS code here.
+[0:29:28]  I'll clear my terminal window yet again.
+[0:29:30]  And this time, let me use some slightly unbelievably syntax
+[0:29:32]  to specify that I don't want to see the default number of numbers
+[0:29:35]  after the decimal point, which percent f gives us automatically.
+[0:29:38]  Let's go ahead and show me 20 decimal point numbers
+[0:29:43]  after the decimal point.
+[0:29:44]  And the weird syntax for this is to do not percent f, but percent period 2,
+[0:29:49]  0 to indicate to see that I want to see 20 digits, not the default
+[0:29:53]  after now the decimal point.
+[0:29:55]  Let me rerun make calculator.
+[0:29:57]  Let me do dot slash calculator again.
+[0:29:59]  And let's do 1.
+[0:30:00]  Let's do 3.
+[0:30:01]  And now this is even weirder, right?
+[0:30:04]  From grade school, you presumably learned
+[0:30:06]  that 1 divided by 3 is, of course, 1 third.
+[0:30:08]  But that should be 0.33333 infinitely many times or on paper
+[0:30:13]  with a little line over it.
+[0:30:14]  But the computer is just doing some weird approximation here.
+[0:30:18]  It's a whole bunch of 3s.
+[0:30:19]  And then 4, 3, 2, 6, 7, 4, 4, 0, 7, 9, 5, 9, 0.
+[0:30:24]  Well, what's really happening under the hood?
+[0:30:25]  Well, again, is this issue of floating point imprecision.
+[0:30:28]  If you only have a finite number of bits and in turn a finite amount
+[0:30:32]  of memory, the computer can really only be so precise intuitively.
+[0:30:38]  Equivalently, the computer has decided on some way
+[0:30:41]  of representing floating point values.
+[0:30:43]  But the catch is, per grade school math, there's
+[0:30:46]  an infinite number of numbers out there and an infinite number
+[0:30:49]  of floating point values because you can keep adding more and more digits
+[0:30:52]  if you want.
+[0:30:53]  So the computer, given the way it's implementing these floating point
+[0:30:56]  values, is essentially giving us the closest approximation that it can.
+[0:31:01]  Now, how can we go about improving the situation?
+[0:31:04]  Well, there is one alternative.
+[0:31:05]  Instead of using float, I can use something
+[0:31:07]  called a double, which, as the name suggests,
+[0:31:09]  uses twice as many bits as a float.
+[0:31:11]  So instead of 32, typically, it will use 64.
+[0:31:14]  And that's just like the difference between a long and an int,
+[0:31:17]  which gave us more bits.
+[0:31:18]  But in this case, this will be used for more precision.
+[0:31:21]  Let's go ahead and cast x to a double.
+[0:31:23]  Let's cast y to a double.
+[0:31:25]  And now let's go ahead and, using the same format code, percent 0.20f
+[0:31:30]  is still OK for doubles, let me do make calculator.
+[0:31:33]  Let me do dot slash calculator.
+[0:31:35]  And now let me do 1 divided by 3.
+[0:31:38]  And we still have some of that imprecision.
+[0:31:40]  And we'd see even more of it if we looked at more than just 20 digits.
+[0:31:43]  But now we have more 3s after the decimal point.
+[0:31:46]  So it's at least more, more, more precise.
+[0:31:49]  But it's not perfect, but it's at least more precise.
+[0:31:53]  So these kinds of issues, then, are going
+[0:31:55]  to be necessary to keep in mind any time you do something numerically,
+[0:31:58]  scientifically, at least with a language like C,
+[0:32:00]  where you're going to bump up against these real-world limitations
+[0:32:03]  of hardware and, in turn, language.
+[0:32:05]  Now, later in the semester, we'll transition to a language called Python.
+[0:32:08]  And that's actually going to solve at least one of these problems for us,
+[0:32:11]  but just automatically giving us more bits, so to speak, as we need them,
+[0:32:14]  at least for integers.
+[0:32:16]  But even the issue of floating point imprecision is going to remain.
+[0:32:19]  Now, just how real-world are these issues?
+[0:32:21]  Well, back in the year 1999, we got a taste of this
+[0:32:24]  when the world realized, in the years leading up to that date,
+[0:32:27]  that it might not have been the best idea to implement computers and software
+[0:32:32]  therein by storing years using just two digits.
+[0:32:35]  Like, instead of storing 1,999 to represent the year 1999,
+[0:32:40]  a lot of computers, for reasons of space and cost,
+[0:32:43]  were in the habit of kind of cutting a corner and just using two digits
+[0:32:46]  to keep track of the year.
+[0:32:48]  The problem with that is that if systems were not
+[0:32:50]  updated by the year 1999 to support the year 2000, 2001, and so forth,
+[0:32:56]  is that, just like before with integer overflow,
+[0:32:59]  some computers might add 1 to the year in their memory, 99.
+[0:33:03]  It should be the year 2000, but if they're only
+[0:33:06]  using two digits to represent years, they might mistake the year,
+[0:33:10]  as some systems may very well have, for the year 1900 instead,
+[0:33:14]  taking literally a big step backwards, if you will.
+[0:33:17]  Now, you'd like to think that kind of issue is behind us,
+[0:33:19]  especially as we understand all the more about the limitations of code
+[0:33:23]  and computing, but we're actually going to run up
+[0:33:25]  against this very same type of issue again in just a few years.
+[0:33:28]  On January 19 in the year 2038, we will have run out of bits in most computers
+[0:33:35]  right now to keep track of time.
+[0:33:37]  It turns out, years ago, humans decided to use a 32-bit integer
+[0:33:42]  to keep track of how many seconds had elapsed over time.
+[0:33:45]  They chose a somewhat arbitrary date in the past, January 1, 1970,
+[0:33:50]  and they just started counting seconds from there on out.
+[0:33:53]  And so if a computer stores some number of seconds,
+[0:33:55]  that tells the computer how many seconds have
+[0:33:58]  passed since that particular date, January 1, 1970.
+[0:34:01]  Unfortunately, using a 32-bit integer, as we've seen,
+[0:34:04]  you can only count so high at which point you overflow
+[0:34:08]  the size of that variable.
+[0:34:10]  And so potentially, if we don't get ahead of this as humans,
+[0:34:13]  as a society, as computer scientists, on the date January 19, 2038,
+[0:34:18]  that bit might flip over, thereby overflowing
+[0:34:22]  the size of those integers, bringing us back computationally
+[0:34:25]  to December 13, 1901.
+[0:34:29]  So this is to say, now with all of this computational ability and code
+[0:34:32]  comes a responsibility to actually write correct code.
+[0:34:35]  Next week, we'll peel back some of these layers.
+[0:34:37]  But for now, this was week one, and best of luck on problem set one.
+[0:36:32]  All right, this is CS50, and this is week two,
+[0:36:36]  wherein we're going to take a look at a lower level at how things work.
+[0:36:40]  And indeed, among the goals of the course is this bottom-up understanding,
+[0:36:44]  so that in a couple of weeks' time, even a few years' time,
+[0:36:46]  when you encounter some new technology, you'll
+[0:36:48]  be able to think back, hopefully, on some of this week's and this course's
+[0:36:51]  basic building blocks and primitives, and really just deduce
+[0:36:54]  how tomorrow's technologies work.
+[0:36:56]  But along the way, it's going to be a little hard, perhaps,
+[0:36:59]  to see the forest for the trees, so to speak.
+[0:37:01]  And so the goal at the end of the day still
+[0:37:03]  is going to be problem solving.
+[0:37:04]  And so we thought we'd begin today with a look at some of the problems
+[0:37:07]  we'll talk about or solve this coming week.
+[0:37:10]  And for that, we have some brave volunteers who have already come up.
+[0:37:13]  We could turn on some dramatic lighting and meet today's volunteers.
+[0:37:18]  So on my left here, we have?
+[0:37:20]  Hi, my name is Alex.
+[0:37:21]  I'm a first year at the college, and I'm from Chapel Hill, North Carolina.
+[0:37:25]  Welcome to Alex.
+[0:37:27]  And to Alex's right?
+[0:37:29]  I'm Sarah.
+[0:37:29]  I'm from Toronto, Canada, and I'm also a first year student at the college.
+[0:37:33]  Wonderful.
+[0:37:33]  Well, welcome to both Alex and Sarah.
+[0:37:35]  So one of the problems you'll perhaps solve this week for problem set two
+[0:37:39]  is to analyze the reading level of a body of text,
+[0:37:42]  whether someone reads at a first grade level, second grade level,
+[0:37:45]  third grade level, all the way up to 12 or 13 or beyond.
+[0:37:48]  But you've perhaps never quite thought about, certainly in terms of code,
+[0:37:52]  like how you would analyze some text, some book,
+[0:37:54]  and figure out what reading level is it at.
+[0:37:56]  And yet surely our teachers growing up kind of knew
+[0:37:58]  or had an intuitive sense of this.
+[0:38:00]  So let's consider some sample text.
+[0:38:02]  For instance, Alex, what have you been reading lately?
+[0:38:05]  One fish, two fish, red flip fish, blue fish.
+[0:38:12]  Wonderful.
+[0:38:13]  So given that, what grade level would you say Alex is currently reading at?
+[0:38:18]  Feel free to just shout it out.
+[0:38:21]  First, first.
+[0:38:22]  So indeed, you'll see this week if you run your code on Alex's text,
+[0:38:27]  it actually turns out he reads below a first grade reading level.
+[0:38:30]  But why might that be?
+[0:38:32]  What might your intuition be for why we've
+[0:38:36]  accused Alex of reading at this level?
+[0:38:38]  Feel free to shout out.
+[0:38:41]  Yeah, so very few syllables, short words, short sentences.
+[0:38:44]  And so there's some heuristics perhaps we can infer from that short text
+[0:38:47]  that probably means that it's best for younger children.
+[0:38:50]  Now, Sarah, by contrast, what have you been reading?
+[0:38:53]  Mr. and Ms. Dursley of number four, Privet Drive,
+[0:38:56]  were proud to say that they were perfectly normal.
+[0:38:59]  Thank you very much.
+[0:39:01]  They were the last people you'd expect to be involved in anything
+[0:39:03]  strange or mysterious because they just didn't hold with much nonsense.
+[0:39:08]  All right, now irrespective of what grade
+[0:39:10]  you were in when you might have read that text,
+[0:39:11]  what grade level does Sarah seem to be reading at?
+[0:39:15]  So eighth grade, second grade.
+[0:39:17]  OK, so hearing a bit of everything, so that, at least according to code,
+[0:39:21]  would actually be seventh grade.
+[0:39:23]  And what might the intuition there be?
+[0:39:25]  Why is that a higher grade level, even though we might disagree exactly
+[0:39:28]  which grade it is?
+[0:39:31]  Yeah, so complicated sentences, longer sentences.
+[0:39:34]  So indeed, a lot more words were being spoken by Sarah
+[0:39:36]  because there were so much more there on the page.
+[0:39:38]  So we'll translate these ideas this coming week in problem set two,
+[0:39:41]  if you tackle this one, to code so that you can ultimately
+[0:39:44]  infer things of these quantitatively.
+[0:39:46]  But to do so, we're going to have to understand text.
+[0:39:49]  So let's first thank all of volunteers, and then
+[0:39:50]  we'll dive in to that lower level.
+[0:39:54]  Stress balls.
+[0:40:00]  You can keep those.
+[0:40:02]  All right, so besides that, let's consider one other body of text,
+[0:40:05]  perhaps, that you might see this week, which is namely
+[0:40:08]  a little something like this.
+[0:40:09]  What I have here on the screen is what we'll start calling today ciphertext.
+[0:40:13]  It's the result of encrypting some piece of information.
+[0:40:16]  And encryption, and more generally, the art and science of cryptography,
+[0:40:20]  is all around us.
+[0:40:21]  It's what you're using on the web, on your phones, with your banks.
+[0:40:23]  And anything that tries to keep data secure is using encryption.
+[0:40:27]  But there's going to be different levels of encryption, strong encryption,
+[0:40:30]  weak encryption.
+[0:40:31]  And what you see here on the screen isn't all that strong.
+[0:40:34]  But we'll see later today how we might decrypt this and actually
+[0:40:37]  reveal what the plain text is that corresponds to that ciphertext.
+[0:40:42]  But in order to do so, we have to start taking off some training wheels,
+[0:40:45]  so to speak.
+[0:40:46]  And believe it or not, even though your time with C this past week,
+[0:40:49]  for the first time probably, might have been rather in the weeds,
+[0:40:52]  and much more complicated seemingly than C,
+[0:40:54]  it turns out that along the way, we have been providing,
+[0:40:57]  and we'll continue to provide, certain training wheels.
+[0:40:59]  For instance, the CS50 library is one of them,
+[0:41:02]  and even some of the explanations we give of topics for now,
+[0:41:06]  in these early weeks, will be somewhat simplified, abstracted away,
+[0:41:08]  if you will.
+[0:41:09]  But the goal ultimately is for you to understand each and every one
+[0:41:12]  of those details so that after CS50, you really can stand on your own
+[0:41:16]  and understand and wrap your mind around any future technologies as well.
+[0:41:21]  So let's consider first the very first program with which we began last week,
+[0:41:25]  which was this one.
+[0:41:25]  So hello, world in C. At the end of the day,
+[0:41:28]  it was really the printf function that was doing the interesting part
+[0:41:30]  of the work.
+[0:41:31]  But there was a lot of technical stuff above and below it.
+[0:41:35]  The curly braces, the parentheses, words like void and include,
+[0:41:39]  and then, of course, the angled brackets and more.
+[0:41:41]  But at the end of the day, we needed to convert that source code in C
+[0:41:45]  to machine code, the zeros and ones in binary that the computer understood.
+[0:41:50]  And to do that, of course, we ran, we compiled the code.
+[0:41:53]  We ran make, and then we were able to actually run that code there.
+[0:41:57]  So let me actually go over here to VS code
+[0:41:59]  and really quickly recreate that hello.c pretty much by transcribing the same.
+[0:42:04]  So I might have here include standard io dot h, int main void.
+[0:42:12]  And then in here, I had quite simply hello,
+[0:42:14]  comma, world with my backslash, end quotes, and more.
+[0:42:17]  Now, last time to compile this, I indeed ran make, hello, followed by enter.
+[0:42:21]  Hopefully, you see no errors, and that's a good thing.
+[0:42:23]  And if you do dot slash hello, you see, in fact, the results of that program.
+[0:42:27]  But it turns out that make is not actually a compiler.
+[0:42:31]  As I alluded to last week, it's a program
+[0:42:33]  that clearly makes your program.
+[0:42:35]  But it itself just automates the process of using an actual compiler.
+[0:42:38]  And there's lots of different compilers out there.
+[0:42:41]  And the one that it's actually using underneath the hood
+[0:42:44]  is a little something called Clang for C language.
+[0:42:47]  And Clang is a pretty popular compiler nowadays.
+[0:42:50]  There's another one that's been around for ages called GCC.
+[0:42:53]  But these are just specific names for types of compilers
+[0:42:56]  that different people, different companies, different groups
+[0:42:58]  have actually created.
+[0:43:00]  But if you use, in week one, a compiler yourself manually,
+[0:43:04]  you have to know, you have to understand a little more
+[0:43:06]  about what's going on.
+[0:43:07]  Because it's even more cryptic than would just make alone.
+[0:43:10]  So in fact, let me go back to my terminal window here.
+[0:43:13]  Let me go ahead and clear the screen a little bit
+[0:43:15]  and just run really the raw compiler command.
+[0:43:19]  So what make is automating for me, let me actually
+[0:43:21]  do this manually for just a moment.
+[0:43:23]  So if I want to compile hello.c into an executable program I can run,
+[0:43:30]  I can do this.
+[0:43:32]  Clang space hello.c and then Enter.
+[0:43:37]  And now there's no output, which is a good thing in this case.
+[0:43:40]  No errors.
+[0:43:40]  But notice this.
+[0:43:41]  If I go ahead and type ls, it turns out there's
+[0:43:45]  a file that's been created suddenly in my current folder weirdly called a.out.
+[0:43:52]  That stands for assembler output.
+[0:43:53]  And long story short, that's actually the default name
+[0:43:55]  of a program that's created when you just run Clang by itself.
+[0:43:59]  Now that's a pretty bad name for a program
+[0:44:01]  because it doesn't describe what it does.
+[0:44:03]  So better would be here to perhaps do, well,
+[0:44:07]  instead of a.out, which yes, still prints hello.world,
+[0:44:11]  but isn't really a clearly named program, it'd be nice to name this hello.
+[0:44:15]  So what could I do?
+[0:44:16]  I could do like we learned last week.
+[0:44:17]  Well, I could rename a.out to hello by using Linux's mv command.
+[0:44:21]  So I'm going to move a.out to become hello.
+[0:44:24]  But that too seems kind of tedious.
+[0:44:26]  Now I have three steps.
+[0:44:27]  Like write my code, compile my code, and then rename it
+[0:44:30]  before I can even run it.
+[0:44:32]  We can do better than that.
+[0:44:33]  And so it turns out that certain commands like Clang
+[0:44:36]  support what we're going to start today calling command line arguments.
+[0:44:40]  A command line argument, unlike an argument to a function,
+[0:44:43]  is just an additional word or key phrase that you type after a command
+[0:44:48]  at your prompt in your terminal window that just
+[0:44:51]  modifies the behavior of that command.
+[0:44:53]  It configures it a little more specifically.
+[0:44:55]  So what you're seeing here on the screen is a summary of a better
+[0:44:58]  command with which to run Clang so that now I can specify the output
+[0:45:03]  of this command per this dash o.
+[0:45:05]  So what do I mean by that?
+[0:45:06]  Well, let me go ahead and clear my terminal window again and more
+[0:45:09]  explicitly type clang dash o hello hello dot c and then enter.
+[0:45:15]  Nothing again appears to happen, but that's a good thing when you see no errors.
+[0:45:18]  And now the program I just created is indeed called hello.
+[0:45:22]  So it achieves really the same exact effect as make did,
+[0:45:26]  but what I don't have to do with make is type and remember something
+[0:45:29]  as long as this command.
+[0:45:30]  And this too is a bit of a white lie.
+[0:45:32]  It turns out we have pre-configured VS code in the cloud for you
+[0:45:36]  to also use some other features of Clang that would be even more tedious for you
+[0:45:41]  to write yourselves.
+[0:45:42]  And so really this is why we distill this as ultimately just running make.
+[0:45:48]  So let me pause here to see first if there's
+[0:45:50]  any questions on what I've done by taking my very first program in C
+[0:45:54]  and just now compiling it first with make, but then starting over
+[0:45:57]  and now manually compiling it with Clang with what
+[0:46:00]  we'll call command line arguments.
+[0:46:02]  Dash o space hello and then the name of the file.
+[0:46:06]  Yeah.
+[0:46:09]  Yeah, so a dot out is a historical name.
+[0:46:11]  It refers to assembler output more on that soon.
+[0:46:15]  And it's just the default file name that you get automatically
+[0:46:17]  if you just run the compiler on any file so that you have just
+[0:46:21]  a standard name for it.
+[0:46:22]  But it's not a very well named program.
+[0:46:25]  Instead of running Microsoft Word on your Mac or PC,
+[0:46:27]  it would like be like double clicking on a dot out.
+[0:46:29]  So instead with these command line arguments,
+[0:46:31]  you can customize the output of Clang and call it hello or anything you want.
+[0:46:37]  Other questions on what I've done here with Clang itself, the compiler.
+[0:46:43]  Yeah.
+[0:46:45]  So dash o and you would only know this from reading the manual taking a class
+[0:46:49]  means output.
+[0:46:50]  So dash o means change Clang's output to be a file called hello instead
+[0:46:56]  of the default, which is a dot out.
+[0:46:58]  And this too is, again, a detail you would have to look up on a web page,
+[0:47:02]  read the manual, hear someone like me tell you about it.
+[0:47:04]  And in fact, there's even more than these options.
+[0:47:06]  But we'll just scratch the surface here.
+[0:47:08]  All right, so if we now know this, what more is actually
+[0:47:12]  happening underneath the hood?
+[0:47:13]  Well, let's take a closer look at not just this version of my code,
+[0:47:17]  but my slightly more complicated version last week,
+[0:47:20]  which looked a little something like this,
+[0:47:22]  wherein I added in some dynamic input from the user.
+[0:47:25]  So I could say not hello world to everyone,
+[0:47:28]  but hello David or hello to whoever actually runs this program.
+[0:47:31]  So in fact, let me go ahead and change my code here in VS code
+[0:47:35]  just to match that same code from last week.
+[0:47:37]  So no new code yet.
+[0:47:39]  I'm just going to, in a moment, compile it in a slightly different way.
+[0:47:42]  So I did last week string, I think, answer equals get string, quote unquote,
+[0:47:48]  what's your name, just like in Scratch.
+[0:47:51]  And then down here, instead of doing world, I initially wrote answer,
+[0:47:55]  but that didn't go well.
+[0:47:57]  What did I ultimately do instead, to print out hello David or hello so and so?
+[0:48:02]  Yeah, sorry, a little louder?
+[0:48:06]  Yeah, so percent s, the so-called format code
+[0:48:08]  that printf just knows how to deal with.
+[0:48:10]  And I had to add one other thing, someone else.
+[0:48:13]  Besides percent f, yeah, the name of the variable
+[0:48:16]  that I want to plug in to that placeholder, percent s.
+[0:48:20]  And in this case, it's answer.
+[0:48:21]  Now let me make one refinement, only because now we're in week two
+[0:48:24]  and we're going to start writing more lines of code,
+[0:48:26]  even though Scratch called the return value of the ask puzzle piece, answer
+[0:48:30]  always, in C, we have full control over what our variables are called.
+[0:48:34]  And now it's probably good not to just generically always
+[0:48:37]  call my variable answer if I'm using get string.
+[0:48:39]  Let's call it what it is.
+[0:48:40]  So this is now just a matter of style, if you will.
+[0:48:43]  Let me change the variable to be named, just
+[0:48:46]  so that it's a little clearer to me, to you, to a tf or ta,
+[0:48:49]  exactly what that variable represents instead of more generically answer.
+[0:48:53]  All right, so that said, let me go down to my terminal window.
+[0:48:56]  And last week, again, I ran make to compile this exact same program.
+[0:49:01]  Now, though, let me go ahead and just use clang.
+[0:49:03]  So clang dash o, I'll still call this version hello, space hello dot c.
+[0:49:09]  So exact same command as before.
+[0:49:10]  The only thing that's different is I've added a couple of more lines of code
+[0:49:14]  to get the user's input.
+[0:49:16]  Let me hit Enter.
+[0:49:17]  And now, darn it, our first error.
+[0:49:19]  So output from clang and make is not a good thing.
+[0:49:22]  And here we're seeing something particularly cryptic.
+[0:49:25]  So something in function main, undefined reference to get string,
+[0:49:30]  and then linker, command failed with exit code 1.
+[0:49:33]  So there's actually a lot of jargon in there that we'll tease apart today.
+[0:49:36]  But my hint is that clearly my problem's in main,
+[0:49:39]  although that's not surprising because there's nothing else going on here.
+[0:49:42]  Get string is an issue.
+[0:49:43]  And the issue is that it's an undefined reference.
+[0:49:46]  And yet, notice, I was pretty good.
+[0:49:48]  I added the CS50 header file.
+[0:49:51]  And I said last week that that's enough to teach the compiler that functions
+[0:49:55]  exist.
+[0:49:56]  But the problem is that even though this does, in fact, teach clang,
+[0:50:00]  that get string exists, it is not sufficient information for clang
+[0:50:04]  to go find on the hard drive of the computer the zeros and ones that
+[0:50:08]  actually implement get string itself.
+[0:50:11]  So in other words, this include line per last week is a little bit of a hint.
+[0:50:14]  It's a teaser to clang that you're about to see and use this function somewhere.
+[0:50:19]  But if you actually want to use the zeros and ones that CS50 wrote some time ago
+[0:50:25]  and bake those into your program so your program actually
+[0:50:28]  knows how to get input from the user, well,
+[0:50:30]  then I'm going to have to go ahead and run a slightly different command.
+[0:50:35]  So let me do this.
+[0:50:36]  Let me clear my terminal window just to get rid of that distraction.
+[0:50:38]  And let me propose now that we run this command instead.
+[0:50:43]  Almost the same as before, clang dash o, space hello, then hello dot c,
+[0:50:48]  but with one additional command line argument at the end.
+[0:50:52]  And this is a dash l, not a number one, so dash l, CS50,
+[0:50:57]  with no space in between those two.
+[0:50:59]  Now, the l is going to result in all of those zeros and ones
+[0:51:02]  that actually were written by CS50 being linked into your code,
+[0:51:06]  your few lines of code or mine here.
+[0:51:08]  But that's the second step that the compiler requires in order
+[0:51:12]  to know how to actually execute and, rather, compile your code and CS50's.
+[0:51:18]  And CS50's not the only one that does this.
+[0:51:20]  If you use any third party library in C that doesn't come with the language,
+[0:51:24]  you would do dash l such and such, however they've named their own library.
+[0:51:29]  But you don't have to do it for built in things like we've been using thus far.
+[0:51:34]  All right, so let me go ahead and try this.
+[0:51:36]  I'll go back to VS code here.
+[0:51:37]  And let me go ahead now and run clang dash o, hello, then hello dot c.
+[0:51:43]  And now instead of just hitting enter, dash l, CS50,
+[0:51:46]  with no space between the l and the CS50, enter.
+[0:51:49]  Now nothing bad happens.
+[0:51:51]  And now I can do dot slash hello.
+[0:51:53]  What's your name?
+[0:51:54]  I'll type in David, enter.
+[0:51:55]  And now we see hello, David.
+[0:51:57]  Now, honestly, this is where we're really getting into the weeds.
+[0:52:00]  And now this is taking, this is really just
+[0:52:02]  adding nuisance to the process of compiling and running your code.
+[0:52:06]  And so the reality is, even though this is indeed what is happening,
+[0:52:09]  this is why we used last week, and we're going to continue using this week
+[0:52:12]  onward, make, because it just automates that whole process for you.
+[0:52:16]  But it's ideal to understand what's going wrong,
+[0:52:19]  because any of the error messages you saw for problem set one,
+[0:52:21]  any of the error messages you see for the next few weeks
+[0:52:24]  probably aren't coming from make.
+[0:52:25]  They're coming from clang underneath the hood,
+[0:52:28]  because make is just automating the process.
+[0:52:30]  But with make, you literally just write make,
+[0:52:32]  and then the name of the program, you don't have to worry about any
+[0:52:35]  of those command line arguments.
+[0:52:37]  Questions then on compiling with dash L, CS50, or anything else?
+[0:52:42]  Yeah?
+[0:52:44]  Sorry, what is the benefit of?
+[0:52:47]  What is the benefit of using clang manually?
+[0:52:49]  None, really.
+[0:52:50]  In fact, all make is doing is saving us some keystrokes.
+[0:52:55]  If you prefer, though, and you just like to be more in control,
+[0:52:57]  you can totally run clang manually if you remember the various command line
+[0:53:01]  arguments.
+[0:53:07]  Exactly, why did I have to explain that is provide a hint to CS50
+[0:53:11]  with the CS50.h header file, but I didn't have to do that with standard io.h
+[0:53:15]  just because.
+[0:53:16]  Standard io.h comes with C, just like a few other libraries come with C
+[0:53:21]  that we'll start seeing today.
+[0:53:22]  CS50, though, is not built into C everywhere,
+[0:53:25]  and so you do have to explicitly add that one there.
+[0:53:31]  A command line argument is a word or phrase
+[0:53:35]  that you type at the command line, a.k.a.
+[0:53:38]  your terminal, in order to influence the behavior of a program.
+[0:53:44]  Yeah, it changes the defaults.
+[0:53:45]  In our GUI world, graphical user interface,
+[0:53:47]  you and I would probably click some boxes.
+[0:53:49]  We would select some menu options to configure a program
+[0:53:52]  to behave in the same way.
+[0:53:53]  At a command line interface, you have to just say everything all at once,
+[0:53:56]  and that's why we have command line arguments.
+[0:53:59]  Yeah?
+[0:54:03]  No, make is not just for CS50.
+[0:54:05]  It's used globally in any project really nowadays using C, C++, even
+[0:54:10]  other languages as well.
+[0:54:11]  In fact, most every command you see in this class,
+[0:54:14]  unless it has five zero at the end of it, is globally used.
+[0:54:17]  Only those suffixed with 50 are indeed course specific.
+[0:54:20]  And even those will gradually take training wheels off of so
+[0:54:23]  that you know exactly what those commands are doing as well.
+[0:54:26]  All right, so what is it that we've just done?
+[0:54:29]  Everything we've just done, of course, I keep calling compiling.
+[0:54:31]  But let's just go down one rabbit hole so
+[0:54:33]  that you understand that when you compile code,
+[0:54:35]  there's actually a whole bunch of steps happening.
+[0:54:37]  And this is going to enable a lot of features,
+[0:54:40]  like companies can write code and then convert it
+[0:54:43]  to run it on Macs and PCs alike, or phones or the like.
+[0:54:47]  So it's not just a matter of converting source code to machine code.
+[0:54:50]  There's actually four steps involved in what you and I, as of last week,
+[0:54:54]  know as compiling.
+[0:54:55]  And these aren't terms that you'll have to keep in mind constantly,
+[0:54:59]  because again, we're going to abstract a lot of this away.
+[0:55:01]  But just so we've gone down the rabbit hole once,
+[0:55:03]  let's consider each of these four steps that
+[0:55:05]  have been happening for you for a week automatically,
+[0:55:09]  the first of which is called pre-processing.
+[0:55:11]  So what does this mean?
+[0:55:12]  Well, let's consider that same program as before.
+[0:55:14]  Notice that two of the lines of code start with a hash mark.
+[0:55:17]  That is a special symbol in C. And it's a so-called pre-processor directive.
+[0:55:22]  You don't need to memorize terms like that.
+[0:55:24]  But it just means that it's a little different from every other line.
+[0:55:27]  And anything with a hash symbol here should be pre-processed.
+[0:55:29]  That is, analyzed initially before anything else happens.
+[0:55:33]  So let's consider these two lines up top.
+[0:55:35]  What exactly is happening?
+[0:55:37]  Well, it turns out with these two lines, you have two header files, of course.
+[0:55:40]  CS50.h and standard.io.h.
+[0:55:43]  Where are those files?
+[0:55:44]  Because they've never been in VS code for you, seemingly.
+[0:55:48]  If you type ls, if you open up the file explorer in the GUI,
+[0:55:51]  you have never seen probably CS50.h or standard.io.h.
+[0:55:55]  They just work.
+[0:55:56]  But that's because there's a folder somewhere on the hard drive
+[0:56:01]  that you're using on your Mac or PC or somewhere in the cloud, as in our case.
+[0:56:05]  And inside of this folder, traditionally called slash user slash include.
+[0:56:10]  And user is deliberately misspelled.
+[0:56:12]  It's just slightly more succinct, although it's a little weird
+[0:56:14]  why we dropped that one letter.
+[0:56:15]  But user slash include is just a folder on the server that contains CS50.h,
+[0:56:20]  standard.io.h, and a bunch of other things as well.
+[0:56:23]  So in fact, if you type in VS code in your terminal window,
+[0:56:27]  when you're using code spaces in the cloud and type ls space slash user slash
+[0:56:32]  include, you can see all of the files in that folder.
+[0:56:35]  But we've pre-installed all of that stuff for you.
+[0:56:37]  So let's consider what's actually in those files here.
+[0:56:40]  Where if I highlight these two lines up top that start with hash include,
+[0:56:44]  well, I kind of hinted last week that what's in that first file
+[0:56:48]  is a hint as to what functions CS50 wrote for you.
+[0:56:52]  So you can kind of think of these include lines
+[0:56:55]  as being temporary placeholders for what's going to become
+[0:56:59]  like a global find and replace.
+[0:57:00]  That is, the first thing Clang is going to do, it's pre-process this file.
+[0:57:04]  It's going to look for any line that starts with hash include.
+[0:57:07]  And if it sees that, it's going to essentially go into that file,
+[0:57:10]  like CS50.h, and then just copy and paste the contents of that file
+[0:57:15]  magically there for you.
+[0:57:16]  You don't see it visually on the screen, but it's happening behind the scenes.
+[0:57:20]  And so really, what's happening with this first line
+[0:57:23]  is that somewhere in CS50.h is the declaration of get string,
+[0:57:29]  like we talked last week, and it probably looks a little something like this.
+[0:57:33]  And we didn't spend much time on this yet this past week,
+[0:57:35]  but we will in time more.
+[0:57:37]  Notice that this is how a function is declared.
+[0:57:41]  That is, it is decreed to exist.
+[0:57:43]  The name of the function, of course, is get string.
+[0:57:45]  Inside of the parentheses are its arguments.
+[0:57:48]  In this case, there's one argument to get string, I claim today,
+[0:57:51]  but you've known this implicitly.
+[0:57:53]  And it's a prompt.
+[0:57:54]  It's the prompt that the human sees when you use get string.
+[0:57:56]  What is that prompt?
+[0:57:57]  Well, it's a string of text, like quote unquote, what's your name,
+[0:58:00]  or anything else that I asked last week.
+[0:58:03]  Meanwhile, get string, as we know from last week, has a return value.
+[0:58:06]  It returns something to you, and that, too, is a string.
+[0:58:09]  So again, this is also called a function's prototype.
+[0:58:12]  It's the thing toward the end of last week that I just copied and pasted
+[0:58:15]  from the bottom of my file to the top, just so that it was like this teaser
+[0:58:19]  for Clang as to what would exist later.
+[0:58:22]  So you can think, then, of these include lines as just kind
+[0:58:25]  of combining all of those function declarations
+[0:58:29]  in some separate file called cs50.h so that you yourself don't have
+[0:58:32]  to type them every time you use the library,
+[0:58:34]  or worse, so that you yourself don't have to copy and paste those lines.
+[0:58:38]  This is what Clang is doing for you in its first step of preprocessing.
+[0:58:42]  Second and last in this example, what happens
+[0:58:45]  when Clang preprocesses this second include line?
+[0:58:49]  Well, the only other function we care about in this story
+[0:58:51]  is printf, of course, which comes with c.
+[0:58:53]  So essentially, you can think of printf's prototype or declaration
+[0:58:59]  as just being this.
+[0:59:00]  printf is the name of the function.
+[0:59:02]  It takes a string that you want to format, like hello, comma, world,
+[0:59:07]  or hello, comma, percent s.
+[0:59:09]  And then with dot, dot, dot, this actually has technical meaning.
+[0:59:12]  It means, of course, that you can plug in zero variables, one variable,
+[0:59:15]  two, or 10.
+[0:59:16]  So dot, dot, dot means some number of variables.
+[0:59:18]  Now, we haven't talked about this yet, and we won't really in general.
+[0:59:21]  printf actually returns a value, a number that is an integer,
+[0:59:25]  but more on that perhaps another time.
+[0:59:27]  It's generally not something the programmer tends to look at.
+[0:59:30]  But that's all we mean by preprocessing, so that at the end of this process,
+[0:59:34]  even though there's more lines of code in CS50.h and standard io.h,
+[0:59:38]  what's really just happening is that Clang, in preprocessing the file,
+[0:59:42]  copies and pastes the contents of those files into your code
+[0:59:45]  so that now your code knows about everything.
+[0:59:47]  Get string, printf, and anything else.
+[0:59:50]  Any questions then on that first step, preprocessing?
+[0:59:55]  Yes.
